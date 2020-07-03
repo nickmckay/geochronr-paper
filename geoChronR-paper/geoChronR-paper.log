@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 MAY 2020 09:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  2 JUL 2020 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -913,83 +913,172 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 8.54997pt on input line 125.
 [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 217.
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package natbib Warning: Citation `parnell2008flexible' on page 2 undefined on i
+nput line 194.
+
+
+Package natbib Warning: Citation `ramsey2008deposition' on page 2 undefined on 
+input line 194.
+
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 203.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 226.
+
+Package natbib Warning: Citation `parnell2008flexible' on page 2 undefined on i
+nput line 215.
+
+
+Package natbib Warning: Citation `hulu2001' on page 2 undefined on input line 2
+16.
+
+
+Package natbib Warning: Citation `alley' on page 2 undefined on input line 218.
+
+
+[2]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-2-1.pdf, id=47, 462.72874pt x
+ 305.14pt>
+File: geoChronR-paper_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (ty
+pe pdf)
+<use geoChronR-paper_files/figure-latex/unnamed-chunk-2-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-2-1.p
+df used on input line 233.
+(pdftex.def)             Requested size: 462.72762pt x 305.13924pt.
+
+Overfull \hbox (3.45357pt too wide) in paragraph at lines 233--239
+[][] \T1/ptm/m/n/10 Af-ter an
+ []
+
+
+Overfull \hbox (43.77147pt too wide) in paragraph at lines 233--239
+\T1/ptm/m/n/10 age en-sem-ble has been added to a LiPD ob-ject, the user can vi
+-su-al-ize the en-sem-ble time-series us-ing \T1/pcr/m/n/10 plotTimeseriesEnsRi
+bbons()
+ []
+
+[3]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf, id=58, 462.72874pt x
+ 316.18124pt>
+File: geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (ty
+pe pdf)
+<use geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.p
+df used on input line 240.
+(pdftex.def)             Requested size: 462.72762pt x 316.18047pt.
+[4 <./geoChronR-paper_files/figure-latex/unnamed-chunk-2-1.pdf>]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf, id=74, 458.71375pt x
+ 312.16624pt>
+File: geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (ty
+pe pdf)
+<use geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.p
+df used on input line 263.
+(pdftex.def)             Requested size: 458.71263pt x 312.16548pt.
+[5 <./geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf>]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=92, 466.74374pt x
+ 321.2pt>
+File: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (ty
+pe pdf)
+<use geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.p
+df used on input line 280.
+(pdftex.def)             Requested size: 466.7426pt x 321.19922pt.
+
+Overfull \hbox (1.1386pt too wide) in paragraph at lines 280--282
+[][] \T1/ptm/m/n/10 Fig-ure
+ []
+
+[6 <./geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf>] [7 <./geoChron
+R-paper_files/figure-latex/unnamed-chunk-7-1.pdf>]
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 324.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-) [3] [4] <Nikolaus_Kopernikus.jpg, id=71, 206.7725pt x 240.9pt>
+) [8] [9] <Nikolaus_Kopernikus.jpg, id=156, 206.7725pt x 240.9pt>
 File: Nikolaus_Kopernikus.jpg Graphic file (type jpg)
 <use Nikolaus_Kopernikus.jpg>
-Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 272.
+Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 370.
 (pdftex.def)             Requested size: 236.15796pt x 275.14345pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 272.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 370.
 File: Nikolaus_Kopernikus.jpg Graphic file (type jpg)
 <use Nikolaus_Kopernikus.jpg>
-Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 280.
+Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 378.
 (pdftex.def)             Requested size: 341.43306pt x 397.82806pt.
 
-Overfull \hbox (170.03976pt too wide) in paragraph at lines 322--328
+Overfull \hbox (170.03976pt too wide) in paragraph at lines 420--426
 \T1/ptm/m/n/10 PAC: Quan-ti-ties, Units and Sym-bols in Phys-i-cal Chem-istry, 
 2nd Edn., Black-well Sci-ence, avail-able at: http://old.iupac.org/publications
 /books/gbook/green_book_2ed.pdf,
  []
 
-[5
+[10
 
- <./Nikolaus_Kopernikus.jpg>] [6] [7]
-Overfull \hbox (14.92061pt too wide) in paragraph at lines 391--399
+ <./Nikolaus_Kopernikus.jpg>] [11] [12]
+Overfull \hbox (14.92061pt too wide) in paragraph at lines 489--497
 \T1/pcr/m/n/10 true\T1/ptm/m/n/10 ), or make sure your-self that the L[]T[]Xpac
 kages \T1/pcr/m/n/10 algorithms \T1/ptm/m/n/10 and \T1/pcr/m/n/10 algorithmicx 
 \T1/ptm/m/n/10 are in-stalled so that \T1/pcr/m/n/10 algorithm.sty
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 401.
-[8]pdfTeX warning (ext4): destination with the same identifier (name{equation.9
-.1}) has been already used, duplicate ignored
+put line 499.
+[13]pdfTeX warning (ext4): destination with the same identifier (name{equation.
+9.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.435 \begin{reaction}
+l.533 \begin{reaction}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.9.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.438 \begin{reaction}
+l.536 \begin{reaction}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.9.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.441 \begin{reaction}
+l.539 \begin{reaction}
                       
-Overfull \hbox (13.58418pt too wide) in paragraph at lines 456--458
+Overfull \hbox (13.58418pt too wide) in paragraph at lines 554--556
 \T1/ptm/m/n/10 The con-clu-sion goes here. You can mod-ify the sec-tion name wi
 th \T1/pcr/m/n/10 \conclusions[modified heading if necessary]\T1/ptm/m/n/10 . 
  []
 
-[9] (./geoChronR-paper.bbl [10]
+[14] (./geoChronR-paper.bbl [15]
+Underfull \hbox (badness 1264) in paragraph at lines 17--21
+[]\T1/ptm/m/n/9 Boldt, Bran-don R., Kauf-man, Dar-rell S., McKay, Nicholas P., 
+and Briner, Ja-son P.: Holocene sum-mer tem-per-a-ture re-con-struc-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 17--21
+\T1/ptm/m/n/9 tion from sed-i-men-tary chloro-phyll con-tent, with treat-ment o
+f age un-cer-tain-ties, Ku-rupa Lake, Arc-tic Alaska, The Holocene,
+ []
+
 
 Package lineno Warning: Linenumber reference failed, 
 (lineno)                rerun to get it right.
 
-) [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 552.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 552.
+) [16]
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 650.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 650.
 (./geoChronR-paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 552.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 552.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 552.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 650.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 650.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 650.
  ) 
 Here is how much of TeX's memory you used:
- 10529 strings out of 493089
- 149170 string characters out of 6134842
- 272922 words of memory out of 5000000
- 13692 multiletter control sequences out of 15000+600000
+ 10584 strings out of 493089
+ 150632 string characters out of 6134842
+ 273348 words of memory out of 5000000
+ 13732 multiletter control sequences out of 15000+600000
  49008 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,8n,40p,330b,719s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1009,10 +1098,10 @@ st/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on geoChronR-paper.pdf (11 pages, 175028 bytes).
+Output written on geoChronR-paper.pdf (16 pages, 2638562 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 91 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 313 PDF objects out of 1000 (max. 8388607)
+ 264 compressed objects within 3 object streams
+ 101 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
