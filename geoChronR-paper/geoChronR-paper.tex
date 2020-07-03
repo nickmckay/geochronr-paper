@@ -230,14 +230,25 @@ age ensemble.
 ## replace the existing scale.
 \end{verbatim}
 
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-2-1.pdf}
+\begin{verbatim}
+## Warning in max(pd): no non-missing arguments to max; returning -Inf
+
+## Warning in max(pd): no non-missing arguments to max; returning -Inf
+\end{verbatim}
+
+\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf}
 After an age ensemble has been added to a LiPD object, the user can
 visualize the ensemble timeseries using
 \texttt{plotTimeseriesEnsRibbons()} and
 \texttt{plotTimeseriesEnsLines()}. GISP2 \(\delta^{18}\)O is plotted
 with age uncertainty, using both functions, in figure x.
 
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf}
+\begin{verbatim}
+## Scale for 'x' is already present. Adding another scale for 'x', which will
+## replace the existing scale.
+\end{verbatim}
+
+\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf}
 
 \subsection{Correlation}
 
@@ -256,11 +267,12 @@ correlations during the period of overlap in 500 yr steps, determining
 significance for each pair of ensemble members while accounting for
 autocorrelation.
 
-The results show consistently negative correlations, although 20.26\% of
-the ensemble members are positive. However, only 0.62\% are significant
+The results show consistently negative correlations, although 13.45\% of
+the ensemble members are positive. However, only 0.89\% are significant
 after accounting for serial autocorrelation.
 
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-2.pdf}
 
 In this use case, we demonstrate how a user could calculate and
 visualize and age-uncertain correlation between the Hulu speleothem d18O
@@ -277,7 +289,7 @@ calibration-in-time. For this use case, we reproduce the results of
 \citet{Boldt:2015}, where the authors calibrate a spectral reflectance
 measure of chlorophyll abundance to temperature in Northern Alaska.
 
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf}
 Figure captions.
 
 \subsection{Principle Components Analysis}
@@ -367,7 +379,7 @@ Include a 12cm width figure of Nikolaus Copernicus from
 with caption using R Markdown.
 
 \begin{figure}
-\includegraphics[width=8.3cm]{Nikolaus_Kopernikus} \caption{one column figure}\label{fig:unnamed-chunk-9}
+\includegraphics[width=8.3cm]{Nikolaus_Kopernikus} \caption{one column figure}\label{fig:unnamed-chunk-11}
 \end{figure}
 
 \subsubsection{TWO-COLUMN FIGURES}
@@ -375,7 +387,7 @@ with caption using R Markdown.
 You can also include a larger figure.
 
 \begin{figure}
-\includegraphics[width=12cm]{Nikolaus_Kopernikus} \caption{two column figure}\label{fig:unnamed-chunk-10}
+\includegraphics[width=12cm]{Nikolaus_Kopernikus} \caption{two column figure}\label{fig:unnamed-chunk-12}
 \end{figure}
 
 \subsection{TABLES}
