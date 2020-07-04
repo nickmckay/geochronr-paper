@@ -198,6 +198,8 @@ library(lipdR)
 library(geoChronR)
 library(magrittr)
 library(ggplot2)
+library(dplyr)
+library(purrr)
 ```
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache=TRUE}
@@ -286,7 +288,7 @@ A natural extension of ensemble correlation is ensemble regression.
 Although there are use cases where regressing one age-uncertain variable onto another is called for, here we regress an age-uncertain paleoclimate proxy onto time-certain instrumental to develop a calibration-in-time. 
 For this use case, we reproduce the results of @Boldt:2015, where the authors calibrate a spectral reflectance measure of chlorophyll abundance to temperature in Northern Alaska. 
 
-```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE}
+```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
 library(readr)
 K <- lipdR::readLipd("http://lipdverse.org/geochronr-examples/Kurupa.Boldt.2015.lpd")
 K <- lipdR::readLipd("~/GitHub/lipdverse/html/geoChronR-examples/Kurupa.Boldt.2015.ens.lpd")
@@ -316,6 +318,46 @@ Figure captions.
 
 ## Principle Components Analysis
 
+Thus far, the use cases have highlighted age-uncertain analyses of one or two sites, however quantifying the effects of age uncertainty can be even more impactful over large spatial datasets. 
+Here we showcase how to use geoChronR to perform age-uncertain principle components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by @anchukaitis2013mceof.
+In this example, we examine the Arctic 2k database [@McKayKaufman2014McKayKaufman2014].
+
+```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
+FD <- readLipd("http://lipdverse.org/geoChronR-examples/arc2k/Arctic2k.zip") 
+FD2 = purrr::map(FD,
+                 mapAgeEnsembleToPaleoData,
+                 strict.search = TRUE,
+                 age.var = "ageEnsemble",
+                 depth.var = NULL )
+TS = extractTs(FD2)
+TS.filtered = filterTs(TS,"interpretation1_variable == T")
+tidyDf <- tidyTs(TS.filtered)
+```
+
+```{r,echo = FALSE}
+
+plotTimeseriesStack(tidyDf, 
+                    color.var = "paleoData_variableName", 
+                    color.ramp = c("DarkBlue","Orange","Black","Dark Green"),
+                    line.size = .1, 
+                    fill.alpha = .05,
+                    lab.size = 2,
+                    lab.space = 3)
+```
+
+```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
+
+binned.TS = binTs(TS.filtered,bin.vec = seq(1400,2000,by=5),time.var = "ageEnsemble")
+pcout = pcaEns(binned.TS)
+
+
+```
+
+
+
+```{r,echo = FALSE}
+plotPCA <- plotPcaEns(pcout,TS = TS.filtered,map.type = "line",projection = "stereo",bound.circ = T,restrict.map.range = T,f=.1,legend.position = c(0.5,.6),which.pcs = 1:2,which.leg = 2)
+```
 
 ## Spectral Analysis
 

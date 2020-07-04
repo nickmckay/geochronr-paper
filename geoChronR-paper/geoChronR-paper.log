@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 JUL 2020 12:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 JUL 2020 17:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -994,70 +994,93 @@ Overfull \hbox (1.1386pt too wide) in paragraph at lines 292--294
  []
 
 [6 <./geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf> <./geoChronR-pa
-per_files/figure-latex/unnamed-chunk-7-2.pdf>] [7 <./geoChronR-paper_files/figu
-re-latex/unnamed-chunk-9-1.pdf>]
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 336.
+per_files/figure-latex/unnamed-chunk-7-2.pdf>]
+
+Package natbib Warning: Citation `McKayKaufman2014McKayKaufman2014' on page 7 u
+ndefined on input line 303.
+
+
+<geoChronR-paper_files/figure-latex/unnamed-chunk-11-1.pdf, id=136, 453.695pt x
+ 316.18124pt>
+File: geoChronR-paper_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (t
+ype pdf)
+<use geoChronR-paper_files/figure-latex/unnamed-chunk-11-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-11-1.
+pdf used on input line 305.
+(pdftex.def)             Requested size: 453.6939pt x 316.18047pt.
+[7 <./geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf>]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-13-1.pdf, id=157, 469.755pt x
+ 316.18124pt>
+File: geoChronR-paper_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (t
+ype pdf)
+<use geoChronR-paper_files/figure-latex/unnamed-chunk-13-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-13-1.
+pdf used on input line 307.
+(pdftex.def)             Requested size: 469.75386pt x 316.18047pt.
+[8 <./geoChronR-paper_files/figure-latex/unnamed-chunk-11-1.pdf>] [9 <./geoChro
+nR-paper_files/figure-latex/unnamed-chunk-13-1.pdf>]
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 348.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-) [8] [9] <Nikolaus_Kopernikus.jpg, id=178, 206.7725pt x 240.9pt>
+) [10] <Nikolaus_Kopernikus.jpg, id=206, 206.7725pt x 240.9pt>
 File: Nikolaus_Kopernikus.jpg Graphic file (type jpg)
 <use Nikolaus_Kopernikus.jpg>
-Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 382.
+Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 394.
 (pdftex.def)             Requested size: 236.15796pt x 275.14345pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 382.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 394.
 File: Nikolaus_Kopernikus.jpg Graphic file (type jpg)
 <use Nikolaus_Kopernikus.jpg>
-Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 390.
+Package pdftex.def Info: Nikolaus_Kopernikus.jpg used on input line 402.
 (pdftex.def)             Requested size: 341.43306pt x 397.82806pt.
 
-Overfull \hbox (170.03976pt too wide) in paragraph at lines 432--438
+Overfull \hbox (170.03976pt too wide) in paragraph at lines 444--450
 \T1/ptm/m/n/10 PAC: Quan-ti-ties, Units and Sym-bols in Phys-i-cal Chem-istry, 
 2nd Edn., Black-well Sci-ence, avail-able at: http://old.iupac.org/publications
 /books/gbook/green_book_2ed.pdf,
  []
 
-[10
+[11
 
- <./Nikolaus_Kopernikus.jpg>] [11] [12]
-Overfull \hbox (14.92061pt too wide) in paragraph at lines 501--509
+ <./Nikolaus_Kopernikus.jpg>] [12] [13]
+Overfull \hbox (14.92061pt too wide) in paragraph at lines 513--521
 \T1/pcr/m/n/10 true\T1/ptm/m/n/10 ), or make sure your-self that the L[]T[]Xpac
 kages \T1/pcr/m/n/10 algorithms \T1/ptm/m/n/10 and \T1/pcr/m/n/10 algorithmicx 
 \T1/ptm/m/n/10 are in-stalled so that \T1/pcr/m/n/10 algorithm.sty
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 511.
-[13]pdfTeX warning (ext4): destination with the same identifier (name{equation.
+put line 523.
+[14]pdfTeX warning (ext4): destination with the same identifier (name{equation.
 9.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.545 \begin{reaction}
+l.557 \begin{reaction}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.9.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.548 \begin{reaction}
+l.560 \begin{reaction}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.9.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.551 \begin{reaction}
+l.563 \begin{reaction}
                       
-Overfull \hbox (13.58418pt too wide) in paragraph at lines 566--568
+Overfull \hbox (13.58418pt too wide) in paragraph at lines 578--580
 \T1/ptm/m/n/10 The con-clu-sion goes here. You can mod-ify the sec-tion name wi
 th \T1/pcr/m/n/10 \conclusions[modified heading if necessary]\T1/ptm/m/n/10 . 
  []
 
-[14] (./geoChronR-paper.bbl [15]
-Underfull \hbox (badness 1264) in paragraph at lines 17--21
+[15] (./geoChronR-paper.bbl [16]
+Underfull \hbox (badness 1264) in paragraph at lines 22--26
 []\T1/ptm/m/n/9 Boldt, Bran-don R., Kauf-man, Dar-rell S., McKay, Nicholas P., 
 and Briner, Ja-son P.: Holocene sum-mer tem-per-a-ture re-con-struc-
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 17--21
+Underfull \hbox (badness 1371) in paragraph at lines 22--26
 \T1/ptm/m/n/9 tion from sed-i-men-tary chloro-phyll con-tent, with treat-ment o
 f age un-cer-tain-ties, Ku-rupa Lake, Arc-tic Alaska, The Holocene,
  []
@@ -1066,22 +1089,22 @@ f age un-cer-tain-ties, Ku-rupa Lake, Arc-tic Alaska, The Holocene,
 Package lineno Warning: Linenumber reference failed, 
 (lineno)                rerun to get it right.
 
-) [16]
+) [17]
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 662.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 662.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 674.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 674.
 (./geoChronR-paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 662.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 662.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 662.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 674.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 674.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 674.
  ) 
 Here is how much of TeX's memory you used:
- 10595 strings out of 493089
- 151068 string characters out of 6134842
- 273448 words of memory out of 5000000
- 13740 multiletter control sequences out of 15000+600000
+ 10613 strings out of 493089
+ 151771 string characters out of 6134842
+ 273516 words of memory out of 5000000
+ 13754 multiletter control sequences out of 15000+600000
  49008 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,8n,40p,330b,719s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1101,10 +1124,10 @@ st/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on geoChronR-paper.pdf (16 pages, 2651004 bytes).
+Output written on geoChronR-paper.pdf (17 pages, 3076182 bytes).
 PDF statistics:
- 336 PDF objects out of 1000 (max. 8388607)
- 284 compressed objects within 3 object streams
- 103 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 365 PDF objects out of 1000 (max. 8388607)
+ 304 compressed objects within 4 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
