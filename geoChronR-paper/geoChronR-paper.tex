@@ -80,7 +80,8 @@
 
 \begin{document}
 
-\title{GeoChronR}
+\title{GeoChronR -- an R framework to model and analyze age-uncertain
+paleogeoscientific timeseries.}
 
 
 \Author[1]{Nicholas}{McKay}
@@ -96,7 +97,7 @@ Flagstaff, AZ 86011}
 
 
 
-\runningtitle{GeoChronR title}
+\runningtitle{The GeoChronR framework}
 
 \runningauthor{McKay et al.}
 
@@ -120,7 +121,21 @@ Flagstaff, AZ 86011}
 
 
 \begin{abstract}
-The abstract goes here. It can also be on \emph{multiple lines}.
+Chronological uncertainty is a hallmark of the paleosciences. While many
+tools have been made available to researchers to produce age models
+suitable for various settings and assumptions, disparate tools and
+output formats often discourage integrative approaches. In addition,
+propagating age model uncertainties to subsequent analyses, and
+visualizing the results, has received comparatively little attention in
+the literature and available software. Here we describe GeoChronR, an
+open-source R package to facilitate these tasks. GeoChronR is built
+around emerging data standards for the paleosciences (Linked Paleo Data,
+or LiPD), and offers access to four popular age modeling techniques
+(Bacon, BChron, Oxcal, BAM). The output of these models is easily stored
+in LiPD, enabling paleo-aware synchronization, regression, correlation,
+principal component, and spectral analyses. Five real-world use cases
+illustrate how to use GeoChronR to facilitate these tasks, and to
+visualize the results in intuitive ways.
 \end{abstract}
 
 
@@ -141,48 +156,55 @@ Why we built geoChronR
 
 \subsection{Outline of manuscript}
 
-Should we include this section?
+Should we include this section? yes.
 
-\section{Workflow}
+\section{Age Modeling with GeoChronR}
 
-\subsection{Installation and setup}
+Context: \href{https://doi.org/10.1177/0959683616675939}{Trachsel \&
+Telford}
 
-\subsection{File input/output}
+\subsection{Bacon}
 
-\subsection{Integrated geochronology uncertainty quantification
-software}
+\subsection{BChron}
 
-\subsubsection{Bacon}
+\subsection{Oxcal}
 
-\subsubsection{BChron}
+\subsection{Banded Age Model (BAM)}
 
-\subsubsection{Oxcal}
-
-\subsubsection{Banded Age Models (BAM)}
-
-\subsection{Age-uncertain analytical tools}
+\section{Age-uncertain data analysis in GeoChronR}
 
 Intro on analytical approach, using ensembles\ldots{}.
 
-\subsubsection{Correlation}
+\subsection{Correlation}
 
-\subsubsection{Regression}
+\subsection{Regression}
 
-\subsubsection{Principle Components Analysis}
+\subsection{Principal Component Analysis}
 
-\subsubsection{Spectral Analysis}
+\subsection{Spectral Analysis}
 
-\subsection{Visualization}
+\section{Visualization with GeoChronR}
+
+ggplot philosophy. Customization.
 
 \subsubsection{Timeseries}
 
 \subsubsection{Geospatial}
 
-\subsubsection{Power spectra}
+WTF does geospatial mean anyway? NM: It means mapping.
+
+\subsubsection{Spectral Analysis}
 
 \section{Use cases}
 
-What's the point of these use cases.
+We now illustrate the use of these tools on four use cases. The first
+example shows how to create age ensembles on different archives, and how
+to visualize the timing of abrupt events with appropriate uncertainty
+quantification. The second example shows how to quantify similarities in
+age-uncertain records. The third introduces the topic of age-uncertain
+calibrations, the fourth quantifies multivariate relationships using
+principal components analyses, and the fifth deal with spectral
+analysis.
 
 \subsection{Creating an age ensemble}
 
@@ -225,28 +247,12 @@ age ensemble.
 ## [1] "plotting your chron ensemble. This make take a few seconds..."
 \end{verbatim}
 
-\begin{verbatim}
-## Scale for 'x' is already present. Adding another scale for 'x', which will
-## replace the existing scale.
-\end{verbatim}
-
-\begin{verbatim}
-## Warning in max(pd): no non-missing arguments to max; returning -Inf
-
-## Warning in max(pd): no non-missing arguments to max; returning -Inf
-\end{verbatim}
-
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf}
 After an age ensemble has been added to a LiPD object, the user can
 visualize the ensemble timeseries using
 \texttt{plotTimeseriesEnsRibbons()} and
 \texttt{plotTimeseriesEnsLines()}. GISP2 \(\delta^{18}\)O is plotted
 with age uncertainty, using both functions, in figure x.
-
-\begin{verbatim}
-## Scale for 'x' is already present. Adding another scale for 'x', which will
-## replace the existing scale.
-\end{verbatim}
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf}
 
@@ -267,19 +273,20 @@ correlations during the period of overlap in 500 yr steps, determining
 significance for each pair of ensemble members while accounting for
 autocorrelation.
 
-The results show consistently negative correlations, although 13.45\% of
-the ensemble members are positive. However, only 0.89\% are significant
+The results show consistently negative correlations, although 15.21\% of
+the ensemble members are positive. However, only 0.91\% are significant
 after accounting for serial autocorrelation.
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf}
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-2.pdf}
 
 In this use case, we demonstrate how a user could calculate and
-visualize and age-uncertain correlation between the Hulu speleothem d18O
-record and the GISP2 ice core record. (Introduction about why a user
-might want to do an age uncertain correlation between Hulu and GISP2).
+visualize and age-uncertain correlation between the Hulu speleothem
+\(\delta^{18}\mathrm{O}\) record and the GISP2 ice core
+\(\delta^{18}\mathrm{O}\) record. (Introduction about why a user might
+want to do an age uncertain correlation between Hulu and GISP2).
 
-\subsection{Regression}
+\subsection{Age-uncertain Calibration}
 
 A natural extension of ensemble correlation is ensemble regression.
 Although there are use cases where regressing one age-uncertain variable
@@ -292,7 +299,7 @@ measure of chlorophyll abundance to temperature in Northern Alaska.
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf}
 Figure captions.
 
-\subsection{Principle Components Analysis}
+\subsection{Principle Component Analysis}
 
 Thus far, the use cases have highlighted age-uncertain analyses of one
 or two sites, however quantifying the effects of age uncertainty can be
@@ -524,7 +531,7 @@ which only adds the two acceptable packages.
 \label{a1}
 \begin{algorithmic}
 \STATE $i\gets 10$
-\IF {$i\geq 5$} 
+\IF {$i\geq 5$}
         \STATE $i\gets i-1$
 \ELSE
         \IF {$i\leq 3$}

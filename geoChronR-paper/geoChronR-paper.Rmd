@@ -1,5 +1,5 @@
 ---
-title: GeoChronR: an R framework to model and analyze age-uncertain paleogeoscientific timeseries.
+title: GeoChronR -- an R framework to model and analyze age-uncertain paleogeoscientific timeseries.
 journal: "`r rticles::copernicus_journal_abbreviations(journal_name = 'communication')`"
 author:
   - given_name: Nicholas
@@ -169,7 +169,10 @@ ggplot philosophy. Customization.
 ### Timeseries
 
 ### Geospatial
-WTF does geospatial mean anyway?
+
+WTF does geospatial mean anyway? 
+NM: It means mapping.
+
 ### Spectral Analysis
 
 
@@ -222,7 +225,7 @@ hulu <- runBchron(hulu,
                   rejected.ages.var = NULL)
 ```
 
-```{r,echo=FALSE}
+```{r,echo = FALSE,warning=FALSE,message = FALSE}
 plotChronEns(hulu,truncate.dist = 1e-4)+ggtitle(NULL)
 ```
 After an age ensemble has been added to a LiPD object, the user can visualize the ensemble timeseries using `plotTimeseriesEnsRibbons()` and `plotTimeseriesEnsLines()`.
@@ -251,12 +254,9 @@ gisp2.ens <- convertAD2BP(gisp2.ens)
 ```
 
 
-<<<<<<< HEAD
-plotTimeseriesEnsRibbons(X = gisp2.ens,Y = gisp2.d18O,n.bins = 500) %>%
-=======
-```{r,echo=FALSE}
+
+```{r,echo = FALSE,warning=FALSE,message = FALSE}
 plotTimeseriesEnsRibbons(X = gisp2.ens,Y = gisp2.d18O,n.bins = 500) %>% 
->>>>>>> 03686236142ce237d35dffada589718968e18179
   plotTimeseriesEnsLines(X = gisp2.ens,Y = gisp2.d18O,n.ens.plot = 5,color = "Reds",alp = .2)+
   ggtitle(NULL)
 ```
@@ -280,7 +280,7 @@ corPlot <- plotCorEns(corout,legend.position = c(0.1, 0.8),significance.option =
 The results show consistently negative correlations, although `r sum(corout$cor.df$r>0)/nrow(corout$cor.df)*100`% of the ensemble members are positive.
 However, only `r sum(corout$cor.df$pSerial < 0.05)/nrow(corout$cor.df)*100`% are significant after accounting for serial autocorrelation.
 
-```{r, echo = FALSE}
+```{r,echo = FALSE,warning=FALSE,message = FALSE}
 print(corPlot)+ggtitle(NULL)
 ```
 
@@ -294,9 +294,8 @@ Although there are use cases where regressing one age-uncertain variable onto an
 For this use case, we reproduce the results of @Boldt:2015, where the authors calibrate a spectral reflectance measure of chlorophyll abundance to temperature in Northern Alaska.
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
-library(readr)
-K <- lipdR::readLipd("http://lipdverse.org/geochronr-examples/Kurupa.Boldt.2015.lpd")
-K <- lipdR::readLipd("~/GitHub/lipdverse/html/geoChronR-examples/Kurupa.Boldt.2015.ens.lpd")
+  library(readr)
+K <- lipdR::readLipd("http://lipdverse.org/geochronr-examples/Kurupa.Boldt.2015.ens.lpd")
 K <- mapAgeEnsembleToPaleoData(K,age.var = "ageEnsemble")
 kae <-  selectData(K,"ageEnsemble")
 rabd <- selectData(K,"RABD")
@@ -313,11 +312,17 @@ kinst$values = kurupa.instrumental[,2]
 kinst$variableName = "Temperature"
 kinst$units = "deg (C)"
 
-regout = regressEns(time.x = kae,values.x = rabd,time.y =kyear,values.y =kinst,bin.step=3,recon.bin.vec = seq(-4010,2010,by=20),percentiles = c(5,50,95))
+regout = regressEns(time.x = kae,
+                    values.x = rabd,
+                    time.y =kyear,
+                    values.y =kinst,
+                    bin.step=3,
+                    recon.bin.vec = seq(-4010,2010,by=20),
+                    percentiles = c(5,50,95))
 ```
 
-```{r,echo = FALSE}
-regPlots <- plotRegressEns(regout,alp = 0.01)
+```{r,echo = FALSE,warning=FALSE,message = FALSE}
+regPlots <- plotRegressEns(regout,alp = 0.01,font.size = 8)
 ```
 Figure captions.
 
@@ -339,7 +344,7 @@ TS.filtered = filterTs(TS,"interpretation1_variable == T")
 tidyDf <- tidyTs(TS.filtered)
 ```
 
-```{r,echo = FALSE}
+```{r,echo = FALSE,warning = FALSE, message = FALSE}
 
 plotTimeseriesStack(tidyDf, 
                     color.var = "paleoData_variableName", 
@@ -360,7 +365,7 @@ pcout = pcaEns(binned.TS)
 
 
 
-```{r,echo = FALSE}
+```{r,echo = FALSE,warning = FALSE, message = FALSE}
 plotPCA <- plotPcaEns(pcout,TS = TS.filtered,map.type = "line",projection = "stereo",bound.circ = T,restrict.map.range = T,f=.1,legend.position = c(0.5,.6),which.pcs = 1:2,which.leg = 2)
 ```
 
