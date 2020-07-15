@@ -155,8 +155,10 @@ GeoChronR is designed around emerging standards in the paleogeosciences that con
 ## Outline of manuscript
 
 This manuscript describes the design, analytical underpinnings and most common use cases of GeoChronR.
-Section \@ref(#age-modeling) describes the integration of age modelling algorithms with GeoChronR.
-Section \@ref(#age-uncertain-analysis) details the methods implemented for age uncertain analysis, and section \@ref(#use-cases) provides five real-world examples of how GeoChronR can be used for scientific workflows.
+
+Section \@ref(age-modeling) describes the integration of age modelling algorithms with GeoChronR.
+
+Section \@ref(age-uncertain-analysis) details the methods implemented for age uncertain analysis, and section \@ref(use-cases) provides five real-world examples of how GeoChronR can be used for scientific workflows.
 
 <!-- Age modeling section -->
 
