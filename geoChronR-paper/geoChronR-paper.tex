@@ -147,18 +147,120 @@ institution/company.}
 
 \subsection{Background}
 
-Review the need for, and examples of age uncertain analysis in the
-literature.
+Quantifying chronological uncertainties, and how they might influence
+the understanding of past changes is fundamental to the
+paleogeosciences. Without robust error determination, it is impossible
+to properly assess the extent to which past changes occurred
+simultaneously across regions or the duration of abrupt events, both of
+which limit our capacity to apply paleoscientific understanding to
+modern and future processes. The need for better infrastructure to both
+characterize uncertainty, and to explicitly evaluate how age uncertainty
+impacts the the interpretation of records of past climate, ecology or
+landscapes, has been long recognized \citep[(more)]{Noren2013}. In
+response to this need, the paleogeoscience community has made
+substantial advances toward improving geochronological accuracy by: 1.
+Improving analytical techniques that allow for more precise age
+determination on smaller and context-specific samples
+\citep[\citet{Eglinton96},\citet{Fifield2000},\citet{Eggins2005},\citet{Santos_blank_2010}]{Brown_radiocarbon89}
+2. Refining our understanding of how past changes in the Earth system
+impact the age accuracy, for example: improvements to the radiocarbon
+calibration curve \citep[\citet{Stuiver98},intcal references]{Stuiver91}
+and advances in our understanding of spatial variability in cosmogenic
+production rates used in exposure dating \citep[Masarik2009]{Balco2009}
+3. Dramatic improvement in the level of sophistication and realism in
+age-depth models used to estimate the ages of sequences between dated
+samples \citep[e.g.][\citet{parnell2008flexible},
+\citet{Blaauw2010CLAM}, \citet{Blaauw2011BACON}]{Ramsey2009Bayesian}.
+
+Over the past 20 years, these advances have been widely adopted in the
+paleogeosciences. However, despite the progress made in quantifying
+uncertainty in ages and in age models, few studies have formally
+evaluated how chronological uncertainty may have affected their results.
+For instance, whereas the algorithms presented by
+\citep[\citet{parnell2008flexible}, \citet{Blaauw2010CLAM},
+\citet{Blaauw2011BACON}]{Ramsey2009Bayesian} have been broadly used, the
+overwhelming majority of these studies calculate the single
+best-estimate model (often a median or mean), use this model to put
+measured paleoclimatic or paleoenvironmental data on a timescale, and
+then proceed to analyze the record with little to no reference to the
+age modeling exercise
+\citep[e.g.][and many others]{McKay2008,McKay2009}. Typically, any
+discussions of chronological uncertainties remain qualitative.
+
+This paradigm is beginning to change. In recent years a handful of
+studies have taken advantage of approaches that generate ensembles of
+age models to evaluate how the results of their analyses and conclusions
+vary given differences between ensemble members
+\citep{Haam_Huybers2010,Rhines_JGR2011,Anchukaitis_Tierney2012,Shakun_Nature2012,Marcott_Science2013, Tierney2013}.
+By using each ensemble age model to create a time-uncertain ensemble
+records, and then carrying that ensemble through the analysis, the
+precise impact of age uncertainty can be formally evaluated. This
+approach, of course, does not address all aspects of uncertainty, but it
+does offer the broad potential to ascertain which results are robust to
+chronological uncertainty, and which are not.
+
+Despite its potential to substantially improve uncertainty
+quantification for the paleogeosciences, this framework is not widely
+utilized. The majority of studies utilizing this approach have been
+regional {[}e.g.,
+\citet{Anchukaitis_Tierney2012},\citet{Tierney2013},\citet{mckay_onset_2018},
+\citet{routson2018}\} or global-scale
+\citep[e.g.,][\citet{Marcott_Science2013},\citet{kaufman2020HoloceneGMST}]{Shakun_Nature2012}
+syntheses. Occasionally, primary publications of new records incorporate
+time-unceratin analysis into their studies \citep[more]{Boldt2015}, but
+this remains rare. We suggest that there are several reasons for the
+lack of adoption of these techniques:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  For synthesis studies, the necessary geochronological data are not
+  publicly available for the vast majority of records. Even when they
+  are available, the data are archived in diverse and unstructured data
+  formats. Together, this makes what should be a simple process of
+  aggregating and preparing data for analysis prohibitively
+  time-consuming;
+\item
+  For studies of new and individual records, few tools for ensemble
+  analysis are available, and those that are require a degree of comfort
+  with coding languages and scientific programming that is rare among
+  paleogeoscientists;
+\item
+  There is a disconnect between age-model development and time-uncertain
+  analysis. Published approaches have utilized either simplified
+  age-modeling approaches \citep{Haam_Huybers2010}, or specialized
+  approaches not used elsewhere in the community
+  \citep[\citet{Anchukaitis_Tierney2012},\citet{Marcott_Science2013},\citet{Tierney2013},\citet{Routson2018}]{Shakun_Nature2012}.
+  Extracting the relevant data from commonly-used age-modelling
+  algorithms, creating time-uncertain ensembles, then reformatting those
+  data for analysis in available tools typically requires the
+  development of extensive custom codesets.
+\end{enumerate}
 
 \subsection{Motivation}
 
-Why we built geoChronR
+GeoChronR is built to lower the barriers to broader adoption of these
+emerging methods. It provides an easily-accessibly, open-source and
+extenisble software package of industry-standard and cutting-edge tools
+that provides users a single environment to create, analyse, and
+visualize time-uncertain data. GeoChronR is designed around emerging
+standards in the paleogeosciences that connects users to growing
+libraries of standardized datasets formatted in the Linked PaleoData
+format \citep{LiPD} and \citep{neotoma}.
 
 \subsection{Outline of manuscript}
 
-Should we include this section? yes.
+This manuscript describes the design, analytical underpinnings and most
+common use cases of GeoChronR. Section @ref(\#age-modeling) describes
+the integration of age modelling algorithms with GeoChronR. Section
+@ref(\#age-uncertain-analysis) details the methods implemented for age
+uncertain analysis, and section @ref(\#use-cases) provides five
+real-world examples of how GeoChronR can be used for scientific
+workflows.
 
-\section{Age Modeling with GeoChronR}
+\hypertarget{age-modeling}{%
+\section{Age Modeling with GeoChronR}\label{age-modeling}}
 
 Context: \href{https://doi.org/10.1177/0959683616675939}{Trachsel \&
 Telford}
@@ -171,7 +273,9 @@ Telford}
 
 \subsection{Banded Age Model (BAM)}
 
-\section{Age-uncertain data analysis in GeoChronR}
+\hypertarget{age-uncertain-analysis}{%
+\section{Age-uncertain data analysis in
+GeoChronR}\label{age-uncertain-analysis}}
 
 Intro on analytical approach, using ensembles\ldots{}.
 
@@ -195,7 +299,8 @@ WTF does geospatial mean anyway? NM: It means mapping.
 
 \subsubsection{Spectral Analysis}
 
-\section{Use cases}
+\hypertarget{use-cases}{%
+\section{Use cases}\label{use-cases}}
 
 We now illustrate the use of these tools on four use cases. The first
 example shows how to create age ensembles on different archives, and how
@@ -371,9 +476,6 @@ If you want to insert a list, you must
 \item
   between each list item
 \end{itemize}
-
-because the \texttt{\textbackslash{}tightlist} format used by R Markdown
-is not supported in the Copernicus template. Example:
 
 \begin{verbatim}
 - leave
