@@ -116,17 +116,20 @@ Quantifying chronological uncertainties, and how they might influence the unders
 Without robust error determination, it is impossible to properly assess the extent to which past changes occurred simultaneously across regions or the duration of abrupt events, both of which limit our capacity to apply paleoscientific understanding to modern and future processes.
 The need for better infrastructure to both characterize uncertainty, and to explicitly evaluate how age uncertainty impacts the the interpretation of records of past climate, ecology or landscapes, has been long recognized [@Noren2013, (more)]. 
 In response to this need, the paleogeoscience community has made substantial advances toward improving geochronological accuracy by:
+
 1. Improving analytical techniques that allow for more precise age determination on smaller and context-specific samples [@Brown_radiocarbon89,@Eglinton96,@Fifield2000,@Eggins2005,@Santos_blank_2010]
-2. Refining our understanding of how past changes in the Earth system impact the age accuracy, for example: improvements to the radiocarbon calibration curve [@Stuiver91,@Stuiver98,intcal references] and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating [@Balco2009,Masarik2009]
+
+2. Refining our understanding of how past changes in the Earth system impact the age accuracy, for example: improvements to the radiocarbon calibration curve [@Stuiver91,@Stuiver98,intcal references] and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating [@Balco2009,@Masarik2009]
+
 3. Dramatic improvement in the level of sophistication and realism in age-depth models used to estimate the ages of sequences between dated samples [e.g. @Ramsey2009Bayesian, @parnell2008flexible, @Blaauw2010CLAM, @Blaauw2011BACON].
 
 Over the past 20 years, these advances have been widely adopted in the paleogeosciences. 
 However, despite the progress made in quantifying uncertainty in ages and in age models, few studies have formally evaluated how chronological uncertainty may have affected their results. 
-For instance, whereas the algorithms presented by [@Ramsey2009Bayesian, @parnell2008flexible, @Blaauw2010CLAM, @Blaauw2011BACON] have been broadly used, the overwhelming majority of these studies calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the age modeling exercise \citep[e.g.][and many others]{McKay2008,McKay2009}. 
+For instance, whereas the algorithms presented by [@Ramsey2009Bayesian, @parnell2008flexible, @Blaauw2010CLAM, @Blaauw2011BACON] have been broadly used, the overwhelming majority of these studies calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the age modeling exercise [@McKay2008,@McKay2009]. 
 Typically, any discussions of chronological uncertainties remain qualitative.
 
 This paradigm is beginning to change. 
-In recent years a handful of studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members \citep{Haam_Huybers2010,Rhines_JGR2011,Anchukaitis_Tierney2012,Shakun_Nature2012,Marcott_Science2013, Tierney2013}. 
+In recent years a handful of studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [@Haam_Huybers2010,@Rhines_JGR2011,@Anchukaitis_Tierney2012,@Shakun_Nature2012,@Marcott_Science2013, @Tierney2013]. 
 By using each ensemble age model to create a time-uncertain ensemble records, and then carrying that ensemble through the analysis, the precise impact of age uncertainty can be formally evaluated. 
 This approach, of course, does not address all aspects of uncertainty, but it does offer the broad potential to ascertain which results are robust to chronological uncertainty, and which are not.
 
@@ -136,8 +139,11 @@ Occasionally, primary publications of new records incorporate time-unceratin ana
 We suggest that there are several reasons for the lack of adoption of these techniques:
 
 1. For synthesis studies, the necessary geochronological data are not publicly available for the vast majority of records. Even when they are available, the data are archived in diverse and unstructured data formats. Together, this makes what should be a simple process of aggregating and preparing data for analysis prohibitively time-consuming;
+
 2. For studies of new and individual records, few tools for ensemble analysis are available, and those that are require a degree of comfort with coding languages and scientific programming that is rare among paleogeoscientists;
-3. There is a disconnect between age-model development and time-uncertain analysis. Published approaches have utilized either simplified age-modeling approaches [@Haam_Huybers2010], or specialized approaches not used elsewhere in the community [@Shakun_Nature2012,@Anchukaitis_Tierney2012,@Marcott_Science2013,@Tierney2013,@Routson2018]. 
+
+3. There is a disconnect between age-model development and time-uncertain analysis. Published approaches have utilized either simplified age-modeling approaches [@Haam_Huybers2010], or specialized approaches not used elsewhere in the community [@Shakun_Nature2012,@Anchukaitis_Tierney2012,@Marcott_Science2013,@Tierney2013,@routson2018]. 
+
 Extracting the relevant data from commonly-used age-modelling algorithms, creating time-uncertain ensembles, then reformatting those data for analysis in available tools typically requires the development of extensive custom codesets. 
 
 ## Motivation

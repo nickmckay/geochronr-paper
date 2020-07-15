@@ -158,19 +158,27 @@ characterize uncertainty, and to explicitly evaluate how age uncertainty
 impacts the the interpretation of records of past climate, ecology or
 landscapes, has been long recognized \citep[(more)]{Noren2013}. In
 response to this need, the paleogeoscience community has made
-substantial advances toward improving geochronological accuracy by: 1.
-Improving analytical techniques that allow for more precise age
-determination on smaller and context-specific samples
-\citep[\citet{Eglinton96},\citet{Fifield2000},\citet{Eggins2005},\citet{Santos_blank_2010}]{Brown_radiocarbon89}
-2. Refining our understanding of how past changes in the Earth system
-impact the age accuracy, for example: improvements to the radiocarbon
-calibration curve \citep[\citet{Stuiver98},intcal references]{Stuiver91}
-and advances in our understanding of spatial variability in cosmogenic
-production rates used in exposure dating \citep[Masarik2009]{Balco2009}
-3. Dramatic improvement in the level of sophistication and realism in
-age-depth models used to estimate the ages of sequences between dated
-samples \citep[e.g.][\citet{parnell2008flexible},
-\citet{Blaauw2010CLAM}, \citet{Blaauw2011BACON}]{Ramsey2009Bayesian}.
+substantial advances toward improving geochronological accuracy by:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Improving analytical techniques that allow for more precise age
+  determination on smaller and context-specific samples
+  \citep[\citet{Eglinton96},\citet{Fifield2000},\citet{Eggins2005},\citet{Santos_blank_2010}]{Brown_radiocarbon89}
+\item
+  Refining our understanding of how past changes in the Earth system
+  impact the age accuracy, for example: improvements to the radiocarbon
+  calibration curve \citep[\citet{Stuiver98},intcal
+  references]{Stuiver91} and advances in our understanding of spatial
+  variability in cosmogenic production rates used in exposure dating
+  \citep[\citet{Masarik2009}]{Balco2009}
+\item
+  Dramatic improvement in the level of sophistication and realism in
+  age-depth models used to estimate the ages of sequences between dated
+  samples \citep[e.g.][\citet{parnell2008flexible},
+  \citet{Blaauw2010CLAM}, \citet{Blaauw2011BACON}]{Ramsey2009Bayesian}.
+\end{enumerate}
 
 Over the past 20 years, these advances have been widely adopted in the
 paleogeosciences. However, despite the progress made in quantifying
@@ -183,21 +191,21 @@ overwhelming majority of these studies calculate the single
 best-estimate model (often a median or mean), use this model to put
 measured paleoclimatic or paleoenvironmental data on a timescale, and
 then proceed to analyze the record with little to no reference to the
-age modeling exercise
-\citep[e.g.][and many others]{McKay2008,McKay2009}. Typically, any
-discussions of chronological uncertainties remain qualitative.
+age modeling exercise \citep[\citet{McKay2009}]{McKay2008}. Typically,
+any discussions of chronological uncertainties remain qualitative.
 
 This paradigm is beginning to change. In recent years a handful of
 studies have taken advantage of approaches that generate ensembles of
 age models to evaluate how the results of their analyses and conclusions
 vary given differences between ensemble members
-\citep{Haam_Huybers2010,Rhines_JGR2011,Anchukaitis_Tierney2012,Shakun_Nature2012,Marcott_Science2013, Tierney2013}.
-By using each ensemble age model to create a time-uncertain ensemble
-records, and then carrying that ensemble through the analysis, the
-precise impact of age uncertainty can be formally evaluated. This
-approach, of course, does not address all aspects of uncertainty, but it
-does offer the broad potential to ascertain which results are robust to
-chronological uncertainty, and which are not.
+\citep[\citet{Rhines_JGR2011},\citet{Anchukaitis_Tierney2012},\citet{Shakun_Nature2012},\citet{Marcott_Science2013},
+\citet{Tierney2013}]{Haam_Huybers2010}. By using each ensemble age model
+to create a time-uncertain ensemble records, and then carrying that
+ensemble through the analysis, the precise impact of age uncertainty can
+be formally evaluated. This approach, of course, does not address all
+aspects of uncertainty, but it does offer the broad potential to
+ascertain which results are robust to chronological uncertainty, and
+which are not.
 
 Despite its potential to substantially improve uncertainty
 quantification for the paleogeosciences, this framework is not widely
@@ -213,7 +221,6 @@ lack of adoption of these techniques:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   For synthesis studies, the necessary geochronological data are not
   publicly available for the vast majority of records. Even when they
@@ -231,12 +238,13 @@ lack of adoption of these techniques:
   analysis. Published approaches have utilized either simplified
   age-modeling approaches \citep{Haam_Huybers2010}, or specialized
   approaches not used elsewhere in the community
-  \citep[\citet{Anchukaitis_Tierney2012},\citet{Marcott_Science2013},\citet{Tierney2013},\citet{Routson2018}]{Shakun_Nature2012}.
-  Extracting the relevant data from commonly-used age-modelling
-  algorithms, creating time-uncertain ensembles, then reformatting those
-  data for analysis in available tools typically requires the
-  development of extensive custom codesets.
+  \citep[\citet{Anchukaitis_Tierney2012},\citet{Marcott_Science2013},\citet{Tierney2013},\citet{routson2018}]{Shakun_Nature2012}.
 \end{enumerate}
+
+Extracting the relevant data from commonly-used age-modelling
+algorithms, creating time-uncertain ensembles, then reformatting those
+data for analysis in available tools typically requires the development
+of extensive custom codesets.
 
 \subsection{Motivation}
 
@@ -378,8 +386,8 @@ correlations during the period of overlap in 500 yr steps, determining
 significance for each pair of ensemble members while accounting for
 autocorrelation.
 
-The results show consistently negative correlations, although 15.21\% of
-the ensemble members are positive. However, only 0.91\% are significant
+The results show consistently negative correlations, although 13.45\% of
+the ensemble members are positive. However, only 0.89\% are significant
 after accounting for serial autocorrelation.
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf}
