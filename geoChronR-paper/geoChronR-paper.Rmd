@@ -25,14 +25,11 @@ affiliation:
   - code: 2
     address: University of Southern California, Los Angeles, CA
 abstract: |
-
   Chronological uncertainty is a hallmark of the paleosciences. While many tools have been made available to researchers to produce age models suitable for various settings and assumptions, disparate tools and output formats often discourage integrative approaches. In addition, propagating age model uncertainties to subsequent analyses, and visualizing the results, has received comparatively little attention in the literature and available software. Here we describe GeoChronR, an open-source R package to facilitate these tasks. GeoChronR is built around emerging data standards for the paleosciences (Linked Paleo Data, or LiPD), and offers access to four popular age modeling techniques (Bacon, BChron, Oxcal, BAM). The output of these models is easily stored in LiPD, enabling paleo-aware synchronization, regression, correlation, principal component, and spectral analyses. Five real-world use cases illustrate how to use GeoChronR to facilitate these tasks, and to visualize the results in intuitive ways. 
-
 bibliography: geochronr.bib
 running:
   title: The GeoChronR framework
   author: McKay et al.
-# This section is mandatory even if you declare that no competing interests are present.
 competinginterests: |
   The authors declare no competing interests.
 # OPTIONAL:
@@ -40,19 +37,17 @@ algorithms: true
 # See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed.
 copyrightstatement: |
   The author's copyright for this publication is transferred to institution/company.
-### The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
-### It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
 availability:
-  #code: |
   #  use this to add a statement when having only software code available
-  #data: |
   #  use this to add a statement when having only data sets available
+  #  use this section when having geoscientific samples available
+  #use this section when having video supplements available
+  #code: |
+  #data: |
   codedata: |
     use this to add a statement when having data sets and software code available
   #sample: |
-  #  use this section when having geoscientific samples available
   #videosupplement: |
-  #use this section when having video supplements available
   authorcontribution: |
     NPM did... JEG did a lot o cheerleading, created lots of bugs, but did manage to write one vignette. DK did...
 disclaimer: |
@@ -61,22 +56,20 @@ acknowledgements: |
   ack
 appendix: |
   \section{Figures and tables in appendices}
-  Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
   \subsection{Option 1}
   If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
   They will be correctly named automatically.
   \subsection{Option 2}
   If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
-
-  To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+  Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
   `\appendixfigures` needs to be added in front of appendix figures
   `\appendixtables` needs to be added in front of appendix tables
-
+  To rename them correctly to A1, A2, etc., please add the following commands in front of them:
   Please add `\clearpage` between each table and/or figure. Further guidelines on figures and tables can be found below.
 output:
-  rticles::copernicus_article: default
   bookdown::pdf_book:
-    base_format: rticles::copernicus_article # for using bookdown features like \@ref()
+     base_format: rticles::copernicus_article # for using bookdown features like \@ref()
+  rticles::copernicus_article: default
 ---
 
 \introduction
@@ -156,17 +149,33 @@ GeoChronR is designed around emerging standards in the paleogeosciences that con
 
 This manuscript describes the design, analytical underpinnings and most common use cases of GeoChronR.
 
-Section \@ref(age-modeling) describes the integration of age modelling algorithms with GeoChronR.
+Section \@ref(sec:age-modeling) describes the integration of age modelling algorithms with GeoChronR.
 
-Section \@ref(age-uncertain-analysis) details the methods implemented for age uncertain analysis, and section \@ref(use-cases) provides five real-world examples of how GeoChronR can be used for scientific workflows.
+Section \@ref(sec:visualization) goes through the principles and implementation of age-uncertain data visualization in GeoChronR.
+
+Section \@ref(sec:age-uncertain-analysis) details the methods implemented for age uncertain analysis, and section \@ref(sec:use-cases) provides five real-world examples of how GeoChronR can be used for scientific workflows.
+
 
 <!-- Age modeling section -->
 
 
-# Age Modeling with GeoChronR {#age-modeling}
+# Age Uncertainty Quantification in GeoChronR {#sec:age-modeling}
 
-Context: [Trachsel & Telford](https://doi.org/10.1177/0959683616675939)
+GeoChronR does not provide any new approaches to age uncertainty quantification, rather, it integrates with existing and widely-used packages while streamlining the acquisition of age ensemble members. 
+Fundamentally, there are two types of age models used in the paleogeosciences: tie-point and layer-counted. 
+Most of the effort in age uncertainty quantification in the community has been focused on tie-point modelling, where the goal is to estimate ages (and their uncertainties) along a depth profile given the constraints of known ages (and their uncertainties) at multiple depths through the section.
+Over the past 20 years, these algorithms have progressed from linear or polynomial regressions with simple characterizations of uncertainty to more sophisticated techniques [@clam, @heegaard05]. 
+More recently, there has been a convergence towards Bayesian techinques.
+As of 2020, the three most widely used algorithms are Bacon [@bacon], BChron [@parnell2008flexible], and OxCal [@ramsey2008deposition], which are all Bayesian age-deposition models that estimate posteriors on age-depth relationships with different assumptions and methodologies.
+All three of these approaches use Markov Chain Monte Carlo (MCMC) techniques to quantify their posterior distributions and to estimate age-uncertainty distributions as a function of depth in the section.
+GeoChronR interfaces with each of these algorithms through their R packages (cite R Packages), and streamlines data input and the extraction of the age ensembles from the MCMC results for further analysis.
 
+
+In addition to 
+
+
+
+BAM [@BAM] was designed to probabilistically simulate counting uncertainty in banded archives, such as corals, ice cores, or varved sediments, but can also be used to simulate age uncertainty for any record, and is useful when the data or metadata required to calculate an age-depth model are unavailable.
 
 ## Bacon
 
@@ -183,7 +192,7 @@ Context: [Trachsel & Telford](https://doi.org/10.1177/0959683616675939)
 <!-- Analysis section -->
 
 
-# Age-uncertain data analysis in GeoChronR {#age-uncertain-analysis}
+# Age-uncertain data analysis in GeoChronR {#sec:age-uncertain-analysis}
 
 Intro on analytical approach, using ensembles....
 
@@ -199,7 +208,7 @@ Intro on analytical approach, using ensembles....
 
 <!-- Viz section -->
 
-# Visualization with GeoChronR
+# Visualization with GeoChronR {#sec:visualization}
 
 ggplot philosophy. Customization. 
 
@@ -213,7 +222,7 @@ NM: It means mapping.
 ### Spectral Analysis
 
 
-# Use cases {#use-cases}
+# Use cases {#sec:use-cases}
 
 We now illustrate the use of these tools on four use cases. The first example shows how to create age ensembles on different archives, and how to visualize the timing of abrupt events with appropriate uncertainty quantification. The second example shows how to quantify similarities in age-uncertain records. The third introduces the topic of age-uncertain calibrations, the fourth quantifies multivariate relationships using principal components analyses, and the fifth deal with spectral analysis. 
 
@@ -222,8 +231,6 @@ We now illustrate the use of these tools on four use cases. The first example sh
 
 A common first task when using geoChronR is to create an age ensemble, either because the user is developing a new record, or because the age ensemble data for the record they are interested is unavailable.
 As described in section X.Y workflows for four published age quantification programs are integrated into geoChronR.
-Bacon [@bacon], BChron [@parnell2008flexible], and OxCal [@ramsey2008deposition] are Bayesian age-deposition models that estimate posteriors on age-depth relationships with different assumptions and methodologies.
-BAM [@BAM] was designed to probabilistically simulate counting uncertainty in banded archives, such as corals, ice cores, or varved sediments, but can also be used to simulate age uncertainty for any record, and is useful when the data or metadata required to calculate an age-depth model are unavailable.
 All four methods are mostly simply used in geoChronR with a LiPD file that contains the chronological measurements, and the functions `runBacon(L)`, `runBchron(L)`, `runOxcal(L)` and `runBam(L)`.
 These functions take LiPD objects as inputs, and return updated LiPD objects that include age-ensemble data generated by the respective software packages.
 Typically, additional parameters are needed for to optimally run the algorithms.

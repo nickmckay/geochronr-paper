@@ -80,8 +80,7 @@
 
 \begin{document}
 
-\title{GeoChronR -- an R framework to model and analyze age-uncertain
-paleogeoscientific timeseries.}
+\title{GeoChronR -- an R framework to model and analyze age-uncertain paleogeoscientific timeseries.}
 
 
 \Author[1]{Nicholas}{McKay}
@@ -89,8 +88,7 @@ paleogeoscientific timeseries.}
 \Author[2]{Deborah}{Khider}
 
 
-\affil[1]{School of Earth and Sustainability, Northern Arizona University,
-Flagstaff, AZ 86011}
+\affil[1]{School of Earth and Sustainability, Northern Arizona University, Flagstaff, AZ 86011}
 \affil[2]{University of Southern California, Los Angeles, CA}
 
 %% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
@@ -121,160 +119,90 @@ Flagstaff, AZ 86011}
 
 
 \begin{abstract}
-Chronological uncertainty is a hallmark of the paleosciences. While many
-tools have been made available to researchers to produce age models
-suitable for various settings and assumptions, disparate tools and
-output formats often discourage integrative approaches. In addition,
-propagating age model uncertainties to subsequent analyses, and
-visualizing the results, has received comparatively little attention in
-the literature and available software. Here we describe GeoChronR, an
-open-source R package to facilitate these tasks. GeoChronR is built
-around emerging data standards for the paleosciences (Linked Paleo Data,
-or LiPD), and offers access to four popular age modeling techniques
-(Bacon, BChron, Oxcal, BAM). The output of these models is easily stored
-in LiPD, enabling paleo-aware synchronization, regression, correlation,
-principal component, and spectral analyses. Five real-world use cases
-illustrate how to use GeoChronR to facilitate these tasks, and to
-visualize the results in intuitive ways.
+Chronological uncertainty is a hallmark of the paleosciences. While many tools have been made available to researchers to produce age models suitable for various settings and assumptions, disparate tools and output formats often discourage integrative approaches. In addition, propagating age model uncertainties to subsequent analyses, and visualizing the results, has received comparatively little attention in the literature and available software. Here we describe GeoChronR, an open-source R package to facilitate these tasks. GeoChronR is built around emerging data standards for the paleosciences (Linked Paleo Data, or LiPD), and offers access to four popular age modeling techniques (Bacon, BChron, Oxcal, BAM). The output of these models is easily stored in LiPD, enabling paleo-aware synchronization, regression, correlation, principal component, and spectral analyses. Five real-world use cases illustrate how to use GeoChronR to facilitate these tasks, and to visualize the results in intuitive ways.
 \end{abstract}
 
 
-\copyrightstatement{The author's copyright for this publication is transferred to
-institution/company.}
+\copyrightstatement{The author's copyright for this publication is transferred to institution/company.}
 
 
 \introduction
 
 \subsection{Background}
 
-Quantifying chronological uncertainties, and how they might influence
-the understanding of past changes is fundamental to the
-paleogeosciences. Without robust error determination, it is impossible
-to properly assess the extent to which past changes occurred
-simultaneously across regions or the duration of abrupt events, both of
-which limit our capacity to apply paleoscientific understanding to
-modern and future processes. The need for better infrastructure to both
-characterize uncertainty, and to explicitly evaluate how age uncertainty
-impacts the the interpretation of records of past climate, ecology or
-landscapes, has been long recognized \citep[(more)]{Noren2013}. In
-response to this need, the paleogeoscience community has made
-substantial advances toward improving geochronological accuracy by:
+Quantifying chronological uncertainties, and how they might influence the understanding of past changes is fundamental to the paleogeosciences.
+Without robust error determination, it is impossible to properly assess the extent to which past changes occurred simultaneously across regions or the duration of abrupt events, both of which limit our capacity to apply paleoscientific understanding to modern and future processes.
+The need for better infrastructure to both characterize uncertainty, and to explicitly evaluate how age uncertainty impacts the the interpretation of records of past climate, ecology or landscapes, has been long recognized \citep[(more)]{Noren2013}.
+In response to this need, the paleogeoscience community has made substantial advances toward improving geochronological accuracy by:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Improving analytical techniques that allow for more precise age
-  determination on smaller and context-specific samples
-  \citep[\citet{Eglinton96},\citet{Fifield2000},\citet{Eggins2005},\citet{Santos_blank_2010}]{Brown_radiocarbon89}
+  Improving analytical techniques that allow for more precise age determination on smaller and context-specific samples \citep[\citet{Eglinton96},\citet{Fifield2000},\citet{Eggins2005},\citet{Santos_blank_2010}]{Brown_radiocarbon89}
 \item
-  Refining our understanding of how past changes in the Earth system
-  impact the age accuracy, for example: improvements to the radiocarbon
-  calibration curve \citep[\citet{Stuiver98},intcal
-  references]{Stuiver91} and advances in our understanding of spatial
-  variability in cosmogenic production rates used in exposure dating
-  \citep[\citet{Masarik2009}]{Balco2009}
+  Refining our understanding of how past changes in the Earth system impact the age accuracy, for example: improvements to the radiocarbon calibration curve \citep[\citet{Stuiver98},intcal references]{Stuiver91} and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating \citep[\citet{Masarik2009}]{Balco2009}
 \item
-  Dramatic improvement in the level of sophistication and realism in
-  age-depth models used to estimate the ages of sequences between dated
-  samples \citep[e.g.][\citet{parnell2008flexible},
-  \citet{Blaauw2010CLAM}, \citet{Blaauw2011BACON}]{Ramsey2009Bayesian}.
+  Dramatic improvement in the level of sophistication and realism in age-depth models used to estimate the ages of sequences between dated samples \citep[e.g.][\citet{parnell2008flexible}, \citet{Blaauw2010CLAM}, \citet{Blaauw2011BACON}]{Ramsey2009Bayesian}.
 \end{enumerate}
 
-Over the past 20 years, these advances have been widely adopted in the
-paleogeosciences. However, despite the progress made in quantifying
-uncertainty in ages and in age models, few studies have formally
-evaluated how chronological uncertainty may have affected their results.
-For instance, whereas the algorithms presented by
-\citep[\citet{parnell2008flexible}, \citet{Blaauw2010CLAM},
-\citet{Blaauw2011BACON}]{Ramsey2009Bayesian} have been broadly used, the
-overwhelming majority of these studies calculate the single
-best-estimate model (often a median or mean), use this model to put
-measured paleoclimatic or paleoenvironmental data on a timescale, and
-then proceed to analyze the record with little to no reference to the
-age modeling exercise \citep[\citet{McKay2009}]{McKay2008}. Typically,
-any discussions of chronological uncertainties remain qualitative.
+Over the past 20 years, these advances have been widely adopted in the paleogeosciences.
+However, despite the progress made in quantifying uncertainty in ages and in age models, few studies have formally evaluated how chronological uncertainty may have affected their results.
+For instance, whereas the algorithms presented by \citep[\citet{parnell2008flexible}, \citet{Blaauw2010CLAM}, \citet{Blaauw2011BACON}]{Ramsey2009Bayesian} have been broadly used, the overwhelming majority of these studies calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the age modeling exercise \citep[\citet{McKay2009}]{McKay2008}.
+Typically, any discussions of chronological uncertainties remain qualitative.
 
-This paradigm is beginning to change. In recent years a handful of
-studies have taken advantage of approaches that generate ensembles of
-age models to evaluate how the results of their analyses and conclusions
-vary given differences between ensemble members
-\citep[\citet{Rhines_JGR2011},\citet{Anchukaitis_Tierney2012},\citet{Shakun_Nature2012},\citet{Marcott_Science2013},
-\citet{Tierney2013}]{Haam_Huybers2010}. By using each ensemble age model
-to create a time-uncertain ensemble records, and then carrying that
-ensemble through the analysis, the precise impact of age uncertainty can
-be formally evaluated. This approach, of course, does not address all
-aspects of uncertainty, but it does offer the broad potential to
-ascertain which results are robust to chronological uncertainty, and
-which are not.
+This paradigm is beginning to change.
+In recent years a handful of studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members \citep[\citet{Rhines_JGR2011},\citet{Anchukaitis_Tierney2012},\citet{Shakun_Nature2012},\citet{Marcott_Science2013}, \citet{Tierney2013}]{Haam_Huybers2010}.
+By using each ensemble age model to create a time-uncertain ensemble records, and then carrying that ensemble through the analysis, the precise impact of age uncertainty can be formally evaluated.
+This approach, of course, does not address all aspects of uncertainty, but it does offer the broad potential to ascertain which results are robust to chronological uncertainty, and which are not.
 
-Despite its potential to substantially improve uncertainty
-quantification for the paleogeosciences, this framework is not widely
-utilized. The majority of studies utilizing this approach have been
-regional {[}e.g.,
-\citet{Anchukaitis_Tierney2012},\citet{Tierney2013},\citet{mckay_onset_2018},
-\citet{routson2018}\} or global-scale
-\citep[e.g.,][\citet{Marcott_Science2013},\citet{kaufman2020HoloceneGMST}]{Shakun_Nature2012}
-syntheses. Occasionally, primary publications of new records incorporate
-time-unceratin analysis into their studies \citep[more]{Boldt2015}, but
-this remains rare. We suggest that there are several reasons for the
-lack of adoption of these techniques:
+Despite its potential to substantially improve uncertainty quantification for the paleogeosciences, this framework is not widely utilized.
+The majority of studies utilizing this approach have been regional {[}e.g., \citet{Anchukaitis_Tierney2012},\citet{Tierney2013},\citet{mckay_onset_2018}, \citet{routson2018}\} or global-scale \citep[e.g.,][\citet{Marcott_Science2013},\citet{kaufman2020HoloceneGMST}]{Shakun_Nature2012} syntheses.
+Occasionally, primary publications of new records incorporate time-unceratin analysis into their studies \citep[more]{Boldt2015}, but this remains rare.
+We suggest that there are several reasons for the lack of adoption of these techniques:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  For synthesis studies, the necessary geochronological data are not
-  publicly available for the vast majority of records. Even when they
-  are available, the data are archived in diverse and unstructured data
-  formats. Together, this makes what should be a simple process of
-  aggregating and preparing data for analysis prohibitively
-  time-consuming;
+  For synthesis studies, the necessary geochronological data are not publicly available for the vast majority of records. Even when they are available, the data are archived in diverse and unstructured data formats. Together, this makes what should be a simple process of aggregating and preparing data for analysis prohibitively time-consuming;
 \item
-  For studies of new and individual records, few tools for ensemble
-  analysis are available, and those that are require a degree of comfort
-  with coding languages and scientific programming that is rare among
-  paleogeoscientists;
+  For studies of new and individual records, few tools for ensemble analysis are available, and those that are require a degree of comfort with coding languages and scientific programming that is rare among paleogeoscientists;
 \item
-  There is a disconnect between age-model development and time-uncertain
-  analysis. Published approaches have utilized either simplified
-  age-modeling approaches \citep{Haam_Huybers2010}, or specialized
-  approaches not used elsewhere in the community
-  \citep[\citet{Anchukaitis_Tierney2012},\citet{Marcott_Science2013},\citet{Tierney2013},\citet{routson2018}]{Shakun_Nature2012}.
+  There is a disconnect between age-model development and time-uncertain analysis. Published approaches have utilized either simplified age-modeling approaches \citep{Haam_Huybers2010}, or specialized approaches not used elsewhere in the community \citep[\citet{Anchukaitis_Tierney2012},\citet{Marcott_Science2013},\citet{Tierney2013},\citet{routson2018}]{Shakun_Nature2012}.
 \end{enumerate}
 
-Extracting the relevant data from commonly-used age-modelling
-algorithms, creating time-uncertain ensembles, then reformatting those
-data for analysis in available tools typically requires the development
-of extensive custom codesets.
+Extracting the relevant data from commonly-used age-modelling algorithms, creating time-uncertain ensembles, then reformatting those data for analysis in available tools typically requires the development of extensive custom codesets.
 
 \subsection{Motivation}
 
-GeoChronR is built to lower the barriers to broader adoption of these
-emerging methods. It provides an easily-accessibly, open-source and
-extenisble software package of industry-standard and cutting-edge tools
-that provides users a single environment to create, analyse, and
-visualize time-uncertain data. GeoChronR is designed around emerging
-standards in the paleogeosciences that connects users to growing
-libraries of standardized datasets formatted in the Linked PaleoData
-format \citep{LiPD} and \citep{neotoma}.
+GeoChronR is built to lower the barriers to broader adoption of these emerging methods.
+It provides an easily-accessibly, open-source and extenisble software package of industry-standard and cutting-edge tools that provides users a single environment to create, analyse, and visualize time-uncertain data.
+GeoChronR is designed around emerging standards in the paleogeosciences that connects users to growing libraries of standardized datasets formatted in the Linked PaleoData format \citep{LiPD} and \citep{neotoma}.
 
 \subsection{Outline of manuscript}
 
-This manuscript describes the design, analytical underpinnings and most
-common use cases of GeoChronR.
+This manuscript describes the design, analytical underpinnings and most common use cases of GeoChronR.
 
-Section @ref(age-modeling) describes the integration of age modelling
-algorithms with GeoChronR.
+Section \ref{sec:age-modeling} describes the integration of age modelling algorithms with GeoChronR.
 
-Section @ref(age-uncertain-analysis) details the methods implemented for
-age uncertain analysis, and section @ref(use-cases) provides five
-real-world examples of how GeoChronR can be used for scientific
-workflows.
+Section \ref{sec:visualization} goes through the principles and implementation of age-uncertain data visualization in GeoChronR.
 
-\hypertarget{age-modeling}{%
-\section{Age Modeling with GeoChronR}\label{age-modeling}}
+Section \ref{sec:age-uncertain-analysis} details the methods implemented for age uncertain analysis, and section \ref{sec:use-cases} provides five real-world examples of how GeoChronR can be used for scientific workflows.
 
-Context: \href{https://doi.org/10.1177/0959683616675939}{Trachsel \&
-Telford}
+\hypertarget{sec:age-modeling}{%
+\section{Age Uncertainty Quantification in GeoChronR}\label{sec:age-modeling}}
+
+GeoChronR does not provide any new approaches to age uncertainty quantification, rather, it integrates with existing and widely-used packages while streamlining the acquisition of age ensemble members.
+Fundamentally, there are two types of age models used in the paleogeosciences: tie-point and layer-counted.
+Most of the effort in age uncertainty quantification in the community has been focused on tie-point modelling, where the goal is to estimate ages (and their uncertainties) along a depth profile given the constraints of known ages (and their uncertainties) at multiple depths through the section.
+Over the past 20 years, these algorithms have progressed from linear or polynomial regressions with simple characterizations of uncertainty to more sophisticated techniques \citep[\citet{heegaard05}]{clam}.
+More recently, there has been a convergence towards Bayesian techinques.
+As of 2020, the three most widely used algorithms are Bacon \citep{bacon}, BChron \citep{parnell2008flexible}, and OxCal \citep{ramsey2008deposition}, which are all Bayesian age-deposition models that estimate posteriors on age-depth relationships with different assumptions and methodologies.
+All three of these approaches use Markov Chain Monte Carlo (MCMC) techniques to quantify their posterior distributions and to estimate age-uncertainty distributions as a function of depth in the section.
+GeoChronR interfaces with each of these algorithms through their R packages (cite R Packages), and streamlines data input and the extraction of the age ensembles from the MCMC results for further analysis.
+
+In addition to
+
+BAM \citep{BAM} was designed to probabilistically simulate counting uncertainty in banded archives, such as corals, ice cores, or varved sediments, but can also be used to simulate age uncertainty for any record, and is useful when the data or metadata required to calculate an age-depth model are unavailable.
 
 \subsection{Bacon}
 
@@ -284,9 +212,8 @@ Telford}
 
 \subsection{Banded Age Model (BAM)}
 
-\hypertarget{age-uncertain-analysis}{%
-\section{Age-uncertain data analysis in
-GeoChronR}\label{age-uncertain-analysis}}
+\hypertarget{sec:age-uncertain-analysis}{%
+\section{Age-uncertain data analysis in GeoChronR}\label{sec:age-uncertain-analysis}}
 
 Intro on analytical approach, using ensembles\ldots{}.
 
@@ -298,7 +225,8 @@ Intro on analytical approach, using ensembles\ldots{}.
 
 \subsection{Spectral Analysis}
 
-\section{Visualization with GeoChronR}
+\hypertarget{sec:visualization}{%
+\section{Visualization with GeoChronR}\label{sec:visualization}}
 
 ggplot philosophy. Customization.
 
@@ -306,56 +234,28 @@ ggplot philosophy. Customization.
 
 \subsubsection{Geospatial}
 
-WTF does geospatial mean anyway? NM: It means mapping.
+WTF does geospatial mean anyway?
+NM: It means mapping.
 
 \subsubsection{Spectral Analysis}
 
-\hypertarget{use-cases}{%
-\section{Use cases}\label{use-cases}}
+\hypertarget{sec:use-cases}{%
+\section{Use cases}\label{sec:use-cases}}
 
-We now illustrate the use of these tools on four use cases. The first
-example shows how to create age ensembles on different archives, and how
-to visualize the timing of abrupt events with appropriate uncertainty
-quantification. The second example shows how to quantify similarities in
-age-uncertain records. The third introduces the topic of age-uncertain
-calibrations, the fourth quantifies multivariate relationships using
-principal components analyses, and the fifth deal with spectral
-analysis.
+We now illustrate the use of these tools on four use cases. The first example shows how to create age ensembles on different archives, and how to visualize the timing of abrupt events with appropriate uncertainty quantification. The second example shows how to quantify similarities in age-uncertain records. The third introduces the topic of age-uncertain calibrations, the fourth quantifies multivariate relationships using principal components analyses, and the fifth deal with spectral analysis.
 
 \subsection{Creating an age ensemble}
 
-A common first task when using geoChronR is to create an age ensemble,
-either because the user is developing a new record, or because the age
-ensemble data for the record they are interested is unavailable. As
-described in section X.Y workflows for four published age quantification
-programs are integrated into geoChronR. Bacon \citep{bacon}, BChron
-\citep{parnell2008flexible}, and OxCal \citep{ramsey2008deposition} are
-Bayesian age-deposition models that estimate posteriors on age-depth
-relationships with different assumptions and methodologies. BAM
-\citep{BAM} was designed to probabilistically simulate counting
-uncertainty in banded archives, such as corals, ice cores, or varved
-sediments, but can also be used to simulate age uncertainty for any
-record, and is useful when the data or metadata required to calculate an
-age-depth model are unavailable. All four methods are mostly simply used
-in geoChronR with a LiPD file that contains the chronological
-measurements, and the functions \texttt{runBacon(L)},
-\texttt{runBchron(L)}, \texttt{runOxcal(L)} and \texttt{runBam(L)}.
-These functions take LiPD objects as inputs, and return updated LiPD
-objects that include age-ensemble data generated by the respective
-software packages. Typically, additional parameters are needed for to
-optimally run the algorithms. When these parameters are not included,
-geoChronR will run in interactive mode, asking the user which variables
-and parameters they would like to model. These parameter choices are
-printed to the screen during while the program runs, or are available
-later with the function \texttt{getLastVarString()}. By specifying these
-parameters, age model creation can be scripted and will run in
-non-interactive mode. In this use case, we'll use geoChronR and BChron
-\citep{parnell2008flexible} to calculate an age ensemble for the Hulu
-Cave \(\delta^{18}\)O speleothem record \citep{hulu2001}, and BAM
-\citep{BAM} to simulate age uncertainties for the GISP2 ice core
-\(\delta^{18}\)O dataset \citep{alley}. The \texttt{plotChronEns(hulu)}
-function will plot an age-depth model and uncertainties derived from the
-age ensemble.
+A common first task when using geoChronR is to create an age ensemble, either because the user is developing a new record, or because the age ensemble data for the record they are interested is unavailable.
+As described in section X.Y workflows for four published age quantification programs are integrated into geoChronR.
+All four methods are mostly simply used in geoChronR with a LiPD file that contains the chronological measurements, and the functions \texttt{runBacon(L)}, \texttt{runBchron(L)}, \texttt{runOxcal(L)} and \texttt{runBam(L)}.
+These functions take LiPD objects as inputs, and return updated LiPD objects that include age-ensemble data generated by the respective software packages.
+Typically, additional parameters are needed for to optimally run the algorithms.
+When these parameters are not included, geoChronR will run in interactive mode, asking the user which variables and parameters they would like to model.
+These parameter choices are printed to the screen during while the program runs, or are available later with the function \texttt{getLastVarString()}.
+By specifying these parameters, age model creation can be scripted and will run in non-interactive mode.
+In this use case, we'll use geoChronR and BChron \citep{parnell2008flexible} to calculate an age ensemble for the Hulu Cave \(\delta^{18}\)O speleothem record \citep{hulu2001}, and BAM \citep{BAM} to simulate age uncertainties for the GISP2 ice core \(\delta^{18}\)O dataset \citep{alley}.
+The \texttt{plotChronEns(hulu)} function will plot an age-depth model and uncertainties derived from the age ensemble.
 
 \begin{verbatim}
 ## [1] "Found it! Moving on..."
@@ -364,66 +264,40 @@ age ensemble.
 \end{verbatim}
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-3-1.pdf}
-After an age ensemble has been added to a LiPD object, the user can
-visualize the ensemble timeseries using
-\texttt{plotTimeseriesEnsRibbons()} and
-\texttt{plotTimeseriesEnsLines()}. GISP2 \(\delta^{18}\)O is plotted
-with age uncertainty, using both functions, in figure x.
+After an age ensemble has been added to a LiPD object, the user can visualize the ensemble timeseries using \texttt{plotTimeseriesEnsRibbons()} and \texttt{plotTimeseriesEnsLines()}.
+GISP2 \(\delta^{18}\)O is plotted with age uncertainty, using both functions, in figure x.
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf}
 
 \subsection{Correlation}
 
-Now that the user has generated age ensembles for the two datasets,
-they're interested to see if a correlation between the two datasets is
-robust to the age uncertainty modeled here. On multi-millennial
-timescales, the two datasets have similarities, and previous work has
-suggested that could events during the Last Glacial period, which are
-observed in the GISP2 record, can impact the Asian Monsoon and be
-observed is speleothem records such as the Hulu Cave dataset. (NM: add
-references here and flesh out background) The \texttt{corEns()} function
-in geoChronR will calculate ensemble correlations across age-uncertain
-datasets, such as these. \texttt{corEns()} will also sample across
-ensembles in the paleoData as well, if present. Here we calculate
-correlations during the period of overlap in 500 yr steps, determining
-significance for each pair of ensemble members while accounting for
-autocorrelation.
+Now that the user has generated age ensembles for the two datasets, they're interested to see if a correlation between the two datasets is robust to the age uncertainty modeled here.
+On multi-millennial timescales, the two datasets have similarities, and previous work has suggested that could events during the Last Glacial period, which are observed in the GISP2 record, can impact the Asian Monsoon and be observed is speleothem records such as the Hulu Cave dataset. (NM: add references here and flesh out background)
+The \texttt{corEns()} function in geoChronR will calculate ensemble correlations across age-uncertain datasets, such as these.
+\texttt{corEns()} will also sample across ensembles in the paleoData as well, if present.
+Here we calculate correlations during the period of overlap in 500 yr steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
 
-The results show consistently negative correlations, although 13.45\% of
-the ensemble members are positive. However, only 0.89\% are significant
-after accounting for serial autocorrelation.
+The results show consistently negative correlations, although 17.72\% of the ensemble members are positive.
+However, only 0.31\% are significant after accounting for serial autocorrelation.
 
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf}
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-2.pdf}
+\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf} \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-2.pdf}
 
-In this use case, we demonstrate how a user could calculate and
-visualize and age-uncertain correlation between the Hulu speleothem
-\(\delta^{18}\mathrm{O}\) record and the GISP2 ice core
-\(\delta^{18}\mathrm{O}\) record. (Introduction about why a user might
-want to do an age uncertain correlation between Hulu and GISP2).
+In this use case, we demonstrate how a user could calculate and visualize and age-uncertain correlation between the Hulu speleothem \(\delta^{18}\mathrm{O}\) record and the GISP2 ice core \(\delta^{18}\mathrm{O}\) record. (Introduction about why a user might want to do an age uncertain correlation between Hulu and GISP2).
 
 \subsection{Age-uncertain Calibration}
 
 A natural extension of ensemble correlation is ensemble regression.
-Although there are use cases where regressing one age-uncertain variable
-onto another is called for, here we regress an age-uncertain
-paleoclimate proxy onto time-certain instrumental to develop a
-calibration-in-time. For this use case, we reproduce the results of
-\citet{Boldt:2015}, where the authors calibrate a spectral reflectance
-measure of chlorophyll abundance to temperature in Northern Alaska.
+Although there are use cases where regressing one age-uncertain variable onto another is called for, here we regress an age-uncertain paleoclimate proxy onto time-certain instrumental to develop a calibration-in-time.
+For this use case, we reproduce the results of \citet{Boldt:2015}, where the authors calibrate a spectral reflectance measure of chlorophyll abundance to temperature in Northern Alaska.
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf}
 Figure captions.
 
 \subsection{Principle Component Analysis}
 
-Thus far, the use cases have highlighted age-uncertain analyses of one
-or two sites, however quantifying the effects of age uncertainty can be
-even more impactful over large spatial datasets. Here we showcase how to
-use geoChronR to perform age-uncertain principle components analysis
-(PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF)
-analysis, pioneered by \citet{anchukaitis2013mceof}. In this example, we
-examine the Arctic 2k database \citep{McKayKaufman2014McKayKaufman2014}.
+Thus far, the use cases have highlighted age-uncertain analyses of one or two sites, however quantifying the effects of age uncertainty can be even more impactful over large spatial datasets.
+Here we showcase how to use geoChronR to perform age-uncertain principle components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by \citet{anchukaitis2013mceof}.
+In this example, we examine the Arctic 2k database \citep{McKayKaufman2014McKayKaufman2014}.
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-11-1.pdf}
 
@@ -452,24 +326,18 @@ Subsubsection text here.
 
 \section{Content section with citations}
 
-See the
-\href{http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html}{R
-Markdown docs for bibliographies and citations}.
+See the \href{http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html}{R Markdown docs for bibliographies and citations}.
 
-Copernicus supports biblatex. I put the .bib entries from the Paleocube
-proposal into \texttt{geochronr.bib}. Citations work like this:
+Copernicus supports biblatex. I put the .bib entries from the Paleocube proposal into \texttt{geochronr.bib}. Citations work like this:
 
 Read \citep{Evans_QSR13}, and \citep[see][]{PRYSM}.
 
 \section{Content section with R code chunks}
 
-You should always use \texttt{echo\ =\ FALSE} on R Markdown code blocks
-as they add formatting and styling not desired by Copernicus. The hidden
-workflow results in 42.
+You should always use \texttt{echo\ =\ FALSE} on R Markdown code blocks as they add formatting and styling not desired by Copernicus.
+The hidden workflow results in 42.
 
-You can add verbatim code snippets without extra styles by using
-\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}} without
-additional instructions.
+You can add verbatim code snippets without extra styles by using \texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}} without additional instructions.
 
 \begin{verbatim}
 sum <- 1 + 41
@@ -500,15 +368,11 @@ If you want to insert a list, you must
 
 \subsection{FIGURES}
 
-When figures and tables are placed at the end of the MS (article in
-one-column style), please add \clearpage between bibliography and first
-table and/or figure as well as between each table and/or figure.
+When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage between bibliography and first table and/or figure as well as between each table and/or figure.
 
 \subsubsection{ONE-COLUMN FIGURES}
 
-Include a 12cm width figure of Nikolaus Copernicus from
-\href{https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg}{Wikipedia}
-with caption using R Markdown.
+Include a 12cm width figure of Nikolaus Copernicus from \href{https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg}{Wikipedia} with caption using R Markdown.
 
 \begin{figure}
 \includegraphics[width=8.3cm]{Nikolaus_Kopernikus} \caption{one column figure}\label{fig:unnamed-chunk-15}
@@ -524,8 +388,7 @@ You can also include a larger figure.
 
 \subsection{TABLES}
 
-You can ad \LaTeX table in an R Markdown document to meet the template
-requirements.
+You can ad \LaTeX table in an R Markdown document to meet the template requirements.
 
 \subsubsection{ONE-COLUMN TABLE}
 
@@ -561,23 +424,15 @@ a & b & c \\
 
 \subsection{MATHEMATICAL EXPRESSIONS}
 
-All papers typeset by Copernicus Publications follow the math
-typesetting regulations given by the IUPAC Green Book (IUPAC:
-Quantities, Units and Symbols in Physical Chemistry, 2nd Edn., Blackwell
-Science, available at:
-http://old.iupac.org/publications/books/gbook/green\_book\_2ed.pdf,
-1993).
+All papers typeset by Copernicus Publications follow the math typesetting regulations given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry, 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green\_book\_2ed.pdf, 1993).
 
-Physical quantities/variables are typeset in italic font (t for time, T
-for Temperature)
+Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
 
-Indices which are not defined are typeset in italic font (x, y, z, a, b,
-c)
+Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
 
 Items/objects which are defined are typeset in roman font (Car A, Car B)
 
-Descriptions/specifications which are defined by itself are typeset in
-roman font (abs, rel, ref, tot, net, ice)
+Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
 
 Abbreviations from 2 letters are typeset in roman font (RH, LAI)
 
@@ -585,9 +440,7 @@ Vectors are identified in bold italic font using \vec{x}
 
 Matrices are identified in bold roman font
 
-Multiplication signs are typeset using the LaTeX commands
-\texttt{\textbackslash{}times} (for vector products, grids, and
-exponential notations) or \texttt{\textbackslash{}cdot}
+Multiplication signs are typeset using the LaTeX commands \texttt{\textbackslash{}times} (for vector products, grids, and exponential notations) or \texttt{\textbackslash{}cdot}
 
 The character * should not be applied as mutliplication sign
 
@@ -595,8 +448,7 @@ The character * should not be applied as mutliplication sign
 
 \subsubsection{Single-row equation}
 
-Unnumbered equations (i.e.~using \texttt{\$\$} and getting inline
-preview in RStudio) are not supported by Copernicus.
+Unnumbered equations (i.e.~using \texttt{\$\$} and getting inline preview in RStudio) are not supported by Copernicus.
 
 \begin{equation}
 1 \times 1 \cdot 1 = 42
@@ -630,14 +482,8 @@ x & y & z\\
 
 \subsection{ALGORITHM}
 
-If you want to use algorithms, you can either enable the required
-packages in the header (the default, see \texttt{algorithms:\ true}), or
-make sure yourself that the \LaTeX packages \texttt{algorithms} and
-\texttt{algorithmicx} are installed so that \texttt{algorithm.sty}
-respectively \texttt{algorithmic.sty} can be loaded by the Copernicus
-template. Copernicus staff will remove all undesirable packages from
-your LaTeX source code, so please stick to using the header option,
-which only adds the two acceptable packages.
+If you want to use algorithms, you can either enable the required packages in the header (the default, see \texttt{algorithms:\ true}), or make sure yourself that the \LaTeX packages \texttt{algorithms} and \texttt{algorithmicx} are installed so that \texttt{algorithm.sty} respectively \texttt{algorithmic.sty} can be loaded by the Copernicus template.
+Copernicus staff will remove all undesirable packages from your LaTeX source code, so please stick to using the header option, which only adds the two acceptable packages.
 
 \begin{algorithm}
 \caption{Algorithm Caption}
@@ -656,22 +502,17 @@ which only adds the two acceptable packages.
 
 \subsection{CHEMICAL FORMULAS AND REACTIONS}
 
-For formulas embedded in the text, please use
-\texttt{\textbackslash{}chem\{\}}, e.g. \chem{A \rightarrow B}.
+For formulas embedded in the text, please use \texttt{\textbackslash{}chem\{\}}, e.g. \chem{A \rightarrow B}.
 
-The reaction environment creates labels including the letter R, i.e.
-(R1), (R2), etc.
+The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
 
 \begin{itemize}
 \item
-  \texttt{\textbackslash{}rightarrow} should be used for normal
-  (one-way) chemical reactions
+  \texttt{\textbackslash{}rightarrow} should be used for normal (one-way) chemical reactions
 \item
-  \texttt{\textbackslash{}rightleftharpoons} should be used for
-  equilibria
+  \texttt{\textbackslash{}rightleftharpoons} should be used for equilibria
 \item
-  \texttt{\textbackslash{}leftrightarrow} should be used for resonance
-  structures
+  \texttt{\textbackslash{}leftrightarrow} should be used for resonance structures
 \end{itemize}
 
 \begin{reaction}
@@ -686,23 +527,17 @@ Publi \leftrightarrow cations
 
 \subsection{PHYSICAL UNITS}
 
-Please use \texttt{\textbackslash{}unit\{\}} (allows to save the
-math/\texttt{\$} environment) and apply the exponential notation, for
-example \(3.14\,\unit{km\,h^{-1}}\) (using LaTeX mode:
-\texttt{\textbackslash{}(\ 3.14\textbackslash{},\textbackslash{}unit\{...\}\ \textbackslash{})})
-or \unit{0.872\,m\,s^{-1}} (using only
-\texttt{\textbackslash{}unit\{0.872\textbackslash{},m\textbackslash{},s\^{}\{-1\}\}}).
+Please use \texttt{\textbackslash{}unit\{\}} (allows to save the math/\texttt{\$} environment) and apply the exponential notation, for example \(3.14\,\unit{km\,h^{-1}}\) (using LaTeX mode: \texttt{\textbackslash{}(\ 3.14\textbackslash{},\textbackslash{}unit\{...\}\ \textbackslash{})}) or \unit{0.872\,m\,s^{-1}} (using only \texttt{\textbackslash{}unit\{0.872\textbackslash{},m\textbackslash{},s\^{}\{-1\}\}}).
 
 \conclusions
 
-The conclusion goes here. You can modify the section name with
-\texttt{\textbackslash{}conclusions{[}modified\ heading\ if\ necessary{]}}.
+The conclusion goes here.
+You can modify the section name with \texttt{\textbackslash{}conclusions{[}modified\ heading\ if\ necessary{]}}.
 
 
 
 
-\codedataavailability{use this to add a statement when having data sets and software code
-available} %% use this section when having data sets and software code available
+\codedataavailability{use this to add a statement when having data sets and software code available} %% use this section when having data sets and software code available
 
 
 
@@ -712,31 +547,19 @@ available} %% use this section when having data sets and software code available
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
 \section{Figures and tables in appendices}
-
-Regarding figures and tables in appendices, the following two options
-are possible depending on your general handling of figures and tables in
-the manuscript environment:
-
 \subsection{Option 1}
 
-If you sorted all figures and tables into the sections of the text,
-please also sort the appendix figures and appendix tables into the
-respective appendix sections. They will be correctly named
-automatically.
+If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
+They will be correctly named automatically.
 
 \subsection{Option 2}
 
-If you put all figures after the reference list, please insert appendix
-tables and figures after the normal tables and figures.
-
-To rename them correctly to A1, A2, etc., please add the following
-commands in front of them: \texttt{\textbackslash{}appendixfigures}
-needs to be added in front of appendix figures
-\texttt{\textbackslash{}appendixtables} needs to be added in front of
-appendix tables
-
-Please add \texttt{\textbackslash{}clearpage} between each table and/or
-figure. Further guidelines on figures and tables can be found below.
+If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
+Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
+\texttt{\textbackslash{}appendixfigures} needs to be added in front of appendix figures
+\texttt{\textbackslash{}appendixtables} needs to be added in front of appendix tables
+To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+Please add \texttt{\textbackslash{}clearpage} between each table and/or figure. Further guidelines on figures and tables can be found below.
 \noappendix
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
