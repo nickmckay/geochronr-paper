@@ -25,7 +25,7 @@ affiliation:
   - code: 2
     address: University of Southern California, Los Angeles, CA
 abstract: |
-  Chronological uncertainty is a hallmark of the paleosciences. While many tools have been made available to researchers to produce age models suitable for various settings and assumptions, disparate tools and output formats often discourage integrative approaches. In addition, propagating age model uncertainties to subsequent analyses, and visualizing the results, has received comparatively little attention in the literature and available software. Here we describe GeoChronR, an open-source R package to facilitate these tasks. GeoChronR is built around emerging data standards for the paleosciences (Linked Paleo Data, or LiPD), and offers access to four popular age modeling techniques (Bacon, BChron, Oxcal, BAM). The output of these models is easily stored in LiPD, enabling paleo-aware synchronization, regression, correlation, principal component, and spectral analyses. Five real-world use cases illustrate how to use GeoChronR to facilitate these tasks, and to visualize the results in intuitive ways. 
+  Chronological uncertainty is a hallmark of the paleosciences. While many tools have been made available to researchers to produce age models suitable for various settings and assumptions, disparate tools and output formats often discourage integrative approaches. In addition, associated tasks like propagating age model uncertainties to subsequent analyses, and visualizing the results, have received comparatively little attention in the literature and available software. Here we describe GeoChronR, an open-source R package to facilitate these tasks. GeoChronR is built around emerging data standards for the paleosciences (Linked Paleo Data, or LiPD), and offers access to four popular age modeling techniques (Bacon, BChron, Oxcal, BAM). The output of these models is easily stored in LiPD, enabling paleo-aware synchronization, regression, correlation, principal component, and spectral analyses. Five real-world use cases illustrate how to use GeoChronR to facilitate these tasks, and to visualize the results in intuitive ways. 
 bibliography: geochronr.bib
 running:
   title: The GeoChronR framework
@@ -141,8 +141,8 @@ Extracting the relevant data from commonly-used age-modelling algorithms, creati
 
 ## Motivation
 
-GeoChronR is built to lower the barriers to broader adoption of these emerging methods.
-It provides an easily-accessibly, open-source and extenisble software package of industry-standard and cutting-edge tools that provides users a single environment to create, analyse, and visualize time-uncertain data.
+GeoChronR was built to lower the barriers to broader adoption of these emerging methods.
+It provides an easily-accessibly, open-source and extensible software package of industry-standard and cutting-edge tools that provides users with a single environment to create, analyse, and visualize time-uncertain data.
 GeoChronR is designed around emerging standards in the paleogeosciences that connects users to growing libraries of standardized datasets formatted in the Linked PaleoData format [@LiPD] and [@neotoma].
 
 ## Outline of manuscript
@@ -150,7 +150,7 @@ GeoChronR is designed around emerging standards in the paleogeosciences that con
 This manuscript describes the design, analytical underpinnings and most common use cases of GeoChronR.
 Section \@ref(sec:age-modeling) describes the integration of age modelling algorithms with GeoChronR.
 Section \@ref(sec:age-uncertain-analysis) details the methods implemented for age uncertain analysis.
-Section \@ref(sec:visualization) goes through the principles and implementation of age-uncertain data visualization in GeoChronR, and section \@ref(sec:use-cases) provides five real-world examples of how GeoChronR can be used for scientific workflows.
+Section \@ref(sec:visualization) goes through the principles and implementation of age-uncertain data visualization in GeoChronR, and section \@ref(sec:use-cases) provides five real-world examples of how GeoChronR can be used for paleoscientific workflows.
 
 
 <!-- Age modeling section -->
@@ -158,19 +158,15 @@ Section \@ref(sec:visualization) goes through the principles and implementation 
 
 # Age Uncertainty Quantification in GeoChronR {#sec:age-modeling}
 
-GeoChronR does not provide any new approaches to age uncertainty quantification, rather, it integrates with existing and widely-used packages while streamlining the acquisition of age ensemble members. 
+GeoChronR does not introduce any new approaches to age uncertainty quantification; rather, it integrates existing, widely-used packages while streamlining the acquisition of age ensemble members. 
 Fundamentally, there are two types of age models used in the paleogeosciences: tie-point and layer-counted. 
-Most of the effort in age uncertainty quantification in the community has been focused on tie-point modelling, where the goal is to estimate ages (and their uncertainties) along a depth profile given the constraints of known ages (and their uncertainties) at multiple depths through the section.
-Over the past 20 years, these algorithms have progressed from linear or polynomial regressions with simple characterizations of uncertainty to more sophisticated techniques [@clam, @heegaard05]. 
-More recently, there has been a convergence towards Bayesian techinques.
-As of 2020, the three most widely used algorithms are Bacon [@bacon], BChron [@parnell2008flexible], and OxCal [@ramsey2008deposition], which are all Bayesian age-deposition models that estimate posteriors on age-depth relationships with different assumptions and methodologies.
+Most of the effort in age uncertainty quantification in the community has been focused on tie-point modelling, where the goal is to estimate ages (and their uncertainties) along a depth profile given chronological estimates (and their uncertainties) at multiple depths downcore.
+Over the past 20 years, these algorithms have progressed from linear or polynomial regressions with simple characterizations of uncertainty [@clam, @heegaard05] to more rigorous techniques, particularly Bayesian approaches: as of writing, the three most widely used algorithms are Bacon [@bacon], BChron [@parnell2008flexible], and OxCal [@ramsey2008deposition], which are all Bayesian age-deposition models that estimate posterior distributions on age-depth relationships using different assumptions and methodologies.
 @trachsel2017 reviewed the performance of these three algorithms, as well as a non-Bayesian approach [@clam], and found that the three Bayesian approaches generally outperform previous algorithms, especially when appropriate parameters are chosen (although choosing appropriate parameters can be challenging).
-All three Bayesian modelling algorithms use Markov Chain Monte Carlo (MCMC) techniques to quantify their posterior distributions and to estimate age-uncertainty distributions as a function of depth in the section.
-GeoChronR interfaces with each of these algorithms through their R packages (cite R Packages), and streamlines data input and the extraction of the age ensembles from the MCMC results for further analysis.
+Bacon, BChron and Oxcal all leverage Monte Carlo Markov Chain (MCMC) techniques to sample the posterior distributions, thereby quantifiying age uncertainties as a function of depth in the section.
+GeoChronR interfaces with each of these algorithms through their R packages [@baconPackage,@oxcAAR] (cite other R Packages), streamlining input and output. %data input and the extraction of the age ensembles from the MCMC results for further analysis.
 
-In addition to working with ensembles from tie-point age models, GeoChronR connects users to ensembles generated for layer-counted models. 
-BAM [@BAM] was designed to probabilistically simulate counting uncertainty in banded archives, such as corals, ice cores, or varved sediments, but can also be used to simulate age uncertainty for any record, and is useful when the data or metadata required to calculate an age-depth model are unavailable.
-Here we briefly describe the theoretical basis and applications of each of the four approaches integrated in GeoChronR. 
+In addition to working with ensembles from tie-point age models, GeoChronR connects users to probabilistic models of layer-counted chronologies. BAM [@BAM] was designed to probabilistically simulate counting uncertainty in banded archives, such as corals, ice cores, or varved sediments, but can be used to crudely simulate age uncertainty for any record, and is useful when the data or metadata required to calculate an age-depth model are unavailable. Here we briefly describe the theoretical basis and applications of each of the four approaches integrated in GeoChronR. 
 
 ## Bacon
 
@@ -182,15 +178,20 @@ Bacon is written in C++ and R, with an R interface.
 More recently, the authors released an R package `rbacon` [@baconPackage], which GeoChronR leverages to provide access to the algorithm.
 Bacon will optionally return a subset of the MCMC accumulation rate ensemble members with high *a posteriori* probabilities, which GeoChronR uses to form age ensemble members for subsequent analysis. 
 
+
+depositional model?
+
 ## BChron
 
-{Deborah}
+BChron [@bchron,@parnell2008flexible] uses a similar approach, using a continuous Markov monotone stochastic process coupled to a piecewise linear deposition model. This simplicity allows semi-analytical solutions that make BChron computationally efficient. In addition, modeling accumulation as additive independent gamma increments arriving in a Poisson fashion is appealing for the representation of hiatuses, particulary for speleothem records, where accumulation rate can vary quite abruptly [@Parnell_QSR2011,@PRYSM,@Hu_epsl17]. The downside of this assumption is that BChron is known to exaggerate age uncertainties in cases where sedimentation varies smoothly [@trachsel2017]. 
+
+Adjustable parameters? {Deborah}
 
 
 ## Oxcal
 
-The OxCal software package has a long history and extensive tools for the statistical treatment of radiocarbon and other geochronological data (cite a bunch of bronk ramsey).
-In @ramsey2008deposition, age-depth modelling was introduced with three options for modelling depositional processes that are typically useful for sedimentary sequences: uniform, varve, and Poisson deposition models, laveled U-sequence, V-sequence and P-sequence, respectively.
+The OxCal software package has a long history and extensive tools for the statistical treatment of radiocarbon and other geochronological data [@BronkRamsey95].
+In @ramsey2008deposition, age-depth modelling was introduced with three options for modelling depositional processes that are typically useful for sedimentary sequences: uniform, varve, and Poisson deposition models, labeled U-sequence, V-sequence and P-sequence, respectively.
 The Poisson-based model is the most broadly applicable for sedimentary, or other accumulation-based archives (e.g. speleothems), and although any sequence type can be used in GeoChronR, most users will use a P-sequence, which is the default. 
 Analagously to segment length parameter in Bacon, the *k* parameter (called "eventsPerUnitLength" in GeoChronR), controls how many events are simulated per unit of depth, and has a strong impact on the flexibility of the model, as well as the amplitude of the resulting uncertainty. 
 As the number of events increases, the flexibility of the model, and the uncertainties decrease.
