@@ -699,18 +699,20 @@ This paleoclimate record displays three salient features:
 <!-- 5. There is no one-size-fits-all method that will solve your exact problem, but it might get you started on asking relevant questions. Readers are invited to consider the following references for deeper exploration of these questions: @Vaughan_PP2011, @Meyers_2012, @Meyers_2015, @MeyersMalinverno2018.   -->
 
 
-# Conclusion
+\conclusions
+
+
 I wrote a strawman for this section. Please feel free to edit/modify and extend.
 
 Version 1.0.0 of GeoChronR provides user-friendly access to common age-uncertain analyses in the paleogeosciences, along with intuitive visualization of the results. 
-Although the focus has been on simplicity and ease-of-use, the GeoChronR also has the underlying infrastructure to support customized analyses for users seeking to address a more nuanced or complex question. 
+Although the focus has been on simplicity and ease of use, GeoChronR also has the underlying infrastructure to support customized analyses for users seeking to address a more nuanced or complex question. 
 Nevertheless, in many ways the paleogeoscience community is only scratching the surface with age-uncertain analysis, and we look forward to working with the community to extend and expand the package. 
 Looking forward, we suggest that the next major direction for age-uncertain analysis is philosophical, not technical.
 Thus far, the community (and GeoChronR) has focused on quantifying the range of possibilities presented by age-uncertainty, not on developing approaches to constrain which ensemble members are most likely. 
-Theoretically, additional information from nearby records, forcings or covariance structures could do so, but little has been done to date [@wernerAndTingley ]. 
+Theoretically, additional information from nearby records, forcings or covariance structures could do so, but little has been done to date [@wernerAndTingley]. 
 
-GeoChronR is open-source community-sofware, and has benefitted substantially from multiple contributors and input from early adopters and workshop participants. 
-We welcome feedback and strongly encourage contributions and enhancements. 
+GeoChronR is open-source community-sofware, and has benefitted substantially from multiple contributors and input from early adopters and workshop participants. [should we list them here?]
+We welcome feedback and strongly encourage contributions and enhancements, via the [GitHub issue tracker](https://github.com/nickmckay/GeoChronR/issues). 
 
 
 
@@ -735,20 +737,7 @@ Copernicus supports biblatex. I put the .bib entries from the Paleocube proposal
 
 Read [@Evans_QSR13], and [see @PRYSM].
 
-# Content section with R code chunks
 
-```{r, echo = FALSE}
-sum <- 1 + 41
-```
-
-You should always use `echo = FALSE` on R Markdown code blocks as they add formatting and styling not desired by Copernicus.
-The hidden workflow results in `r sum`.
-
-You can add verbatim code snippets without extra styles by using ` ``` ` without additional instructions.
-
-```
-sum <- 1 + 41
-```
 
 # Content section with list
 
@@ -775,21 +764,9 @@ If you want to insert a list, you must
 
 When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage between bibliography and first table and/or figure as well as between each table and/or figure.
 
-### ONE-COLUMN FIGURES
 
-Include a 12cm width figure of Nikolaus Copernicus from [Wikipedia](https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg) with caption using R Markdown.
 
-```{r, out.width = "8.3cm", echo = FALSE, fig.cap = "one column figure"}
-knitr::include_graphics("Nikolaus_Kopernikus.jpg")
-```
 
-### TWO-COLUMN FIGURES
-
-You can also include a larger figure.
-
-```{r, out.width = "12cm", echo = FALSE, fig.cap = "two column figure"}
-knitr::include_graphics("Nikolaus_Kopernikus.jpg")
-```
 
 ## TABLES
 
@@ -802,136 +779,9 @@ You can ad \LaTeX table in an R Markdown document to meet the template requireme
 \begin{tabular}{l c r}
 \tophline
 
-a & b & c \\
-\middlehline
-1 & 2 & 3 \\
-
-\bottomhline
-\end{tabular}
-\belowtable{Table Footnotes}
-\end{table}
-
-### TWO-COLUMN TABLE
-
-\begin{table*}[t]
-\caption{TEXT}
-\begin{tabular}{l c r}
-\tophline
-
-a & b & c \\
-\middlehline
-1 & 2 & 3 \\
-
-\bottomhline
-\end{tabular}
-\belowtable{Table footnotes}
-\end{table*}
-
-## MATHEMATICAL EXPRESSIONS
-
-All papers typeset by Copernicus Publications follow the math typesetting regulations given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry, 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
-
-Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
-
-Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
-
-Items/objects which are defined are typeset in roman font (Car A, Car B)
-
-Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
-
-Abbreviations from 2 letters are typeset in roman font (RH, LAI)
-
-Vectors are identified in bold italic font using \vec{x}
-
-Matrices are identified in bold roman font
-
-Multiplication signs are typeset using the LaTeX commands `\times` (for vector products, grids, and exponential notations) or `\cdot`
-
-The character * should not be applied as mutliplication sign
-
-## EQUATIONS
-
-### Single-row equation
-
-Unnumbered equations (i.e. using `$$` and getting inline preview in RStudio) are not supported by Copernicus.
-
-\begin{equation}
-1 \times 1 \cdot 1 = 42
-\end{equation}
-
-\begin{equation}
-A = \pi r^2
-\end{equation}
-
-\begin{equation}
-x=\frac{2b\pm\sqrt{b^{2}-4ac}}{2c}.  
-\end{equation}
-
-### Multiline equation
-
-\begin{align}
-& 3 + 5 = 8\\
-& 3 + 5 = 8\\
-& 3 + 5 = 8
-\end{align}
-
-## MATRICES
-
-$$
-\begin{matrix}
-x & y & z\\
-x & y & z\\
-x & y & z\\
-\end{matrix}
-$$
-
-## ALGORITHM
-
-If you want to use algorithms, you can either enable the required packages in the header (the default, see `algorithms: true`), or make sure yourself that the \LaTeX packages `algorithms` and `algorithmicx` are installed so that `algorithm.sty` respectively `algorithmic.sty` can be loaded by the Copernicus template.
-Copernicus staff will remove all undesirable packages from your LaTeX source code, so please stick to using the header option, which only adds the two acceptable packages.
-
-\begin{algorithm}
-\caption{Algorithm Caption}
-\label{a1}
-\begin{algorithmic}
-\STATE $i\gets 10$
-\IF {$i\geq 5$}
-        \STATE $i\gets i-1$
-\ELSE
-        \IF {$i\leq 3$}
-                \STATE $i\gets i+2$
-        \ENDIF
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
-
-## CHEMICAL FORMULAS AND REACTIONS
-
-For formulas embedded in the text, please use `\chem{}`, e.g. \chem{A \rightarrow B}.
-
-The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
-
-- `\rightarrow` should be used for normal (one-way) chemical reactions
-
-- `\rightleftharpoons` should be used for equilibria
-
-- `\leftrightarrow` should be used for resonance structures
-
-\begin{reaction}
-A \rightarrow B \\
-\end{reaction}
-\begin{reaction}
-Coper \rightleftharpoons nicus \\
-\end{reaction}
-\begin{reaction}
-Publi \leftrightarrow cations
-\end{reaction}
 
 ## PHYSICAL UNITS
 
 Please use `\unit{}` (allows to save the math/`$` environment) and apply the exponential notation, for example \( 3.14\,\unit{km\,h^{-1}} \) (using LaTeX mode: `\( 3.14\,\unit{...} \)`) or \unit{0.872\,m\,s^{-1}} (using only `\unit{0.872\,m\,s^{-1}}`).
 
-\conclusions
 
-The conclusion goes here.
-You can modify the section name with  `\conclusions[modified heading if necessary]`.
