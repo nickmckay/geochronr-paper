@@ -105,7 +105,7 @@ output:
 ## Background
 
 
-Quantifying chronological uncertainties, and how they might influence the understanding of past changes is fundamental to the paleogeosciences. 
+Quantifying chronological uncertainties, and how they influence the understanding of past changes, is a unique and fundamental challenge of the paleogeosciences. 
 Without robust error determination, it is impossible to properly assess the extent to which past changes occurred simultaneously across regions or the duration of abrupt events, both of which limit our capacity to apply paleoscientific understanding to modern and future processes.
 The need for better infrastructure to both characterize uncertainty, and to explicitly evaluate how age uncertainty impacts the the interpretation of records of past climate, ecology or landscapes, has been long recognized [@Noren2013, (more)]. 
 In response to this need, the paleogeoscience community has made substantial advances toward improving geochronological accuracy by:
@@ -204,8 +204,12 @@ GeoChronR uses this feature to extract ensemble members for subsequent analysis.
 
 ## Banded Age Model (BAM)
 
-@BAM is a probabilistic model of age errors in layer-counted chronologies. The model allows a flexible parametric representation of such errors (either as Poisson or Bernoulli processes), and separately considers the possibility of double-counting or missing a band. The model is parameterized in terms of the error rates associated with each event, which are intuitive parameters to paleogeoscientists, and may be estimated via replication [@DeLong_Paleo3_2013]. In cases where such rates can be estimated from the data alone, an optimization principle may be used to identify a more likely age model when a high-frequency common signal can be used as a clock [@BAM].  As of now, BAM does not consider uncertainties about such parameters, representing a weakness of the method. Bayesian generalizations have been proposed [@BoersCP2017], which could one day be incorporated into GeoChronR if the code is made public. 
-
+@BAM is a probabilistic model of age errors in layer-counted chronologies. 
+The model allows a flexible parametric representation of such errors (either as Poisson or Bernoulli processes), and separately considers the possibility of double-counting or missing a band. 
+The model is parameterized in terms of the error rates associated with each event, which are intuitive parameters to paleogeoscientists, and may be estimated via replication [@DeLong_Paleo3_2013]. 
+In cases where such rates can be estimated from the data alone, an optimization principle may be used to identify a more likely age model when a high-frequency common signal can be used as a clock [@BAM].
+As of now, BAM does not consider uncertainties about such parameters, representing a weakness of the method. 
+Bayesian generalizations have been proposed [@BoersCP2017], which could one day be incorporated into GeoChronR if the code is made public. 
 BAM was coded in MATLAB and R, and it is this latter version that GeoChronR uses.
 
 <!-- Analysis section -->
@@ -224,7 +228,8 @@ Version 1.0.0 of GeoChronR has implemented ensemble analytical techniques for fo
 Pearson's product-moment correlation is the most common measure of association between variables.  
 Its computation is fast, lending itself to ensemble analysis, with a handful of pretreatment and significance considerations that are relevant for ensembles of paleogeoscientific data.
 
-First, correlation analysis for timeseries is built on the assumption the datasets can be aligned on a common timeline. Age-uncertain data violate this assumption.
+First, correlation analysis for timeseries is built on the assumption the datasets can be aligned on a common timeline. 
+Age-uncertain data violate this assumption.
 We overcome this by treating each ensemble member from one or more age uncertain timeseries as valid for that iteration, then "bin" each of the timeseries into coeval intervals.
 The "binning" procedure in GeoChronR sets up an interval, which is typical evenly spaced, over which the data are averaged.
 Generally, this intentionally degrades the median resolution of the timeseries, for example, a timeseries with 37-year median spacing could be reasonably "binned" into 100- or 200-year bins.
@@ -233,8 +238,10 @@ The binning procedure is repeated for each ensemble member, meaning that between
 Following binning, Pearson correlation is calculated and recorded for each ensemble member. 
 In addition to the correlation coefficients, GeoChronR calculates their significance for each correlation. 
 Paleogeoscientific timeseries are often highly autocorrelated, which can lead to spurious assessments of significance [@Hu_epsl17]. 
-Therefore, in addition to the standard Student's T-test p-value calculation, we also calculate a p-value that is adjusted for autocorrelation to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999. However, repeating this test over multiple ensembles raises the issue of test multiplicity  [@Ventura2004], or "look elsewhere effect". To overcome this problem, we control for this false discovery rate using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004. 
-
+Therefore, in addition to the standard Student's T-test p-value calculation, we also calculate a p-value that is adjusted for autocorrelation to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999. 
+However, repeating this test over multiple ensembles raises the issue of test multiplicity  [@Ventura2004], or "look elsewhere effect". 
+To overcome this problem, we control for this false discovery rate using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004. 
+NM: I think here we need to discuss when FDR is needed, and when it's not. In my view, if you're surveying the full breadth on an ensemble, you're not searching for p-value, just trying to quantify the range. However, if the users want to subset some best-case or worst-case ensembles, and then proceed with analysis, FDR seems appropriate. 
 
 ## Regression
 
@@ -262,13 +269,15 @@ For well defined modes this effectively orients ensemble PCs, but loading orient
 
 ## Spectral Analysis {#sec:spec_theory}
 
-Many research questions in the paleosciences revolve around spectral analysis: describing phase leads and lags among different climate system components over the Pleistocene [SPECMAP, @imbrie1984orbital], the hunt for astronomical cycles over the Holocene [@mill_monograph,@bond2001] or in deep time [@MeyersSageman_2007,@Meyers_2012,@Meyers_2015], or characterizing the continuum of climate variability [@Huybers_Curry2006,@ZhuPNAS2019]. Yet, spectral analysis in the paleosciences faces unique challenges: chronological uncertainties, of course, as well as uneven sampling, which violates the assumptions of classical spectral methods [@Ghil02]. 
+Many research questions in the paleosciences revolve around spectral analysis: describing phase leads and lags among different climate system components over the Pleistocene [SPECMAP, @imbrie1984orbital], the hunt for astronomical cycles over the Holocene [@mill_monograph,@bond2001] or in deep time [@MeyersSageman_2007,@Meyers_2012,@Meyers_2015], or characterizing the continuum of climate variability [@Huybers_Curry2006,@ZhuPNAS2019]. 
+Yet, spectral analysis in the paleosciences faces unique challenges: chronological uncertainties, of course, as well as uneven sampling, which violates the assumptions of classical spectral methods [@Ghil02]. 
 
-To facilitate the quantification of chronological uncertainties in such assessments, GeoChronR implements 4 spectral approaches: 
+To facilitate the quantification of chronological uncertainties in such assessments, GeoChronR implements four spectral approaches: 
 1. the Lomb-Scargle periodogram [@VanderPlas_2018], which uses an inverse approach to harmonic analysis in unevenly-spaced timeseries.  
-2. REDFIT, a version of the Lomb-Scargle periodogram tailored to paleoclimatic data [@SchulzMudelsee_02, @Mudelsee_02, @Mudelsee_NPG09]. The R implementation of REDFIT is inhereted from the dplR package [@Bunn2008115].
+2. REDFIT, a version of the Lomb-Scargle periodogram tailored to paleoclimatic data [@SchulzMudelsee_02, @Mudelsee_02, @Mudelsee_NPG09]. 
+The GeoChronR uses the implementation of REDFIT in the dplR package [@Bunn2008115].
 3. the wavelet-based method of @Mathias_JSS04, called `nuspectral`. This method is quite similar to the Weighted Wavelet Z-transform algorithm of @Foster_AJ96, though it is prohibitively slow in this implementation, and the fast version using a compact-support approximations of the mother wavelet did not perform well in our tests. 
-4. The multi-taper method (MTM) of @thomson82, a mainstay of spectral analysis [@Ghil02] designed for evenly spaced timseries. GeoChronR re-uses its @astrochron implementation, which couples MTM to efficient linear interpolation, together with various utilities to define autoregressive and power-law benchmarks for spectral peaks. 
+4. The multi-taper method (MTM) of @thomson82, a mainstay of spectral analysis [@Ghil02] designed for evenly spaced timseries. GeoChronR uses the implementation of MTM in @astrochron, which couples MTM to efficient linear interpolation, together with various utilities to define autoregressive and power-law benchmarks for spectral peaks. 
 <!-- Viz section -->
 
 # Visualization with GeoChronR {#sec:visualization}
@@ -283,7 +292,7 @@ The figures in the Use Cases section (Section \@(sec:use-cases)) are all produce
 
 ## Timeseries
 
-Most of the figures that GeoChronR produces are ensemble timeseries.
+The most common figure that users produce with GeoChronR are ensemble timeseries.
 GeoChronR uses two complementary approaches to visualize these ensembles.
 The first is the simplest, where a large subset of the ensemble members are plotted as semi-transparent lines.
 This approach, implemented in `plotTimeseriesEnsLines`, provides a faithful representation of the data, while the overlapping semi transparency provides a qualitative sense of the ensemble uncertainty structure.
@@ -309,23 +318,27 @@ It is customary to plot spectra on a log-log scale, which helps separate close-b
 
 # Use cases {#sec:use-cases}
 
-We now illustrate the use of these tools on five use cases. The first example shows how to create age ensembles on different archives, and how to visualize the timing of abrupt events with appropriate uncertainty quantification. The second example shows how to quantify similarities in age-uncertain records. The third introduces the topic of age-uncertain calibrations, the fourth quantifies multivariate relationships using principal components analyses, and the fifth deal with spectral analysis. 
+We now illustrate the use of these tools on five use cases. 
+The first example shows how a user might create age ensembles on different archives, and how to visualize the timing of abrupt events with appropriate uncertainty quantification. 
+The second example walks through ensemble correlation of age-uncertain records. 
+The third introduces the topic of age-uncertain calibration-in-time. 
+The fourth provides an example of regional age-uncertain principal components analyses, and the fifth deals with spectral analysis. 
 
 
 ## Creating an age ensemble 
 
 A common first task when using geoChronR is to create an age ensemble, either because the user is developing a new record, or because the age ensemble data for the record they are interested is unavailable.
-As described in section X.Y, workflows for four published age quantification programs are integrated into geoChronR.
-All four methods are  simply used in geoChronR with a LiPD file that contains the chronological measurements, and the functions `runBacon(L)`, `runBchron(L)`, `runOxcal(L)` and `runBam(L)`.
+As described in section \@{sec:age-modeling}, workflows for four published age quantification programs are integrated into geoChronR.
+All four methods can be used simply in geoChronR with a LiPD file loaded into R that contains the chronological measurements, and the high-level functions `runBacon()`, `runBchron()`, `runOxcal()` and `runBam()`.
 These functions take LiPD objects as inputs, and return updated LiPD objects that include age-ensemble data generated by the respective software packages, with these data stored in appropriate tables.
 Typically, additional parameters are needed for to optimally run the algorithms.
-When these parameters are not included, geoChronR will run in interactive mode, asking the user which variables and parameters they would like to model.
+When these parameters are not specified, geoChronR will run in interactive mode, asking the user which variables and parameters they would like to model.
 These parameter choices are printed to the screen during while the program runs, or are available later with the function `getLastVarString()`.
-By specifying these parameters, age model creation can be scripted and will run in non-interactive mode.
+By specifying these parameters, age model creation can be scripted and run in non-interactive mode.
 In this use case, we'll use geoChronR and BChron [@parnell2008flexible] to calculate an age ensemble for the Hulu Cave $\delta^{18}$O speleothem record [@hulu2001], and BAM [@BAM] to simulate age uncertainties for the GISP2 ice core $\delta^{18}$O dataset [@alley].
-The `plotChronEns(hulu)` function will plot an age-depth model and uncertainties derived from the age ensemble.
+The `plotChronEns()` function will plot an age-depth model and uncertainties derived from the age ensemble (figure \@{fig:age-model})
 
-```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE}
+```{r load-libraries, echo=FALSE,results='hide',warning = FALSE, message = FALSE}
 ## ---- results = FALSE, warning = FALSE, message= FALSE------------------------
 library(lipdR)
 library(geoChronR)
@@ -359,12 +372,12 @@ hulu <- runBchron(hulu,
 chronPlot <- plotChronEns(hulu,truncate.dist = 1e-4)+ggtitle(NULL)
 ```
 
-```{r,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
+```{r fig:age-model,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
 print(chronPlot)
 ```
 
 After an age ensemble has been added to a LiPD object, the user can visualize the ensemble timeseries using `plotTimeseriesEnsRibbons()` and `plotTimeseriesEnsLines()`.
-GISP2 $\delta^{18}$O is plotted with age uncertainty, using both functions, in figure x.
+GISP2 $\delta^{18}$O is plotted with age uncertainty, using both functions, in figure \@{fig:timeseries}.
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache= TRUE}
 gisp2 <- lipdR::readLipd("http://lipdverse.org/geoChronR-examples/GISP2.Alley.2000.lpd")
@@ -390,7 +403,7 @@ gisp2.ens <- convertAD2BP(gisp2.ens)
 
 
 
-```{r,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
+```{r fig:timeseries,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
 plotTimeseriesEnsRibbons(X = gisp2.ens,Y = gisp2.d18O,n.bins = 500) %>% 
   plotTimeseriesEnsLines(X = gisp2.ens,Y = gisp2.d18O,n.ens.plot = 5,color = "Reds",alp = .2)+
   ggtitle(NULL)
@@ -399,9 +412,9 @@ plotTimeseriesEnsRibbons(X = gisp2.ens,Y = gisp2.d18O,n.bins = 500) %>%
 ## Correlation
 
 Now that the user has generated age ensembles for the two datasets, they're interested to see if a correlation between the two datasets is robust to the age uncertainty modeled here.
-On multi-millennial timescales, the two datasets dislay similar features, and previous work has suggested that  abrupt events of the Last Glacial period, which are observed in the GISP2 record, can impact the Asian Monsoon and be observed is speleothem records such as the Hulu Cave dataset. (NM: add references here and flesh out background)
+On multi-millennial timescales, the two datasets dislay similar features, and previous work has suggested that abrupt events of the Last Glacial period, which are observed in the GISP2 record, can impact the Asian Monsoon and be observed is speleothem records such as the Hulu Cave dataset. (NM: add references)
 The `corEns()` function in geoChronR will calculate ensemble correlations across age-uncertain datasets, such as these.
-`corEns()` will also sample across ensembles in the paleoData as well, if present.
+`corEns()` will also sample across ensembles in the proxy data as well, if present.
 Here we calculate correlations during the period of overlap in 500 yr steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
@@ -412,23 +425,34 @@ corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ae,hulu.d18O,bin.step = 500,max.ens =
 corPlot <- plotCorEns(corout,legend.position = c(0.1, 0.8),significance.option = "autocorr")
 ```
 
-The results show consistently negative correlations, although `r sum(corout$cor.df$r>0)/nrow(corout$cor.df)*100`% of the ensemble members are positive.
-However, only `r sum(corout$cor.df$pSerial < 0.05)/nrow(corout$cor.df)*100`% are significant after accounting for serial autocorrelation.
 
-```{r,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
+
+```{r fig:cor-hist,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
 print(corPlot)+ggtitle(NULL)
 ```
 
-
-In this use case, we demonstrate how a user could calculate and visualize and age-uncertain correlation between the Hulu speleothem $\delta^{18}\mathrm{O}$ record and the GISP2 ice core $\delta^{18}\mathrm{O}$ record. (Introduction about why a user might want to do an age uncertain correlation between Hulu and GISP2).
-
+The results are visualized as a histogram of the ensemble correlation results, with color shading to highlight significance (figure \@{fig:cor-hist}).
+The two timeseries are consistently negative correlations, although `r round(sum(corout$cor.df$r>0)/nrow(corout$cor.df)*100,digits = 1)`% of the ensemble members are positive.
+However, only `r round(sum(corout$cor.df$pSerial < 0.05)/nrow(corout$cor.df)*100,digits = 1)`% are significant after accounting for serial autocorrelation.
+Given the age models and correlation parameters used here, it seems pretty unlikely that these two datasets are significantly correlated. 
+However, it's worth noting that evaluating these results remains subjective, as there is no theoretical expectation for what fraction of ensemble correlation results should be expected to pass a significance test in age-uncertain correlation. 
+Two timeseries, which are actually correlated, each with it's own age-uncertainty, will commonly return insignificant results when random ensemble members are correlated against each other. 
+Furthermore, the frequency of these "false negatives" depend on the structure of the age-uncertainties and the timeseries, and will vary to some extent by random chance. 
+Therefore, it's appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets correlated?".
+For research applications that require rigourous determination of more nuanced uncertainties we recommend a surrogate timeseries null hypothesis approach [e.g. @mckay2018onset, others?].
 
 ## Age-uncertain Calibration
 A natural extension of ensemble correlation is ensemble regression.
 Although there are use cases where regressing one age-uncertain variable onto another is called for, here we regress an age-uncertain paleoclimate proxy onto time-certain instrumental to develop a calibration-in-time.
-For this use case, we reproduce the results of @Boldt:2015, where the authors calibrate a spectral reflectance measure of chlorophyll abundance to temperature in Northern Alaska.
+For this use case, we reproduce the results of @Boldt:2015, where the authors calibrated a spectral reflectance measure of chlorophyll abundance, relative absorption band depth (RABD), to instrumental temperature in Northern Alaska.
+For each iteration in the analysis, a random age ensemble member is chosen and used to bin the RABD data onto a 3-year timescale. 
+The instrumental temperature data, here taken from the nearest gridcell of the GISTEMP reanalysis product [@GISTEMP], are also binned onto the same timescale, insuring temporal alignment between the two timeseries.
+GeoChronR then derives an ordinary linear regression model, and then uses that model to "predict" temperature values from 3-year-binned RABD data back in time.
+This approach propagates the age uncertainties both through the regression and prediction process.
+`plotRegressEns` produces a number of individual plots that show the results of an age-uncertain regression, and additionally creates an overview "dashboard" that showcases the key results (figure \@{fig:regression}).
 
-```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
+
+```{r regression, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
   library(readr)
 K <- lipdR::readLipd("http://lipdverse.org/geochronr-examples/Kurupa.Boldt.2015.ens.lpd")
 K <- mapAgeEnsembleToPaleoData(K,age.var = "ageEnsemble")
@@ -456,10 +480,11 @@ regout = regressEns(time.x = kae,
                     percentiles = c(5,50,95))
 ```
 
-```{r,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
+```{r fig:regression,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
 regPlots <- plotRegressEns(regout,alp = 0.01,font.size = 8)
 ```
-Figure captions.
+
+
 
 ## Principle Component Analysis {sec:pca}
 
