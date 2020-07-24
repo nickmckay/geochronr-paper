@@ -371,8 +371,8 @@ The \texttt{corEns()} function in geoChronR will calculate ensemble correlations
 \texttt{corEns()} will also sample across ensembles in the paleoData as well, if present.
 Here we calculate correlations during the period of overlap in 500 yr steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
 
-The results show consistently negative correlations, although 17.72\% of the ensemble members are positive.
-However, only 0.31\% are significant after accounting for serial autocorrelation.
+The results show consistently negative correlations, although 14.08\% of the ensemble members are positive.
+However, only 0.89\% are significant after accounting for serial autocorrelation.
 
 \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-8-1.pdf} \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-8-2.pdf}
 
@@ -421,26 +421,34 @@ This paleoclimate record displays three salient features:
 
 \begin{itemize}
 \item
-  a long-term cooling trend (\(\delta^{18}\mathrm{O}\) gets more positive over time) characteristic of the late Neogene and Quaternary climate.
+  a long-term cooling trend characteristic of the late Neogene and Quaternary climate.
 \item
   quasi-periodic oscillations (the legendary Pleistocene Ice Ages)
 \item
   nonstationary behavior, related to the well-known mid-Pleistocene transition from a ``41k world'' to a ``100k world'' somewhere around 0.8 Ma \citep{Paillard_2001}.
 \end{itemize}
 
-\section{Conclusion}
+For tractability, let us focus on the last million years, and use the median age model. As mentioned in @ref(sec:spec\_theory) a standard assumption of spectral analysis is that data are evenly spaced in time. In real-world paleo timeseries this is seldom the case. Indeed, over the past 1 Ma, the time increments (\(\Delta t\)) are sharply peaked around 2 ka, but they range from 0 to about 7.5 ka. For now, let us assume that the time axis, albeit uneven, is known without uncertainty. From this point there are two ways to proceed: 1) use methods that explictly deal with unevenly-spaced data, or 2) interpolate to a regular grid and apply standard methods (see @ref(sec:spec\_theory)). Though GeoChronR supports four different methods, we will highlight only two here: REDFIT and MTM.
 
-I wrote a strawman for this section. Please feel free to edit/modify and extend.
+\includegraphics{geoChronR-paper_files/figure-latex/REDFIT-1.pdf}
+
+It is clearly seen that the data contain significant energy (peaks) near, but not exactly at, the famed Milankovitch periodicities (100, 41, 23, and 19 kyr). These periodicities (particularly the eccentricity (100kyr) and precessional (23 and 19 kyr)) rise above the null (the 95\% quantile from an autoregressive process of order one, see \citet{Mudelsee_NPG09}). The obliquity period is relatively weak, and does not rise above the AR(1) benchmark.
+
+The Lomb-Scargle periodogram used by REDFIT is a decent way to deal with unevenly-spaced timeseries, but it is still a periodogram, which has several problems. In particular, it is inconsistent: the variance of each estimate goes to infinity as the number of observations increases. This is mitigated somewhat with the application of Welch's Overlapping Segment Averaging, but whose parameter choice is fairly arbitrary. On the other hand, MTM \citep{thomson82} is an optimal estimator, which is consistent (the more data, the better constrained the amplitude of the peaks). Formally, MTM optimizes the classic bias-variance tradeoff inherent to all statistical inference. It does so by minimizing speactral leakage outside of a frequency band with half-bandwidth equal to \(pf_R\), where \(f_R=1/(N \Delta t)\) is the Rayleigh frequency, \(\Delta t\) is the sampling interval, \(N\) the number of measurements, and \(p\) is the so-called \emph{time-bandwidth product} \citep{Ghil02}. \(p\) can only take a finite number of values, all multiples of 1/2 between 2 and 4. A larger \(p\) means lower variance (i.e.~less uncertainty about the power), but broader peaks (i.e.~a lower spectral resolution), synonymous with more uncerainty about the exact location of the harmonic. So while MTM might not distinguish between closely-spaced harmonics, it is much less likely to identify spurious peaks, especially at high frequencies. In addition, a battery of formal tests have been devised with MTM, allowing under reasonably broad assumptions to ascertain the significance of spectral peaks. We show how to use this ``harmonic F-test'' below.
+
+The classic version of MTM can only handles evenly-spaced data. As we saw above, the data are not that far from evenly-spaced, so is is reasonable to interpolate them using standard methods. Conveniently, both the interpolation routine and MTM are available within the \citep[astrochron][]{astrochron} package, which is thus a dependency of GeoChronR.
+
+\conclusions
 
 Version 1.0.0 of GeoChronR provides user-friendly access to common age-uncertain analyses in the paleogeosciences, along with intuitive visualization of the results.
-Although the focus has been on simplicity and ease-of-use, the GeoChronR also has the underlying infrastructure to support customized analyses for users seeking to address a more nuanced or complex question.
+Although the focus has been on simplicity and ease of use, GeoChronR also has the underlying infrastructure to support customized analyses for users seeking to address a more nuanced or complex question.
 Nevertheless, in many ways the paleogeoscience community is only scratching the surface with age-uncertain analysis, and we look forward to working with the community to extend and expand the package.
 Looking forward, we suggest that the next major direction for age-uncertain analysis is philosophical, not technical.
 Thus far, the community (and GeoChronR) has focused on quantifying the range of possibilities presented by age-uncertainty, not on developing approaches to constrain which ensemble members are most likely.
-Theoretically, additional information from nearby records, forcings or covariance structures could do so, but little has been done to date \citep[ ]{wernerAndTingley}.
+Theoretically, additional information from nearby records, forcings or covariance structures could do so, but little has been done to date \citep{wernerAndTingley}.
 
-GeoChronR is open-source community-sofware, and has benefitted substantially from multiple contributors and input from early adopters and workshop participants.
-We welcome feedback and strongly encourage contributions and enhancements.
+GeoChronR is open-source community-sofware, and has benefitted substantially from multiple contributors and input from early adopters and workshop participants. {[}should we list them here?{]}
+We welcome feedback and strongly encourage contributions and enhancements, via the \href{https://github.com/nickmckay/GeoChronR/issues}{GitHub issue tracker}.
 
 Subsection text here.
 
@@ -455,17 +463,6 @@ See the \href{http://rmarkdown.rstudio.com/authoring_bibliographies_and_citation
 Copernicus supports biblatex. I put the .bib entries from the Paleocube proposal into \texttt{geochronr.bib}. Citations work like this:
 
 Read \citep{Evans_QSR13}, and \citep[see][]{PRYSM}.
-
-\section{Content section with R code chunks}
-
-You should always use \texttt{echo\ =\ FALSE} on R Markdown code blocks as they add formatting and styling not desired by Copernicus.
-The hidden workflow results in 42.
-
-You can add verbatim code snippets without extra styles by using \texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}} without additional instructions.
-
-\begin{verbatim}
-sum <- 1 + 41
-\end{verbatim}
 
 \section{Content section with list}
 
@@ -494,169 +491,22 @@ If you want to insert a list, you must
 
 When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage between bibliography and first table and/or figure as well as between each table and/or figure.
 
-\subsubsection{ONE-COLUMN FIGURES}
-
-Include a 12cm width figure of Nikolaus Copernicus from \href{https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg}{Wikipedia} with caption using R Markdown.
-
-\begin{figure}
-\includegraphics[width=8.3cm]{Nikolaus_Kopernikus} \caption{one column figure}\label{fig:unnamed-chunk-18}
-\end{figure}
-
-\subsubsection{TWO-COLUMN FIGURES}
-
-You can also include a larger figure.
-
-\begin{figure}
-\includegraphics[width=12cm]{Nikolaus_Kopernikus} \caption{two column figure}\label{fig:unnamed-chunk-19}
-\end{figure}
-
 \subsection{TABLES}
 
 You can ad \LaTeX table in an R Markdown document to meet the template requirements.
 
 \subsubsection{ONE-COLUMN TABLE}
 
-\begin{table}[t]
+\textbackslash{}begin\{table\}{[}t{]}
+
 \caption{TEXT}
-\begin{tabular}{l c r}
+
+\textbackslash{}begin\{tabular\}\{l c r\}
 \tophline
-
-a & b & c \\
-\middlehline
-1 & 2 & 3 \\
-
-\bottomhline
-\end{tabular}
-\belowtable{Table Footnotes}
-\end{table}
-
-\subsubsection{TWO-COLUMN TABLE}
-
-\begin{table*}[t]
-\caption{TEXT}
-\begin{tabular}{l c r}
-\tophline
-
-a & b & c \\
-\middlehline
-1 & 2 & 3 \\
-
-\bottomhline
-\end{tabular}
-\belowtable{Table footnotes}
-\end{table*}
-
-\subsection{MATHEMATICAL EXPRESSIONS}
-
-All papers typeset by Copernicus Publications follow the math typesetting regulations given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry, 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green\_book\_2ed.pdf, 1993).
-
-Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
-
-Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
-
-Items/objects which are defined are typeset in roman font (Car A, Car B)
-
-Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
-
-Abbreviations from 2 letters are typeset in roman font (RH, LAI)
-
-Vectors are identified in bold italic font using \vec{x}
-
-Matrices are identified in bold roman font
-
-Multiplication signs are typeset using the LaTeX commands \texttt{\textbackslash{}times} (for vector products, grids, and exponential notations) or \texttt{\textbackslash{}cdot}
-
-The character * should not be applied as mutliplication sign
-
-\subsection{EQUATIONS}
-
-\subsubsection{Single-row equation}
-
-Unnumbered equations (i.e.~using \texttt{\$\$} and getting inline preview in RStudio) are not supported by Copernicus.
-
-\begin{equation}
-1 \times 1 \cdot 1 = 42
-\end{equation}
-
-\begin{equation}
-A = \pi r^2
-\end{equation}
-
-\begin{equation}
-x=\frac{2b\pm\sqrt{b^{2}-4ac}}{2c}.  
-\end{equation}
-
-\subsubsection{Multiline equation}
-
-\begin{align}
-& 3 + 5 = 8\\
-& 3 + 5 = 8\\
-& 3 + 5 = 8
-\end{align}
-
-\subsection{MATRICES}
-
-\[
-\begin{matrix}
-x & y & z\\
-x & y & z\\
-x & y & z\\
-\end{matrix}
-\]
-
-\subsection{ALGORITHM}
-
-If you want to use algorithms, you can either enable the required packages in the header (the default, see \texttt{algorithms:\ true}), or make sure yourself that the \LaTeX packages \texttt{algorithms} and \texttt{algorithmicx} are installed so that \texttt{algorithm.sty} respectively \texttt{algorithmic.sty} can be loaded by the Copernicus template.
-Copernicus staff will remove all undesirable packages from your LaTeX source code, so please stick to using the header option, which only adds the two acceptable packages.
-
-\begin{algorithm}
-\caption{Algorithm Caption}
-\label{a1}
-\begin{algorithmic}
-\STATE $i\gets 10$
-\IF {$i\geq 5$}
-        \STATE $i\gets i-1$
-\ELSE
-        \IF {$i\leq 3$}
-                \STATE $i\gets i+2$
-        \ENDIF
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
-
-\subsection{CHEMICAL FORMULAS AND REACTIONS}
-
-For formulas embedded in the text, please use \texttt{\textbackslash{}chem\{\}}, e.g. \chem{A \rightarrow B}.
-
-The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
-
-\begin{itemize}
-\item
-  \texttt{\textbackslash{}rightarrow} should be used for normal (one-way) chemical reactions
-\item
-  \texttt{\textbackslash{}rightleftharpoons} should be used for equilibria
-\item
-  \texttt{\textbackslash{}leftrightarrow} should be used for resonance structures
-\end{itemize}
-
-\begin{reaction}
-A \rightarrow B \\
-\end{reaction}
-\begin{reaction}
-Coper \rightleftharpoons nicus \\
-\end{reaction}
-\begin{reaction}
-Publi \leftrightarrow cations
-\end{reaction}
 
 \subsection{PHYSICAL UNITS}
 
 Please use \texttt{\textbackslash{}unit\{\}} (allows to save the math/\texttt{\$} environment) and apply the exponential notation, for example \(3.14\,\unit{km\,h^{-1}}\) (using LaTeX mode: \texttt{\textbackslash{}(\ 3.14\textbackslash{},\textbackslash{}unit\{...\}\ \textbackslash{})}) or \unit{0.872\,m\,s^{-1}} (using only \texttt{\textbackslash{}unit\{0.872\textbackslash{},m\textbackslash{},s\^{}\{-1\}\}}).
-
-\conclusions
-
-The conclusion goes here.
-You can modify the section name with \texttt{\textbackslash{}conclusions{[}modified\ heading\ if\ necessary{]}}.
 
 
 
