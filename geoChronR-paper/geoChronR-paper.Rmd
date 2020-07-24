@@ -26,7 +26,7 @@ affiliation:
     address: University of Southern California, Los Angeles, CA
 abstract: |
   Chronological uncertainty is a hallmark of the paleosciences. While many tools have been made available to researchers to produce age models suitable for various settings and assumptions, disparate tools and output formats often discourage integrative approaches. In addition, associated tasks like propagating age model uncertainties to subsequent analyses, and visualizing the results, have received comparatively little attention in the literature and available software. Here we describe GeoChronR, an open-source R package to facilitate these tasks. GeoChronR is built around emerging data standards for the paleosciences (Linked Paleo Data, or LiPD), and offers access to four popular age modeling techniques (Bacon, BChron, Oxcal, BAM). The output of these models is easily stored in LiPD, enabling paleo-aware synchronization, regression, correlation, principal component, and spectral analyses. Five real-world use cases illustrate how to use GeoChronR to facilitate these tasks, and to visualize the results in intuitive ways. 
-bibliography: geochronr.bib, solarianism.bib
+bibliography: geochronr.bib
 running:
   title: The GeoChronR framework
   author: McKay et al.
@@ -179,7 +179,7 @@ More recently, the authors released an R package `rbacon` [@baconPackage], which
 Bacon will optionally return a subset of the MCMC accumulation rate ensemble members with high *a posteriori* probabilities, which GeoChronR uses to form age ensemble members for subsequent analysis. 
 
 
-depositional model?
+maybe comment on the depositional model?
 
 ## BChron
 
@@ -302,9 +302,9 @@ In GeoChronR, the median of the loadings is shown as a color, and the size of th
 Consequently, large symbols depict loadings that are robust to the uncertainties, whereas small symbols show datasets whose loadings change substantially across the analysis.
 An example is shown in Section \@(sec:pca)
 
-## Spectra
+## Spectra {#sec:spec_viz}
 
-It is customary to plot spectra on a log-log scale, which helps separate close-by frequencies. This choice also naturally highlights scaling laws [@lovejoy2013weather,@ZhuPNAS2019] as linear structures in this reference frame. GeoChronR thus implements this convention. In addition, the abscissa ($\log_{10} f$) is labeled according to the corresponding period, which are more intuitive than frequency to scientists reading the plot. To help identify significant periodicities, confidence limits can be superimposed, based on user-specified benchmarks (see \@ref(sec:use-cases)). The `plotSpectrum()` function visualizes single ensemble members (e.g. a median age model), while `plotSpectraEns()` visualizes the quantiles of a distribution of age-uncertain spectra as ribbons, using the eponymous `ggplot` function. 
+It is customary to plot spectra on a log-log scale, which helps separate close-by frequencies. This choice also naturally highlights scaling laws [@lovejoy2013weather,@ZhuPNAS2019] as linear structures in this reference frame. GeoChronR thus implements this convention. In addition, the abscissa ($\log_{10} f$) is labeled according to the corresponding period, which are more intuitive than frequency to scientists reading the plot. To help identify significant periodicities, confidence limits can be superimposed, based on user-specified benchmarks (see \@ref(sec:use-cases)). The `plotSpectrum()` function visualizes single ensemble members (e.g. a median age model), while `plotSpectraEns()` visualizes the quantiles of a distribution of age-uncertain spectra as ribbons, using the eponymous `ggplot` function. `periodAnnotate()` allows to manually highlight periods of interest, layered an existing plot. 
 
 
 # Use cases {#sec:use-cases}
@@ -325,7 +325,7 @@ By specifying these parameters, age model creation can be scripted and will run 
 In this use case, we'll use geoChronR and BChron [@parnell2008flexible] to calculate an age ensemble for the Hulu Cave $\delta^{18}$O speleothem record [@hulu2001], and BAM [@BAM] to simulate age uncertainties for the GISP2 ice core $\delta^{18}$O dataset [@alley].
 The `plotChronEns(hulu)` function will plot an age-depth model and uncertainties derived from the age ensemble.
 
-```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE}
+```{r, load packages, echo=FALSE,results='hide',warning = FALSE, message = FALSE}
 ## ---- results = FALSE, warning = FALSE, message= FALSE------------------------
 library(lipdR)
 library(geoChronR)
@@ -355,11 +355,11 @@ hulu <- runBchron(hulu,
                   rejected.ages.var = NULL)
 ```
 
-```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE}
+```{r, Hulu Chronology, echo=FALSE,results='hide',warning = FALSE, message = FALSE}
 chronPlot <- plotChronEns(hulu,truncate.dist = 1e-4)+ggtitle(NULL)
 ```
 
-```{r,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
+```{r, Hulu Chronology export,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
 print(chronPlot)
 ```
 
@@ -415,12 +415,13 @@ corPlot <- plotCorEns(corout,legend.position = c(0.1, 0.8),significance.option =
 The results show consistently negative correlations, although `r sum(corout$cor.df$r>0)/nrow(corout$cor.df)*100`% of the ensemble members are positive.
 However, only `r sum(corout$cor.df$pSerial < 0.05)/nrow(corout$cor.df)*100`% are significant after accounting for serial autocorrelation.
 
-```{r,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
+```{r, Correlation plot, echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Need to write a caption"}
 print(corPlot)+ggtitle(NULL)
 ```
 
 
-In this use case, we demonstrate how a user could calculate and visualize and age-uncertain correlation between the Hulu speleothem $\delta^{18}\mathrm{O}$ record and the GISP2 ice core $\delta^{18}\mathrm{O}$ record. (Introduction about why a user might want to do an age uncertain correlation between Hulu and GISP2).
+In this use case, we demonstrate how a user could calculate and visualize and age-uncertain correlation between the Hulu speleothem $\delta^{18}\mathrm{O}$ record and the GISP2 ice core $\delta^{18}\mathrm{O}$ record. This is illustative the broader task of chronology alignment, whereby age-uncertain records are often "pegged" against a better-constrained chronology by aligning features.
+(Introduction about why a user might want to do an age uncertain correlation between Hulu and GISP2).
 
 
 ## Age-uncertain Calibration
@@ -504,209 +505,125 @@ pcout = pcaEns(binned.TS)
 plotPCA <- plotPcaEns(pcout,TS = TS.filtered,map.type = "line",projection = "stereo",bound.circ = T,restrict.map.range = T,f=.1,legend.position = c(0.5,.6),which.pcs = 1:2,which.leg = 2)
 ```
 
-## Spectral Analysis
+## Spectral Analysis {#sec:spec_vignette}
 To illustrate the use of spectral analysis functionalities, consider the following use case: a paleoceanographer wants to identify the relative energy of oscillations at orbital (Milankovitch) periodicities in a deep-sea sediment core, and quantify the impact of age uncertainties on this assessment. To do so, they select the benthic $\delta^{18}\mathrm{O}$ record of the International Ocean Drilling Project core 846 [@mix1995benthic, @Shackleton95], covering the past 4.7 million years. For this assessment, we use a new age model obtained by alignment to the benthic $\delta^{18}\mathrm{O}$ stack of @LisieckiRaymo05 using the HMM-Match algorithm [@ProbStack,@Khider_2017]. HMM-Match is a probabilistic method that generates an ensemble of 1000 possible age models compatible with the chronostratigraphic constraints; this ensemble was archived as a table in the associated [LiPD file](http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd).
 
 Now let us take a first look at the median age model:
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
-I <- lipdR::readLipd("http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd")
+#I <- lipdR::readLipd("http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd")
 d18O <- I$chronData[[1]]$model[[1]]$summaryTable[[1]]$d180$values
 t.med <- I$chronData[[1]]$model[[1]]$summaryTable[[1]]$median$values
 L <- geoChronR::mapAgeEnsembleToPaleoData(I,paleo.meas.table.num = 1)
 age = geoChronR::selectData(L,"ageEnsemble",meas.table.num = 1)
 temp = geoChronR::selectData(L,"temp muller",meas.table.num = 1)
-specPlot <- plotTimeseriesEnsRibbons(ggplot(),X=age,Y=temp,color.low="orchid",color.high="darkorange3",color.line="orange",line.width =0.5,alp=0.3) + 
-  scale_x_reverse() + 
-  theme_hc(style = "darkunica")
+time = age$values[age.median < 1000,]  # age ensemble for ~ last 1 Ma
+values = temp$values[age.median < 1000]
 ```
-```{r,echo = FALSE,warning = FALSE, message = FALSE,fig.cap = "Need to write a caption"}
-print(specPlot)
+```{r,echo = FALSE, results='hide', warning = FALSE, message = FALSE,fig.cap = "Temperature reconstruction from IODP 846"}
+tsPlot <- geoChronR::plotTimeseriesEnsRibbons(ggplot(),X=age,Y=temp,line.width = 0.5,alp=1) + 
+  scale_x_reverse() 
+show(tsPlot)
+print(tsPlot)
 ```
 
-This paleoclimate record displays three salient features:
+This record displays three salient features:
 
-- a long-term cooling trend ($\delta^{18}\mathrm{O}$ gets more positive over time) characteristic of the late Neogene and Quaternary climate. 
+- a long-term cooling trend characteristic of the late Neogene and Quaternary climate. 
 
 - quasi-periodic oscillations (the legendary Pleistocene Ice Ages)
 
 - nonstationary behavior, related to the well-known mid-Pleistocene transition from a "41k world" to a "100k world" somewhere around 0.8 Ma [@Paillard_2001]. 
 
-<!-- For tractability, let us focus on the last million years, and use the median age model. As mentioned in \@ref(sec:spec_theory) a standard assumption of spectral analysis is that data are evenly spaced in time. In real-world paleo timeseries this is seldom the case. Indeed, over the past 1 Ma, the time increments ($\Delta t$) are sharply peaked around 2 ka, but they range from 0 to about 7.5 ka. For now, let us assume that the time axis, albeit uneven, is known without uncertainty. From this point there are two ways to proceed: 1) use methods that explictly deal with unevenly-spaced data, or 2) interpolate to a regular grid and apply standard methods (see \@ref(sec:spec_theory)).  Though GeoChronR supports four different methods, we will highlight only two here: REDFIT and MTM.  -->
+For tractability, let us focus on the last million yearsm which cover the Quaternary Era. As mentioned in \@ref(sec:spec_theory) a standard assumption of spectral analysis is that data are evenly spaced in time. In real-world paleo timeseries this is seldom the case. Indeed, over the past 1 Ma, the time increments ($\Delta t$) are sharply peaked around 2.5 ka, but they range from 0 to about 7.5 ka. From this point there are two ways to proceed: 1) use methods that explictly deal with unevenly-spaced data, or 2) interpolate to a regular grid and apply standard methods (see \@ref(sec:spec_theory)).  Though GeoChronR supports four different methods, we will highlight only two here: REDFIT and MTM.
 
-<!-- ```{r REDFIT} -->
-<!-- spec.redfit <- computeSpectraEns(t,X,method = 'redfit') -->
-<!-- redfit.df <- data.frame("freq" = spec.redfit$freq, "pwr" = spec.redfit$power) -->
-<!-- cl.df <- data.frame("freq" = spec.redfit$freq, "95% CL" = spec.redfit$power.CL) -->
-<!-- names(cl.df)[2] <- "95% CL" -->
+```{r ensemble-mode REDFIT, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
+spec.redfit.ens <- computeSpectraEns(time,values,max.ens = 1000, method = 'redfit')
+cl.ens.df     <- data.frame("freq" = spec.redfit$freq, "pwr95" = spec.redfit$power.CL) # store confidence limits
+names(cl.ens.df)[2] <- "95% CL"
 
-<!-- # plot this  -->
-<!-- pticks = c(10, 20, 50, 100, 200, 500, 1000) -->
-<!-- prange = c(10,1000) -->
-<!-- yl = c(0.01,1000) -->
-<!-- p.ls <- plotSpectrum(redfit.df,cl.df,xlims=prange,xticks = pticks, ylims = yl, -->
-<!--                      color.line='orange', color.cl='white') +  -->
-<!--   ggtitle("IODP 846 d18O, REDFIT estimation") + -->
-<!--   theme_hc(style = "darkunica") + theme(axis.ticks.x = element_line(color = "gray")) -->
+p.redfit.ens <- plotSpectraEns(spec.ens = spec.redfit.ens, cl.df = cl.ens.df,
+                               x.lims = c(10,150), y.lims = c(0.1,1000)) +
+  ggtitle("IODP 846 age ensemble, REDFIT") + xlab("Period (ky)")
+# label periodicities of interest
+p.redfit.ens <- periodAnnotate(p.redfit.ens, periods = c(19,23,41,100), y.lims =c(0.1,300))
+#show(p.redfit.ens)
+```
 
-<!-- # label periodicities of interest -->
-<!-- p.ls <- PeriodAnnotate(p.ls, periods = c(19,23,41,100), ylims =c(0.01,100)) -->
-<!-- show(p.ls) -->
-<!-- ``` -->
+```{r, REDFIT ensemble export,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "REDFIT spectrum for IODP 846, 1000-member age ensemble"}
+print(p.redfit.ens)
+```
 
-<!-- It is clearly seen that the data contain significant energy (peaks) near, but not exactly at, the famed Milankovitch periodicities (100, 41, 23, and 19 kyr).  These periodicities (particularly the eccentricity (100kyr) and precessional (23 and 19 kyr)) rise above the null (the 95% quantile from an autoregressive process of order one, see @Mudelsee_NPG09). The obliquity period is relatively weak, and does not rise above the AR(1) benchmark.  -->
+It is clear that the data contain significant energy (peaks) near, but not exactly at, the famed Milankovitch periodicities (100, 41, 23, and 19 kyr).  These periodicities (particularly the eccentricity (100kyr) and precessional (23 and 19 kyr)) rise above the null (the 95% quantile from an autoregressive process of order one, see @Mudelsee_NPG09). The obliquity period is relatively weak, reaching just below the AR(1) benchmark.
 
-<!-- The Lomb-Scargle periodogram used by REDFIT is a decent way to deal with unevenly-spaced timeseries, but it is still a periodogram, which has several problems. In particular, it is inconsistent: the variance of each estimate goes to infinity as the number of observations increases. This is mitigated somewhat with the application of Welch's Overlapping Segment Averaging, but whose parameter choice is fairly arbitrary. On the other hand, MTM [@thomson82] is an optimal estimator, which is consistent (the more data, the better constrained the amplitude of the peaks). Formally, MTM optimizes the classic bias-variance tradeoff inherent to all statistical inference. It does so by minimizing speactral leakage  outside of a frequency band with half-bandwidth equal to $pf_R$, where $f_R=1/(N \Delta t)$ is the Rayleigh frequency, $\Delta t$ is the sampling interval, $N$ the number of measurements, and $p$ is the so-called *time-bandwidth product* [@Ghil02]. $p$ can only take a finite number of values, all multiples of 1/2 between 2 and 4. A larger $p$ means lower variance (i.e. less uncertainty about the power), but broader peaks (i.e. a lower spectral resolution), synonymous with more uncerainty about the exact location of the harmonic. So while MTM might not distinguish between closely-spaced harmonics, it is much less likely to identify spurious peaks, especially at high frequencies.  In addition, a battery of formal tests have been devised with MTM, allowing under reasonably broad assumptions to ascertain the significance of spectral peaks. We show how to use this "harmonic F-test" below. -->
+The Lomb-Scargle periodogram used by REDFIT is a decent way to deal with unevenly-spaced timeseries, but it is still a periodogram, which is known to be inconsistent: the variance of each estimate goes to infinity as the number of observations increases. This is mitigated somewhat with the application of Welch's Overlapping Segment Averaging, but their parameter choice is fairly arbitrary. On the other hand, MTM [@thomson82] is an optimal estimator, which is consistent (the more data, the better constrained the amplitude of the peaks). Formally, MTM optimizes the classic bias-variance tradeoff inherent to all statistical inference. It does so by minimizing speactral leakage outside of a frequency band with half-bandwidth equal to $pf_R$, where $f_R=1/(N \Delta t)$ is the Rayleigh frequency, $\Delta t$ is the sampling interval, $N$ the number of measurements, and $p$ is the so-called *time-bandwidth product* [@Ghil02]. $p$ can only take a finite number of values, all multiples of 1/2 between 2 and 4. A larger $p$ means lower variance (i.e. less uncertainty about the power), but broader peaks (i.e. a lower spectral resolution), synonymous with more uncerainty about the exact location of the harmonic. So while MTM might not distinguish between closely-spaced harmonics, it is much less likely to identify spurious peaks, especially at high frequencies.  In addition, a battery of formal tests have been devised with MTM, allowing under reasonably broad assumptions to ascertain the significance of spectral peaks. We show how to use this "harmonic F-test" below.
 
-<!-- The classic version of MTM can only handles evenly-spaced data. As we saw above, the data are not that far from evenly-spaced, so is is reasonable to interpolate them using standard methods. Conveniently, both the interpolation routine and MTM are available within the  [astrochron @astrochron] package, which is thus a dependency of GeoChronR.  -->
+The classic version of MTM can only handle evenly-spaced data. As we saw above, the data are not that far from evenly-spaced, so is is reasonable to interpolate them using standard methods. Conveniently, both the interpolation routine and MTM are available within the  [astrochron @astrochron] package, which is thus a dependency of GeoChronR.
 
-<!-- ```{r interpolation, results="hide"} -->
-<!-- library(astrochron) -->
-<!-- dfs = data.frame(time=t,temp=X) -->
-<!-- dti = 2.5  # interpolation interval, corresponding to the mode of the \Delta t distribution -->
-<!-- dfe = linterp(dfs,dt=dti) -->
-<!-- tbw = 2  #time-bandwidth product for the analysis; we use the minimum allowed to limit smoothing.  -->
-<!-- ``` -->
-<!-- Most of the `astrochron` routines produce a diagnostic graphical output, which you can silence by turning the `genplot` flag to `FALSE`. However, it is instructive to take a peak at the top-left panel and see where the interpolation has made a difference. We see that the black line closely espouses the red measurements for most of the timeseries, reassuring us that this process did not introduce spurious excursions or oscillations.  -->
+```{r ensemble-mode MTM, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
+mtm.ens.spec <-  computeSpectraEns(time,values,
+                                   max.ens = 1000,
+                                   method = 'mtm',
+                                   tbw=tbw, padfac=5,
+                                   mtm_null = 'AR(1)')
 
-<!-- Now let's compute the spectrum using MTM on the equally-spaced data stored in `dfe`. -->
-<!-- We continue to manually label Milankovitch frequencies (in orange) and label in green (technically, "chartreuse") the periodicities identified as significant by the test. Here, we start with the default option of a test against an AR(1) background. -->
+ar1.df <- data.frame(mtm.ens.spec$freqs,mtm.ens.spec$power.CL)
+# rename columns to be less silly
+names(ar1.df)[1] <- "freq"
+names(ar1.df)[2] <- "95% CL"
 
-<!-- ```{r MTM, warning=F, message=F} -->
-<!-- spec.mtm <- astrochron::mtm(dfe,tbw=tbw,padfac=5,ar1=TRUE,genplot = F,output=1, verbose = F, detrend=T)  # tbw is the time-bandwidth product, p in the above -->
-<!-- sig.freq <- astrochron::mtm(dfe,tbw=tbw, padfac=5,ar1=TRUE,genplot = F,output=2, verbose = F, detrend=T) -->
-<!-- mtm.df <- data.frame("freq" = spec.mtm$Frequency, "pwr" = spec.mtm$Power) -->
+p.mtm.ens <- plotSpectraEns(spec.ens = mtm.ens.spec, cl.df = ar1.df, 
+                            x.lims = c(10,150), y.lims = c(1e-5,1e-1)) + 
+             ggtitle("IODP 846 age ensemble, MTM") + xlab("Period (ky)")
 
-<!-- # plot this  -->
-<!-- prange = c(5,1000) -->
+# label periodicities of interest
+p.mtm.ens <- periodAnnotate(p.mtm.ens, periods = c(19,23,41,100), y.lims =c(1e-5,0.05))
+#show(p.mtm.ens)
+```
 
-<!-- p.mtm <- plotSpectrum(mtm.df,xlims=prange,xticks = pticks, ylims = c(1e-6,10), color.line='orange') +  -->
-<!--   ggtitle("IODP 846 d18O, Multi-taper method, AR(1) null") + xlab("Period (ky)") + -->
-<!--   theme_hc(style = "darkunica") + theme(axis.ticks.x = element_line(color = "gray")) -->
+To this we can add the periods identified as significant by MTM's F ratio test. GeoChronR deals with it by computing at each frequency the fraction of ensemble members that exhbit a significant peak. One simple criterion for gauging the level of support for such peaks given age uncertainties is to pick out those periodicities that are identified as significant more than 50% of the time. For consistency with REDFIT, we define the null as an AR(1) process fit to the data, but GeoChronR suports two other nulls: a power-law null and one derived with the method of @MannLees96. Both follow the `astrochron` implementation. 
+```{r, MTM ensemble, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
+per = 1/cl.df$freq
+sig_per =  which(mtm.ens.spec$sig.freq>0.5)
+p.mtm.ens <- periodAnnotate(p.mtm.ens, periods = per[sig_per],color = "blue",y.lims = c(1e-5,5e-4))
+show(p.mtm.ens)
+```
 
-<!-- # label periodicities of interest -->
-<!-- p.mtm <- PeriodAnnotate(p.mtm, periods = c(19,23,41,100), ylims = c(1e-6,1)) -->
-<!-- p.mtm <- PeriodAnnotate(p.mtm, periods = 1/sig.freq$Frequency,colour = "chartreuse",ylims = c(1e-6,.1)) -->
-<!-- show(p.mtm) -->
-<!-- ``` -->
+```{r, MTM ensemble export,echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "MTM spectrum for IODP 846, 1000-member age ensemble"}
+print(p.mtm.ens)
+```
 
-<!-- You may notice a few differences to the REDFIT estimate. First, the MTM version with this time-bandwidth product is noisier, creating more peaks. There is also a clear power law behavior from periods of 5 to 100 ky, which in this log-log plotting convention manifests as a linear decrease. *Astrochron* implements several tests to detect harmonic (sinusoidal) components. Like all tests, they are heavily dependent on a null hypothesis. By default, *astrochron::mtm()* assumes that we test against an AR(1) model. Using the option `output = 2`, it will export the frequencies identified as "significant" by this procedure. In this case, it roughly identifies the Milankovitch frequencies we expected to find, plus many others. What should we make of that? The 100ka cycle is now labeled as 90 ka, though given the peak's width, one should not be foolish enough to consider them distinct. There is also evidence that this peak may be the result of ice ages clustering every 2 to 3 obliquity cycles (81 or 123 ka), averaging around 100 over the pleistocene [@HuybersWunsch2005]. Bottom line: with such spectral resolution, 94 and 100 are one and the same, and may really be a mixture of 80 and 120.  Overall, this test identifies 8 periodicities as significant, compared to the 4 we'd expect.  -->
-
-<!-- It's helpful to take a step back and contemplate our null hypothesis of AR(1) background, and the real possibility that without adjustments, we might be underestimating the lag-1 autocorrelation, hence making the test too lenient. There are alternatives to that in *Astrochron*, using either the robust method of [Mann & Lees (1996)](https://link.springer.com/article/10.1007/BF00142586) or a less error-prone version by the author [Meyers, (2012)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2012PA002307), called LOWSPEC. You might want to experiment with that. -->
-
-<!-- Most important of all is the choice of null [(Vaughan et al, 2011)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2011PA002195). Past work has shown that the continuum of climate variability is well described by power laws [Huybers & Curry (2006)](https://www.nature.com/articles/nature04745), so this should be a far better null against which to test the emergence of spectral peaks.This is easily done through  *Astrochron*'s mtmPL, which is called by  -->
-
-<!-- ```{r} -->
-<!-- mtmPL.df <- astrochron::mtmPL(dfe,tbw=tbw,padfac=5,genplot = F,output=1, verbose = F, flow=f.low, fhigh=f.high) -->
-<!-- sig.freqPL <- astrochron::mtmPL(dfe,tbw=tbw,padfac=5,genplot = F,output=2, verbose = F, flow=f.low, fhigh=f.high) -->
-<!-- mtm.df = mtmPL.df[c(1,2)] -->
-<!-- names(mtm.df)[1] <- "freq" -->
-<!-- names(mtm.df)[2] <- "pwr" -->
-
-<!-- cl.df <- data.frame(mtmPL.df[,union(1,c(5:7))]) # extract confidence limits  -->
-<!-- # rename columns to be less silly -->
-<!-- names(cl.df)[1] <- "freq" -->
-<!-- names(cl.df)[2] <- "90% CL" -->
-<!-- names(cl.df)[3] <- "95% CL" -->
-<!-- names(cl.df)[4] <- "99% CL" -->
+In orange are the Milankovitch frequencies and we label in blue the periodicities identified as significant by the test. You may notice a few differences to the REDFIT estimate. First, this ensemble of spectra exhibits a clear power law behavior from periods of 5 to 100 ky, which in this log-log plotting convention manifests as a linear decrease. This is part of the well-documented continuum of climate variability [@Huybers_Curry2006,@ZhuPNAS2019], which is conspicuously absent from the Lomb-Scargle (REDFIT) estimate, known to be extremely biased in its estimate of the spectral background. 
 
 
-<!-- # plot it  -->
-<!-- p.mtmPL <- plotSpectrum(mtm.df,cl.df,xlims=prange,xticks = pticks,  -->
-<!--                         ylims = c(1e-6,10),color.line='orange', color.cl='white') +  -->
-<!--   ggtitle("IODP 846 d18O, Multi-taper method, power-law null") + xlab("Period (ky)") + -->
-<!--   theme_hc(style = "darkunica") + theme(axis.ticks.x = element_line(color = "gray")) -->
+<!-- *Astrochron* implements several tests to detect harmonic (sinusoidal) components. Like all tests, they are heavily dependent on a null hypothesis. By default, *astrochron::mtm()* assumes that we test against an AR(1) model. Using the option `output = 2`, it will export the frequencies identified as "significant" by this procedure. In this case, it roughly identifies the Milankovitch frequencies we expected to find, plus many others. What should we make of that? The 100ka cycle is now labeled as 90 ka, though given the peak's width, one should not be foolish enough to consider them distinct. There is also evidence that this peak may be the result of ice ages clustering every 2 to 3 obliquity cycles (81 or 123 ka), averaging around 100 over the pleistocene [@HuybersWunsch2005]. Bottom line: with such spectral resolution, 94 and 100 are one and the same, and may really be a mixture of 80 and 120.  Overall, this test identifies 8 periodicities as significant, compared to the 4 we'd expect. -->
 
-<!-- # label periodicities of interest -->
-<!-- p.mtmPL <- PeriodAnnotate(p.mtmPL, periods = c(19,23,41,100), ylims = c(1e-6,1)) -->
-<!-- p.mtmPL <- PeriodAnnotate(p.mtmPL, periods = 1/sig.freqPL$Frequency,colour = "chartreuse",ylims = c(1e-6,.1)) -->
-<!-- show(p.mtmPL) -->
-<!-- ``` -->
-<!-- Sure enough, this gets rid of a few cycles, but many remain. Taking the 95% level as a benchmak, we see that a few regions of the spectrum poke above it, but one should not be so foolish as to identify every single periodicity in these ranges to be equally significant. This is related to the multiple comparisons problem [@@Vaughan_PP2011]. However, as pointed out by @Meyers_2012, even that misses the point: sedimentary processes (and many processes in other proxy archives) tend to smooth out the signal over the depth axis, making comparisons at neighboring frequencies highly dependent. One solution is to use predictions made by a physical model about the frequency and relative amplitude of astronomical cycles [@MeyersSageman_2007]. However this may not be applicable to all spectral detection problems. We thus refrain from implementing "cookie-cutter" solutions in GeoChronR, to force the user to think deeply about the null hypothesis and the most sensible way to test it.  -->
+Secondly, the MTM version with this time-bandwidth product is sharper than REDFIT, with more well-defined peaks, particularly for the obliquity period (41 ky), which pokes well above the 95\% confidence limit. Here it is helpful to take a step back and contemplate our null hypothesis of AR(1) background, and the real possibility that without adjustments, we might be underestimating the lag-1 autocorrelation, hence making the test too lenient. There are alternatives to that in *Astrochron*, using either the robust method of @MannLees96 or a less error-prone version by the author [@Meyers_2012], called LOWSPEC. You might want to experiment with that.
 
+Most important of all is the choice of null [@Vaughan_PP2011]. The presence of scaling behavior (power law decrease) suggests that this should be a more approrpriate null against which to test the emergence of spectral peaks. In GeoChronR, this can be done by specifying `mtm_null = "power_law` in the function call. 
 
-<!-- So far we have only explored the median age model. What happens when we consider the full age ensemble? -->
-<!-- Let us repeat the previous analysis by looping over the 1,000 age realizations output by the tuning algorithm HMM-Match. To enable a fair comparison between MTM and REDFIT, we use an AR(1) null for both:  -->
+This may get rid of a few cycles, but many do remain (not shown). However, one should not be so foolish as to identify every single periodicity as independent, which affects assesments of significance, via the multiple comparisons problem [@Vaughan_PP2011]. However, as pointed out by @Meyers_2012, even that misses the point: sedimentary processes (and many processes in other proxy archives) tend to smooth out the signal over the depth axis, making comparisons at neighboring frequencies highly dependent. One solution is to use predictions made by a physical model about the frequency and relative amplitude of astronomical cycles [@MeyersSageman_2007]. However this may not be applicable to all spectral detection problems. We thus refrain from implementing "cookie-cutter" solutions in GeoChronR, to force the user to think deeply about the null hypothesis and the most sensible way to test it.
 
+There are four main takeways from this example:
 
-<!-- ```{r ensemble-mode MTM, compute} -->
-<!-- time = age$values[age.median < 1000,]  # age ensemble for ~ last 1 Ma -->
-<!-- values = temp$values[age.median < 1000] -->
-<!-- mtm.ens.spec = computeSpectraEns(time,values, -->
-<!--                                  max.ens = 1000,  -->
-<!--                                  method = 'mtm', -->
-<!--                                  tbw=tbw, padfac=5,  -->
-<!--                                  mtm_null = 'AR(1)') -->
+1. GeoChronR implements 4 different spectral methods, with different features and assumptions. This allows users to explore whether results obtained with one method are robust to these choices.  More details of the implementation are provided in the vignette "spectral_analysis" that accompanies the package.
 
-<!-- ar1.df <- data.frame(mtm.ens.spec$freqs,mtm.ens.spec$power.CL) -->
-<!-- # rename columns to be less silly -->
-<!-- names(ar1.df)[1] <- "freq" -->
-<!-- names(ar1.df)[2] <- "95% CL" -->
+2. The methods are enabled for single age models, as well as age ensembles.
 
-<!-- p.mtm.ens <- plotSpectraEns(spec.ens = mtm.ens.spec, cl.df = ar1.df, xlims = c(10,150), ylims = c(1e-5,1e-1), -->
-<!--                             color.line='darkorange', -->
-<!--                             color.low='darkorange2', -->
-<!--                             color.high='coral4',color.cl = 'white') +  -->
-<!--   ggtitle("IODP 846 age ensemble, MTM") + theme_hc(style = "darkunica") +  -->
-<!--   theme(axis.ticks.x = element_line(color = "gray")) -->
+3. The choice of null hypothesis is always highly consequential, and should be made with care.
 
-<!-- # label periodicities of interest -->
-<!-- p.mtm.ens <- PeriodAnnotate(p.mtm.ens, periods = c(19,23,41,100), ylims =c(0.01,0.05)) -->
-<!-- show(p.mtm.ens) -->
-<!-- ``` -->
+4. Hunting for astronomical (or other) frequencies in paleoclimate timeseries takes extreme care, and cannot be answered in one function call. In this particular example where the data are nearly evenly spaced, and interpolation has a negligible impact, the best choice is MTM for two reasons: (1) because it is optimal, in the sense that it minimizes spectral leakage, and (2) because the implementation used here (derived from *astrochron*) allows to flexibly apply different tests of significance. No such luxury is afforded by the other methods at present.
 
-<!-- To this we can add the periods identified as significant owing to MTM's harmonic ratio test. GeoChronR deals with it by computing at each frequency the fraction of ensemble members that exhbit a significant peak. One simple criterion for gauging the level of support for such peaks given age uncertainties is to pick out those periodicities that are identified as significant more than 50% of the time.  -->
-
-<!-- ```{r, MTM ensemble, with significant frequencies} -->
-<!-- per = 1/cl.df$freq -->
-<!-- sig_per =  which(mtm.ens.spec$sig.freq>0.5) -->
-<!-- p.mtm.ens <- PeriodAnnotate(p.mtm.ens, periods = per[sig_per],colour = "chartreuse",ylims = c(1e-5,5e-4)) -->
-<!-- show(p.mtm.ens) -->
-<!-- ``` -->
-
-<!-- One could of course, impose a more stringent criterion (e.g. 80%, 90%, etc). To do that, specify `which(mtm.ens.spec$sig.freq>0.8)` or `which(mtm.ens.spec$sig.freq>0.9)`. That relatively close peaks appear significant may be an artifact of neglecting the multiple comparisons problem [cf @Vaughan_PP2011].  -->
-
-<!-- So what do we find? Consistent with previous investigations (e.g. [Mudelsee et al 2009](https://npg.copernicus.org/articles/16/43/2009/)), the effect of age uncertainties is felt more at high frequencies, with the effect of broadening peaks, or lumping them together. Again, the peaks that rise above the power-law background are the ~100kyr and ~40kyr peaks, which is not surprising. There is significant energy around the precessional peaks, but it is rather spread out, and hard to tie to particular harmonics. No doubt a record with higher-resolution and/or tighter chronology would show sharper precessional peaks.  -->
-
-<!-- Let us now repear this analysis with REDFIT. -->
-
-<!-- ```{r ensemble-mode REDFIT} -->
-<!-- spec.redfit.ens <- computeSpectraEns(time,values,max.ens = 1000, method = 'redfit') -->
-<!-- cl.ens.df     <- data.frame("freq" = spec.redfit$freq, "pwr95" = spec.redfit$power.CL) # store confidence limits -->
-<!-- names(cl.ens.df)[2] <- "95% CL" -->
-
-<!-- p.redfit.ens <- plotSpectraEns(spec.ens = spec.redfit.ens, cl.df = cl.ens.df,  -->
-<!--                                xlims = c(10,150),  -->
-<!--                                color.line='darkorange', -->
-<!--                                color.low='darkorange2', -->
-<!--                                color.high='coral4',color.cl = 'white') +  -->
-<!--   ggtitle("IODP 846 age ensemble, redfit") + theme_hc(style = "darkunica") +  -->
-<!--   theme(axis.ticks.x = element_line(color = "gray")) -->
-
-<!-- # label periodicities of interest -->
-<!-- p.redfit.ens <- PeriodAnnotate(p.redfit.ens, periods = c(19,23,41,100), ylims =c(0.01,.5)) -->
-<!-- show(p.redfit.ens) -->
-<!-- ``` -->
-
-<!-- The result is quite a bit smoother here, perhaps because of the choice of parameters.  -->
-
-<!-- There are four main takeways from this example: -->
-
-<!-- 1. GeoChronR implements 4 different spectral methods, with different features and assumptions. This allows users to explore whether results obtained with one method are robust to these choices.  More details of the implementation are provided in the vignette "spectral_analysis" that accompanies the package.  -->
-<!-- 2. The methods are enabled for single age models, as well as age ensembles.  -->
-<!-- 3. The choice of null hypothesis is always highly consequential, and should be made with care.  -->
-<!-- 4. Hunting for astronomical (or other) frequencies in paleoclimate timeseries takes extreme care, and cannot be answered in one function call. In this particular example where the data are nearly evenly spaced, and interpolation has a negligible impact. The best choice is MTM for two reasons: (1) because it is optimal, in the sense that it minimizes spectral leakage, and (2) because the implementation used here (derived from *astrochron*) allows to flexibly apply different tests of significance. Not such luxury is afforded by the other methods at present.  -->
-<!-- 5. There is no one-size-fits-all method that will solve your exact problem, but it might get you started on asking relevant questions. Readers are invited to consider the following references for deeper exploration of these questions: @Vaughan_PP2011, @Meyers_2012, @Meyers_2015, @MeyersMalinverno2018.   -->
+5. There is no one-size-fits-all method that will solve all spectral problems, so GeoChronR is primarily intended as an explorartory tool, designed to begin asking relevant questions. Readers are invited to consider the following references for a deeper exploration of these questions: @Vaughan_PP2011, @Meyers_2012, @Meyers_2015, @MeyersMalinverno2018.
 
 
 \conclusions
 
+<!-- I wrote a strawman for this section. Please feel free to edit/modify and extend. -->
 
-I wrote a strawman for this section. Please feel free to edit/modify and extend.
-
-Version 1.0.0 of GeoChronR provides user-friendly access to common age-uncertain analyses in the paleogeosciences, along with intuitive visualization of the results. 
+Version 1.0.0 of GeoChronR provides user-friendly access to common age-uncertain analysis tools in the paleogeosciences, along with intuitive visualization of the results. 
 Although the focus has been on simplicity and ease of use, GeoChronR also has the underlying infrastructure to support customized analyses for users seeking to address a more nuanced or complex question. 
-Nevertheless, in many ways the paleogeoscience community is only scratching the surface with age-uncertain analysis, and we look forward to working with the community to extend and expand the package. 
+Nevertheless, in many ways the paleogeoscience community is only scratching the surface with age-uncertain analysis, and we look forward to working with the community to extend and expand this open-source package. 
 Looking forward, we suggest that the next major direction for age-uncertain analysis is philosophical, not technical.
 Thus far, the community (and GeoChronR) has focused on quantifying the range of possibilities presented by age-uncertainty, not on developing approaches to constrain which ensemble members are most likely. 
 Theoretically, additional information from nearby records, forcings or covariance structures could do so, but little has been done to date [@wernerAndTingley]. 
