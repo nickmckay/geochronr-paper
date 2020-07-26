@@ -331,6 +331,14 @@ As in correlation and regression, GeoChronR propagates uncertainties through the
 Because the sign of the loadings in PCA analyses is arbitrary and vulnerable to small changes in the input data, GeoChronR reorients the sign of the loadings for all PCs so that the mean of the loadings is positive.
 For well defined modes this effectively orients ensemble PCs, but loading orientation may be uncertain for lower order, or more uncertain, modes.
 
+As in \citet{anchukaitis2013mceof}, we use a modified version of Preisendorfer's ``Rule N'' \citep{PreisendorferMobley1988} to estimate which modes include more variability than those that can arise from random time series with comparable characteristics to the data.
+GeoChronR uses a rigorous ``red'' noise null hypothesis, modified from \citet{SchneiderNeumaier2001}, where following the selection of the age ensemble in each iterations, a synthetic autoregressive timeseries is simulated based on parameters fit from each dataset.
+This means that the characteristics of the null timeseries, including the temporal spacing, autocorrelation and, optionally, the first order trend, match those of each dataset, and vary between locations and ensemble iterations.
+For each iteration, the ensemble PCA procedure is replicated with the synthetic null dataset, using the same age ensemble member randomly selected for the real data.
+This propagates the impact of age uncertainty into null hypothesis testing.
+Following the analysis, the distribution of eigenvalues calculated by the ensemble PCA is typically compared with the 95th percentile of the synthetic eigenvalue results in a scree plot.
+Only principle components whose eigenvalues exceed this threshold should be considered robust.
+
 \hypertarget{sec:spec_theory}{%
 \subsection{Spectral Analysis}\label{sec:spec_theory}}
 
@@ -404,18 +412,14 @@ In this use case, we'll use geoChronR and BChron \citep{parnell2008flexible} to 
 The \texttt{plotChronEns()} function will plot an age-depth model and uncertainties derived from the age ensemble (figure \ref{fig:age-model}).
 
 \begin{figure}
-\centering
-\includegraphics{geoChronR-paper_files/figure-latex/age-model-1.pdf}
-\caption{\label{fig:age-model}Need to write a caption}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/age-model-1} \caption{Need to write a caption}\label{fig:age-model}
 \end{figure}
 
 After an age ensemble has been added to a LiPD object, the user can visualize the ensemble timeseries using \texttt{plotTimeseriesEnsRibbons()} and \texttt{plotTimeseriesEnsLines()}.
 GISP2 \(\delta^{18}\)O is plotted with age uncertainty, using both functions, in figure \ref{fig:timeseries}.
 
 \begin{figure}
-\centering
-\includegraphics{geoChronR-paper_files/figure-latex/timeseries-1.pdf}
-\caption{\label{fig:timeseries}Need to write a caption}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/timeseries-1} \caption{Need to write a caption}\label{fig:timeseries}
 \end{figure}
 
 \subsection{Correlation}
@@ -426,17 +430,28 @@ The \texttt{corEns()} function in geoChronR will calculate ensemble correlations
 \texttt{corEns()} will also sample across ensembles in the proxy data as well, if present.
 Here we calculate correlations during the period of overlap in 500 yr steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
 
-\includegraphics{geoChronR-paper_files/figure-latex/cor-hist-1.pdf} \includegraphics{geoChronR-paper_files/figure-latex/cor-hist-2.pdf}
+\begin{figure}
+\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/cor-hist-1} \caption{Need to write a caption}\label{fig:cor-hist}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/hulu-cor-hist-1} \caption{Need to write a caption}\label{fig:hulu-cor-hist}
+\end{figure}
 
 The results are visualized as a histogram of the ensemble correlation results, with color shading to highlight significance (figure \ref{fig:cor-hist}).
 The two timeseries are consistently negative correlations, although 13.7\% of the ensemble members are positive.
 However, only 0.7\% are significant after accounting for serial autocorrelation.
 Given the age models and correlation parameters used here, it seems pretty unlikely that these two datasets are significantly correlated.
-However, it's worth noting that evaluating these results remains subjective, as there is no theoretical expectation for what fraction of ensemble correlation results should be expected to pass a significance test in age-uncertain correlation.
-Two timeseries, which are actually correlated, each with it's own age-uncertainty, will commonly return insignificant results when random ensemble members are correlated against each other.
-Furthermore, the frequency of these ``false negatives'' depend on the structure of the age-uncertainties and the timeseries, and will vary to some extent by random chance.
-Therefore, it's appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question ``Are these two datasets correlated?''.
-For research applications that require rigourous determination of more nuanced uncertainties we recommend a surrogate timeseries null hypothesis approach \citep[e.g.][others?]{mckay2018onset}.
+However, it's worth noting that evaluating these results remains somewhat subjective, as there is no theoretical expectation for what fraction of ensemble correlation results should be expected to pass a significance test in age-uncertain correlation.
+Two timeseries, which are actually correlated, each with it's own age-uncertainty, will commonly return some fraction of insignificant results when random ensemble members are correlated against each other.
+The frequency of these ``false negatives'' depend on the structure of the age-uncertainties and the timeseries, and will vary to some extent by random chance.
+One way to get a sense of the vulnerability of a timeseries to false negatives is to perform an age-uncertain correlation of a dataset with itself.
+It's appropriate to consider the results of this analysis a best-case scenario, and to consider the correlation results in this light.
+For illustration, we perform this calculation with the Hulu Cave \(\delta^{18}\)O record (figure \ref{hulu-cor-hist}).
+The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only \texttt{7.3}\% of the ensembles have r-values greater than 0.9, and the median correlation is \texttt{0.83}.
+However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
+Generally, it's appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question ``Are these two datasets correlated?''.
+However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that as a correlation that is robust to age uncertainty.
 
 \subsection{Age-uncertain Calibration}
 
@@ -447,31 +462,77 @@ For each iteration in the analysis, a random age ensemble member is chosen and u
 The instrumental temperature data, here taken from the nearest gridcell of the GISTEMP reanalysis product \citep{GISTEMP}, are also binned onto the same timescale, insuring temporal alignment between the two timeseries.
 GeoChronR then derives an ordinary linear regression model, and then uses that model to ``predict'' temperature values from 3-year-binned RABD data back in time.
 This approach propagates the age uncertainties both through the regression and prediction process.
-\texttt{plotRegressEns} produces a number of individual plots that show the results of an age-uncertain regression, and additionally creates an overview ``dashboard'' that showcases the key results (figure \ref{fig:regression}).
 
 \begin{figure}
-\centering
-\includegraphics{geoChronR-paper_files/figure-latex/regression-1.pdf}
-\caption{\label{fig:regression}Need to write a caption}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/regression-1} \caption{Need to write a caption}\label{fig:regression}
 \end{figure}
 
-\subsection{Principle Component Analysis \{sec:pca\}}
+The function \texttt{plotRegressEns} produces multiple plots that visualize the key results of age-uncertain regression, and additionally creates an overview ``dashboard'' that showcases the key results (figure \ref{fig:regression}).
+The first row of figure \ref{fig:regression} illustrates the impact of age uncertainty on the regression modelling.
+In this example, the distribution of the modeled parameters, the slope and intercept of the regression equation, show pronounced modes of their distributions near 150 \(^\circ C^{-1}\) and \(^\circ C\), respectively, but with pronounced tails that include models with much lower slopes.
+This is also apparent in the scatterplot in the central panel of the top row, which illustrates the distribution of modeled relationships.
+Although the tendency for robust relationships are clear, models with slopes near zero also occur, suggesting that in this use case, age uncertainty can effectively destroy the relationship with instrumental data.
+The impact of this variability in modeled parameters, as well as the effects of age uncertainty on the timing of the reconstruction, are shown in the bottom panel of figure \ref{fig:regression}.
+The results shown here are consistent with those presented by \citet{Boldt:2015}, and we refer readers to that study for a full discussion of the implications of their results.
 
-Thus far, the use cases have highlighted age-uncertain analyses of one or two sites, however quantifying the effects of age uncertainty can be even more impactful over large spatial datasets.
+\hypertarget{sec:pca}{%
+\subsection{Principle Component Analysis}\label{sec:pca}}
+
+Thus far, the use cases have highlighted age-uncertain analyses of one or two locations, however quantifying the effects of age uncertainty can be even more impactful over large spatial datasets.
 Here we showcase how to use geoChronR to perform age-uncertain principle components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by \citet{anchukaitis2013mceof}.
-In this example, we examine the Arctic 2k database \citep{McKayKaufman2014}.
+When seeking to analyze a large collection datasets, the first, and often most time-intensive, step is to track down, format and standardize the data.
+Fortunately, the emergence of community-curated standardized data collections \citep[e.g.][\citet{Pages2017}, \citet{Temp12k}]{Pages2013} can greatly simplify this challenge.
+In this example, we examine the Arctic 2k database \citep{McKayKaufman2014}, and use GeoChronR and the LiPD Utilities to filter the data for temperature-sensitive data with age ensembles relevant to the past 2000 years.
 
 \begin{figure}
-\centering
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf}
-\caption{\label{fig:unnamed-chunk-5}Need to write a caption}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/timeseries stack-1} \caption{Need to write a caption}(\#fig:timeseries stack)
+\end{figure}
+
+Once filtered, the data can be visualized using \texttt{plotTimeseriesStack}, which is an option to quickly plot all of the timeseries, on their best-estimate age models, aligned on a common horizontal timescale (figure \ref{timeseries-stack}).
+Although all of the datasets are relevant to Arctic temperatures over the past 2000 years, they span different time intervals, with variable temporal resolution.
+It is also clear that there is a lot of variability represented represented within the data, but it's difficult to visually extract shared patterns of variability.
+Ensemble PCA is well-suited to the modes of variability that explain the most variance within these data, while accounting for the impact of age uncertainty.
+
+As in correlation and regression, aligning the data onto a common timescale is requiered for ensemble PCA.
+All but two of these datasets are annually resolved, and the other two have 5-year resolution, so it's reasonable to bin these data into 5 year bins.
+Furthermore, because many of the records do not include data before 1400 CE, we only analyze the period from 1400 to 2000 CE.
+The data are now prepared for the ensemble PCA calculation, following a few choices in methodology and parameters.
+Because the data analyzed here have variable units, and we're not interested in the magnitude of the variance only the relative variability between the datasets, we choose to use a correlation, rather than covariance, matrix.
+Next, we choose the number of components to estimate.
+After the analysis, a scree plot is used to determine the number of significant components, so we want to estimate several more components than we anticipate will be meaningful.
+For this use case we estimate eight components.
+
+We now conduct the ensemble PCA, including null hypothesis testing, for 100 ensemble members.
+For a final analysis, 1000 ensemble members is standard, however the analysis can be time consuming and 100 members is appropriate for initial analyses.
+First, we plot the ensemble variance explained results for the data and the null hypothesis as a scree plot (figure \ref{fig:scree}).
+The scree plot illustrates how the variance explained by each component declines as the component number increases for both the data, and the null hypothesis.
+Due to age uncertainty, the variance explained is a distribution of results, which we compare to the 95th quantile of the null hypothesis ensemble.
+Figure \ref{fig:scree} indicates that the first two components are clearly distinguished from the null hypothesis.
+The third component is borderline, with the variance explained by the median of the ensemble near the null hypothesis benchmark.
+Therefore, we will focus our investigation on the first two components of the results.
+
+\begin{figure}
+\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/scree-1} \caption{Need to write a caption}\label{fig:scree}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf}
-\caption{\label{fig:unnamed-chunk-7}Need to write a caption}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/pca-1} \caption{Need to write a caption}\label{fig:pca}
 \end{figure}
+
+The spatial and temporal results of the first two principle components are shown in figure (\ref{fig:pca}).
+The first PC is dominated by consistently positive loadings across the North Atlantic, suggesting that this is a regionally persistent mode of variability, and indicating that none of the datasets are negatively correlated with this mode.
+The corresponding timeseries shows multidecadal variability, with values declining until the 18th Century, before increasing into the 20th century.
+Based on the region-wide coherence of the loading pattern and the similarity of the timeseries to regional temperature reconstructions \citep[\citet{McKayKaufman2014},\citet{wernerArcticCFR}]{paico}, the first PC likely reflects the primary pattern of regional temperature variability.
+Notably, the uncertainties in the PC1 timeseries, and the loadings in the spatial pattern, are generally small.
+This, combined with the large amount of variance explained by PC1 relative to the null hypothesis (figure \ref{fig:scree}), suggests this is a significant mode of variabity that is robust to age uncertainty.
+This makes intuitive sense, since the primary features of this pattern are century-long trends in temperature, a timescale that substantially exceeds the age uncertainty in these data \citep{McKayKaufman2014}.
+
+The second PC shows considerable more variability in its spatial loading pattern, and a larger impact of age uncertainty.
+Generally, the loadings suggest a north-south dipole over Greenland for this mode, with positive loadings present in much of southern Greenland, with negative loadings in present in much of the northern part of the region.
+There is a much larger impact of age uncertainty on the loadings in PC2 than in PC1, which illustrated by the size of the markers on the map, which are inversely related to the standard deviation of the loadings across the ensemble PCA results, such that smaller markers indicate larger uncertainties.
+The PC2 timeseries includes more multidecadal variability than PC1 and is more impacted by age uncertainty.
+A key feature of the timeseries is a peak in values in the late 20th century, that occurs after the pronounced peak in PC1.
+This suggests that unlike the mid-20th century peak in warming apparent in most of the data, this later warming was dominated by southern Greenland, and counterbalanced by a decline in values in the northern Atlantic Arctic.
 
 \hypertarget{sec:spec_vignette}{%
 \subsection{Spectral Analysis}\label{sec:spec_vignette}}
@@ -483,7 +544,9 @@ HMM-Match is a probabilistic method that generates an ensemble of 1000 possible 
 
 Now let us take a first look at the median age model:
 
-\includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf} \includegraphics{geoChronR-paper_files/figure-latex/unnamed-chunk-9-2.pdf}
+\begin{figure}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/unnamed-chunk-7-1} \caption{Temperature reconstruction from IODP 846}\label{fig:unnamed-chunk-7}
+\end{figure}
 
 This record displays three salient features:
 
@@ -504,9 +567,7 @@ From this point there are two ways to proceed: 1) use methods that explictly dea
 Though GeoChronR supports four different methods, we will highlight only two here: REDFIT and MTM.
 
 \begin{figure}
-\centering
-\includegraphics{geoChronR-paper_files/figure-latex/REDFIT ensemble export-1.pdf}
-\caption{(\#fig:REDFIT ensemble export)REDFIT spectrum for IODP 846, 1000-member age ensemble}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/redfit plot-1} \caption{REDFIT spectrum for IODP 846, 1000-member age ensemble}(\#fig:redfit plot)
 \end{figure}
 
 It is clear that the data contain significant energy (peaks) near, but not exactly at, the Milankovitch periodicities (100, 41, 23, and 19 kyr).\\
@@ -535,9 +596,7 @@ For consistency with REDFIT, we define the null as an AR(1) process fit to the d
 Both follow the \texttt{astrochron} implementation.
 
 \begin{figure}
-\centering
-\includegraphics{geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf}
-\caption{(\#fig:MTM ensemble export)MTM spectrum for IODP 846, 1000-member age ensemble}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/MTM ensemble export-1} \caption{MTM spectrum for IODP 846, 1000-member age ensemble}(\#fig:MTM ensemble export)
 \end{figure}
 
 In orange are the Milankovitch frequencies and we label in blue the periodicities identified as significant by the test. You may notice a few differences to the REDFIT estimate. First, this ensemble of spectra exhibits a clear power law behavior from periods of 5 to 100 ky, which in this log-log plotting convention manifests as a linear decrease. This is part of the well-documented continuum of climate variability \citep[\citet{ZhuPNAS2019}]{Huybers_Curry2006}, which is conspicuously absent from the Lomb-Scargle (REDFIT) estimate, known to be extremely biased in its estimate of the spectral background.
@@ -583,20 +642,6 @@ We welcome feedback and strongly encourage contributions and enhancements, via t
 \end{Highlighting}
 \end{Shaded}
 
-Subsection text here.
-
-\subsubsection{Subsubsection Heading Here}
-
-Subsubsection text here.
-
-\section{Content section with citations}
-
-See the \href{http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html}{R Markdown docs for bibliographies and citations}.
-
-Copernicus supports biblatex. I put the .bib entries from the Paleocube proposal into \texttt{geochronr.bib}. Citations work like this:
-
-Read \citep{Evans_QSR13}, and \citep[see][]{PRYSM}.
-
 \section{Content section with list}
 
 If you want to insert a list, you must
@@ -617,16 +662,6 @@ If you want to insert a list, you must
 
 - between each list item
 \end{verbatim}
-
-\section{Examples from the official template}
-
-\subsection{FIGURES}
-
-When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage between bibliography and first table and/or figure as well as between each table and/or figure.
-
-\subsection{TABLES}
-
-You can ad \LaTeX table in an R Markdown document to meet the template requirements.
 
 \subsection{PHYSICAL UNITS}
 

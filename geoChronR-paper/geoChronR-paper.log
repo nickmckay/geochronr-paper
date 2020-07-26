@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.22)  25 JUL 2020 11:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.22)  26 JUL 2020 13:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -743,168 +743,179 @@ line 306.
 
 [6]
 
+Package natbib Warning: Citation `PreisendorferMobley1988' on page 7 undefined 
+on input line 334.
+
+
+Package natbib Warning: Citation `SchneiderNeumaier2001' on page 7 undefined on
+ input line 335.
+
+
 Package natbib Warning: Citation `mill_monograph' on page 7 undefined on input 
-line 337.
+line 345.
 
 
 Package natbib Warning: Citation `bond2001' on page 7 undefined on input line 3
-37.
+45.
 
 [7]
-Overfull \hbox (1.55313pt too wide) in paragraph at lines 350--355
+Overfull \hbox (1.55313pt too wide) in paragraph at lines 358--363
 \T1/ptm/m/n/10 and \T1/pcr/m/n/10 plotPca\T1/ptm/m/n/10 ) pro-duce com-plete fi
 g-ures as \T1/pcr/m/n/10 ggplot2 \T1/ptm/m/n/10 ob-jects, that can be read-ily 
 cus-tomized by adding or chang-ing \T1/pcr/m/n/10 ggplot2
  []
 
-
-LaTeX Warning: Reference `sec:pca' on page 8 undefined on input line 377.
-
 [8]
 
 Package natbib Warning: Citation `hulu2001' on page 9 undefined on input line 4
-03.
+11.
 
 
-Package natbib Warning: Citation `alley' on page 9 undefined on input line 403.
+Package natbib Warning: Citation `alley' on page 9 undefined on input line 411.
 
 
 [9]
-<geoChronR-paper_files/figure-latex/age-model-1.pdf, id=261, 469.755pt x 325.21
+<geoChronR-paper_files/figure-latex/age-model-1.pdf, id=265, 469.755pt x 325.21
 5pt>
 File: geoChronR-paper_files/figure-latex/age-model-1.pdf Graphic file (type pdf
 )
 <use geoChronR-paper_files/figure-latex/age-model-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/age-model-1.pdf  us
-ed on input line 408.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+ed on input line 415.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
 
-Overfull \hbox (88.11119pt too wide) in paragraph at lines 412--414
+Overfull \hbox (88.11119pt too wide) in paragraph at lines 418--420
 []\T1/ptm/m/n/10 After an age en-sem-ble has been added to a LiPD ob-ject, the 
 user can vi-su-al-ize the en-sem-ble time-series us-ing \T1/pcr/m/n/10 plotTime
 seriesEnsRibbons()
  []
 
-<geoChronR-paper_files/figure-latex/timeseries-1.pdf, id=263, 469.755pt x 325.2
+<geoChronR-paper_files/figure-latex/timeseries-1.pdf, id=267, 469.755pt x 325.2
 15pt>
 File: geoChronR-paper_files/figure-latex/timeseries-1.pdf Graphic file (type pd
 f)
 <use geoChronR-paper_files/figure-latex/timeseries-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/timeseries-1.pdf  u
-sed on input line 417.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+sed on input line 422.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
 [10 <./geoChronR-paper_files/figure-latex/age-model-1.pdf>]
-<geoChronR-paper_files/figure-latex/cor-hist-1.pdf, id=281, 469.755pt x 325.215
+<geoChronR-paper_files/figure-latex/cor-hist-1.pdf, id=285, 469.755pt x 325.215
 pt>
 File: geoChronR-paper_files/figure-latex/cor-hist-1.pdf Graphic file (type pdf)
 
 <use geoChronR-paper_files/figure-latex/cor-hist-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/cor-hist-1.pdf  use
-d on input line 429.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<geoChronR-paper_files/figure-latex/cor-hist-2.pdf, id=282, 469.755pt x 325.215
-pt>
-File: geoChronR-paper_files/figure-latex/cor-hist-2.pdf Graphic file (type pdf)
+d on input line 434.
+(pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
+<geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf, id=286, 469.755pt x 32
+5.215pt>
+File: geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf Graphic file (type
+ pdf)
+<use geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf
+  used on input line 438.
+(pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
 
-<use geoChronR-paper_files/figure-latex/cor-hist-2.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/cor-hist-2.pdf  use
-d on input line 429.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+LaTeX Warning: Reference `hulu-cor-hist' on page 11 undefined on input line 450
+.
 
-Overfull \hbox (447.79399pt too wide) in paragraph at lines 429--430
-[][] [] 
- []
-
-[11 <./geoChronR-paper_files/figure-latex/timeseries-1.pdf>]
-
-LaTeX Warning: Reference `fig:cor-hist' on page 12 undefined on input line 431.
-
-
-
-Package natbib Warning: Citation `mckay2018onset' on page 12 undefined on input
- line 439.
-
+[11 <./geoChronR-paper_files/figure-latex/timeseries-1.pdf> <./geoChronR-paper_
+files/figure-latex/cor-hist-1.pdf>]
 
 Package natbib Warning: Citation `GISTEMP' on page 12 undefined on input line 4
-47.
+62.
 
-[12 <./geoChronR-paper_files/figure-latex/cor-hist-1.pdf> <./geoChronR-paper_fi
-les/figure-latex/cor-hist-2.pdf>]
-<geoChronR-paper_files/figure-latex/regression-1.pdf, id=324, 469.755pt x 325.2
+[12 <./geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf>]
+<geoChronR-paper_files/figure-latex/regression-1.pdf, id=330, 469.755pt x 325.2
 15pt>
 File: geoChronR-paper_files/figure-latex/regression-1.pdf Graphic file (type pd
 f)
 <use geoChronR-paper_files/figure-latex/regression-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/regression-1.pdf  u
-sed on input line 454.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+sed on input line 467.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
 [13 <./geoChronR-paper_files/figure-latex/regression-1.pdf>]
-<geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf, id=347, 469.755pt x 
-325.215pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (ty
-pe pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.p
-df  used on input line 466.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=348, 469.755pt x 
+
+Package natbib Warning: Citation `Pages2013' on page 14 undefined on input line
+ 484.
+
+
+Package natbib Warning: Citation `Pages2017' on page 14 undefined on input line
+ 484.
+
+
+Package natbib Warning: Citation `Temp12k' on page 14 undefined on input line 4
+84.
+
+<geoChronR-paper_files/figure-latex/timeseries stack-1.pdf, id=358, 578.16pt x 
+867.24pt>
+File: geoChronR-paper_files/figure-latex/timeseries stack-1.pdf Graphic file (t
+ype pdf)
+<use geoChronR-paper_files/figure-latex/timeseries stack-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/timeseries stack-1.
+pdf  used on input line 488.
+(pdftex.def)             Requested size: 341.43306pt x 512.14357pt.
+
+LaTeX Warning: Reference `timeseries-stack' on page 14 undefined on input line 
+491.
+
+[14] [15 <./geoChronR-paper_files/figure-latex/timeseries stack-1.pdf>]
+<geoChronR-paper_files/figure-latex/scree-1.pdf, id=381, 469.755pt x 325.215pt>
+
+File: geoChronR-paper_files/figure-latex/scree-1.pdf Graphic file (type pdf)
+<use geoChronR-paper_files/figure-latex/scree-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/scree-1.pdf  used o
+n input line 515.
+(pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
+<geoChronR-paper_files/figure-latex/pca-1.pdf, id=382, 469.755pt x 325.215pt>
+File: geoChronR-paper_files/figure-latex/pca-1.pdf Graphic file (type pdf)
+<use geoChronR-paper_files/figure-latex/pca-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/pca-1.pdf  used on 
+input line 519.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+
+Package natbib Warning: Citation `paico' on page 16 undefined on input line 525
+.
+
+
+Package natbib Warning: Citation `wernerArcticCFR' on page 16 undefined on inpu
+t line 525.
+
+[16 <./geoChronR-paper_files/figure-latex/scree-1.pdf> <./geoChronR-paper_files
+/figure-latex/pca-1.pdf>]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=418, 469.755pt x 
 325.215pt>
 File: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (ty
 pe pdf)
 <use geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.p
-df  used on input line 472.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[14 <./geoChronR-paper_files/figure-latex/unnamed-chunk-5-1.pdf>]
-<geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf, id=381, 469.755pt x 
-325.215pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (ty
-pe pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.p
-df  used on input line 486.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<geoChronR-paper_files/figure-latex/unnamed-chunk-9-2.pdf, id=382, 469.755pt x 
-325.215pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-9-2.pdf Graphic file (ty
-pe pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-9-2.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-9-2.p
-df  used on input line 486.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (447.79399pt too wide) in paragraph at lines 486--487
-[][] [] 
- []
-
-[15 <./geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<geoChronR-paper_files/figure-latex/REDFIT ensemble export-1.pdf, id=403, 469.7
-55pt x 325.215pt>
-File: geoChronR-paper_files/figure-latex/REDFIT ensemble export-1.pdf Graphic f
-ile (type pdf)
-<use geoChronR-paper_files/figure-latex/REDFIT ensemble export-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/REDFIT ensemble exp
-ort-1.pdf  used on input line 508.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[16 <./geoChronR-paper_files/figure-latex/unnamed-chunk-9-1.pdf> <./geoChronR-p
-aper_files/figure-latex/unnamed-chunk-9-2.pdf>] [17 <./geoChronR-paper_files/fi
-gure-latex/REDFIT ensemble export-1.pdf>]
-<geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf, id=445, 469.755p
+df  used on input line 548.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[17]
+<geoChronR-paper_files/figure-latex/redfit plot-1.pdf, id=437, 469.755pt x 325.
+215pt>
+File: geoChronR-paper_files/figure-latex/redfit plot-1.pdf Graphic file (type p
+df)
+<use geoChronR-paper_files/figure-latex/redfit plot-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/redfit plot-1.pdf  
+used on input line 570.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[18 <./geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>]
+<geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf, id=459, 469.755p
 t x 325.215pt>
 File: geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf Graphic file
  (type pdf)
 <use geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/MTM ensemble export
--1.pdf  used on input line 539.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[18 <./geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf>] [19]
+-1.pdf  used on input line 599.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[19 <./geoChronR-paper_files/figure-latex/redfit plot-1.pdf>] [20 <./geoChronR-
+paper_files/figure-latex/MTM ensemble export-1.pdf>]
 
-Package natbib Warning: Citation `wernerAndTingley' on page 20 undefined on inp
-ut line 574.
+Package natbib Warning: Citation `wernerAndTingley' on page 21 undefined on inp
+ut line 633.
 
-[20] [21] (./geoChronR-paper.bbl [22
-
-]
+[21] [22] (./geoChronR-paper.bbl [23]
 Underfull \hbox (badness 1264) in paragraph at lines 34--38
 []\T1/ptm/m/n/9 Boldt, Bran-don R., Kauf-man, Dar-rell S., McKay, Nicholas P., 
 and Briner, Ja-son P.: Holocene sum-mer tem-per-a-ture re-con-struc-
@@ -934,58 +945,58 @@ Underfull \hbox (badness 2205) in paragraph at lines 71--77
 aeo-geog-ra-phy, Palaeo-cli-ma-tol-ogy, Palaeoe-col-ogy, 373, 6 -- 24,
  []
 
-[23]
-Underfull \hbox (badness 2384) in paragraph at lines 133--138
+[24]
+Underfull \hbox (badness 2384) in paragraph at lines 127--132
 []\T1/ptm/m/n/9 Khider, D., Ahn, S., Lisiecki, L. E., Lawrence, C. E., and Kien
 -ast, M.: The Role of Un-cer-tainty in Es-ti-mat-ing Lead/Lag
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 133--138
+Underfull \hbox (badness 1460) in paragraph at lines 127--132
 \T1/ptm/m/n/9 Re-la-tion-ships in Ma-rine Sed-i-men-tary Archives: A Case Study
  From the Trop-i-cal Pa-cific, Pa-le-o-ceanog-ra-phy, 32, 1275--1290,
  []
 
 
-Underfull \hbox (badness 7522) in paragraph at lines 185--188
+Underfull \hbox (badness 7522) in paragraph at lines 179--182
 []\T1/ptm/m/n/9 Meyers, S. R.: See-ing red in cyclic stratig-ra-phy: Spec-tral 
 noise es-ti-ma-tion for as-trochronol-ogy, Pa-le-o-ceanog-ra-phy, 27,
  []
 
-[24]
-Underfull \hbox (badness 4378) in paragraph at lines 280--283
+[25]
+Underfull \hbox (badness 4378) in paragraph at lines 274--277
 []\T1/ptm/m/n/9 Trachsel, M. and Telford, R. J.: All age--depth mod-els are wro
 ng, but are get-ting bet-ter, The Holocene, 27, 860--869,
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 285--289
+Underfull \hbox (badness 5316) in paragraph at lines 279--283
 []\T1/ptm/m/n/9 VanderPlas, J. T.: Un-der-stand-ing the Lomb--Scargle Pe-ri-odo
 gram, The As-tro-phys-i-cal Jour-nal Sup-ple-ment Se-ries, 236, 16,
  []
 
-) [25]
+) [26]
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 715.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 715.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 750.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 750.
 (./geoChronR-paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 715.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 715.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 750.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 750.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 715.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 750.
  ) 
 Here is how much of TeX's memory you used:
- 10955 strings out of 482854
- 165453 string characters out of 5955782
- 472067 words of memory out of 5000000
- 25898 multiletter control sequences out of 15000+600000
+ 10965 strings out of 482854
+ 165799 string characters out of 5955782
+ 472228 words of memory out of 5000000
+ 25908 multiletter control sequences out of 15000+600000
  578027 words of font info for 92 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 51i,6n,47p,1058b,562s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,6n,47p,1058b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/nicholas/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</Use
 rs/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
 b></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cm
@@ -1001,10 +1012,10 @@ lic/amsfonts/cm/cmr6.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type
 t/fonts/type1/urw/times/utmb8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on geoChronR-paper.pdf (25 pages, 3138559 bytes).
+Output written on geoChronR-paper.pdf (26 pages, 3165745 bytes).
 PDF statistics:
- 701 PDF objects out of 1000 (max. 8388607)
- 631 compressed objects within 7 object streams
+ 714 PDF objects out of 1000 (max. 8388607)
+ 643 compressed objects within 7 object streams
  146 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
