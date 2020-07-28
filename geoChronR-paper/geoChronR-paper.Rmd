@@ -213,6 +213,16 @@ As of now, BAM does not consider uncertainties about such parameters, representi
 Bayesian generalizations have been proposed [@BoersCP2017], which could one day be incorporated into GeoChronR if the code is made public. 
 BAM was coded in MATLAB and R, and it is this latter version that GeoChronR uses.
 
+## Storage
+GeoChronR archives the outcome of such age models using in the LiPD format. Specifically:
+- multiple chronologies
+
+- ensemble tables
+
+- summary tables
+
+repurpose figure from the LiPD Prezi?
+
 <!-- Analysis section -->
 
 
