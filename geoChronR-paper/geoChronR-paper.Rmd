@@ -106,8 +106,8 @@ output:
 
 
 Quantifying chronological uncertainties, and how they influence the understanding of past changes, is a unique and fundamental challenge of the paleogeosciences. 
-Without robust error determination, it is impossible to properly assess the extent to which past changes occurred simultaneously across regions or the duration of abrupt events, both of which limit our capacity to apply paleoscientific understanding to modern and future processes.
-The need for better infrastructure to both characterize uncertainty, and to explicitly evaluate how age uncertainty impacts the the interpretation of records of past climate, ecology or landscapes, has been long recognized [@Noren2013, (more)]. 
+Without robust error determination, it is impossible to properly assess the extent to which past changes occurred simultaneously across regions, accurately estimate rates of change or the duration of abrupt events, or attribute causality -- all of which limit our capacity to apply paleoscientific understanding to modern and future processes.
+The need for better solutions to both characterize uncertainty, and to explicitly evaluate how age uncertainty impacts the the interpretation of records of past climate, ecology or landscapes, has been long recognized [@Noren2013, (more)]. 
 In response to this need, the paleogeoscience community has made substantial advances toward improving geochronological accuracy by:
 
 1. Improving analytical techniques that allow for more precise age determination on smaller and context-specific samples [@Brown_radiocarbon89,@Eglinton96,@Fifield2000,@Eggins2005,@Santos_blank_2010]
@@ -118,11 +118,11 @@ In response to this need, the paleogeoscience community has made substantial adv
 
 Over the past 20 years, these advances have been widely adopted in the paleogeosciences. 
 However, despite the progress made in quantifying uncertainty in ages and in age models, few studies have formally evaluated how chronological uncertainty may have affected their results. 
-For instance, whereas the algorithms presented by [@Ramsey2009Bayesian, @parnell2008flexible, @Blaauw2010CLAM, @Blaauw2011BACON] have been broadly used, the overwhelming majority of these studies calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the age modeling exercise [@McKay2008,@McKay2009]. 
+For instance, whereas the aforemention algorithms  have been broadly used, the overwhelming majority of these studies calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the age modeling exercise [@McKay2008,@McKay2009]. 
 Typically, any discussions of chronological uncertainties remain qualitative.
 
 This paradigm is beginning to change. 
-In recent years a handful of studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [@Haam_Huybers2010,@Rhines_JGR2011,@Anchukaitis_Tierney2012,@Shakun_Nature2012,@Marcott_Science2013, @Tierney2013]. 
+In recent years, a handful of studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [@Haam_Huybers2010,@Rhines_JGR2011,@Anchukaitis_Tierney2012,@Shakun_Nature2012,@Marcott_Science2013, @Tierney2013]. 
 By using each ensemble age model to create a time-uncertain ensemble records, and then carrying that ensemble through the analysis, the precise impact of age uncertainty can be formally evaluated. 
 This approach, of course, does not address all aspects of uncertainty, but it does offer the broad potential to ascertain which results are robust to chronological uncertainty, and which are not.
 
