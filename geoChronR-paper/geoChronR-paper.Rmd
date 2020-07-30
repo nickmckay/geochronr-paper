@@ -644,8 +644,7 @@ HMM-Match is a probabilistic method that generates an ensemble of 1000 possible 
 Now let us take a first look at the median age model:
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
-#I <- lipdR::readLipd("http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd")
-I <- lipdR::readLipd("~/Downloads/ODP846.Lawrence.2006.lpd")
+I <- lipdR::readLipd("http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd")
 d18O <- I$chronData[[1]]$model[[1]]$summaryTable[[1]]$d180$values
 t.med <- I$chronData[[1]]$model[[1]]$summaryTable[[1]]$median$values
 L <- geoChronR::mapAgeEnsembleToPaleoData(I,paleo.meas.table.num = 1)
