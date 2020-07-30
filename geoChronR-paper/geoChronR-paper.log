@@ -1,18 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  23 JUL 2020 11:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.22)  26 JUL 2020 13:27
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **geoChronR-paper.tex
 (./geoChronR-paper.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(./copernicus.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./copernicus.cls
 Document Class: copernicus 2018/10/08 8.82 Copernicus papers
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/fixltx2e.sty
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/fixltx2e.sty
 Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
 Applying: [2015/01/01] Old fixltx2e package on input line 46.
-
 
 Package fixltx2e Warning: fixltx2e is not required with releases after 2015
 (fixltx2e)                All fixes are now in the LaTeX kernel.
@@ -21,660 +18,449 @@ Package fixltx2e Warning: fixltx2e is not required with releases after 2015
 Already applied: [0000/00/00] Old fixltx2e package on input line 53.
 )
 Additional configuration file copernicus.cfg used
-(./copernicus.cfg)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/fleqn.clo
-File: fleqn.clo 2016/12/29 v1.2a Standard LaTeX option (flush left equations)
-\mathindent=\dimen102
+(./copernicus.cfg) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/a
+rticle.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/fleqn.clo
+File: fleqn.clo 2016/12/29 v1.2b Standard LaTeX option (flush left equations)
+\mathindent=\dimen134
 Applying: [2015/01/01] Make \[ robust on input line 50.
 LaTeX Info: Redefining \[ on input line 51.
 Already applied: [0000/00/00] Make \[ robust on input line 62.
 Applying: [2015/01/01] Make \] robust on input line 74.
 LaTeX Info: Redefining \] on input line 75.
 Already applied: [0000/00/00] Make \] robust on input line 83.
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+\c@part=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen135
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen103
-)
-\bleed=\dimen104
-\longtwo@top=\skip43
-\longtwo@bottom=\skip44
-\longtwo@box=\box26
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box27
-\UL@hyphenbox=\box28
-\UL@skip=\skip45
-\UL@hook=\toks14
-\UL@height=\dimen105
-\UL@pe=\count88
-\UL@pixel=\dimen106
-\ULC@box=\box29
-Package: ulem 2012/05/18
-\ULdepth=\dimen107
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
-Package textcomp Info: Sub-encoding information:
-(textcomp)               5 = only ISO-Adobe without \textcurrency
-(textcomp)               4 = 5 + \texteuro
-(textcomp)               3 = 4 + \textohm
-(textcomp)               2 = 3 + \textestimated + \textcurrency
-(textcomp)               1 = TS1 - \textcircled - \t
-(textcomp)               0 = TS1 (full)
-(textcomp)             Font families with sub-encoding setting implement
-(textcomp)             only a restricted character set as indicated.
-(textcomp)             Family '?' is the default used for unknown fonts.
-(textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2018/04/05 v1.2c UTF-8 support for inputenc
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-   defining Unicode char U+FEFF (decimal 65279)
-))
-LaTeX Info: Redefining \oldstylenums on input line 334.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
-
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
-Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2018/04/06 v1.3b Input encoding file
-\inpenc@prehook=\toks15
-\inpenc@posthook=\toks16
+\bleed=\dimen136
+\longtwo@top=\skip49
+\longtwo@bottom=\skip50
+\longtwo@box=\box45
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box46
+\UL@hyphenbox=\box47
+\UL@skip=\skip51
+\UL@hook=\toks15
+\UL@height=\dimen137
+\UL@pe=\count176
+\UL@pixel=\dimen138
+\ULC@box=\box48
+Package: ulem 2019/11/18
+\ULdepth=\dimen139
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
 )
    defining Unicode char U+0394 (decimal 916)
    defining Unicode char U+8710 (decimal 34576)
    defining Unicode char U+0331 (decimal 817)
    defining Unicode char U+014B (decimal 331)
    defining Unicode char U+2032 (decimal 8242)
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/02/14 3.18 The Babel package
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/02/14 3.18 Babel switching mechanism
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2020/07/13 3.47 The Babel package
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2020/07/13 3.47 Babel common definitions
+\babel@savecnt=\count177
+\U@D=\dimen140
+\l@babelnohyphens=\language3
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
 )
-(/usr/local/texlive/2018/texmf-dist/tex/generic/babel-english/english.ldf
+\bbl@dirlevel=\count178
+
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/babel-english/english.l
+df
 Language: english 2017/06/06 v3.3r English support from the babel system
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/02/14 3.18 Babel common definitions
-\babel@savecnt=\count89
-\U@D=\dimen108
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count90
-)
-\l@canadian = a dialect from \language\l@american 
-\l@australian = a dialect from \language\l@british 
-\l@newzealand = a dialect from \language\l@british 
-))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
-\col@sep=\dimen109
-\ar@mcellbox=\box30
-\extrarowheight=\dimen110
-\NC@list=\toks17
-\extratabsurround=\skip46
-\backup@length=\skip47
-\ar@cellbox=\box31
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
-\TX@col@width=\dimen111
-\TX@old@table=\dimen112
-\TX@old@col=\dimen113
-\TX@target=\dimen114
-\TX@delta=\dimen115
-\TX@cols=\count91
-\TX@ftn=\toks18
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package babel Info: \l@british = using hyphenrules for english
+(babel)             (\language0) on input line 82.
+Package babel Info: \l@UKenglish = using hyphenrules for english
+(babel)             (\language0) on input line 83.
+Package babel Info: \l@canadian = using hyphenrules for english
+(babel)             (\language0) on input line 102.
+Package babel Info: \l@australian = using hyphenrules for english
+(babel)             (\language0) on input line 105.
+Package babel Info: \l@newzealand = using hyphenrules for english
+(babel)             (\language0) on input line 108.
+)) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen141
+\ar@mcellbox=\box49
+\extrarowheight=\dimen142
+\NC@list=\toks18
+\extratabsurround=\skip52
+\backup@length=\skip53
+\ar@cellbox=\box50
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen143
+\TX@old@table=\dimen144
+\TX@old@col=\dimen145
+\TX@target=\dimen146
+\TX@delta=\dimen147
+\TX@cols=\count179
+\TX@ftn=\toks19
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks19
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+\KV@toks@=\toks20
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+Package graphics Info: Driver file: pdftex.def on input line 105.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen116
-\Gin@req@width=\dimen117
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+\Gin@req@height=\dimen148
+\Gin@req@width=\dimen149
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks20
+\@emptytoks=\toks21
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2017/09/02 v2.17a AMS math features
-\@mathmargin=\skip48
-
+)) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip54
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks21
-\ex@=\dimen118
-))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+\@emptytoks=\toks22
+\ex@=\dimen150
+)) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen119
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
+\pmbraise@=\dimen151
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count92
-LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count93
-\leftroot@=\count94
-LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count95
-\DOTSCASE@=\count96
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box32
-\strutbox@=\box33
-\big@size=\dimen120
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count97
-\c@MaxMatrixCols=\count98
-\dotsspace@=\muskip10
-\c@parentequation=\count99
-\dspbrk@lvl=\count100
-\tag@help=\toks22
-\row@=\count101
-\column@=\count102
-\maxfields@=\count103
-\andhelp@=\toks23
-\eqnshift@=\dimen121
-\alignsep@=\dimen122
-\tagshift@=\dimen123
-\tagwidth@=\dimen124
-\totwidth@=\dimen125
-\lineht@=\dimen126
-\@envbody=\toks24
-\multlinegap=\skip49
-\multlinetaggap=\skip50
-\mathdisplay@stack=\toks25
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+\inf@bad=\count180
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count181
+\leftroot@=\count182
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count183
+\DOTSCASE@=\count184
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+\big@size=\dimen152
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count185
+\c@MaxMatrixCols=\count186
+\dotsspace@=\muskip16
+\c@parentequation=\count187
+\dspbrk@lvl=\count188
+\tag@help=\toks23
+\row@=\count189
+\column@=\count190
+\maxfields@=\count191
+\andhelp@=\toks24
+\eqnshift@=\dimen153
+\alignsep@=\dimen154
+\tagshift@=\dimen155
+\tagwidth@=\dimen156
+\totwidth@=\dimen157
+\lineht@=\dimen158
+\@envbody=\toks25
+\multlinegap=\skip55
+\multlinetaggap=\skip56
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks27
+\thm@bodyfont=\toks28
+\thm@headfont=\toks29
+\thm@notefont=\toks30
+\thm@headpunct=\toks31
+\thm@preskip=\skip57
+\thm@postskip=\skip58
+\thm@headsep=\skip59
+\dth@everypar=\toks32
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2017/10/31 v2.20.4
-\thm@style=\toks26
-\thm@bodyfont=\toks27
-\thm@headfont=\toks28
-\thm@notefont=\toks29
-\thm@headpunct=\toks30
-\thm@preskip=\skip51
-\thm@postskip=\skip52
-\thm@headsep=\skip53
-\dth@everypar=\toks31
-)
-\affilsep=\skip54
-\@affilsep=\skip55
-\c@Maxaffil=\count104
-\c@authors=\count105
-\c@affil=\count106
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip11
+\affilsep=\skip60
+\@affilsep=\skip61
+\c@Maxaffil=\count192
+\c@authors=\count193
+\c@affil=\count194
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/bezos/accents.sty
-Package: accents 2006/05/12 v1.3 Math Accent Tools
-\cc@skew=\dimen127
-\cc@wd=\dimen128
-\cc@code=\count107
-\cc@group=\count108
-\cc@skewchar=\count109
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/cancel/cancel.sty
-Package: cancel 2013/04/12 v2.2 Cancel math terms
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
-\multirow@colwidth=\skip56
-\multirow@cntb=\count110
-\multirow@dima=\skip57
-\bigstrutjot=\dimen129
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/supertabular/supertabular.sty
-Package: supertabular 2004/02/20 v4.1e the supertabular environment
-\c@tracingst=\count111
-\ST@wd=\dimen130
-\ST@rightskip=\skip58
-\ST@leftskip=\skip59
-\ST@parfillskip=\skip60
-\ST@pageleft=\dimen131
-\ST@headht=\dimen132
-\ST@tailht=\dimen133
-\ST@pagesofar=\dimen134
-\ST@pboxht=\dimen135
-\ST@lineht=\dimen136
-\ST@stretchht=\dimen137
-\ST@prevht=\dimen138
-\ST@toadd=\dimen139
-\ST@dimen=\dimen140
-\ST@pbox=\box34
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithms/algorithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+Class copernicus Warning: Cannot find accents.sty; proceeding without it.
+
+
+Class copernicus Warning: Cannot find cancel.sty; proceeding without it.
+
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip62
+\multirow@cntb=\count195
+\multirow@dima=\skip63
+\bigstrutjot=\dimen159
+)
+
+Class copernicus Warning: Cannot find supertabular.sty; proceeding without it.
+
+
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/algorithms/algorithmic.st
+y
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@ALC@unique=\count112
-\c@ALC@line=\count113
-\c@ALC@rem=\count114
-\c@ALC@depth=\count115
-\ALC@tlm=\skip61
-\algorithmicindent=\skip62
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithms/algorithm.sty
+\c@ALC@unique=\count196
+\c@ALC@line=\count197
+\c@ALC@rem=\count198
+\c@ALC@depth=\count199
+\ALC@tlm=\skip64
+\algorithmicindent=\skip65
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/algorithms/algorithm.st
+y
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count116
-\float@exts=\toks32
-\float@box=\box35
-\@float@everytoks=\toks33
-\@floatcapt=\box36
+\c@float@type=\count266
+\float@exts=\toks33
+\float@box=\box53
+\@float@everytoks=\toks34
+\@floatcapt=\box54
 )
-\@float@every@algorithm=\toks34
-\c@algorithm=\count117
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen141
-\captionmargin@=\dimen142
-\captionwidth=\dimen143
-\caption@tempdima=\dimen144
-\caption@indent=\dimen145
-\caption@parindent=\dimen146
-\caption@hangindent=\dimen147
+\@float@every@algorithm=\toks35
+\c@algorithm=\count267
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/05/30 v3.4k Customizing captions (AR)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/07/20 v1.12b caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen160
+\captionmargin@=\dimen161
+\captionwidth=\dimen162
+\caption@tempdima=\dimen163
+\caption@indent=\dimen164
+\caption@parindent=\dimen165
+\caption@hangindent=\dimen166
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
-)
-
-Package caption Warning: Unsupported document class (or package) detected,
-(caption)                usage of the caption package is not recommended.
-See the caption package documentation for explanation.
-
 Package caption Info: \@makecaption = \long macro:#1#2->\def \@tempa {figure}\i
 fx \@captype \@tempa \if@stage@final \vskip 0.7\abovecaptionskip \else \vskip \
 abovecaptionskip \goodbreak \fi \fi {\reset@font \small {\bfseries #1.} #2\par 
 }\if@cop@home \ifonline \ifnum \csname c@\@captype \endcsname =1 \immediate \wr
 ite \@auxout {\string \gdef \string \@num \@captype {}}\hypertarget {\@captype 
 }{}\fi \fi \fi \def \@tempa {table}\ifx \@captype \@tempa \vskip \abovecaptions
-kip \if@stage@final \else \goodbreak \fi \fi .
-\c@ContinuedFloat=\count118
+kip \if@stage@final \else \goodbreak \fi \fi  on input line 1055.
+)
+
+Package caption Warning: Unknown document class (or package),
+(caption)                standard defaults will be used.
+See the caption package documentation for explanation.
+
+\c@caption@flags=\count268
+\c@continuedfloat=\count269
 Package caption Info: float package is loaded.
-Package caption Info: supertabular package is loaded.
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/subfloat/subfloat.sty
-Package: subfloat 2003/08/21 version 2.14
+)
 
-Package `subfloat', Version 2.14 of 2003/08/21.
+Class copernicus Warning: Cannot find subfloat.sty; proceeding without it.
 
-Package subfloat Warning: Numbers of floats not counted:
-(subfloat)                If you use one of the counters subfloatfiguremax or
-(subfloat)                subfloattablemax you will get strange error messages
-(subfloat)                containing \c@subfloatfiguremax or
-(subfloat)                \c@subfloattablemax:
-(subfloat)                Please switch on countmax or remove the code using
-(subfloat)                the counter then..
-
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/natbib/natbib.sty
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip63
-\bibsep=\skip64
+\bibhang=\skip66
+\bibsep=\skip67
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count119
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/rotating.sty
+\c@NAT@ctr=\count270
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
-\c@r@tfl@t=\count120
-\rotFPtop=\skip65
-\rotFPbot=\skip66
-\rot@float@box=\box37
-\rot@mess@toks=\toks35
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/lineno/lineno.sty
+\c@r@tfl@t=\count271
+\rotFPtop=\skip68
+\rotFPbot=\skip69
+\rot@float@box=\box55
+\rot@mess@toks=\toks36
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count121
-\output=\toks36
-\linenoprevgraf=\count122
-\linenumbersep=\dimen148
-\linenumberwidth=\dimen149
-\c@linenumber=\count123
-\c@pagewiselinenumber=\count124
-\c@LN@truepage=\count125
-\c@internallinenumber=\count126
-\c@internallinenumbers=\count127
-\quotelinenumbersep=\dimen150
-\bframerule=\dimen151
-\bframesep=\dimen152
-\bframebox=\box38
+\linenopenalty=\count272
+\output=\toks37
+\linenoprevgraf=\count273
+\linenumbersep=\dimen167
+\linenumberwidth=\dimen168
+\c@linenumber=\count274
+\c@pagewiselinenumber=\count275
+\c@LN@truepage=\count276
+\c@internallinenumber=\count277
+\c@internallinenumbers=\count278
+\quotelinenumbersep=\dimen169
+\bframerule=\dimen170
+\bframesep=\dimen171
+\bframebox=\box56
 LaTeX Info: Redefining \\ on input line 3056.
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty
-Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/pifont.sty
-Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
-LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/upzd.fd
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
-LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/upsy.fd
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
-))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
 )
-Package pdftexcmds Info: LuaTeX not detected.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.s
+ty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefineke
+ys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.s
+ty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-)
-\@linkdim=\dimen153
-\Hy@linkcounter=\count128
-\Hy@pagecounter=\count129
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+\@linkdim=\dimen172
+\Hy@linkcounter=\count279
+\Hy@pagecounter=\count280
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count130
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
-)
-Package hyperref Info: Option `bookmarks' set `false' on input line 4383.
-Package hyperref Info: Hyper figures OFF on input line 4509.
-Package hyperref Info: Link nesting OFF on input line 4514.
-Package hyperref Info: Hyper index ON on input line 4517.
-Package hyperref Info: Plain pages OFF on input line 4524.
-Package hyperref Info: Backreferencing OFF on input line 4529.
+\Hy@SavedSpaceFactor=\count281
+Package hyperref Info: Option `bookmarks' set `false' on input line 4338.
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks OFF on input line 4768.
-\c@Hy@tempcnt=\count131
-LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen154
-\Fld@menulength=\count132
-\Field@Width=\dimen155
-\Fld@charsize=\dimen156
-Package hyperref Info: Hyper figures OFF on input line 6369.
-Package hyperref Info: Link nesting OFF on input line 6374.
-Package hyperref Info: Hyper index ON on input line 6377.
-Package hyperref Info: backreferencing OFF on input line 6384.
-Package hyperref Info: Link coloring OFF on input line 6389.
-Package hyperref Info: Link coloring with OCG OFF on input line 6394.
-Package hyperref Info: PDF/A mode OFF on input line 6399.
-LaTeX Info: Redefining \ref on input line 6439.
-LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count133
-\c@Item=\count134
-\c@Hfootnote=\count135
+Package hyperref Info: Bookmarks OFF on input line 4723.
+\c@Hy@tempcnt=\count282
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen173
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.s
+ty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count283
+\Field@Width=\dimen174
+\Fld@charsize=\dimen175
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count284
+\c@Item=\count285
+\c@Hfootnote=\count286
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/atveryend/atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count287
+\c@bookmark@seq@number=\count288
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count136
-\c@bookmark@seq@number=\count137
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilec
+heck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecou
+nter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-82.
+86.
 )
-\Hy@SectionHShift=\skip67
+\Hy@SectionHShift=\skip70
 )
-\c@reaction=\count138
-\tabularwidth=\dimen157
+\c@reaction=\count289
+\tabularwidth=\dimen176
 Package color Info: Redefining color textcol on input line 2486.
 Package color Info: Redefining color bgcol on input line 2486.
 Package color Info: Redefining color textcol on input line 2490.
@@ -682,61 +468,59 @@ Package color Info: Redefining color bgcol on input line 2491.
 Package color Info: Redefining color barcol on input line 2492.
 )
 LaTeX Info: Redefining \vec on input line 14.
-
-No file geoChronR-paper.aux.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count290
+\FV@InFile=\read3
+\FV@TabBox=\box57
+\c@FancyVerbLine=\count291
+\FV@StepNumber=\count292
+\FV@OutFile=\write3
+) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip71
+\fb@frw=\dimen177
+\fb@frh=\dimen178
+\FrameRule=\dimen179
+\FrameSep=\dimen180
+)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdfmo
+de.def
+File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count293
+\l__pdf_internal_box=\box58
+) (./geoChronR-paper.aux)
 \openout1 = `geoChronR-paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 81.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 81.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 12
+1.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count139
-\scratchdimen=\dimen158
-\scratchbox=\box39
-\nofMPsegments=\count140
-\nofMParguments=\count141
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count142
-\MPscratchDim=\dimen159
-\MPnumerator=\count143
-\makeMPintoPDFobject=\count144
-\everyMPtoPDFconversion=\toks38
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-bas
+e.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+85.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.
+cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -744,676 +528,494 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring OFF on input line 81.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+\AtBeginShipoutBox=\box59
+Package hyperref Info: Link coloring OFF on input line 121.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-\c@section@level=\count145
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitle
+string.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-LaTeX Info: Redefining \ref on input line 81.
-LaTeX Info: Redefining \pageref on input line 81.
-LaTeX Info: Redefining \nameref on input line 81.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 123.
-LaTeX Font Info:    Try loading font information for U+msa on input line 123.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+\c@section@level=\count294
+)
+LaTeX Info: Redefining \ref on input line 121.
+LaTeX Info: Redefining \pageref on input line 121.
+LaTeX Info: Redefining \nameref on input line 121.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 159
+.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 123.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 159
+.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 123.
-
-
-Package lineno Warning: Linenumber reference failed, 
-(lineno)                rerun to get it right.
-
-LaTeX Font Info:    Try loading font information for T1+phv on input line 142.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd
-File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 16
+4.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 142.
-
-
-Package natbib Warning: Citation `Noren2013' on page 1 undefined on input line 
-161.
-
+(Font)              scaled to size 8.54997pt on input line 164.
 
 Package natbib Warning: Citation `Brown_radiocarbon89' on page 1 undefined on i
-nput line 170.
+nput line 181.
 
 
 Package natbib Warning: Citation `Eglinton96' on page 1 undefined on input line
- 170.
+ 181.
 
 
 Package natbib Warning: Citation `Fifield2000' on page 1 undefined on input lin
-e 170.
+e 181.
 
 
 Package natbib Warning: Citation `Eggins2005' on page 1 undefined on input line
- 170.
+ 181.
 
 
 Package natbib Warning: Citation `Santos_blank_2010' on page 1 undefined on inp
-ut line 170.
+ut line 181.
 
 
 Package natbib Warning: Citation `Stuiver91' on page 1 undefined on input line 
-175.
+183.
 
 
 Package natbib Warning: Citation `Stuiver98' on page 1 undefined on input line 
-175.
+183.
 
 
 Package natbib Warning: Citation `Balco2009' on page 1 undefined on input line 
-177.
+183.
 
 
 Package natbib Warning: Citation `Masarik2009' on page 1 undefined on input lin
-e 177.
+e 183.
 
 [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/Users/nicholas/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 Package natbib Warning: Citation `Ramsey2009Bayesian' on page 2 undefined on in
-put line 182.
-
-
-Package natbib Warning: Citation `parnell2008flexible' on page 2 undefined on i
-nput line 182.
+put line 185.
 
 
 Package natbib Warning: Citation `Blaauw2010CLAM' on page 2 undefined on input 
-line 182.
+line 185.
 
 
 Package natbib Warning: Citation `Blaauw2011BACON' on page 2 undefined on input
- line 182.
+ line 185.
 
 
 Package natbib Warning: Citation `Ramsey2009Bayesian' on page 2 undefined on in
-put line 191.
-
-
-Package natbib Warning: Citation `parnell2008flexible' on page 2 undefined on i
-nput line 191.
+put line 190.
 
 
 Package natbib Warning: Citation `Blaauw2010CLAM' on page 2 undefined on input 
-line 191.
+line 190.
 
 
 Package natbib Warning: Citation `Blaauw2011BACON' on page 2 undefined on input
- line 191.
+ line 190.
 
 
 Package natbib Warning: Citation `McKay2008' on page 2 undefined on input line 
-196.
+190.
 
 
 Package natbib Warning: Citation `McKay2009' on page 2 undefined on input line 
-196.
+190.
 
 
 Package natbib Warning: Citation `Haam_Huybers2010' on page 2 undefined on inpu
-t line 204.
+t line 194.
 
 
 Package natbib Warning: Citation `Rhines_JGR2011' on page 2 undefined on input 
-line 204.
+line 194.
 
 
 Package natbib Warning: Citation `Anchukaitis_Tierney2012' on page 2 undefined 
-on input line 204.
+on input line 194.
 
 
 Package natbib Warning: Citation `Shakun_Nature2012' on page 2 undefined on inp
-ut line 204.
-
-
-Package natbib Warning: Citation `Marcott_Science2013' on page 2 undefined on i
-nput line 204.
+ut line 194.
 
 
 Package natbib Warning: Citation `Tierney2013' on page 2 undefined on input lin
-e 204.
+e 194.
 
 
 Package natbib Warning: Citation `Anchukaitis_Tierney2012' on page 2 undefined 
-on input line 216.
+on input line 199.
 
 
 Package natbib Warning: Citation `Tierney2013' on page 2 undefined on input lin
-e 216.
+e 199.
 
 
 Package natbib Warning: Citation `mckay_onset_2018' on page 2 undefined on inpu
-t line 216.
+t line 199.
 
 
 Package natbib Warning: Citation `routson2018' on page 2 undefined on input lin
-e 217.
+e 199.
 
 
 Package natbib Warning: Citation `Shakun_Nature2012' on page 2 undefined on inp
-ut line 218.
-
-
-Package natbib Warning: Citation `Marcott_Science2013' on page 2 undefined on i
-nput line 218.
+ut line 199.
 
 
 Package natbib Warning: Citation `kaufman2020HoloceneGMST' on page 2 undefined 
-on input line 218.
+on input line 199.
 
 
 Package natbib Warning: Citation `Boldt2015' on page 2 undefined on input line 
-220.
+200.
 
 
 Package natbib Warning: Citation `Haam_Huybers2010' on page 2 undefined on inpu
-t line 241.
+t line 210.
 
 
 Package natbib Warning: Citation `Shakun_Nature2012' on page 2 undefined on inp
-ut line 243.
+ut line 210.
 
 
 Package natbib Warning: Citation `Anchukaitis_Tierney2012' on page 2 undefined 
-on input line 243.
-
-
-Package natbib Warning: Citation `Marcott_Science2013' on page 2 undefined on i
-nput line 243.
+on input line 210.
 
 
 Package natbib Warning: Citation `Tierney2013' on page 2 undefined on input lin
-e 243.
+e 210.
 
 
 Package natbib Warning: Citation `routson2018' on page 2 undefined on input lin
-e 243.
+e 210.
 
 [2]
 
-Package natbib Warning: Citation `LiPD' on page 3 undefined on input line 261.
+Package natbib Warning: Citation `LiPD' on page 3 undefined on input line 219.
 
 
-Package natbib Warning: Citation `neotoma' on page 3 undefined on input line 26
-1.
+Package natbib Warning: Citation `neotoma' on page 3 undefined on input line 21
+9.
 
 
-LaTeX Warning: Reference `sec:age-modeling' on page 3 undefined on input line 2
-66.
-
-
-LaTeX Warning: Reference `sec:age-uncertain-analysis' on page 3 undefined on in
-put line 268.
-
-
-LaTeX Warning: Reference `sec:visualization' on page 3 undefined on input line 
-269.
-
-
-LaTeX Warning: Reference `sec:use-cases' on page 3 undefined on input line 271.
-
-
-
-Package natbib Warning: Citation `clam' on page 3 undefined on input line 288.
+Package natbib Warning: Citation `clam' on page 3 undefined on input line 234.
 
 
 Package natbib Warning: Citation `heegaard05' on page 3 undefined on input line
- 288.
+ 234.
 
 
-Package natbib Warning: Citation `bacon' on page 3 undefined on input line 290.
-
-
-
-Package natbib Warning: Citation `parnell2008flexible' on page 3 undefined on i
-nput line 291.
-
-
-Package natbib Warning: Citation `ramsey2008deposition' on page 3 undefined on 
-input line 291.
-
-
-Package natbib Warning: Citation `trachsel2017' on page 3 undefined on input li
-ne 294.
-
-
-Package natbib Warning: Citation `clam' on page 3 undefined on input line 295.
+Package natbib Warning: Citation `clam' on page 3 undefined on input line 235.
 
 
 Package natbib Warning: Citation `baconPackage' on page 3 undefined on input li
-ne 303.
-
-
-Package natbib Warning: Citation `oxcAAR' on page 3 undefined on input line 303
-.
-
-
-Package natbib Warning: Citation `BAM' on page 3 undefined on input line 309.
+ne 237.
 
 [3]
-
-Package natbib Warning: Citation `bacon' on page 4 undefined on input line 319.
-
-
-
-Package natbib Warning: Citation `trachsel2017' on page 4 undefined on input li
-ne 327.
-
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 333.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1pcr.fd
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 24
+8.
+(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 
 Package natbib Warning: Citation `baconPackage' on page 4 undefined on input li
-ne 333.
-
-
-Package natbib Warning: Citation `bchron' on page 4 undefined on input line 343
-.
-
-
-Package natbib Warning: Citation `parnell2008flexible' on page 4 undefined on i
-nput line 343.
-
-
-Package natbib Warning: Citation `Parnell_QSR2011' on page 4 undefined on input
- line 354.
-
-
-Package natbib Warning: Citation `PRYSM' on page 4 undefined on input line 354.
-
-
-
-Package natbib Warning: Citation `Hu_epsl17' on page 4 undefined on input line 
-354.
-
-
-Package natbib Warning: Citation `trachsel2017' on page 4 undefined on input li
-ne 357.
-
-
-Package natbib Warning: Citation `BronkRamsey95' on page 4 undefined on input l
-ine 366.
-
-
-Package natbib Warning: Citation `ramsey2008deposition' on page 4 undefined on 
-input line 366.
-
-
-Package natbib Warning: Citation `trachsel2017' on page 4 undefined on input li
-ne 379.
+ne 248.
 
 
 Package natbib Warning: Citation `bronkramsey2010' on page 4 undefined on input
- line 382.
+ line 267.
 
-
-Package natbib Warning: Citation `oxcAAR' on page 4 undefined on input line 386
-.
-
-[4]
-
-Package natbib Warning: Citation `BAM' on page 5 undefined on input line 393.
-
-
-Package natbib Warning: Citation `DeLong_Paleo3_2013' on page 5 undefined on in
-put line 399.
-
-
-Package natbib Warning: Citation `BAM' on page 5 undefined on input line 402.
-
-
-Package natbib Warning: Citation `BoersCP2017' on page 5 undefined on input lin
-e 405.
-
-
-Package natbib Warning: Citation `HuybersWunsch2004' on page 5 undefined on inp
-ut line 416.
-
-[5]
-
-Package natbib Warning: Citation `Hu_epsl17' on page 6 undefined on input line 
-459.
-
+[4] [5]
 
 Package natbib Warning: Citation `bretherton1999' on page 6 undefined on input 
-line 463.
-
-
-Package natbib Warning: Citation `Ventura2004' on page 6 undefined on input lin
-e 465.
-
-
-Package natbib Warning: Citation `BenjaminiHochberg95' on page 6 undefined on i
-nput line 467.
-
-
-Package natbib Warning: Citation `Ventura2004' on page 6 undefined on input lin
-e 468.
-
-
-Package natbib Warning: Citation `anchukaitis2013mceof' on page 6 undefined on 
-input line 491.
-
-
-Package natbib Warning: Citation `anchukaitis2013mceof' on page 6 undefined on 
-input line 496.
-
-
-Package natbib Warning: Citation `roweis1998algorithms' on page 6 undefined on 
-input line 505.
+line 306.
 
 [6]
 
-Package natbib Warning: Citation `imbrie1984orbital' on page 7 undefined on inp
-ut line 523.
+Package natbib Warning: Citation `PreisendorferMobley1988' on page 7 undefined 
+on input line 334.
+
+
+Package natbib Warning: Citation `SchneiderNeumaier2001' on page 7 undefined on
+ input line 335.
 
 
 Package natbib Warning: Citation `mill_monograph' on page 7 undefined on input 
-line 525.
+line 345.
 
 
-Package natbib Warning: Citation `bond2001' on page 7 undefined on input line 5
-25.
-
-
-Package natbib Warning: Citation `MeyersSageman_2007' on page 7 undefined on in
-put line 526.
-
-
-Package natbib Warning: Citation `Meyers_2012' on page 7 undefined on input lin
-e 526.
-
-
-Package natbib Warning: Citation `Meyers_2015' on page 7 undefined on input lin
-e 526.
-
-
-Package natbib Warning: Citation `Huybers_Curry2006' on page 7 undefined on inp
-ut line 528.
-
-
-Package natbib Warning: Citation `ZhuPNAS2019' on page 7 undefined on input lin
-e 528.
-
-
-Package natbib Warning: Citation `Ghil02' on page 7 undefined on input line 531
-.
-
-
-Package natbib Warning: Citation `VanderPlas_2018' on page 7 undefined on input
- line 535.
-
-
-Package natbib Warning: Citation `SchulzMudelsee_02' on page 7 undefined on inp
-ut line 539.
-
-
-Package natbib Warning: Citation `Mudelsee_02' on page 7 undefined on input lin
-e 539.
-
-
-Package natbib Warning: Citation `Mudelsee_NPG09' on page 7 undefined on input 
-line 539.
-
-
-Package natbib Warning: Citation `Bunn2008115' on page 7 undefined on input lin
-e 540.
-
-
-Package natbib Warning: Citation `Mathias_JSS04' on page 7 undefined on input l
-ine 541.
-
-
-Package natbib Warning: Citation `Foster_AJ96' on page 7 undefined on input lin
-e 543.
-
-
-Package natbib Warning: Citation `thomson82' on page 7 undefined on input line 
-546.
-
-
-Package natbib Warning: Citation `Ghil02' on page 7 undefined on input line 547
-.
-
-
-Package natbib Warning: Citation `astrochron' on page 7 undefined on input line
- 548.
-
-
-Package natbib Warning: Citation `ggplot2' on page 7 undefined on input line 56
-2.
+Package natbib Warning: Citation `bond2001' on page 7 undefined on input line 3
+45.
 
 [7]
-
-Package natbib Warning: Citation `maps' on page 8 undefined on input line 595.
-
-
-Package natbib Warning: Citation `ggmap' on page 8 undefined on input line 595.
-
-
-
-Package natbib Warning: Citation `lovejoy2013weather' on page 8 undefined on in
-put line 615.
-
-
-Package natbib Warning: Citation `ZhuPNAS2019' on page 8 undefined on input lin
-e 615.
-
-
-LaTeX Warning: Reference `sec:use-cases' on page 8 undefined on input line 621.
-
+Overfull \hbox (1.55313pt too wide) in paragraph at lines 358--363
+\T1/ptm/m/n/10 and \T1/pcr/m/n/10 plotPca\T1/ptm/m/n/10 ) pro-duce com-plete fi
+g-ures as \T1/pcr/m/n/10 ggplot2 \T1/ptm/m/n/10 ob-jects, that can be read-ily 
+cus-tomized by adding or chang-ing \T1/pcr/m/n/10 ggplot2
+ []
 
 [8]
 
-Package natbib Warning: Citation `parnell2008flexible' on page 9 undefined on i
-nput line 658.
+Package natbib Warning: Citation `hulu2001' on page 9 undefined on input line 4
+11.
 
 
-Package natbib Warning: Citation `hulu2001' on page 9 undefined on input line 6
-60.
+Package natbib Warning: Citation `alley' on page 9 undefined on input line 411.
 
 
-Package natbib Warning: Citation `BAM' on page 9 undefined on input line 660.
+[9]
+<geoChronR-paper_files/figure-latex/age-model-1.pdf, id=265, 469.755pt x 325.21
+5pt>
+File: geoChronR-paper_files/figure-latex/age-model-1.pdf Graphic file (type pdf
+)
+<use geoChronR-paper_files/figure-latex/age-model-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/age-model-1.pdf  us
+ed on input line 415.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
 
-
-Package natbib Warning: Citation `alley' on page 9 undefined on input line 662.
-
-
-
-Overfull \hbox (1.76259pt too wide) in paragraph at lines 640--664
-\T1/ptm/m/n/10 LiPD file that con-tains the chrono-log-i-cal mea-sure-ments, an
-d the func-tions \T1/pcr/m/n/10 runBacon(L)\T1/ptm/m/n/10 , \T1/pcr/m/n/10 runB
-chron(L)\T1/ptm/m/n/10 , \T1/pcr/m/n/10 runOxcal(L)
- []
-
-<geoChronR-paper_files/figure-latex/unnamed-chunk-4-1.pdf, id=72, 463.7325pt x 
-295.1025pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (ty
-pe pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-4-1.p
-df  used on input line 667.
-(pdftex.def)             Requested size: 463.73135pt x 295.10176pt.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 668.
-
-Overfull \hbox (88.11119pt too wide) in paragraph at lines 671--676
+Overfull \hbox (88.11119pt too wide) in paragraph at lines 418--420
 []\T1/ptm/m/n/10 After an age en-sem-ble has been added to a LiPD ob-ject, the 
 user can vi-su-al-ize the en-sem-ble time-series us-ing \T1/pcr/m/n/10 plotTime
 seriesEnsRibbons()
  []
 
-<geoChronR-paper_files/figure-latex/unnamed-chunk-6-1.pdf, id=73, 463.7325pt x 
-304.13625pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (ty
-pe pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-6-1.p
-df  used on input line 679.
-(pdftex.def)             Requested size: 463.73135pt x 304.1355pt.
-[9]
-<geoChronR-paper_files/figure-latex/unnamed-chunk-8-1.pdf, id=81, 458.71375pt x
- 312.16624pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (ty
-pe pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-8-1.p
-df  used on input line 704.
-(pdftex.def)             Requested size: 458.71263pt x 312.16548pt.
-<geoChronR-paper_files/figure-latex/unnamed-chunk-8-2.pdf, id=82, 458.71375pt x
- 312.16624pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-8-2.pdf Graphic file (ty
-pe pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-8-2.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-8-2.p
-df  used on input line 705.
-(pdftex.def)             Requested size: 458.71263pt x 312.16548pt.
+<geoChronR-paper_files/figure-latex/timeseries-1.pdf, id=267, 469.755pt x 325.2
+15pt>
+File: geoChronR-paper_files/figure-latex/timeseries-1.pdf Graphic file (type pd
+f)
+<use geoChronR-paper_files/figure-latex/timeseries-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/timeseries-1.pdf  u
+sed on input line 422.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[10 <./geoChronR-paper_files/figure-latex/age-model-1.pdf>]
+<geoChronR-paper_files/figure-latex/cor-hist-1.pdf, id=285, 469.755pt x 325.215
+pt>
+File: geoChronR-paper_files/figure-latex/cor-hist-1.pdf Graphic file (type pdf)
 
-Overfull \hbox (425.71153pt too wide) in paragraph at lines 704--706
-[][] [] 
- []
+<use geoChronR-paper_files/figure-latex/cor-hist-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/cor-hist-1.pdf  use
+d on input line 434.
+(pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
+<geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf, id=286, 469.755pt x 32
+5.215pt>
+File: geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf Graphic file (type
+ pdf)
+<use geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf
+  used on input line 438.
+(pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
 
-[10 <./geoChronR-paper_files/figure-latex/unnamed-chunk-4-1.pdf>]
-Overfull \vbox (75.17892pt too high) has occurred while \output is active []
-
-
-[11 <./geoChronR-paper_files/figure-latex/unnamed-chunk-6-1.pdf> <./geoChronR-p
-aper_files/figure-latex/unnamed-chunk-8-1.pdf> <./geoChronR-paper_files/figure-
-latex/unnamed-chunk-8-2.pdf>]
-
-Package natbib Warning: Citation `Boldt:2015' on page 12 undefined on input lin
-e 720.
-
-<geoChronR-paper_files/figure-latex/unnamed-chunk-10-1.pdf, id=141, 463.7325pt 
-x 321.2pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (t
-ype pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-10-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-10-1.
-pdf  used on input line 723.
-(pdftex.def)             Requested size: 463.73135pt x 321.19922pt.
-
-Package natbib Warning: Citation `anchukaitis2013mceof' on page 12 undefined on
- input line 733.
-
-
-Package natbib Warning: Citation `McKayKaufman2014' on page 12 undefined on inp
-ut line 734.
-
-[12 <./geoChronR-paper_files/figure-latex/unnamed-chunk-10-1.pdf>]
-<geoChronR-paper_files/figure-latex/unnamed-chunk-12-1.pdf, id=160, 453.695pt x
- 316.18124pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (t
-ype pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-12-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-12-1.
-pdf  used on input line 738.
-(pdftex.def)             Requested size: 453.6939pt x 316.18047pt.
-<geoChronR-paper_files/figure-latex/unnamed-chunk-14-1.pdf, id=161, 469.755pt x
- 316.18124pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (t
-ype pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-14-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-14-1.
-pdf  used on input line 744.
-(pdftex.def)             Requested size: 469.75386pt x 316.18047pt.
-
-
-Package natbib Warning: Citation `mix1995benthic' on page 13 undefined on input
- line 756.
-
-
-Package natbib Warning: Citation `Shackleton95' on page 13 undefined on input l
-ine 756.
-
-
-Package natbib Warning: Citation `LisieckiRaymo05' on page 13 undefined on inpu
-t line 759.
-
-
-Package natbib Warning: Citation `ProbStack' on page 13 undefined on input line
- 760.
-
-
-Package natbib Warning: Citation `Khider_2017' on page 13 undefined on input li
-ne 760.
-
-<geoChronR-paper_files/figure-latex/unnamed-chunk-16-1.pdf, id=163, 471.7625pt 
-x 326.21875pt>
-File: geoChronR-paper_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (t
-ype pdf)
-<use geoChronR-paper_files/figure-latex/unnamed-chunk-16-1.pdf>
-Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-16-1.
-pdf  used on input line 771.
-(pdftex.def)             Requested size: 471.76134pt x 326.21794pt.
-[13 <./geoChronR-paper_files/figure-latex/unnamed-chunk-12-1.pdf>]
-
-Package natbib Warning: Citation `Paillard_2001' on page 14 undefined on input 
-line 787.
-
-
-Package natbib Warning: Citation `wernerAndTingley' on page 14 undefined on inp
-ut line 810.
-
-[14 <./geoChronR-paper_files/figure-latex/unnamed-chunk-14-1.pdf>] [15 <./geoCh
-ronR-paper_files/figure-latex/unnamed-chunk-16-1.pdf>]
-
-Package natbib Warning: Citation `Evans_QSR13' on page 16 undefined on input li
-ne 834.
-
-
-Package natbib Warning: Citation `PRYSM' on page 16 undefined on input line 834
+LaTeX Warning: Reference `hulu-cor-hist' on page 11 undefined on input line 450
 .
 
-[16]
+[11 <./geoChronR-paper_files/figure-latex/timeseries-1.pdf> <./geoChronR-paper_
+files/figure-latex/cor-hist-1.pdf>]
 
-./geoChronR-paper.tex:872: Package caption Error: \caption outside float.
+Package natbib Warning: Citation `GISTEMP' on page 12 undefined on input line 4
+62.
 
-See the caption package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.872 ...backslash{}begin\{table\}{[}t{]} \caption
-                                                  {TEXT}
-? 
-./geoChronR-paper.tex:872: Emergency stop.
- ...                                              
-                                                  
-l.872 ...backslash{}begin\{table\}{[}t{]} \caption
-                                                  {TEXT}
-If you do not understand this error, please take a closer look
-at the documentation of the `caption' package, especially the
-section about errors.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+[12 <./geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf>]
+<geoChronR-paper_files/figure-latex/regression-1.pdf, id=330, 469.755pt x 325.2
+15pt>
+File: geoChronR-paper_files/figure-latex/regression-1.pdf Graphic file (type pd
+f)
+<use geoChronR-paper_files/figure-latex/regression-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/regression-1.pdf  u
+sed on input line 467.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[13 <./geoChronR-paper_files/figure-latex/regression-1.pdf>]
 
- 
+Package natbib Warning: Citation `Pages2013' on page 14 undefined on input line
+ 484.
+
+
+Package natbib Warning: Citation `Pages2017' on page 14 undefined on input line
+ 484.
+
+
+Package natbib Warning: Citation `Temp12k' on page 14 undefined on input line 4
+84.
+
+<geoChronR-paper_files/figure-latex/timeseries stack-1.pdf, id=358, 578.16pt x 
+867.24pt>
+File: geoChronR-paper_files/figure-latex/timeseries stack-1.pdf Graphic file (t
+ype pdf)
+<use geoChronR-paper_files/figure-latex/timeseries stack-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/timeseries stack-1.
+pdf  used on input line 488.
+(pdftex.def)             Requested size: 341.43306pt x 512.14357pt.
+
+LaTeX Warning: Reference `timeseries-stack' on page 14 undefined on input line 
+491.
+
+[14] [15 <./geoChronR-paper_files/figure-latex/timeseries stack-1.pdf>]
+<geoChronR-paper_files/figure-latex/scree-1.pdf, id=381, 469.755pt x 325.215pt>
+
+File: geoChronR-paper_files/figure-latex/scree-1.pdf Graphic file (type pdf)
+<use geoChronR-paper_files/figure-latex/scree-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/scree-1.pdf  used o
+n input line 515.
+(pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
+<geoChronR-paper_files/figure-latex/pca-1.pdf, id=382, 469.755pt x 325.215pt>
+File: geoChronR-paper_files/figure-latex/pca-1.pdf Graphic file (type pdf)
+<use geoChronR-paper_files/figure-latex/pca-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/pca-1.pdf  used on 
+input line 519.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+
+Package natbib Warning: Citation `paico' on page 16 undefined on input line 525
+.
+
+
+Package natbib Warning: Citation `wernerArcticCFR' on page 16 undefined on inpu
+t line 525.
+
+[16 <./geoChronR-paper_files/figure-latex/scree-1.pdf> <./geoChronR-paper_files
+/figure-latex/pca-1.pdf>]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=418, 469.755pt x 
+325.215pt>
+File: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (ty
+pe pdf)
+<use geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.p
+df  used on input line 548.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[17]
+<geoChronR-paper_files/figure-latex/redfit plot-1.pdf, id=437, 469.755pt x 325.
+215pt>
+File: geoChronR-paper_files/figure-latex/redfit plot-1.pdf Graphic file (type p
+df)
+<use geoChronR-paper_files/figure-latex/redfit plot-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/redfit plot-1.pdf  
+used on input line 570.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[18 <./geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>]
+<geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf, id=459, 469.755p
+t x 325.215pt>
+File: geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf Graphic file
+ (type pdf)
+<use geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf>
+Package pdftex.def Info: geoChronR-paper_files/figure-latex/MTM ensemble export
+-1.pdf  used on input line 599.
+(pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
+[19 <./geoChronR-paper_files/figure-latex/redfit plot-1.pdf>] [20 <./geoChronR-
+paper_files/figure-latex/MTM ensemble export-1.pdf>]
+
+Package natbib Warning: Citation `wernerAndTingley' on page 21 undefined on inp
+ut line 633.
+
+[21] [22] (./geoChronR-paper.bbl [23]
+Underfull \hbox (badness 1264) in paragraph at lines 34--38
+[]\T1/ptm/m/n/9 Boldt, Bran-don R., Kauf-man, Dar-rell S., McKay, Nicholas P., 
+and Briner, Ja-son P.: Holocene sum-mer tem-per-a-ture re-con-struc-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 34--38
+\T1/ptm/m/n/9 tion from sed-i-men-tary chloro-phyll con-tent, with treat-ment o
+f age un-cer-tain-ties, Ku-rupa Lake, Arc-tic Alaska, The Holocene,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--46
+[]\T1/ptm/m/n/9 Bunn, A. G.: A den-drochronol-ogy pro-gram li-brary in R (dplR)
+, Den-drochronolo-gia, 26, 115--124,
+ []
+
+
+Underfull \hbox (badness 4954) in paragraph at lines 71--77
+[]\T1/ptm/m/n/9 DeLong, K. L., Quinn, T. M., Tay-lor, F. W., Shen, C.-C., and L
+in, K.: Im-prov-ing coral-base pa-le-o-cli-mate re-con-struc-
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 71--77
+\T1/ptm/m/n/9 tions by repli-cat-ing 350 years of coral Sr/Ca vari-a-tions, Pal
+aeo-geog-ra-phy, Palaeo-cli-ma-tol-ogy, Palaeoe-col-ogy, 373, 6 -- 24,
+ []
+
+[24]
+Underfull \hbox (badness 2384) in paragraph at lines 127--132
+[]\T1/ptm/m/n/9 Khider, D., Ahn, S., Lisiecki, L. E., Lawrence, C. E., and Kien
+-ast, M.: The Role of Un-cer-tainty in Es-ti-mat-ing Lead/Lag
+ []
+
+
+Underfull \hbox (badness 1460) in paragraph at lines 127--132
+\T1/ptm/m/n/9 Re-la-tion-ships in Ma-rine Sed-i-men-tary Archives: A Case Study
+ From the Trop-i-cal Pa-cific, Pa-le-o-ceanog-ra-phy, 32, 1275--1290,
+ []
+
+
+Underfull \hbox (badness 7522) in paragraph at lines 179--182
+[]\T1/ptm/m/n/9 Meyers, S. R.: See-ing red in cyclic stratig-ra-phy: Spec-tral 
+noise es-ti-ma-tion for as-trochronol-ogy, Pa-le-o-ceanog-ra-phy, 27,
+ []
+
+[25]
+Underfull \hbox (badness 4378) in paragraph at lines 274--277
+[]\T1/ptm/m/n/9 Trachsel, M. and Telford, R. J.: All age--depth mod-els are wro
+ng, but are get-ting bet-ter, The Holocene, 27, 860--869,
+ []
+
+
+Underfull \hbox (badness 5316) in paragraph at lines 279--283
+[]\T1/ptm/m/n/9 VanderPlas, J. T.: Un-der-stand-ing the Lomb--Scargle Pe-ri-odo
+gram, The As-tro-phys-i-cal Jour-nal Sup-ple-ment Se-ries, 236, 16,
+ []
+
+) [26]
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 750.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 750.
+(./geoChronR-paper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 750.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 750.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 750.
+ ) 
 Here is how much of TeX's memory you used:
- 10319 strings out of 492649
- 149520 string characters out of 6129622
- 278057 words of memory out of 5000000
- 13941 multiletter control sequences out of 15000+600000
- 44413 words of font info for 69 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 43i,6n,40p,330b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
-./geoChronR-paper.tex:872:  ==> Fatal error occurred, no output PDF file produc
-ed!
+ 10965 strings out of 482854
+ 165799 string characters out of 5955782
+ 472228 words of memory out of 5000000
+ 25908 multiletter control sequences out of 15000+600000
+ 578027 words of font info for 92 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 51i,6n,47p,1058b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/Users/nicholas/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</Use
+rs/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi7.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi9.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr10.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr7.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb></Users/nicholas/Library/TinyTeX/texmf-dist
+/fonts/type1/urw/courier/ucrb8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist
+/fonts/type1/urw/courier/ucrr8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist
+/fonts/type1/urw/helvetic/uhvr8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/
+fonts/type1/urw/times/utmr8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on geoChronR-paper.pdf (26 pages, 3165745 bytes).
+PDF statistics:
+ 714 PDF objects out of 1000 (max. 8388607)
+ 643 compressed objects within 7 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+
