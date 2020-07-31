@@ -85,11 +85,12 @@
 
 \Author[1]{Nicholas}{McKay}
 \Author[2]{Julien}{Emile-Geay}
-\Author[2]{Deborah}{Khider}
+\Author[3]{Deborah}{Khider}
 
 
 \affil[1]{School of Earth and Sustainability, Northern Arizona University, Flagstaff, AZ 86011}
 \affil[2]{University of Southern California, Los Angeles, CA}
+\affil[3]{Information Sciences Institute, University of Southern California, Marina del Rey, CA}
 
 %% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
 
@@ -216,7 +217,7 @@ maybe comment on the depositional model?
 
 BChron \citep[\citet{parnell2008flexible}]{bchron} uses a similar approach, using a continuous Markov monotone stochastic process coupled to a piecewise linear deposition model. This simplicity allows semi-analytical solutions that make BChron computationally efficient. BChron was originally intended to model radiocarbon-based age-depth models in lake sedimentary cores of primarily Holocene age, but its design allows broader applications. In particular, modeling accumulation as additive independent gamma increments is appealing for the representation of hiatuses, particulary for speleothem records, where accumulation rate can vary quite abruptly between quiescient intervals of near-constant accumulation \citep[\citet{PRYSM},\citet{Hu_epsl17}]{Parnell_QSR2011}. The downside of this assumption is that BChron is known to exaggerate age uncertainties in cases where sedimentation varies smoothly \citep{trachsel2017}.
 
-Adjustable parameters? \{Deborah\}
+Bchron has several key parameters which allow a user to encode their specific knowledge about their data. In particular, the \texttt{outlierProbs} parameter is useful in giving less weigth to chronological tie points that may be considered outliers either because they create a reversal in the stratigraphic sequence or they are flagged during analysis (e.g.~contamination). The \texttt{extractDate} parameter allows to set the top age of the sample. This is extremely useful for radiocarbon-based chronologies where the top age may not be accurately measured for modern samples. The \texttt{thetaMhSd}, \texttt{psiMhSd}, and \texttt{muMhSd} paraemeters constrol the Metroplois-Hastings standard deviation for the age parameters and Compund Poisson-Gamma scale and mean respectively, which influence the width of the ensemble between age control tie points.
 
 \subsection{Oxcal}
 
@@ -422,11 +423,11 @@ The \texttt{corEns()} function in geoChronR will calculate ensemble correlations
 Here we calculate correlations during the period of overlap in 500 yr steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
 
 \begin{figure}
-\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/cor-hist-1} \caption{Need to write a caption}\label{fig:cor-hist}
+\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/cor-hist-1} \caption{Distribution of age-uncertain correlation between Hulu Cave speleothem and GISP2 ice core records. Significant (insignificant) correlations shown in green (gray).  Quantiles of the distribution shown in vertical red lines.}\label{fig:cor-hist}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/hulu-cor-hist-1} \caption{Need to write a caption}\label{fig:hulu-cor-hist}
+\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/hulu-cor-hist-1} \caption{Distribution of age-uncertain correlation between Hulu Cave speleothem and itself, treating the age uncertainty as if independent. Style as in figure x.}\label{fig:hulu-cor-hist}
 \end{figure}
 
 The results are visualized as a histogram of the ensemble correlation results, with color shading to highlight significance (figure \ref{fig:cor-hist}).

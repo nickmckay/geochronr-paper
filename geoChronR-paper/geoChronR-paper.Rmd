@@ -28,7 +28,6 @@ affiliation:
   - code: 3
     address: Information Sciences Institute, University of Southern California, Marina del Rey, CA
 abstract: |
-abstract: |
   Chronological uncertainty is a hallmark of the paleosciences. While many tools have been made available to researchers to produce age models suitable for various settings and assumptions, disparate tools and output formats often discourage integrative approaches. In addition, associated tasks like propagating age model uncertainties to subsequent analyses, and visualizing the results, have received comparatively little attention in the literature and available software. Here we describe GeoChronR, an open-source R package to facilitate these tasks. GeoChronR is built around emerging data standards for the paleosciences (Linked Paleo Data, or LiPD), and offers access to four popular age modeling techniques (Bacon, BChron, Oxcal, BAM). The output of these models is easily stored in LiPD, enabling paleo-aware synchronization, regression, correlation, principal component, and spectral analyses. Five real-world use cases illustrate how to use GeoChronR to facilitate these tasks, and to visualize the results in intuitive ways. 
 bibliography: geochronr.bib 
 running:
@@ -459,7 +458,7 @@ corPlot <- plotCorEns(corout,legend.position = c(0.1, 0.8),significance.option =
 ```
 
 
-```{r cor-hist,out.width = "8.3cm",echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem and GISP2 ice core $\delta^{18}$O records. Significant (insignificant) correlations shown in green (gray).  Quantiles of the distribution shown in vertical red lines."}
+```{r cor-hist,out.width = "8.3cm",echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem and GISP2 ice core records. Significant (insignificant) correlations shown in green (gray).  Quantiles of the distribution shown in vertical red lines."}
 print(corPlot)
 ```
 
@@ -473,7 +472,7 @@ med <- round(median(coroutHulu$cor.df$r),2)
 ```
 
 
-```{r hulu-cor-hist,out.width = "8.3cm",echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem $\delta^{18}$O and itself, treating the age uncertainty as if independent. Style as in \@ref(fig:cor-hist)."}
+```{r hulu-cor-hist,out.width = "8.3cm",echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem and itself, treating the age uncertainty as if independent. Style as in figure x."}
 print(corPlotHulu)
  
 ```
