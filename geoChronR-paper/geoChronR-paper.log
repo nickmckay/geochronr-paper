@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.22)  26 JUL 2020 13:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.22)  30 JUL 2020 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -468,48 +468,33 @@ Package color Info: Redefining color bgcol on input line 2491.
 Package color Info: Redefining color barcol on input line 2492.
 )
 LaTeX Info: Redefining \vec on input line 14.
-(/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count290
-\FV@InFile=\read3
-\FV@TabBox=\box57
-\c@FancyVerbLine=\count291
-\FV@StepNumber=\count292
-\FV@OutFile=\write3
-) (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
-Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip71
-\fb@frw=\dimen177
-\fb@frh=\dimen178
-\FrameRule=\dimen179
-\FrameSep=\dimen180
-)
+
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdfmo
 de.def
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count293
-\l__pdf_internal_box=\box58
+\l__kernel_color_stack_int=\count290
+\l__pdf_internal_box=\box57
 ) (./geoChronR-paper.aux)
 \openout1 = `geoChronR-paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 12
-1.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 81
+.
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -528,8 +513,8 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box59
-Package hyperref Info: Link coloring OFF on input line 121.
+\AtBeginShipoutBox=\box58
+Package hyperref Info: Link coloring OFF on input line 81.
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -539,464 +524,457 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 string.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count294
+\c@section@level=\count291
 )
-LaTeX Info: Redefining \ref on input line 121.
-LaTeX Info: Redefining \pageref on input line 121.
-LaTeX Info: Redefining \nameref on input line 121.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 159
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 119
 .
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 159
+LaTeX Font Info:    Trying to load font information for U+msb on input line 119
 .
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 16
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 12
 4.
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 164.
+(Font)              scaled to size 8.54997pt on input line 124.
 
 Package natbib Warning: Citation `Brown_radiocarbon89' on page 1 undefined on i
-nput line 181.
+nput line 141.
 
 
 Package natbib Warning: Citation `Eglinton96' on page 1 undefined on input line
- 181.
+ 141.
 
 
 Package natbib Warning: Citation `Fifield2000' on page 1 undefined on input lin
-e 181.
+e 141.
 
 
 Package natbib Warning: Citation `Eggins2005' on page 1 undefined on input line
- 181.
+ 141.
 
 
 Package natbib Warning: Citation `Santos_blank_2010' on page 1 undefined on inp
-ut line 181.
+ut line 141.
 
 
 Package natbib Warning: Citation `Stuiver91' on page 1 undefined on input line 
-183.
+143.
 
 
 Package natbib Warning: Citation `Stuiver98' on page 1 undefined on input line 
-183.
+143.
 
 
 Package natbib Warning: Citation `Balco2009' on page 1 undefined on input line 
-183.
+143.
 
 
 Package natbib Warning: Citation `Masarik2009' on page 1 undefined on input lin
-e 183.
+e 143.
 
 [1
 
 {/Users/nicholas/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 Package natbib Warning: Citation `Ramsey2009Bayesian' on page 2 undefined on in
-put line 185.
+put line 145.
 
 
 Package natbib Warning: Citation `Blaauw2010CLAM' on page 2 undefined on input 
-line 185.
+line 145.
 
 
 Package natbib Warning: Citation `Blaauw2011BACON' on page 2 undefined on input
- line 185.
-
-
-Package natbib Warning: Citation `Ramsey2009Bayesian' on page 2 undefined on in
-put line 190.
-
-
-Package natbib Warning: Citation `Blaauw2010CLAM' on page 2 undefined on input 
-line 190.
-
-
-Package natbib Warning: Citation `Blaauw2011BACON' on page 2 undefined on input
- line 190.
+ line 145.
 
 
 Package natbib Warning: Citation `McKay2008' on page 2 undefined on input line 
-190.
+150.
 
 
 Package natbib Warning: Citation `McKay2009' on page 2 undefined on input line 
-190.
+150.
 
 
 Package natbib Warning: Citation `Haam_Huybers2010' on page 2 undefined on inpu
-t line 194.
+t line 154.
 
 
 Package natbib Warning: Citation `Rhines_JGR2011' on page 2 undefined on input 
-line 194.
+line 154.
 
 
 Package natbib Warning: Citation `Anchukaitis_Tierney2012' on page 2 undefined 
-on input line 194.
+on input line 154.
 
 
 Package natbib Warning: Citation `Shakun_Nature2012' on page 2 undefined on inp
-ut line 194.
+ut line 154.
 
 
 Package natbib Warning: Citation `Tierney2013' on page 2 undefined on input lin
-e 194.
+e 154.
 
 
 Package natbib Warning: Citation `Anchukaitis_Tierney2012' on page 2 undefined 
-on input line 199.
+on input line 159.
 
 
 Package natbib Warning: Citation `Tierney2013' on page 2 undefined on input lin
-e 199.
+e 159.
 
 
 Package natbib Warning: Citation `mckay_onset_2018' on page 2 undefined on inpu
-t line 199.
+t line 159.
 
 
 Package natbib Warning: Citation `routson2018' on page 2 undefined on input lin
-e 199.
+e 159.
 
 
 Package natbib Warning: Citation `Shakun_Nature2012' on page 2 undefined on inp
-ut line 199.
+ut line 159.
 
 
 Package natbib Warning: Citation `kaufman2020HoloceneGMST' on page 2 undefined 
-on input line 199.
+on input line 159.
 
 
 Package natbib Warning: Citation `Boldt2015' on page 2 undefined on input line 
-200.
+160.
 
 
 Package natbib Warning: Citation `Haam_Huybers2010' on page 2 undefined on inpu
-t line 210.
+t line 170.
 
 
 Package natbib Warning: Citation `Shakun_Nature2012' on page 2 undefined on inp
-ut line 210.
+ut line 170.
 
 
 Package natbib Warning: Citation `Anchukaitis_Tierney2012' on page 2 undefined 
-on input line 210.
+on input line 170.
 
 
 Package natbib Warning: Citation `Tierney2013' on page 2 undefined on input lin
-e 210.
+e 170.
 
 
 Package natbib Warning: Citation `routson2018' on page 2 undefined on input lin
-e 210.
+e 170.
 
 [2]
 
-Package natbib Warning: Citation `LiPD' on page 3 undefined on input line 219.
+Package natbib Warning: Citation `LiPD' on page 3 undefined on input line 180.
 
 
-Package natbib Warning: Citation `neotoma' on page 3 undefined on input line 21
-9.
+Package natbib Warning: Citation `neotoma' on page 3 undefined on input line 18
+0.
 
 
-Package natbib Warning: Citation `clam' on page 3 undefined on input line 234.
+Package natbib Warning: Citation `clam' on page 3 undefined on input line 195.
 
 
 Package natbib Warning: Citation `heegaard05' on page 3 undefined on input line
- 234.
+ 195.
 
 
-Package natbib Warning: Citation `clam' on page 3 undefined on input line 235.
-
-
-Package natbib Warning: Citation `baconPackage' on page 3 undefined on input li
-ne 237.
+Package natbib Warning: Citation `clam' on page 3 undefined on input line 196.
 
 [3]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 24
-8.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 21
+0.
 (/Users/nicholas/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
+) [4]
 
-Package natbib Warning: Citation `baconPackage' on page 4 undefined on input li
-ne 248.
+Package natbib Warning: Citation `bronkramsey2010' on page 5 undefined on input
+ line 229.
 
-
-Package natbib Warning: Citation `bronkramsey2010' on page 4 undefined on input
- line 267.
-
-[4] [5]
-
-Package natbib Warning: Citation `bretherton1999' on page 6 undefined on input 
-line 306.
-
+[5]
+<Nikolaus_Kopernikus.jpg, id=150, 206.7725pt x 240.9pt>
+File: Nikolaus_Kopernikus.jpg Graphic file (type jpg)
+<use Nikolaus_Kopernikus.jpg>
+Package pdftex.def Info: Nikolaus_Kopernikus.jpg  used on input line 265.
+(pdftex.def)             Requested size: 236.15796pt x 275.14345pt.
 [6]
 
-Package natbib Warning: Citation `PreisendorferMobley1988' on page 7 undefined 
-on input line 334.
+Package natbib Warning: Citation `bretherton1999' on page 7 undefined on input 
+line 291.
+
+[7 <./Nikolaus_Kopernikus.jpg>]
+
+Package natbib Warning: Citation `PreisendorferMobley1988' on page 8 undefined 
+on input line 319.
 
 
-Package natbib Warning: Citation `SchneiderNeumaier2001' on page 7 undefined on
- input line 335.
+Package natbib Warning: Citation `SchneiderNeumaier2001' on page 8 undefined on
+ input line 320.
+
+[8]
+
+Package natbib Warning: Citation `mill_monograph' on page 9 undefined on input 
+line 330.
 
 
-Package natbib Warning: Citation `mill_monograph' on page 7 undefined on input 
-line 345.
+Package natbib Warning: Citation `bond2001' on page 9 undefined on input line 3
+30.
 
 
-Package natbib Warning: Citation `bond2001' on page 7 undefined on input line 3
-45.
+Overfull \hbox (5.67183pt too wide) in paragraph at lines 340--343
+[]\T1/ptm/m/n/10 REDFIT, a ver-sion of the Lomb-Scargle pe-ri-odogram tai-lored
+ to pa-le-o-cli-matic data ([]Schulz and Mudelsee[], []2002[], []Mudelsee[]
+ []
 
-[7]
-Overfull \hbox (1.55313pt too wide) in paragraph at lines 358--363
+
+Overfull \hbox (1.55313pt too wide) in paragraph at lines 351--356
 \T1/ptm/m/n/10 and \T1/pcr/m/n/10 plotPca\T1/ptm/m/n/10 ) pro-duce com-plete fi
 g-ures as \T1/pcr/m/n/10 ggplot2 \T1/ptm/m/n/10 ob-jects, that can be read-ily 
 cus-tomized by adding or chang-ing \T1/pcr/m/n/10 ggplot2
  []
 
-[8]
+[9] [10]
 
-Package natbib Warning: Citation `hulu2001' on page 9 undefined on input line 4
-11.
-
-
-Package natbib Warning: Citation `alley' on page 9 undefined on input line 411.
+Package natbib Warning: Citation `hulu2001' on page 11 undefined on input line 
+402.
 
 
-[9]
-<geoChronR-paper_files/figure-latex/age-model-1.pdf, id=265, 469.755pt x 325.21
+Package natbib Warning: Citation `alley' on page 11 undefined on input line 402
+.
+
+<geoChronR-paper_files/figure-latex/age-model-1.pdf, id=295, 469.755pt x 325.21
 5pt>
 File: geoChronR-paper_files/figure-latex/age-model-1.pdf Graphic file (type pdf
 )
 <use geoChronR-paper_files/figure-latex/age-model-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/age-model-1.pdf  us
-ed on input line 415.
+ed on input line 406.
 (pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
 
-Overfull \hbox (88.11119pt too wide) in paragraph at lines 418--420
+Overfull \hbox (88.11119pt too wide) in paragraph at lines 409--411
 []\T1/ptm/m/n/10 After an age en-sem-ble has been added to a LiPD ob-ject, the 
 user can vi-su-al-ize the en-sem-ble time-series us-ing \T1/pcr/m/n/10 plotTime
 seriesEnsRibbons()
  []
 
-<geoChronR-paper_files/figure-latex/timeseries-1.pdf, id=267, 469.755pt x 325.2
+<geoChronR-paper_files/figure-latex/timeseries-1.pdf, id=297, 469.755pt x 325.2
 15pt>
 File: geoChronR-paper_files/figure-latex/timeseries-1.pdf Graphic file (type pd
 f)
 <use geoChronR-paper_files/figure-latex/timeseries-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/timeseries-1.pdf  u
-sed on input line 422.
+sed on input line 413.
 (pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
-[10 <./geoChronR-paper_files/figure-latex/age-model-1.pdf>]
-<geoChronR-paper_files/figure-latex/cor-hist-1.pdf, id=285, 469.755pt x 325.215
+[11]
+<geoChronR-paper_files/figure-latex/cor-hist-1.pdf, id=307, 469.755pt x 325.215
 pt>
 File: geoChronR-paper_files/figure-latex/cor-hist-1.pdf Graphic file (type pdf)
 
 <use geoChronR-paper_files/figure-latex/cor-hist-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/cor-hist-1.pdf  use
-d on input line 434.
+d on input line 425.
 (pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
-<geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf, id=286, 469.755pt x 32
+<geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf, id=308, 469.755pt x 32
 5.215pt>
 File: geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf Graphic file (type
  pdf)
 <use geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf
-  used on input line 438.
+  used on input line 429.
 (pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
 
-LaTeX Warning: Reference `hulu-cor-hist' on page 11 undefined on input line 450
+LaTeX Warning: Reference `hulu-cor-hist' on page 12 undefined on input line 441
 .
 
-[11 <./geoChronR-paper_files/figure-latex/timeseries-1.pdf> <./geoChronR-paper_
-files/figure-latex/cor-hist-1.pdf>]
+[12 <./geoChronR-paper_files/figure-latex/age-model-1.pdf>] [13 <./geoChronR-pa
+per_files/figure-latex/timeseries-1.pdf> <./geoChronR-paper_files/figure-latex/
+cor-hist-1.pdf>]
 
-Package natbib Warning: Citation `GISTEMP' on page 12 undefined on input line 4
-62.
+Package natbib Warning: Citation `GISTEMP' on page 14 undefined on input line 4
+53.
 
-[12 <./geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf>]
-<geoChronR-paper_files/figure-latex/regression-1.pdf, id=330, 469.755pt x 325.2
+<geoChronR-paper_files/figure-latex/regression-1.pdf, id=350, 469.755pt x 325.2
 15pt>
 File: geoChronR-paper_files/figure-latex/regression-1.pdf Graphic file (type pd
 f)
 <use geoChronR-paper_files/figure-latex/regression-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/regression-1.pdf  u
-sed on input line 467.
+sed on input line 458.
 (pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
-[13 <./geoChronR-paper_files/figure-latex/regression-1.pdf>]
+[14 <./geoChronR-paper_files/figure-latex/hulu-cor-hist-1.pdf>]
 
-Package natbib Warning: Citation `Pages2013' on page 14 undefined on input line
- 484.
-
-
-Package natbib Warning: Citation `Pages2017' on page 14 undefined on input line
- 484.
+Package natbib Warning: Citation `Pages2013' on page 15 undefined on input line
+ 475.
 
 
-Package natbib Warning: Citation `Temp12k' on page 14 undefined on input line 4
-84.
+Package natbib Warning: Citation `Pages2017' on page 15 undefined on input line
+ 475.
 
-<geoChronR-paper_files/figure-latex/timeseries stack-1.pdf, id=358, 578.16pt x 
+
+Package natbib Warning: Citation `Temp12k' on page 15 undefined on input line 4
+75.
+
+[15 <./geoChronR-paper_files/figure-latex/regression-1.pdf>]
+<geoChronR-paper_files/figure-latex/timeseries stack-1.pdf, id=395, 578.16pt x 
 867.24pt>
 File: geoChronR-paper_files/figure-latex/timeseries stack-1.pdf Graphic file (t
 ype pdf)
 <use geoChronR-paper_files/figure-latex/timeseries stack-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/timeseries stack-1.
-pdf  used on input line 488.
+pdf  used on input line 479.
 (pdftex.def)             Requested size: 341.43306pt x 512.14357pt.
 
-LaTeX Warning: Reference `timeseries-stack' on page 14 undefined on input line 
-491.
+LaTeX Warning: Reference `timeseries-stack' on page 16 undefined on input line 
+482.
 
-[14] [15 <./geoChronR-paper_files/figure-latex/timeseries stack-1.pdf>]
-<geoChronR-paper_files/figure-latex/scree-1.pdf, id=381, 469.755pt x 325.215pt>
+<geoChronR-paper_files/figure-latex/scree-1.pdf, id=398, 469.755pt x 325.215pt>
 
 File: geoChronR-paper_files/figure-latex/scree-1.pdf Graphic file (type pdf)
 <use geoChronR-paper_files/figure-latex/scree-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/scree-1.pdf  used o
-n input line 515.
+n input line 505.
 (pdftex.def)             Requested size: 236.15796pt x 163.4904pt.
-<geoChronR-paper_files/figure-latex/pca-1.pdf, id=382, 469.755pt x 325.215pt>
+<geoChronR-paper_files/figure-latex/pca-1.pdf, id=399, 469.755pt x 325.215pt>
 File: geoChronR-paper_files/figure-latex/pca-1.pdf Graphic file (type pdf)
 <use geoChronR-paper_files/figure-latex/pca-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/pca-1.pdf  used on 
-input line 519.
+input line 509.
 (pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
 
-Package natbib Warning: Citation `paico' on page 16 undefined on input line 525
+Package natbib Warning: Citation `paico' on page 16 undefined on input line 515
 .
 
 
 Package natbib Warning: Citation `wernerArcticCFR' on page 16 undefined on inpu
-t line 525.
+t line 515.
 
-[16 <./geoChronR-paper_files/figure-latex/scree-1.pdf> <./geoChronR-paper_files
-/figure-latex/pca-1.pdf>]
-<geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=418, 469.755pt x 
+[16] [17 <./geoChronR-paper_files/figure-latex/timeseries stack-1.pdf>] [18 <./
+geoChronR-paper_files/figure-latex/scree-1.pdf> <./geoChronR-paper_files/figure
+-latex/pca-1.pdf>]
+<geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=455, 469.755pt x 
 325.215pt>
 File: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (ty
 pe pdf)
 <use geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.p
-df  used on input line 548.
+df  used on input line 538.
 (pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
-[17]
-<geoChronR-paper_files/figure-latex/redfit plot-1.pdf, id=437, 469.755pt x 325.
+<geoChronR-paper_files/figure-latex/redfit plot-1.pdf, id=458, 469.755pt x 325.
 215pt>
 File: geoChronR-paper_files/figure-latex/redfit plot-1.pdf Graphic file (type p
 df)
 <use geoChronR-paper_files/figure-latex/redfit plot-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/redfit plot-1.pdf  
-used on input line 570.
+used on input line 556.
 (pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
-[18 <./geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf, id=459, 469.755p
+[19] [20 <./geoChronR-paper_files/figure-latex/unnamed-chunk-7-1.pdf> <./geoChr
+onR-paper_files/figure-latex/redfit plot-1.pdf>]
+<geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf, id=503, 469.755p
 t x 325.215pt>
 File: geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf Graphic file
  (type pdf)
 <use geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf>
 Package pdftex.def Info: geoChronR-paper_files/figure-latex/MTM ensemble export
--1.pdf  used on input line 599.
+-1.pdf  used on input line 580.
 (pdftex.def)             Requested size: 341.43306pt x 236.37776pt.
-[19 <./geoChronR-paper_files/figure-latex/redfit plot-1.pdf>] [20 <./geoChronR-
-paper_files/figure-latex/MTM ensemble export-1.pdf>]
+[21]
 
-Package natbib Warning: Citation `wernerAndTingley' on page 21 undefined on inp
-ut line 633.
+Package natbib Warning: Citation `wernerAndTingley' on page 22 undefined on inp
+ut line 599.
 
-[21] [22] (./geoChronR-paper.bbl [23]
-Underfull \hbox (badness 1264) in paragraph at lines 34--38
+[22 <./geoChronR-paper_files/figure-latex/MTM ensemble export-1.pdf>] [23] (./g
+eoChronR-paper.bbl [24]
+Underfull \hbox (badness 1264) in paragraph at lines 45--49
 []\T1/ptm/m/n/9 Boldt, Bran-don R., Kauf-man, Dar-rell S., McKay, Nicholas P., 
 and Briner, Ja-son P.: Holocene sum-mer tem-per-a-ture re-con-struc-
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 34--38
+Underfull \hbox (badness 1371) in paragraph at lines 45--49
 \T1/ptm/m/n/9 tion from sed-i-men-tary chloro-phyll con-tent, with treat-ment o
 f age un-cer-tain-ties, Ku-rupa Lake, Arc-tic Alaska, The Holocene,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--46
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
 []\T1/ptm/m/n/9 Bunn, A. G.: A den-drochronol-ogy pro-gram li-brary in R (dplR)
 , Den-drochronolo-gia, 26, 115--124,
  []
 
 
-Underfull \hbox (badness 4954) in paragraph at lines 71--77
+Underfull \hbox (badness 4954) in paragraph at lines 74--80
 []\T1/ptm/m/n/9 DeLong, K. L., Quinn, T. M., Tay-lor, F. W., Shen, C.-C., and L
 in, K.: Im-prov-ing coral-base pa-le-o-cli-mate re-con-struc-
  []
 
 
-Underfull \hbox (badness 2205) in paragraph at lines 71--77
+Underfull \hbox (badness 2205) in paragraph at lines 74--80
 \T1/ptm/m/n/9 tions by repli-cat-ing 350 years of coral Sr/Ca vari-a-tions, Pal
 aeo-geog-ra-phy, Palaeo-cli-ma-tol-ogy, Palaeoe-col-ogy, 373, 6 -- 24,
  []
 
-[24]
-Underfull \hbox (badness 2384) in paragraph at lines 127--132
+[25]
+Underfull \hbox (badness 2384) in paragraph at lines 130--135
 []\T1/ptm/m/n/9 Khider, D., Ahn, S., Lisiecki, L. E., Lawrence, C. E., and Kien
 -ast, M.: The Role of Un-cer-tainty in Es-ti-mat-ing Lead/Lag
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 127--132
+Underfull \hbox (badness 1460) in paragraph at lines 130--135
 \T1/ptm/m/n/9 Re-la-tion-ships in Ma-rine Sed-i-men-tary Archives: A Case Study
  From the Trop-i-cal Pa-cific, Pa-le-o-ceanog-ra-phy, 32, 1275--1290,
  []
 
 
-Underfull \hbox (badness 7522) in paragraph at lines 179--182
+Underfull \hbox (badness 7522) in paragraph at lines 188--191
 []\T1/ptm/m/n/9 Meyers, S. R.: See-ing red in cyclic stratig-ra-phy: Spec-tral 
 noise es-ti-ma-tion for as-trochronol-ogy, Pa-le-o-ceanog-ra-phy, 27,
  []
 
-[25]
-Underfull \hbox (badness 4378) in paragraph at lines 274--277
+[26]
+Underfull \hbox (badness 4378) in paragraph at lines 301--304
 []\T1/ptm/m/n/9 Trachsel, M. and Telford, R. J.: All age--depth mod-els are wro
 ng, but are get-ting bet-ter, The Holocene, 27, 860--869,
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 279--283
+Underfull \hbox (badness 5316) in paragraph at lines 306--310
 []\T1/ptm/m/n/9 VanderPlas, J. T.: Un-der-stand-ing the Lomb--Scargle Pe-ri-odo
 gram, The As-tro-phys-i-cal Jour-nal Sup-ple-ment Se-ries, 236, 16,
  []
 
-) [26]
+[27]) [28]
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 750.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 750.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 710.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 710.
 (./geoChronR-paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 750.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 750.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 710.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 710.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 750.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 710.
  ) 
 Here is how much of TeX's memory you used:
- 10965 strings out of 482854
- 165799 string characters out of 5955782
- 472228 words of memory out of 5000000
- 25908 multiletter control sequences out of 15000+600000
- 578027 words of font info for 92 fonts, out of 8000000 for 9000
+ 10530 strings out of 482854
+ 159281 string characters out of 5955782
+ 464096 words of memory out of 5000000
+ 25471 multiletter control sequences out of 15000+600000
+ 577406 words of font info for 90 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 51i,6n,47p,1058b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,6n,47p,1073b,598s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/nicholas/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</Use
 rs/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
 b></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cm
@@ -1006,16 +984,15 @@ sfonts/cm/cmr10.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr6.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmr7.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy7.pfb></Users/nicholas/Library/TinyTeX/texmf-dist
-/fonts/type1/urw/courier/ucrb8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist
 /fonts/type1/urw/courier/ucrr8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dis
 t/fonts/type1/urw/times/utmb8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></Users/nicholas/Library/TinyTeX/texmf-dist/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on geoChronR-paper.pdf (26 pages, 3165745 bytes).
+Output written on geoChronR-paper.pdf (28 pages, 4114601 bytes).
 PDF statistics:
- 714 PDF objects out of 1000 (max. 8388607)
- 643 compressed objects within 7 object streams
- 146 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 741 PDF objects out of 1000 (max. 8388607)
+ 668 compressed objects within 7 object streams
+ 156 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
