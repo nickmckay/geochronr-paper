@@ -13,7 +13,8 @@ author:
     email: julieneg@usc.edu
   - given_name: Deborah
     surname: Khider
-    affiliation: 2
+    affiliation: 3
+    email: khider@usc.edu
 # If you have more than one corresponding author, add them manually using the following structure:
 # Two authors: \correspondence{Daniel Nüst (daniel.nuest@uni-muenster.de) and Josiah Carberry (j.carberry@orcid.org)}
 # Three authors or more: \correspondence{Daniel Nüst (daniel.nuest@uni-muenster.de), Josiah Carberry j.carberry@orcid.org), and Markus Konkol (m.konkol@wwu.de)}
@@ -24,6 +25,9 @@ affiliation:
     address: School of Earth and Sustainability, Northern Arizona University, Flagstaff, AZ 86011
   - code: 2
     address: University of Southern California, Los Angeles, CA
+  - code: 3
+    address: Information Sciences Institute, University of Southern California, Marina del Rey, CA
+abstract: |
 abstract: |
   Chronological uncertainty is a hallmark of the paleosciences. While many tools have been made available to researchers to produce age models suitable for various settings and assumptions, disparate tools and output formats often discourage integrative approaches. In addition, associated tasks like propagating age model uncertainties to subsequent analyses, and visualizing the results, have received comparatively little attention in the literature and available software. Here we describe GeoChronR, an open-source R package to facilitate these tasks. GeoChronR is built around emerging data standards for the paleosciences (Linked Paleo Data, or LiPD), and offers access to four popular age modeling techniques (Bacon, BChron, Oxcal, BAM). The output of these models is easily stored in LiPD, enabling paleo-aware synchronization, regression, correlation, principal component, and spectral analyses. Five real-world use cases illustrate how to use GeoChronR to facilitate these tasks, and to visualize the results in intuitive ways. 
 bibliography: geochronr.bib 
@@ -187,8 +191,7 @@ maybe comment on the depositional model?
 
 BChron [@bchron,@parnell2008flexible] uses a similar approach, using a continuous Markov monotone stochastic process coupled to a piecewise linear deposition model. This simplicity allows semi-analytical solutions that make BChron computationally efficient.  BChron was originally intended to model radiocarbon-based age-depth models in lake sedimentary cores of primarily Holocene age, but its design allows broader applications. In particular, modeling accumulation as additive independent gamma increments is appealing for the representation of hiatuses, particulary for speleothem records, where accumulation rate can vary quite abruptly between quiescient intervals of near-constant accumulation [@Parnell_QSR2011,@PRYSM,@Hu_epsl17]. The downside of this assumption is that BChron is known to exaggerate age uncertainties in cases where sedimentation varies smoothly [@trachsel2017]. 
 
-Adjustable parameters? {Deborah}
-
+Bchron has several key parameters which allow a user to encode their specific knowledge about their data. In particular, the `outlierProbs` parameter is useful in giving less weigth to chronological tie points that may be considered outliers either because they create a reversal in the stratigraphic sequence or they are flagged during analysis (e.g. contamination). The `extractDate` parameter allows to set the top age of the sample. This is extremely useful for radiocarbon-based chronologies where the top age may not be accurately measured for modern samples. The `thetaMhSd`, `psiMhSd`, and `muMhSd` paraemeters constrol the Metroplois-Hastings standard deviation for the age parameters and Compund Poisson-Gamma scale and mean respectively, which influence the width of the ensemble between age control tie points. 
 
 ## Oxcal
 
@@ -659,8 +662,7 @@ HMM-Match is a probabilistic method that generates an ensemble of 1000 possible 
 Now let us take a first look at the median age model:
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
-#I <- lipdR::readLipd("http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd")
-I <- lipdR::readLipd("~/Downloads/ODP846.Lawrence.2006.lpd")
+I <- lipdR::readLipd("http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd")
 d18O <- I$chronData[[1]]$model[[1]]$summaryTable[[1]]$d180$values
 t.med <- I$chronData[[1]]$model[[1]]$summaryTable[[1]]$median$values
 L <- geoChronR::mapAgeEnsembleToPaleoData(I,paleo.meas.table.num = 1)
