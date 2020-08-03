@@ -132,7 +132,7 @@ GeoChronR was built to lower the barriers to broader adoption of these emerging 
 GeoChronR provides an easily-accessible, open-source, and extensible software package of industry-standard and cutting-edge tools that provides users with a single environment to create, analyze, and visualize time-uncertain data.
 GeoChronR is designed around emerging standards in the paleogeosciences that connects users to growing libraries of standardized datasets formatted in the Linked PaleoData format [@lipd_cp], including thousands of datasets archived at the World Data Service for Paleoclimatology (WDS-Paleo) and lipdverse.org, those at the [LinkedEarth wiki[(http://wiki.linked.earth)], and Neotoma [@williams2018neotoma] via the `neotoma2lipd` package [@neotoma2lipd].
 GeoChronR reuses existing community packages, for which it builds a standardized interface, with LiPD as input/output format.
-Central to the development of the code and documentation were two workshops carried out in 2016 and 2017 at Northern Arizona University, gathereing a total of 33 participants. The workshops principally gathered early career researchers with $>50\%$  participation of women, which are underrepresented in the geosciences. Exit surveys were conducted to gather feedback, and to suggest improvements and extensions, which were integrated into subsequent versions of the software.
+Central to the development of the code and documentation were two workshops carried out in 2016 and 2017 at Northern Arizona University, gathereing a total of 33 participants. The workshops principally gathered early career researchers with $>50\%$  participation of women, who are underrepresented in the geosciences. Exit surveys were conducted to gather feedback, and to suggest improvements and extensions, which were integrated into subsequent versions of the software.
 
 ## Outline of manuscript
 
@@ -249,8 +249,9 @@ In addition to the correlation coefficients, GeoChronR calculates their signific
 Paleogeoscientific timeseries are often highly autocorrelated, which can lead to spurious assessments of significance [@Hu_epsl17].
 Therefore, in addition to the standard Student's T-test p-value calculation, we also calculate a p-value that is adjusted for autocorrelation to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999.
 However, repeating this test over multiple ensembles raises the issue of test multiplicity  [@Ventura2004], or "look elsewhere effect".
-To overcome this problem, we control for this false discovery rate using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004.
-{Julien: thoughts?} NM: I think here we need to discuss when FDR is needed, and when it's not. In my view, if you're surveying the full breadth on an ensemble, you're not searching for p-value, just trying to quantify the range. However, if the users want to subset some best-case or worst-case ensembles, and then proceed with analysis, FDR seems appropriate.
+To overcome this problem, we control for this false discovery rate (FDR) using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004. FDR explicitly controls for spurious discoveries arising from repeatedly carrying out the same test. At a 5% level, one would expect a 1000 member ensemble to contain 50 spurious "discoveries" -- instances of the null hypothesis, here "no correlation"  being rejected. FDR takes this effect into account to minimize the risk of identifying such spurious correlations merely on account of repeated testing. 
+
+<!-- {Julien: thoughts?} NM: I think here we need to discuss when FDR is needed, and when it's not. In my view, if you're surveying the full breadth on an ensemble, you're not searching for p-value, just trying to quantify the range. However, if the users want to subset some best-case or worst-case ensembles, and then proceed with analysis, FDR seems appropriate. -->
 
 ## Regression
 
@@ -707,20 +708,18 @@ p.redfit.ens <- periodAnnotate(p.redfit.ens, periods = c(19,23,41,100), y.lims =
 print(p.redfit.ens)
 ```
 
-We use the `computeSpectraEns()` option to calculate the spectra for 1000 ensemble members using the REDFIT approach (figure \@ref(fig:redfit-plot)). It is clear that the data contain significant energy (peaks) near, but not exactly at, the Milankovitch periodicities (100, 41, 23, and 19 kyr).  These periodicities, particularly those associated with eccentricity (100 kyr) and precession (23 and 19 kyr), rise above the null hypothesis (the 95% quantile from an autoregressive process of order one, see @Mudelsee_NPG09).
+We use the `computeSpectraEns()` function to calculate the spectra for 1000 ensemble members using the REDFIT approach (figure \@ref(fig:redfit-plot)). It is clear that the data contain significant energy (peaks) near, but not exactly at, the Milankovitch periodicities (100, 41, 23, and 19 kyr).  These periodicities, particularly those associated with eccentricity (100 kyr) and precession (23 and 19 kyr), rise above the null hypothesis (the 95% quantile from an autoregressive process of order one, see @Mudelsee_NPG09).
 The obliquity periodicity is relatively weak, reaching just below the AR(1) benchmark.
 
-The Lomb-Scargle periodogram used by REDFIT is a common way to deal with unevenly-spaced timeseries, but like all periodograms, it is inconsistent: the uncertainty about the spectral density at each frequency does not decrease with the number of observations. This is mitigated somewhat with the application of Welch's Overlapping Segment Averaging, but their parameter choice is fairly arbitrary.
-On the other hand, MTM [@thomson82] is an optimal estimator, which is consistent (the more obervations, the better constrained the spectral density), and its parameter choice is explicit. Formally, MTM optimizes the classic bias-variance tradeoff inherent to all statistical inference.
+The Lomb-Scargle periodogram used by REDFIT is a common way to deal with unevenly-spaced timeseries, but like all periodograms, it is inconsistent: the uncertainty about the spectral density at each frequency does not decrease with the number of observations. This is mitigated somewhat with the application of Welch's Overlapping Segment Averaging, whose parameter choices (number of widows and degree of overlap) is not backed by theory.
+In contrast, MTM [@thomson82] is an optimal estimator, which is consistent (the more obervations, the better constrained the spectral density), and its parameter choice is explicit. Formally, MTM optimizes the classic bias-variance tradeoff inherent to all statistical inference.
 It does so by minimizing speactral leakage outside of a frequency band with half-bandwidth equal to $pf_R$, where $f_R=1/(N \Delta t)$ is the Rayleigh frequency, $\Delta t$ is the sampling interval, $N$ the number of measurements, and $p$ is the so-called *time-bandwidth product* [@Ghil02].
 $p$ can only take a finite number of values, all multiples of 1/2 between 2 and 4.
 A larger $p$ means lower variance (i.e. less uncertainty about the power), but broader peaks (i.e. a lower spectral resolution), synonymous with more uncertainty about the exact location of the peak.
-So while MTM might not distinguish between closely spaced harmonics, it is much less likely to identify spurious peaks, especially at high frequencies. In addition, a battery of formal tests have been devised with MTM, allowing us to ascertain the significance of spectral peaks under reasonably broad assumptions.
-We show how to use this "harmonic F-test" below.
+So while MTM might not distinguish between closely spaced harmonics, it is much less likely to identify spurious peaks, especially at high frequencies. 
+Several formal tests have been devised for both methods, allowing us to ascertain the significance of spectral peaks under reasonably broad assumptions. We show how to use MTM's "harmonic F-test" below.
 
-However, classic MTM can only handle evenly-spaced data.
-Since the data are close to evenly-spaced, is is reasonable to interpolate them using standard methods.
-Both interpolation and MTM are implemented with the [astrochron @astrochron] package, which GeoChronR employs.
+However, classic MTM can only handle evenly-spaced data. Since the data are close to evenly-spaced, is is reasonable to interpolate them using standard methods. Both interpolation and MTM are implemented with the [astrochron @astrochron] package, which GeoChronR employs.
 
 ```{r ensemble-mode MTM, cache = TRUE, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
 dti = 2.5  # interpolation interval, corresponding to the mode of the \Delta t distribution
@@ -747,8 +746,7 @@ p.mtm.ens <- periodAnnotate(p.mtm.ens, periods = c(19,23,41,100), y.lims =c(1e-5
 #show(p.mtm.ens)
 ```
 
-To this we can add the periods identified as significant by MTM's F ratio test.  GeoChronR estimates this by computing the fraction of ensemble members that exhbit a significant peak at each frequency.  One simple criterion for gauging the level of support for such peaks given age uncertainties is to pick out those periodicities that are identified as significant above a certain threshold (say, more than 50% of the time).  
-For consistency with REDFIT, we define the null as an AR(1) process fit to the data, but GeoChronR supports two other nulls: a power-law null and a fit to the spectral background [@MannLees96].
+To the spectral distribution itself we can add the periods identified as significant by MTM's F ratio test.  GeoChronR estimates this by computing the fraction of ensemble members that exhbit a significant peak at each frequency.  One simple criterion for gauging the level of support for such peaks given age uncertainties is to pick out those periodicities that are identified as significant above a certain threshold (say, more than 50% of the time).  For consistency with REDFIT, we define the null as an AR(1) process fit to the data, but GeoChronR supports two other nulls: a power-law null and a fit to the spectral background [@MannLees96].
 Both follow the `astrochron` implementation.
 ```{r MTM ensemble, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
 
@@ -761,7 +759,7 @@ p.mtm.ens <- periodAnnotate(p.mtm.ens, periods = per[sig_per],color = "blue",y.l
 p.mtm.ens
 ```
 
-figure \@ref(fig:mtm-ensemble-export) shows a few differences between the REDFIT estimate (figure \@ref(fig:redfit-plot) and the MTM estimate. First, this ensemble of spectra exhibits a clear power law behavior from periods of 5 to 100 ky, which in this log-log plotting convention manifests as a linear decrease.
+Figure \@ref(fig:mtm-ensemble-export) shows a few differences between the REDFIT estimate (figure \@ref(fig:redfit-plot) and the MTM estimate. First, this ensemble of spectra exhibits a clear power law behavior from periods of 5 to 100 ky, which in this log-log plotting convention manifests as a linear decrease.
 This is part of the well-documented ``continuum of climate variability'' [@Huybers_Curry2006;@ZhuPNAS2019], which is conspicuously absent from the Lomb-Scargle (REDFIT) estimate, known to be extremely biased in its estimate of the spectral background [@schulz2002].
 
 
