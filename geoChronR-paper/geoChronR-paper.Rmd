@@ -108,15 +108,15 @@ For instance, whereas the algorithms mentioned above have been broadly used, stu
 In addition, few studies have evaluated sensitivity to the choice of age modeling technique or choice of parameters, so that the typical discussion of chronological uncertainties remains partial and qualitative.
 
 This paradigm is beginning to change.
-In recent years, some studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [e.g., @Haam_Huybers2010;@Tierney2013; @deininger2017coherency;@mckay_onset_2018;@bhattacharya2020atlantic;@khider2014, @khider2017].
+In recent years, some studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [e.g., @Haam_Huybers2010;@Tierney2013; @deininger2017coherency;@mckay_onset_2018;@bhattacharya2020atlantic;@khider2014;@khider2017].
 By thus applying an analysis to all members of an age ensemble, the precise impact of age uncertainty may be formally evaluated.
 
 Despite its potential to substantially improve uncertainty quantification for the paleogeosciences, this framework is not widely utilized.
-The majority of studies utilizing this approach have been regional [e.g., @Tierney2013;@deininger2017coherency;@mckay_onset_2018;@bhattacharya2020atlantic] or global-scale [e.g., @Shakun_Nature2012;@Marcott_Science2013;@kaufman2020HoloceneGMST] syntheses.
-Some primary publications of new records incorporate time-uncertain analysis into their studies [e.g., @Boldt2015;@falster2018millennial], but this remains rare.
+The majority of studies utilizing this approach have been regional [e.g., @Tierney2013;@deininger2017coherency;@mckay_onset_2018;@bhattacharya2020atlantic;@khider2017] or global-scale [e.g., @Shakun_Nature2012;@Marcott_Science2013;@kaufman2020HoloceneGMST] syntheses.
+Some primary publications of new records incorporate time-uncertain analysis into their studies [e.g., @Boldt2015;@falster2018millennial;@khider2014], but this remains rare.
 We suggest that there are several reasons for the lack of adoption of these techniques:
 
-1. For synthesis studies, the necessary geochronological data are not publicly available for the vast majority of records. Even when they are available, the data are archived in diverse and unstructured data formats. Together, this makes what should be a simple process of aggregating and preparing data for analysis prohibitively time-consuming;
+1. For synthesis studies, the necessary geochronological data are not publicly available for the vast majority of records. Even when they are available, the data are archived in diverse and unstructured formats. Together, this makes what should be a simple process of aggregating and preparing data for analysis prohibitively time-consuming;
 
 2. For studies of new and individual records, few tools for ensemble analysis are available, and those that are require a degree of comfort with coding languages and scientific programming that is rare among paleogeoscientists;
 
@@ -127,12 +127,12 @@ GeoChronR presents an integrative approach to facilitate this work.
 
 ## Design principles
 
-GeoChronR was built to lower the barriers to broader adoption of these emerging methods, particularly for Quaternary records, for which a variety of chronostratigraphic methods are available: radiometric dating (${}^{14}\mathrm{C}, {}^{210}\mathrm{Pb}$, U/Th), exposure dating, layer-counting, flow models (for ice cores), etc. The primary uncertainty quantification device is age ensembles, regardless of how they were produced. As such, GeoChronR's philosophy and methods are expected to be more broadly applicable than Quaternary problems.
+GeoChronR was built to lower the barriers to broader adoption of these emerging methods, particularly for Quaternary records, for which a variety of chronostratigraphic methods are available: radiometric dating (${}^{14}\mathrm{C}, {}^{210}\mathrm{Pb}$, U/Th), exposure dating, layer-counting, flow models (for ice cores), alignement, etc. The primary uncertainty quantification device is age ensembles, regardless of how they were produced. As such, GeoChronR's philosophy and methods are expected to be more broadly applicable than Quaternary problems.
 
-GeoChronR provides an easily-accessible, open-source and extensible software package of industry-standard and cutting-edge tools that provides users with a single environment to create, analyze, and visualize time-uncertain data.
+GeoChronR provides an easily-accessible, open-source, and extensible software package of industry-standard and cutting-edge tools that provides users with a single environment to create, analyze, and visualize time-uncertain data.
 GeoChronR is designed around emerging standards in the paleogeosciences that connects users to growing libraries of standardized datasets formatted in the Linked PaleoData format [@lipd_cp], including thousands of datasets archived at the World Data Service for Paleoclimatology (WDS-Paleo) and lipdverse.org, those at the [LinkedEarth wiki[(http://wiki.linked.earth)], and Neotoma [@williams2018neotoma] via the `neotoma2lipd` package [@neotoma2lipd].
 GeoChronR reuses existing community packages, for which it builds a standardized interface, with LiPD as input/output format.
-Central to the development of the code and documentation were two workshops carried out in 2016 and 2017 at Northern Arizona University, gathereing a total of 33 participants. The workshops principally gathered early career researchers with $>50\%$  participation of underrepresented minorities. Exit surveys were conducted to gather feedback, and to suggest improvements and extensions, which were integrated into subsequent versions.
+Central to the development of the code and documentation were two workshops carried out in 2016 and 2017 at Northern Arizona University, gathereing a total of 33 participants. The workshops principally gathered early career researchers with $>50\%$  participation of women, which are underrepresented in the geosciences. Exit surveys were conducted to gather feedback, and to suggest improvements and extensions, which were integrated into subsequent versions of the software.
 
 ## Outline of manuscript
 
@@ -174,15 +174,15 @@ Bacon will optionally return a subset of the MCMC accumulation rate ensemble mem
 ## BChron
 
 BChron [@bchron;@parnell2008flexible] uses a similar approach, using a continuous Markov monotone stochastic process coupled to a piecewise linear deposition model.
-This simplicity allows semi-analytical solutions that make BChron computationally efficient.  BChron was originally intended to model radiocarbon-based age-depth models in lake sedimentary cores of primarily Holocene age, but its design allows broader applications.
+This simplicity allows semi-analytical solutions that make BChron computationally efficient. BChron was originally intended to model radiocarbon-based age-depth models in lake sedimentary cores of primarily Holocene age, but its design allows broader applications.
 In particular, modeling accumulation as additive independent gamma increments is appealing for the representation of hiatuses, particulary for speleothem records, where accumulation rate can vary quite abruptly between quiescient intervals of near-constant accumulation [@Parnell_QSR2011;@PRYSM;@Hu_epsl17].
 The downside of this assumption is that BChron is known to exaggerate age uncertainties in cases where sedimentation varies smoothly [@trachsel2017].
 
 Bchron has several key parameters, which allow a user to encode their specific knowledge about their data.
-In particular, the `outlierProbs` parameter is useful in giving less weigth to chronological tie points that may be considered outliers either because they create a reversal in the stratigraphic sequence or they are flagged during analysis (e.g. contamination).
+In particular, the `outlierProbs` parameter is useful in giving less weigth to chronological tie points that may be considered outliers either because they create a reversal in the stratigraphic sequence or they were flagged during analysis (e.g. contamination).
 The `extractDate` parameter allows to set the top age of the sample.
 This is extremely useful for radiocarbon-based chronologies where the top age may not be accurately measured for modern samples.
-The `thetaMhSd`, `psiMhSd`, and `muMhSd` paraemeters control the Metropolis-Hastings standard deviation for the age parameters and Compund Poisson-Gamma scale and mean respectively, which influence the width of the ensemble between age control tie points.
+The `thetaMhSd`, `psiMhSd`, and `muMhSd` parameters control the Metropolis-Hastings standard deviation for the age parameters and Compound Poisson-Gamma scale and mean respectively, which influence the width of the ensemble between age control tie points.
 These parameters use the same default values as the official Bchron package, and we recommend that users only change them if they have good prior reason to do so.
 
 ## Oxcal
@@ -216,6 +216,8 @@ In LiPD, chronological models include up to three types of tables:
 2. Summary tables, which describe summary statistics produced by the algorithm (e.g., median and 2$\sigma$ uncertainty ranges), and
 
 3. Distribution tables, which store age-probability distributions for calibrated ages, typically only used for calibrated radiocarbon ages.
+
+LiPD can also store relevant metadata about the modeling exercise, including the values of the parameters used to generate the data tables. This storage mechanism allows for an efficient sweep over the function parameters and comparison of the results. 
 
 The capability of GeoChronR to structure the output of the popular age model algorithms described in this section into LiPD is a key value proposition of GeoChronR.
 Once structured as a LiPD object in R, these data and models can be written out to a LiPD file and readily analyzed, shared and publicly archived.
