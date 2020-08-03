@@ -540,7 +540,7 @@ regPlots <- plotRegressEns(regout,alp = 0.01,font.size = 8)
 
 The function `plotRegressEns()` produces multiple plots that visualize the key results of age-uncertain regression, and additionally creates an overview "dashboard" that showcases the key results (figure \@ref(fig:regression)).
 The first row of figure \@ref(fig:regression) illustrates the impact of age uncertainty on the regression modelling.
-In this example, the distribution of the modeled parameters, the slope and intercept of the regression equation, show pronounced modes of their distributions near 150 $^\circ C^{-1}$ and $^\circ C$, respectively, but with pronounced tails that include models with much lower slopes.
+In this example, the distribution of the modeled parameters, the slope and intercept of the regression equation, show pronounced modes of their distributions near 150 $^\circ C^{-1}$ and -130$^\circ C$, respectively, but with pronounced tails that include models with much lower slopes.
 This is also apparent in the scatterplot in the central panel of the top row, which illustrates the distribution of modeled relationships.
 Although the tendency for robust relationships are clear, models with slopes near zero also occur, suggesting that in this use case, age uncertainty can effectively destroy the relationship with instrumental data.
 The impact of this variability in modeled parameters, as well as the effects of age uncertainty on the timing of the reconstruction, are shown in the bottom panel of figure \@ref(fig:regression).
