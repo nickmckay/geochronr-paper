@@ -111,7 +111,7 @@ output:
 
 Quantifying chronological uncertainties, and how they influence the understanding of past changes in Earth systems, is a unique and fundamental challenge of the paleogeosciences. 
 Without robust error determination, it is impossible to properly assess the extent to which past changes occurred simultaneously across regions, accurately estimate rates of change or the duration of abrupt events, or attribute causality -- all of which limit our capacity to apply paleoscientific understanding to modern and future processes.
-The need for better solutions to both characterize uncertainty, and to explicitly evaluate how age uncertainty impacts the the interpretation of records of past climate, ecology or landscapes, has been long recognized [@Noren2013, (more)]. 
+The need for better solutions to both characterize uncertainty, and to explicitly evaluate how age uncertainty impacts the interpretation of records of past climate, ecology or landscapes, has been long recognized [@Noren2013, (more)]. 
 In response to this need, the paleogeoscience community has made substantial advances toward improving geochronological accuracy by:
 
 1. Improving analytical techniques that allow for more precise age determination on smaller and context-specific samples [@Brown_radiocarbon89,@Eglinton96,@Fifield2000,@Eggins2005,@Santos_blank_2010]
@@ -121,12 +121,12 @@ In response to this need, the paleogeoscience community has made substantial adv
 3. Dramatic improvement in the level of sophistication and realism in age-depth models used to estimate the ages of sequences between dated samples [e.g. @Ramsey2009Bayesian, @parnell2008flexible, @Blaauw2010CLAM, @Blaauw2011BACON].
 
 Over the past 20 years, these advances have been widely adopted in the paleogeosciences, albeit partially so. 
-Indeed, despite the progress made in quantifying uncertainty in both ages determinations and age models, few studies have formally evaluated how chronological uncertainty may have affected the inferences made from them. 
+Indeed, despite the progress made in quantifying uncertainty in both age determinations and age models, few studies have formally evaluated how chronological uncertainty may have affected the inferences made from them. 
 For instance, whereas the aforemention algorithms have been broadly used, the overwhelming majority of these studies calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the age modeling exercise [@McKay2008,@McKay2009]. In addition, few studies have evaluated sensitivity to the choice of age modeling technique or choice of parameters, so that 
 the typical discussion of chronological uncertainties remain qualitative.
 
 This paradigm is beginning to change. 
-In recent years, a handful of studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [@Haam_Huybers2010,@Rhines_JGR2011,@Anchukaitis_Tierney2012,@Shakun_Nature2012,@Marcott_Science2013, @Tierney2013]. 
+In recent years, a handful of studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [@Haam_Huybers2010,@Rhines_JGR2011,@Anchukaitis_Tierney2012,@Shakun_Nature2012,@Marcott_Science2013, @Tierney2013, @khider2014, @khider2017]. 
 By using each ensemble age model to create a time-uncertain ensemble records, and then carrying that ensemble through the analysis, the precise impact of age uncertainty can be formally evaluated. 
 This approach, of course, does not address all aspects of uncertainty, but it does offer the broad potential to ascertain which results are robust to chronological uncertainty, and which are not.
 
@@ -145,14 +145,14 @@ Extracting the relevant data from commonly-used age-modelling algorithms, creati
 
 ## Design principles
 
-GeoChronR was built to lower the barriers to broader adoption of these emerging methods, particularly for Quaternary records, for which a variety of chronostratigraphic methods are available: radiometric dating (${}^{14}\mathrm{C}, {}^{210}\mathrm{Pb}$, U/Th), exposure dating, layer-counting, flow models (for ice cores), etc. The primary uncertainty quantification device is age ensembles, regardless of how they were produced. As such, GeoChronR's philosphy and methods are expected to be more broadly applicable than Quaternary problems.
+GeoChronR was built to lower the barriers to broader adoption of these emerging methods, particularly for Quaternary records, for which a variety of chronostratigraphic methods are available: radiometric dating (${}^{14}\mathrm{C}, {}^{210}\mathrm{Pb}$, U/Th), exposure dating, layer-counting, flow models (for ice cores), etc. The primary uncertainty quantification device is age ensembles, regardless of how they were produced. As such, GeoChronR's philosophy and methods are expected to be more broadly applicable than Quaternary problems.
 
 GeoChronR provides an easily-accessibly, open-source and extensible software package of industry-standard and cutting-edge tools that provides users with a single environment to create, analyze, and visualize time-uncertain data.
-GeoChronR is designed around emerging standards in the paleogeosciences that connects users to growing libraries of standardized datasets formatted in the Linked PaleoData format [@LiPD] and [@neotoma]. The code re-uses existing community packages, for which it builds a standardized interface, with LiPD as input/output format. Central to the development of the code and documentation was feedback from two workshops carried in out in 2016 and 2017 at Northern Arizona Univeristy (14 and 19 participants). The workshops principally gathered early career researchers with $>50\%$  participation of underrepresented minorities.   Exit surveys were conducted to gather feedback, pointing to the need for a detailed documentation and examples, which this article partially fulfills. 
+GeoChronR is designed around emerging standards in the paleogeosciences that connects users to growing libraries of standardized datasets formatted in the Linked PaleoData format [@LiPD] and [@neotoma]. The code re-uses existing community packages, for which it builds a standardized interface, with LiPD as the input/output format. Central to the development of the code and documentation was feedback from two workshops carried in out in 2016 and 2017 at Northern Arizona University (14 and 19 participants, respectively). The workshops principally gathered early career researchers with $>50\%$  participation of underrepresented minorities. Exit surveys were conducted to gather feedback about their experience at the workshop and further developmentfor GeoChronR. These surveys pointed to the need for a detailed documentation and examples, which this article partially fulfills. 
 
 ## Outline of manuscript
 
-This manuscript describes the design, analytical underpinnings and most common use cases of GeoChronR.
+This manuscript describes the design, analytical underpinnings, and most common use cases of GeoChronR.
 Section \@ref(sec:age-modeling) describes the integration of age modelling algorithms with GeoChronR.
 Section \@ref(sec:age-uncertain-analysis) details the methods implemented for age uncertain analysis.
 Section \@ref(sec:visualization) goes through the principles and implementation of age-uncertain data visualization in GeoChronR, and section \@ref(sec:use-cases) provides five real-world examples of how GeoChronR can be used for paleoscientific workflows.
