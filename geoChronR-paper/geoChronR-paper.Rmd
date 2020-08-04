@@ -456,7 +456,7 @@ corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ae,hulu.d18O,bin.step = 500,max.ens =
 corPlot <- plotCorEns(corout,
                       legend.position = c(0.1, 0.8),
                       f.sig.lab.position = c(.7,.9),
-                      significance.option = "autocor")+ggtitle(NULL)
+                      significance.option = "FDR")+ggtitle(NULL)
 ```
 
 
@@ -468,7 +468,7 @@ print(corPlot)
 coroutHulu <- corEns(hulu.ae,hulu.d18O,hulu.ae,hulu.d18O,bin.step = 500,max.ens = 10000)
 corPlotHulu <- plotCorEns(coroutHulu,
                           legend.position = c(0.1, 0.8),
-                          significance.option = "autocor")+ggtitle(NULL)
+                          significance.option = "FDR")+ggtitle(NULL)
 
 above90 <- round(sum(coroutHulu$cor.df$r > 0.9)/nrow(coroutHulu$cor.df)*100,1)
 med <- round(median(coroutHulu$cor.df$r),2)
