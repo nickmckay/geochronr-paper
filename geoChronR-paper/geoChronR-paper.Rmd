@@ -1,5 +1,5 @@
 ---
-title: GeoChronR -- an R framework to model and analyze age-uncertain paleogeoscientific timeseries.
+title: GeoChronR -- an R package designed to model, analyze and visualize age-uncertain paleoscientific data
 journal: "`r rticles::copernicus_journal_abbreviations(journal_name = 'geochronology')`"
 author:
   - given_name: Nicholas
@@ -233,7 +233,7 @@ Some theoretical work has attempted to quantify how chronological uncertainty ma
 Consequently, GeoChronR follows a general, pragmatic, and broadly-used approach that leverages age ensembles (optionally, ensembles of climate proxy or paleoenvironmental data), to propagate uncertainties through all steps of an analysis. Effectively, this is done by randomly sampling ensemble members and then repeating the analysis on each such member (typically hundreds to thousands) to build an output ensemble that quantifies the impact of those uncertainties on a particular inference.
 These output ensembles rarely lend themselves to binary significance tests (e.g., a p-value below 5%), but are readily used to estimate probability densities or quantiles, and thus provide quantitative evidence for which results are robust to age and proxy uncertainty (and which are not). Version 1.0.0 of GeoChronR has implemented ensemble analytical techniques for four of the most common analyses in the paleogeosciences: correlation, regression, spectral, and principal component analyses.
 
-## Correlation
+## Correlation {#sec:correlation}
 
 Pearson's product-moment correlation is the most common measure of a relationship between variables.  
 Its computation is fast, lending itself to ensemble analysis, with a handful of pretreatment and significance considerations that are relevant for ensembles of paleogeoscientific data.
@@ -247,11 +247,24 @@ The binning procedure is repeated for each ensemble member, meaning that between
 Following binning, Pearson correlation is calculated and recorded for each ensemble member.
 In addition to the correlation coefficients, GeoChronR calculates their significance for each correlation.
 Paleogeoscientific timeseries are often highly autocorrelated, which can lead to spurious assessments of significance [@Hu_epsl17].
-Therefore, in addition to the standard Student's T-test p-value calculation, we also calculate a p-value that is adjusted for autocorrelation to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999.
-However, repeating this test over multiple ensembles raises the issue of test multiplicity  [@Ventura2004], or "look elsewhere effect".
-To overcome this problem, we control for this false discovery rate (FDR) using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004. FDR explicitly controls for spurious discoveries arising from repeatedly carrying out the same test. At a 5% level, one would expect a 1000 member ensemble to contain 50 spurious "discoveries" -- instances of the null hypothesis, here "no correlation"  being rejected. FDR takes this effect into account to minimize the risk of identifying such spurious correlations merely on account of repeated testing. 
+Therefore, in addition to the standard Student's T-test p-value calculation, we also estimate the effect of autocorrelation on significance using three commonly used approaches:
 
-<!-- {Julien: thoughts?} NM: I think here we need to discuss when FDR is needed, and when it's not. In my view, if you're surveying the full breadth on an ensemble, you're not searching for p-value, just trying to quantify the range. However, if the users want to subset some best-case or worst-case ensembles, and then proceed with analysis, FDR seems appropriate. -->
+1. Adjusting the p-values by the effective sample size to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999;
+
+Julien - help
+2. {isopersistence}
+
+3. { ebisuzaki}
+
+
+Each of these approaches has strengths and weaknesses. The effective sample size approach is fast, and provides reasonable results for moderately autocorrelated timeseries, but can be overly conserative for highly autocorrelated data. This also makes the least stable of the methods to changes in bin size. Isopersistence.... Ebisuzaki.... , which is why we consider the most broadly applicable, and is the default choice in GeoChronR.
+
+In addition to the impact of autocorrelation on this analysis, repeating the test over multiple ensembles raises the issue of test multiplicity  [@Ventura2004], or "look elsewhere effect".
+To overcome this problem, we control for this false discovery rate (FDR) using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004. 
+FDR explicitly controls for spurious discoveries arising from repeatedly carrying out the same test. At a 5% level, one would expect a 1000 member ensemble to contain 50 spurious "discoveries" -- instances of the null hypothesis, here "no correlation"  being rejected. 
+FDR takes this effect into account to minimize the risk of identifying such spurious correlations merely on account of repeated testing. 
+
+  
 
 ## Regression
 
@@ -377,6 +390,7 @@ library(purrr)
 library(ggthemes)
 library(astrochron)
 library(readr)
+library(gridExtra)
 ```
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache=TRUE}
@@ -447,31 +461,48 @@ plotTimeseriesEnsRibbons(X = gisp2.ens,Y = gisp2.d18O,n.bins = 500) %>%
 ## Correlation
 
 Now that the user has generated age ensembles for the two datasets, they wish to see if a correlation between the two datasets is robust to the age uncertainty modeled here.
-On multi-millennial timescales, the two datasets display similar features, so much so that the well-dated Hulu Cave record has been used to support the independent chronology of GISP2 [@hulu2001].
-In this use case, we revisit this conclusion quantitatively, and use the age models created above, as well as GeoChronR's `corEns()` function, to calculate the impact of age uncertainty on the correlation between these two iconic datasets.
-Here we calculate correlations during the period of overlap in 500 year steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
+On multi-millennial timescales, the two datasets display similar features, so much so that the well-dated Hulu Cave record, and other similar records from China and Greenland, have been used to argue for atmospheric teleconnections between the regions and support the independent chronology of GISP2 [@hulu2001].
+In this use case, we revisit this relation quantitatively, and use the age models created above, as well as GeoChronR's `corEns()` function, to calculate the impact of age uncertainty on the correlation between these two iconic datasets.
+Note that this approach is, in many ways, simplistic. 
+Correlating the two age-uncertain datasets will characterize the relationship, but ignores additional information such as spectral periodicities, climate forcings, and replication in regional datasets that may support a mechanistic relationship between two timeseries.
+However, it does provide insight into how age uncertainty can affect apparent alignment between two datasets.
+
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
 hulu <- mapAgeEnsembleToPaleoData(hulu,age.var = "ageEnsemble",paleo.meas.table.num = 2)
 hulu.ae <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
 hulu.d18O<- selectData(hulu,var.name = "d18O",meas.table.num = 2)
-corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ae,hulu.d18O,bin.step = 500,max.ens = 10000)
-corPlot <- plotCorEns(corout,
-                      legend.position = c(0.1, 0.8),
-                      f.sig.lab.position = c(.7,.9),
-                      significance.option = "FDR")+ggtitle(NULL)
+corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ae,hulu.d18O,bin.step = 200,max.ens = 10000,calculate.isopersistence = TRUE)
+
 ```
 
 
-```{r cor-hist,out.width = "8.3cm",echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem and GISP2 ice core $\\delta^{18}$O. Significant (insignificant) correlations shown in green (gray).  Quantiles of the distribution shown in vertical red lines."}
-print(corPlot)
+```{r cor-hist,out.width = "8.3cm",fig.height = 10,fig.width =6, echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem and GISP2 ice core $\\delta^{18}$O. Significant (insignificant) correlations shown in green (gray).  Quantiles of the distribution shown in vertical red lines."}
+
+
+corPlotBreth <- plotCorEns(corout,
+                      legend.position ="none",
+                      f.sig.lab.position = NA,
+                      significance.option = "breth")+ggtitle("Effective-N")
+corPlotEbi <- plotCorEns(corout,
+                      legend.position = "none",
+                      f.sig.lab.position = NA,
+                      significance.option = "ebi")+ggtitle("Ebisuzaki")
+corPlotIso <- plotCorEns(corout,
+                      legend.position =  c(0.85, 0.4),
+                      f.sig.lab.position = c(.9,.15),
+                      significance.option = "iso")+ggtitle("Isopersistent")+
+                      theme(legend.box.background = element_rect(colour="white"))
+
+grid.arrange(grobs = list(corPlotIso,corPlotEbi,corPlotBreth),nrow = 3)
+
 ```
 
 ```{r hulu self cor, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
 coroutHulu <- corEns(hulu.ae,hulu.d18O,hulu.ae,hulu.d18O,bin.step = 500,max.ens = 10000)
 corPlotHulu <- plotCorEns(coroutHulu,
                           legend.position = c(0.1, 0.8),
-                          significance.option = "FDR")+ggtitle(NULL)
+                          significance.option = "ebi")+ggtitle(NULL)
 
 above90 <- round(sum(coroutHulu$cor.df$r > 0.9)/nrow(coroutHulu$cor.df)*100,1)
 med <- round(median(coroutHulu$cor.df$r),2)
@@ -484,11 +515,19 @@ print(corPlotHulu)
 
 ```
 
-
-The results are visualized as a histogram of the ensemble correlation results, with color shading to highlight significance (figure \@ref(fig:cor-hist)).
+Here we calculate correlations during the period of overlap in 200 year steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
+GeoChronR includes four built-in approaches to estimate the significance of correlations (Section \@ref(sec:correlation)).
+Here we examine the correlation results as histograms, with color shading to highlight significance, for each of the three methods that include a correction for autocorrelation (figure \@ref(fig:cor-hist)).
+The r-values are the same for all the results, only the significance changes.
 The two timeseries exhibit consistently negative correlations, although  `r round(sum(corout$cor.df$r>0)/nrow(corout$cor.df)*100,digits = 1)`% of the ensemble members are positive.
-Further, only `r round(sum(corout$cor.df$pSerial < 0.05)/nrow(corout$cor.df)*100,digits = 1)`% are significant after accounting for serial correlation. Given the age models and correlation parameters used here, would would therefore conclude that the two series are not significantly correlated.
-However, it is worth noting that evaluating these results remains somewhat subjective, as there is no theoretical expectation for what fraction of ensemble correlation results should be expected to pass such a significance test.
+In this example, the isopersistent approach finds the most significant correlations, with `r round(sum(corout$cor.df$pIso<0.05)/nrow(corout$cor.df)*100,digits = 1)`% signficant ensemble members, and `r round(sum(corout$cor.df$pIsoFDR)/nrow(corout$cor.df) ,digits = 1)`% remain significant after adjusting for false discovery rate.
+As expected, the Ebisuzaki approach is more conservative, with only `r round(sum(corout$cor.df$pEbisuzaki<0.05)/nrow(corout$cor.df)*100,digits = 1)`% significant members, none of which remain signficant with FDR.
+Lastly, the effective sample size approach of @bretherton1999 is most conservative, finding no significant correlations.
+
+Despite the variability between approaches, given the age models and correlation parameters used here, it seems unlikely that these two datasets are not significantly correlated.
+As mentioned above, there are many reasons to believe that there are teleconnections that link Greenland temperatures to the dynamics monsoon circulation in Asia, especially during abrupt climate changes during glacial periods [@refs].
+However, age-uncertain correlation between these two records are not among them.
+It is worth noting that evaluating the significancce of age uncertain correlation remains somewhat subjective, as there is no theoretical expectation for what fraction of ensemble correlation results should be expected to pass such a significance test.
 Indeed, two correlated timeseries, when afflicted with age uncertainty, will commonly return some fraction of insignificant results when random ensemble members are correlated against each other.
 The frequency of these "false negatives" depends on the structure of the age uncertainties and the timeseries, and will vary to some extent by random chance.
 One way to get a sense of the vulnerability of a timeseries to false negatives is to perform an age-uncertain correlation of a dataset with itself.
@@ -497,7 +536,8 @@ For illustration, we perform this calculation with the Hulu Cave $\delta^{18}$O 
 The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only ```r above90```% of the ensembles have r-values greater than 0.9, and the median correlation is ```r med```.
 However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
 
-The message, thus, is that age uncertainties will obscure relationships between records, while in some cases creating the appearance of spurious correlations. Generally, it is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
+The message, thus, is that age uncertainties will obscure relationships between records, while in some cases creating the appearance of spurious correlations. 
+Generally, it is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
 However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that as a correlation that is robust to age uncertainty.
 
 ## Age-uncertain Calibration
@@ -806,7 +846,7 @@ We welcome feedback and strongly encourage contributions and enhancements, via t
 
 
 ```{r save, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
-# save.image(file = "manuscriptData.RData")
+save.image(file = "manuscriptData.RData")
 ```
 
 <!-- End of manuscript -->
