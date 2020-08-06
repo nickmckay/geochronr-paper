@@ -238,38 +238,36 @@ These output ensembles rarely lend themselves to binary significance tests (e.g.
 
 ## Correlation {#sec:correlation}
 
-Pearson's product-moment correlation is the most common measure of a relationship between variables.  
-Its computation is fast, lending itself to ensemble analysis, with a handful of pretreatment and significance considerations that are relevant for ensembles of paleogeoscientific data.
-First, correlation analysis for timeseries is built on the assumption the datasets can be aligned on a common timeline.
-Age-uncertain data violate this assumption.
-We overcome this by treating each ensemble member from one or more age uncertain timeseries as valid for that iteration, then "bin" each of the timeseries into coeval intervals.
-The "binning" procedure in GeoChronR sets up an interval, which is typical evenly spaced, over which the data are averaged.
-Generally, this intentionally degrades the median resolution of the timeseries, for example, a timeseries with 37-year median spacing could be reasonably "binned" into 100- or 200-year bins.
+Pearson's product-moment correlation is the most common measure of a relationship between two variables $X$ and $Y$.   Its computation is fast, lending itself to ensemble analysis, with a handful of pretreatment and significance considerations that are relevant for ensembles of paleogeoscientific data.
+
+First, correlation analysis for timeseries is built on the assumption the datasets can be aligned on a common timeline. Age-uncertain data violate this assumption. We overcome this by treating each ensemble member from one or more age uncertain timeseries as valid for that iteration, then "bin" each of the timeseries into coeval intervals. The "binning" procedure in GeoChronR sets up an interval, which is typical evenly spaced, over which the data are averaged. Generally, this intentionally degrades the median resolution of the timeseries, for example, a timeseries with 37-year median spacing could be reasonably "binned" into 100- or 200-year bins.
 The binning procedure is repeated for each ensemble member, meaning that between different ensembles, different observations will be placed in different bins.
 
-Following binning, Pearson correlation is calculated and recorded for each ensemble member.
-In addition to the correlation coefficients, GeoChronR calculates their significance for each correlation.
-Paleogeoscientific timeseries are often highly autocorrelated, which can lead to spurious assessments of significance [@Hu_epsl17].
-Therefore, in addition to the standard Student's T-test p-value calculation, we also estimate the effect of autocorrelation on significance using three commonly used approaches:
+Following binning, Pearson correlation is calculated and recorded for each ensemble member. Their significance is then established using three approaches. A principal difficulty in doing so is that paleogeoscientific timeseries are often highly autocorrelated, which can lead to spurious assessments of significance [@Hu_epsl17]. 
+The standard was to assess correlation signifiance is using a Student's T-test, which assumes normality and independence.  
 
-1. Adjusting the p-values by the effective sample size to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999;
-
-
-2. {isopersistence} (Julien your input here would be great)
-
-3. {ebisuzaki} 
+1. The simplest approach is to adjust the test's sample size to reflect the reduction in degrees of freedom due to autocorrelation. Following @bdawdy1964statistical, the effective number of degrees of freedom is $\nu = n \frac{1-\phi_{1,X}\phi_{1,X}}{1+\phi_{1,X}\phi_{1,X}}$, where $n$ is the sample size (here, the number of bins) and where \(\phi_{1,X}, \phi_{1,X}\) are the lag-1 autocorrelation of two
+time series \(X\), \(Y\), respectively. This approach is called ``adjusted T-test'' in GeoChronR [check]. It is an extremely simple approach, with no added computations by virtue of being a parametric test using a known distribution ($t$ distribution). A downside is that the correction is approximate, and can substantially reduce the DOFs [@Hu_epsl17], to less than 1 in cases of high autocorrelation, which are common in paleogeoscientific timeseries. This may result in overly conservative assessment of significance, so this option is therefore not recommended. 
 
 
-Each of these approaches has strengths and weaknesses. 
-The effective sample size approach is fast, and provides reasonable results for weakly to  moderately autocorrelated timeseries, but can be overly conserative for highly autocorrelated data. 
-This also makes the least stable of the methods to changes in bin size. 
-Isopersistence.... Ebisuzaki.... , which is why we consider the most broadly applicable, and is the default choice in GeoChronR.
+2. {isopersistent test} 
+
+A parametric alternative is to generate surrogates that emulate the persistence characteristics of the series. This "isopersistent" test generates $M$ (say, 500) simulations from an autoregressive process of order 1 (AR(1)), which has been fitted to the data. These random timeseries are then used to obtain the null distribution, and compute p-values, which therefore measure the probability that a correlation as high as the one observed ($r_o$) could have arisen from correlating $X$ or $Y$ with AR(1) series with identical persistence characteristics as the observations. This approach is particularly suited if an AR model is a sensible approximation to the data, as is often the case [@Ghil02]. However, it may be overly permissive or overly conservative in some situations.  
+
+3. {isospectral test} 
+A non-parametric alternative is the approach of @Ebisuzaki_JClim97, which generates surrogates by scrambling the phases of $X$ and $Y$, thus preserving their power spectrum. To generate these "isospectral" surrogates, GeoChronR uses the `make_surrogate_data()` method from the rEDM package [@rEDM]. This method makes the fewest assumptions as to the structure of the series, and its computational cost is moderate, making it the default in GeoChronR. 
+
+
+<!-- Each of these approaches has strengths and weaknesses.  -->
+<!-- The effective sample size approach is fast, and provides reasonable results for weakly to  moderately autocorrelated timeseries, but can be overly conserative for highly autocorrelated data.  -->
+<!-- This also makes the least stable of the methods to changes in bin size.  -->
+<!-- Isopersistence.... Ebisuzaki.... , which is why we consider the most broadly applicable, and is the default choice in GeoChronR. -->
 
 In addition to the impact of autocorrelation on this analysis, repeating the test over multiple ensemble members raises the issue of test multiplicity  [@Ventura2004], or the "look elsewhere effect".
 To overcome this problem, we control for this false discovery rate (FDR) using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004. 
 FDR explicitly controls for spurious discoveries arising from repeatedly carrying out the same test. At a 5% level, one would expect a 1000 member ensemble to contain 50 spurious "discoveries" -- instances of the null hypothesis, here "no correlation"  being rejected. 
-FDR takes this effect into account to minimize the risk of identifying such spurious correlations merely on account of repeated testing. 
-
+FDR takes this effect into account to minimize the risk of identifying such spurious correlations merely on account of repeated testing. In effect, it filters the set of "significant" results identified by each hypothesis
+test (T-test, isopersistent, or isospectral). 
   
 
 ## Regression
@@ -373,7 +371,7 @@ The fourth provides an example of regional age-uncertain principal components an
 The complete details needed to reproduce these use cases are available in the RMarkdown source code for this manuscript, and are elaborated upon with additional detail in the "vignettes" included within the GeoChronR package, as well at http://lipdverse.org/geoChronR-examples/.
 
 
-## Creating an age ensemble
+## Creating an age ensemble {#sec:create_age}
 
 A common first task when using geoChronR is to create an age ensemble, either because the user is developing a new record, or because the age ensemble data for the record they are interested in is unavailable.
 As described in section \@ref(sec:age-modeling), workflows for four published age quantification softwares are integrated into geoChronR.
@@ -464,14 +462,13 @@ plotTimeseriesEnsRibbons(X = gisp2.ens,Y = gisp2.d18O,n.bins = 500) %>%
   ggtitle(NULL)+xlab("Age (BP)")
 ```
 
-## Correlation
+## Abrupt climate change in Greenland and China
 
 Now that the user has generated age ensembles for the two datasets, they wish to see if a correlation between the two datasets is robust to the age uncertainty modeled here.
 On multi-millennial timescales, the two datasets display similar features, so much so that the well-dated Hulu Cave record, and other similar records from China and Greenland, have been used to argue for atmospheric teleconnections between the regions and support the independent chronology of GISP2 [@hulu2001].
 In this use case, we revisit this relation quantitatively, and use the age models created above, as well as GeoChronR's `corEns()` function, to calculate the impact of age uncertainty on the correlation between these two iconic datasets.
 Note that this approach is, in many ways, simplistic. 
-Correlating the two age-uncertain datasets will characterize the relationship, but ignores additional information such as spectral periodicities, climate forcings, and replication in regional datasets that may support a mechanistic relationship between two timeseries.
-However, it does provide insight into how age uncertainty can affect apparent alignment between two datasets.
+Correlating the two age-uncertain datasets will characterize the relationship, but ignores ancillary evidence that may support a mechanistic relationship between two timeseries. However, it does provide insight into how age uncertainty can affect apparent alignment between two datasets.
 
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
@@ -527,25 +524,26 @@ Here we examine the correlation results as histograms, with color shading to hig
 The r-values are the same for all the results, only the significance changes.
 The two timeseries exhibit consistently negative correlations, although  `r round(sum(corout$cor.df$r>0)/nrow(corout$cor.df)*100,digits = 1)`% of the ensemble members are positive.
 In this example, the isopersistent approach finds the most significant correlations, with `r round(sum(corout$cor.df$pIso<0.05)/nrow(corout$cor.df)*100,digits = 1)`% signficant ensemble members, and `r round(sum(corout$cor.df$pIsoFDR)/nrow(corout$cor.df) ,digits = 1)`% remain significant after adjusting for false discovery rate.
-As expected, the Ebisuzaki approach is more conservative, with only `r round(sum(corout$cor.df$pEbisuzaki<0.05)/nrow(corout$cor.df)*100,digits = 1)`% significant members, none of which remain signficant with FDR.
+In this instance, the Ebisuzaki approach is more conservative, with only `r round(sum(corout$cor.df$pEbisuzaki<0.05)/nrow(corout$cor.df)*100,digits = 1)`% significant members, none of which remain signficant with FDR.
 Lastly, the effective sample size approach of @bretherton1999 is most conservative, finding no significant correlations.
 
 Irregardless of the variability between approaches, given the age models and correlation parameters used here, it seems unlikely that these two datasets are significantly correlated.
-As mentioned above, there are many reasons to believe that there are teleconnections that link Greenland temperatures to the dynamics monsoon circulation in Asia, especially during abrupt climate changes during glacial periods [e.g. @liu2013links;@duan2016onset;@zhang2019asian
-].
-However, age-uncertain correlation between these two records are not among them.
-It is worth noting that evaluating the significancce of age uncertain correlation remains somewhat subjective, as there is no theoretical expectation for what fraction of ensemble correlation results should be expected to pass such a significance test.
-Indeed, two correlated timeseries, when afflicted with age uncertainty, will commonly return some fraction of insignificant results when random ensemble members are correlated against each other.
-The frequency of these "false negatives" depends on the structure of the age uncertainties and the timeseries, and will vary to some extent by random chance.
-One way to get a sense of the vulnerability of a timeseries to false negatives is to perform an age-uncertain correlation of a dataset with itself.
-It is appropriate to consider the results of this analysis as a best-case scenario, and to consider the correlation results in this light.
-For illustration, we perform this calculation with the Hulu Cave $\delta^{18}$O record (figure \@ref(fig:hulu-cor-hist)).
+As mentioned above, there are many reasons to believe that there are teleconnections that link Greenland temperatures to the dynamic monsoon circulation in Asia, especially during abrupt climate changes during glacial periods [e.g. @liu2013links;@duan2016onset;@zhang2019asian].
+This simple correlation exercise does not affirm such a link, and we offer several reason why this may be the case. 
+
+We first note that evaluating the significance of age uncertain correlation remains somewhat subjective, as there is no theoretical justification for what fraction of ensemble correlation results should be expected to pass such a significance test. Indeed, two correlated timeseries, when afflicted with age uncertainty, will commonly return some fraction of insignificant results when random ensemble members are correlated against each other.
+The frequency of these "false negatives" depends on the structure of the age uncertainties and the timeseries, and will vary to some extent by random chance. One way to get a sense of the vulnerability of a timeseries to false negatives is to perform an age-uncertain correlation of a dataset with itself.
+It is appropriate to consider the results of this analysis as a best-case scenario, and to consider the correlation results in this light. For illustration, we perform this calculation with the Hulu Cave $\delta^{18}$O record (figure \@ref(fig:hulu-cor-hist)).
+
 The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only ```r above90```% of the ensembles have r-values greater than 0.9, and the median correlation is ```r med```.
 However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
 
-Generally, age uncertainties obscure relationships between records, while in some cases creating the appearance of spurious correlations. 
-It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
-However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that as a correlation that is robust to age uncertainty.
+Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that rule them. Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not decadal ones. Lastly, since age uncertainties will disproportionately affect high-frequency oscillations [e.g. @Comboul_CP14], they would obfuscate correlations even in perfectly synchronous records.  
+
+If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis [@Vautard1992,Vautard89], then correlate such features only using the tools above. Yet another solution would be to use dedicated methods from the timeseries alignment (e.g. dynamic time warping) literature. 
+
+Generally, age uncertainties obscure relationships between records, while in rare cases creating the appearance of spurious correlations.  It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
+However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that correlation as robust to age uncertainty.
 
 ## Age-uncertain Calibration
 A natural extension of ensemble correlation is ensemble regression, for which a common use case is calibrating a paleoenvironmental proxy "in time" [@grosjean2009calibration; that is, by regressing it against an instrumental series using a period of overlapping measurements]. We illustrate this by reproducing the results of @Boldt2015, who calibrated a spectral reflectance measure of chlorophyll abundance, relative absorption band depth (RABD), to instrumental temperature in Northern Alaska.
