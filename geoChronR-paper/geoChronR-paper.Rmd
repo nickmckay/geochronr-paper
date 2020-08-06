@@ -190,10 +190,13 @@ These parameters use the same default values as the official Bchron package, and
 The OxCal software package has a long history and extensive tools for the statistical treatment of radiocarbon and other geochronological data [@BronkRamsey95].
 In @ramsey2008deposition, age-depth modelling was introduced with three options for modelling depositional processes that are typically useful for sedimentary sequences: uniform, varve, and Poisson deposition models, labeled U-sequence, V-sequence and P-sequence, respectively.
 The Poisson-based model is the most broadly applicable for sedimentary, or other accumulation-based archives (e.g. speleothems), and although any sequence type can be used in GeoChronR, most users will use a P-sequence, which is the default.
-Analogously to segment length parameter in Bacon, the *k* parameter (called "eventsPerUnitLength" in GeoChronR), controls how many events are simulated per unit of depth, and has a strong impact on the flexibility of the model, as well as the amplitude of the resulting uncertainty.
+Analogously to segment length parameter in Bacon, the *k* parameter (called `eventsPerUnitLength` in GeoChronR), controls how many events are simulated per unit of depth, and has a strong impact on the flexibility of the model, as well as the amplitude of the resulting uncertainty.
 As the number of events increases, the flexibility of the model, and the uncertainties, decrease.
 @trachsel2017 found that this parameter has a large impact on the accuracy of the model, more so than the choices made in Bacon or Bchron.
-Fortunately, @bronkramsey2010 made it possible for *k* to be treated as a variable, and the model will estimate the most likely values of *k* given a prior estimate and the data. The downside of this flexibility is that this calculation can greatly increase the convergence time of the model. Oxcal is written in C++, with an interface in R [@oxcAAR]. Oxcal does not typically calculate posterior ensembles for a depth sequence, but can optionally output MCMC posteriors at specified levels in the sequence. GeoChronR uses this feature to extract ensemble members for subsequent analysis.
+Fortunately, @bronkramsey2010 made it possible for *k* to be treated as a variable, and the model will estimate the most likely values of *k* given a prior estimate and the data. The downside of this flexibility is that this calculation can greatly increase the convergence time of the model. 
+Oxcal is written in C++, with an interface in R [@oxcAAR]. 
+Oxcal does not typically calculate posterior ensembles for a depth sequence, but can optionally output MCMC posteriors at specified levels in the sequence. 
+GeoChronR uses this feature to extract ensemble members for subsequent analysis.
 
 ## Banded Age Model (BAM)
 
@@ -251,15 +254,18 @@ Therefore, in addition to the standard Student's T-test p-value calculation, we 
 
 1. Adjusting the p-values by the effective sample size to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999;
 
-Julien - help
-2. {isopersistence}
 
-3. { ebisuzaki}
+2. {isopersistence} (Julien your input here would be great)
+
+3. {ebisuzaki} 
 
 
-Each of these approaches has strengths and weaknesses. The effective sample size approach is fast, and provides reasonable results for moderately autocorrelated timeseries, but can be overly conserative for highly autocorrelated data. This also makes the least stable of the methods to changes in bin size. Isopersistence.... Ebisuzaki.... , which is why we consider the most broadly applicable, and is the default choice in GeoChronR.
+Each of these approaches has strengths and weaknesses. 
+The effective sample size approach is fast, and provides reasonable results for weakly to  moderately autocorrelated timeseries, but can be overly conserative for highly autocorrelated data. 
+This also makes the least stable of the methods to changes in bin size. 
+Isopersistence.... Ebisuzaki.... , which is why we consider the most broadly applicable, and is the default choice in GeoChronR.
 
-In addition to the impact of autocorrelation on this analysis, repeating the test over multiple ensembles raises the issue of test multiplicity  [@Ventura2004], or "look elsewhere effect".
+In addition to the impact of autocorrelation on this analysis, repeating the test over multiple ensemble members raises the issue of test multiplicity  [@Ventura2004], or the "look elsewhere effect".
 To overcome this problem, we control for this false discovery rate (FDR) using the simple approach of @BenjaminiHochberg95, coded in R by @Ventura2004. 
 FDR explicitly controls for spurious discoveries arising from repeatedly carrying out the same test. At a 5% level, one would expect a 1000 member ensemble to contain 50 spurious "discoveries" -- instances of the null hypothesis, here "no correlation"  being rejected. 
 FDR takes this effect into account to minimize the risk of identifying such spurious correlations merely on account of repeated testing. 
@@ -490,7 +496,7 @@ corPlotEbi <- plotCorEns(corout,
                       significance.option = "ebi")+ggtitle("Ebisuzaki")
 corPlotIso <- plotCorEns(corout,
                       legend.position =  c(0.85, 0.4),
-                      f.sig.lab.position = c(.9,.15),
+                      f.sig.lab.position = c(.87,.7),
                       significance.option = "iso")+ggtitle("Isopersistent")+
                       theme(legend.box.background = element_rect(colour="white"))
 
@@ -499,7 +505,7 @@ grid.arrange(grobs = list(corPlotIso,corPlotEbi,corPlotBreth),nrow = 3)
 ```
 
 ```{r hulu self cor, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
-coroutHulu <- corEns(hulu.ae,hulu.d18O,hulu.ae,hulu.d18O,bin.step = 500,max.ens = 10000)
+coroutHulu <- corEns(hulu.ae,hulu.d18O,hulu.ae,hulu.d18O,bin.step = 200,max.ens = 10000)
 corPlotHulu <- plotCorEns(coroutHulu,
                           legend.position = c(0.1, 0.8),
                           significance.option = "ebi")+ggtitle(NULL)
@@ -524,8 +530,9 @@ In this example, the isopersistent approach finds the most significant correlati
 As expected, the Ebisuzaki approach is more conservative, with only `r round(sum(corout$cor.df$pEbisuzaki<0.05)/nrow(corout$cor.df)*100,digits = 1)`% significant members, none of which remain signficant with FDR.
 Lastly, the effective sample size approach of @bretherton1999 is most conservative, finding no significant correlations.
 
-Despite the variability between approaches, given the age models and correlation parameters used here, it seems unlikely that these two datasets are not significantly correlated.
-As mentioned above, there are many reasons to believe that there are teleconnections that link Greenland temperatures to the dynamics monsoon circulation in Asia, especially during abrupt climate changes during glacial periods [@refs].
+Irregardless of the variability between approaches, given the age models and correlation parameters used here, it seems unlikely that these two datasets are significantly correlated.
+As mentioned above, there are many reasons to believe that there are teleconnections that link Greenland temperatures to the dynamics monsoon circulation in Asia, especially during abrupt climate changes during glacial periods [e.g. @liu2013links;@duan2016onset;@zhang2019asian
+].
 However, age-uncertain correlation between these two records are not among them.
 It is worth noting that evaluating the significancce of age uncertain correlation remains somewhat subjective, as there is no theoretical expectation for what fraction of ensemble correlation results should be expected to pass such a significance test.
 Indeed, two correlated timeseries, when afflicted with age uncertainty, will commonly return some fraction of insignificant results when random ensemble members are correlated against each other.
@@ -536,8 +543,8 @@ For illustration, we perform this calculation with the Hulu Cave $\delta^{18}$O 
 The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only ```r above90```% of the ensembles have r-values greater than 0.9, and the median correlation is ```r med```.
 However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
 
-The message, thus, is that age uncertainties will obscure relationships between records, while in some cases creating the appearance of spurious correlations. 
-Generally, it is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
+Generally, age uncertainties obscure relationships between records, while in some cases creating the appearance of spurious correlations. 
+It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
 However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that as a correlation that is robust to age uncertainty.
 
 ## Age-uncertain Calibration
@@ -846,7 +853,7 @@ We welcome feedback and strongly encourage contributions and enhancements, via t
 
 
 ```{r save, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
-save.image(file = "manuscriptData.RData")
+#save.image(file = "manuscriptData.RData")
 ```
 
 <!-- End of manuscript -->
