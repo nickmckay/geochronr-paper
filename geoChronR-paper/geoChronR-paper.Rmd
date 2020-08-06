@@ -252,9 +252,10 @@ Therefore, in addition to the standard Student's T-test p-value calculation, we 
 1. Adjusting the p-values by the effective sample size to reflect the reduction in degrees of freedom due to autocorrelation following @bretherton1999;
 
 Julien - help
-2. {isopersistence}
+2. {isopersistent test} AR(1) null 
 
-3. { ebisuzaki}
+3. { isospectral test } @Ebisuzaki_JClim97 introduced a phase-scrambling technique that preserves the series' individual spectra. rEDM package ref. 
+
 
 
 Each of these approaches has strengths and weaknesses. The effective sample size approach is fast, and provides reasonable results for moderately autocorrelated timeseries, but can be overly conserative for highly autocorrelated data. This also makes the least stable of the methods to changes in bin size. Isopersistence.... Ebisuzaki.... , which is why we consider the most broadly applicable, and is the default choice in GeoChronR.
@@ -464,8 +465,8 @@ Now that the user has generated age ensembles for the two datasets, they wish to
 On multi-millennial timescales, the two datasets display similar features, so much so that the well-dated Hulu Cave record, and other similar records from China and Greenland, have been used to argue for atmospheric teleconnections between the regions and support the independent chronology of GISP2 [@hulu2001].
 In this use case, we revisit this relation quantitatively, and use the age models created above, as well as GeoChronR's `corEns()` function, to calculate the impact of age uncertainty on the correlation between these two iconic datasets.
 Note that this approach is, in many ways, simplistic. 
-Correlating the two age-uncertain datasets will characterize the relationship, but ignores additional information such as spectral periodicities, climate forcings, and replication in regional datasets that may support a mechanistic relationship between two timeseries.
-However, it does provide insight into how age uncertainty can affect apparent alignment between two datasets.
+Correlating the two age-uncertain datasets will characterize the relationship, but lumps together all timescales, and ignores any ancillary information that may support a mechanistic relationship between two timeseries.
+However, it does provide insight into how age uncertainty can affect a crude measure of similarity between two paleoseries.
 
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
