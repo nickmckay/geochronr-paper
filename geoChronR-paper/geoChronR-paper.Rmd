@@ -243,8 +243,7 @@ Pearson's product-moment correlation is the most common measure of a relationshi
 First, correlation analysis for timeseries is built on the assumption the datasets can be aligned on a common timeline. Age-uncertain data violate this assumption. We overcome this by treating each ensemble member from one or more age uncertain timeseries as valid for that iteration, then "bin" each of the timeseries into coeval intervals. The "binning" procedure in GeoChronR sets up an interval, which is typical evenly spaced, over which the data are averaged. Generally, this intentionally degrades the median resolution of the timeseries, for example, a timeseries with 37-year median spacing could be reasonably "binned" into 100- or 200-year bins.
 The binning procedure is repeated for each ensemble member, meaning that between different ensembles, different observations will be placed in different bins.
 
-Following binning, Pearson correlation is calculated and recorded for each ensemble member. Their significance is then established using three approaches. A principal difficulty in doing so is that paleogeoscientific timeseries are often highly autocorrelated, which can lead to spurious assessments of significance [@Hu_epsl17]. 
-The standard was to assess correlation signifiance is using a Student's T-test, which assumes normality and independence.  
+Following binning, Pearson correlation is calculated and recorded for each ensemble member.  The standard way to assess correlation signifiance is using a Student's T-test, which assumes normality and independence. By default, GeoChronR maps both datasets to a standard normal distribution [@JEG_Tingley_CP2016,@vanAlbada2007], thus ensuring normality. Even so, a principal difficulty is that paleogeoscientific timeseries are often highly autocorrelated, leading to spurious assessments of significance [@Hu_epsl17].  GeoChronR addresses this point using three approaches:
 
 1. The simplest approach is to adjust the test's sample size to reflect the reduction in degrees of freedom due to autocorrelation. Following @bdawdy1964statistical, the effective number of degrees of freedom is $\nu = n \frac{1-\phi_{1,X}\phi_{1,X}}{1+\phi_{1,X}\phi_{1,X}}$, where $n$ is the sample size (here, the number of bins) and where \(\phi_{1,X}, \phi_{1,X}\) are the lag-1 autocorrelation of two
 time series \(X\), \(Y\), respectively. This approach is called ``adjusted T-test'' in GeoChronR [check]. It is an extremely simple approach, with no added computations by virtue of being a parametric test using a known distribution ($t$ distribution). A downside is that the correction is approximate, and can substantially reduce the DOFs [@Hu_epsl17], to less than 1 in cases of high autocorrelation, which are common in paleogeoscientific timeseries. This may result in overly conservative assessment of significance, so this option is therefore not recommended. 
@@ -317,6 +316,9 @@ The GeoChronR uses the implementation of REDFIT from the dplR package [@Bunn2008
 
 4. The multi-taper method (MTM) of @thomson82, a mainstay of spectral analysis [@Ghil02] designed for evenly spaced timseries.
 GeoChronR uses the implementation of MTM of @astrochron, which couples MTM to efficient linear interpolation, together with various utilities to define autoregressive and power-law benchmarks for spectral peaks.
+
+As in @ref{#sec:correlation}, mapping to a standard normal is applied by default, to avoid strongly non-normal datasets from violating the methods' assumptions. This can be relaxed by setting `gauss = FALSE` in `computeSpectraEns()`. 
+
 <!-- Viz section -->
 
 # Visualization with GeoChronR {#sec:visualization}
@@ -468,15 +470,14 @@ Now that the user has generated age ensembles for the two datasets, they wish to
 On multi-millennial timescales, the two datasets display similar features, so much so that the well-dated Hulu Cave record, and other similar records from China and Greenland, have been used to argue for atmospheric teleconnections between the regions and support the independent chronology of GISP2 [@hulu2001].
 In this use case, we revisit this relation quantitatively, and use the age models created above, as well as GeoChronR's `corEns()` function, to calculate the impact of age uncertainty on the correlation between these two iconic datasets.
 Note that this approach is, in many ways, simplistic. 
-Correlating the two age-uncertain datasets will characterize the relationship, but ignores ancillary evidence that may support a mechanistic relationship between two timeseries. However, it does provide insight into how age uncertainty can affect apparent alignment between two datasets.
+Correlating the two age-uncertain datasets will characterize the relationship, but ignores ancillary evidence that may support a mechanistic relationship between two timeseries. Still, it illustrates how age uncertainty can affect apparent alignment between two datasets, which is the purpose of this example.
 
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
 hulu <- mapAgeEnsembleToPaleoData(hulu,age.var = "ageEnsemble",paleo.meas.table.num = 2)
-hulu.ae <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
+hulu.ens <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
 hulu.d18O<- selectData(hulu,var.name = "d18O",meas.table.num = 2)
-corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ae,hulu.d18O,bin.step = 200,max.ens = 10000,calculate.isopersistence = TRUE)
-
+corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ens,hulu.d18O,bin.step = 200,max.ens = 10000,isospectral = TRUE)
 ```
 
 
@@ -594,7 +595,7 @@ The results shown here are consistent with those presented by @Boldt2015, and we
 
 We note that there are use cases where regressing one age-uncertain variable onto another is called for, and GeoChronR supports such applications as well.
 
-## Principal Component Analysis {#sec:pca}
+## Arctic spatiotemporal variability over the Common Era {#sec:pca}
 
 The previous use cases have highlighted age-uncertain analyses at one or two locations. Yet quantifying the effects of age uncertainty can be even more impactful over larger collections of sites.
 Here we showcase how to use geoChronR to perform age-uncertain principal components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by @anchukaitis2013mceof.
@@ -695,7 +696,7 @@ A key feature of the timeseries is a peak in values in the late 20th century, wh
 This suggests that unlike the mid-20th century peak in warming apparent in most of the data, this later warming was dominated by contributions from southern Greenland, and counterbalanced by a decline in values in the northern Atlantic Arctic.
 
 
-## Spectral Analysis {#sec:spec_vignette}
+## Orbital-scale variability in a deep-sea core {#sec:spec_vignette}
 
 To illustrate the use of spectral analysis in GeoChronR, we consider a use case where the user seeks to identify the relative energy of oscillations at orbital (Milankovitch) periodicities in a deep-sea sediment core, and quantify the impact of age uncertainties on this assessment.
 Here we use a benthic paleotemperature record derived from the International Ocean Drilling Project core 846 [@mix1995benthic; @Shackleton95], that covers the past 4.7 million years.
