@@ -40,3 +40,4 @@ vignettes/*.pdf
 .Rproj.user
 geoChronR-paper/manuscriptData.RData
 .DS_Store
+geoChronR-paper/.DS_Store
