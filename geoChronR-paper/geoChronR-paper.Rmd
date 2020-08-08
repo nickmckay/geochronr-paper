@@ -1,5 +1,5 @@
 ---
-title: GeoChronR -- an R package designed to model, analyze and visualize age-uncertain paleoscientific data
+title: GeoChronR -- an R package to model, analyze and visualize age-uncertain paleoscientific data
 journal: "`r rticles::copernicus_journal_abbreviations(journal_name = 'geochronology')`"
 author:
   - given_name: Nicholas
@@ -51,7 +51,7 @@ availability:
 disclaimer: |
   The software described here is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 acknowledgements: |
-  This project was funded by the US National Science Foundation Geoinformatics Program (EAR-1347221). We thank the participants of the GeoChronR workshops for their contributions to the testing and design, which dramatically improved this package.
+  This project was funded by the US National Science Foundation Geoinformatics Program (EAR-1347221). We thank the participants of the 2016 and 2017 GeoChronR workshops for their contributions to the testing and design, which dramatically improved this package.
 output:
   bookdown::pdf_book:
      base_format: rticles::copernicus_article # for using bookdown features like \@ref
@@ -98,17 +98,15 @@ In response to this need, the paleogeoscience community has made substantial adv
 
 1. Improving analytical techniques that allow for more precise age determination on smaller and context-specific samples [@Brown_radiocarbon89;@Eglinton96;@Fifield2000;@Eggins2005;@Santos_blank_2010]
 
-2. Refining our understanding of how past changes in the Earth system impact the age accuracy, for example: improvements to the radiocarbon calibration curve [@Reimer09;@intcal13;@intcal20] and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating [@Balco2009;@Masarik2009].
+2. Refining our understanding of how past changes in the Earth system impact chronostratigraphy, for example: improvements to the radiocarbon calibration curve [@Reimer09;@intcal13;@intcal20] and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating [@Balco2009;@Masarik2009].
 
 3. Dramatic improvement in the level of sophistication and realism in age-depth models used to estimate the ages of sequences between dated samples [e.g. @Ramsey2009Bayesian; @parnell2008flexible; @Blaauw2010CLAM; @Blaauw2011BACON].
 
-Over the past 20 years, these advances have been widely adopted in the paleogeosciences, albeit partially so.
-Indeed, despite the progress made in quantifying uncertainty in both ages determinations and age models, few studies have formally evaluated how chronological uncertainty may have affected the inferences made from them.
-For instance, whereas the algorithms mentioned above have been broadly used, studies typically calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the uncertainties generated as part of the age modeling exercise, however rigorous in its own right.
+Over the past 20 years, these advances have been widely adopted in the paleogeosciences, albeit partially so. Indeed, despite the progress made in quantifying uncertainty in both ages determinations and age models, few studies have formally evaluated how chronological uncertainty may have affected the inferences made from them.
+For instance, whereas the algorithms mentioned above have been broadly used, studies typically calculate a single "best" estimate (often the posterior median or mean), use this model to place measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the uncertainties generated as part of the age modeling exercise, however rigorous in its own right.
 In addition, few studies have evaluated sensitivity to the choice of age modeling technique or choice of parameters, so that the typical discussion of chronological uncertainties remains partial and qualitative.
 
-This paradigm is beginning to change.
-In recent years, some studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [e.g., @Haam_Huybers2010;@Tierney2013; @deininger2017coherency;@mckay_onset_2018;@bhattacharya2020atlantic;@khider2014;@khider2017].
+This paradigm is beginning to change. In recent years, some studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members [e.g., @Haam_Huybers2010;@Tierney2013; @deininger2017coherency;@mckay_onset_2018;@bhattacharya2020atlantic;@khider2014;@khider2017].
 By thus applying an analysis to all members of an age ensemble, the precise impact of age uncertainty may be formally evaluated.
 
 Despite its potential to substantially improve uncertainty quantification for the paleogeosciences, this framework is not widely utilized.
