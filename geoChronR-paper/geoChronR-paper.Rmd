@@ -493,7 +493,7 @@ Correlating the two age-uncertain datasets will characterize the relationship, b
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
 hulu <- mapAgeEnsembleToPaleoData(hulu,age.var = "ageEnsemble",paleo.meas.table.num = 2)
-hulu.ens <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
+hulu.ae <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
 hulu.d18O<- selectData(hulu,var.name = "d18O",meas.table.num = 2)
 corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ae,hulu.d18O,bin.step = 200,max.ens = 10000,isopersistent  = TRUE,gaussianize = TRUE)
 
