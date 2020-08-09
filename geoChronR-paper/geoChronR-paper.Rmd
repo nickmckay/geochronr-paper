@@ -495,10 +495,9 @@ Still, it illustrates how age uncertainty can affect apparent alignment between 
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
 hulu <- mapAgeEnsembleToPaleoData(hulu,age.var = "ageEnsemble",paleo.meas.table.num = 2)
-hulu.ae <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
+hulu.ens <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
 hulu.d18O<- selectData(hulu,var.name = "d18O",meas.table.num = 2)
-corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ae,hulu.d18O,bin.step = 200,max.ens = 10000,isopersistent  = TRUE,gaussianize = TRUE)
-
+corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ens,hulu.d18O,bin.step = 200,max.ens = 10000,isopersistent  = TRUE,gaussianize = TRUE)
 ```
 
 
@@ -543,13 +542,13 @@ print(corPlotHulu)
 Here we calculate correlations during the period of overlap in 200 year steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
 GeoChronR includes four built-in approaches to estimate the significance of correlations (section \@ref(sec:correlation)).
 Here we examine the correlation results as histograms, with color shading to highlight significance, for each of the three methods that include a correction for autocorrelation (figure \@ref(fig:cor-hist)).
-The r-values are the same for all the results, only the significance changes.
+The r-values are the same for all the results, only the assessment of significance changes.
 The two timeseries exhibit consistently negative correlations, although  `r round(sum(corout$cor.df$r>0)/nrow(corout$cor.df)*100,digits = 1)`% of the ensemble members are positive.
 In this example, the isopersistent approach finds the most significant correlations, with `r round(sum(corout$cor.df$pIso<0.05)/nrow(corout$cor.df)*100,digits = 1)`% signficant ensemble members, and `r round(sum(corout$cor.df$pIsoFDR)/nrow(corout$cor.df) ,digits = 1)`% remain significant after adjusting for false discovery rate.
-In this instance, the Ebisuzaki approach is more conservative, with only `r round(sum(corout$cor.df$pEbisuzaki<0.05)/nrow(corout$cor.df)*100,digits = 1)`% significant members, none of which remain signficant with FDR.
+In this instance, the isospectral approach is more conservative, with only `r round(sum(corout$cor.df$pEbisuzaki<0.05)/nrow(corout$cor.df)*100,digits = 1)`% significant members, none of which remain signficant with FDR.
 Lastly, the effective sample size approach of @dawdy1964statistical is most conservative, finding no significant correlations.
 
-Irregardless of the variability between approaches, given the age models and correlation parameters used here, it seems unlikely that these two datasets are significantly correlated.
+<!-- Regardless of the differences between approaches, given the age models and correlation parameters used here, it seems unlikely that these two datasets are significantly correlated. -->
 As mentioned above, there are many reasons to believe that there are teleconnections that link Greenland temperatures to the dynamic monsoon circulation in Asia, especially during abrupt climate changes during glacial periods [e.g. @liu2013links;@duan2016onset;@zhang2019asian].
 This simple correlation exercise does not affirm such a link, and we offer several reason why this may be the case.
 
@@ -563,16 +562,12 @@ For illustration, we perform this calculation with the Hulu Cave $\delta^{18}$O 
 The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only ```r above90```% of the ensembles have r-values greater than 0.9, and the median correlation is ```r med```.
 However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
 
-Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that rule them. 
-Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not decadal ones. 
-Lastly, since age uncertainties will disproportionately affect high-frequency oscillations [e.g. @BAM], they would obfuscate correlations even in perfectly synchronous records.  
+Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that govern them. Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not necessarily shorter ones. Lastly, since age uncertainties will disproportionately affect high-frequency oscillations [e.g. @BAM], they would obfuscate such correlations even in perfectly synchronous records.  
 
-If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis [@Vautard89;@Vautard1992], then correlate such features only using the tools above. 
-Yet another solution would be to use dedicated methods from the timeseries alignment (e.g. dynamic time warping) literature.
+If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis [@Vautard89;@Vautard1992], then correlate such features only using the tools above. Yet another solution would be to use dedicated methods from the timeseries alignment (e.g. dynamic time warping) literature.
 
-Generally, age uncertainties obscure relationships between records, while in rare cases creating the appearance of spurious correlations. 
-It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
-However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that correlation as robust to age uncertainty.
+Generally, age uncertainties obscure relationships between records, while in rare cases creating the appearance of spurious correlations.  It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
+However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that correlation as robust to age uncertainty. 
 
 ## Age-uncertain calibration
 A natural extension of ensemble correlation is ensemble regression, for which a common use case is calibrating a paleoenvironmental proxy "in time" [@grosjean2009calibration; that is, by regressing it against an instrumental series using a period of overlapping measurements]. 
@@ -623,12 +618,11 @@ Although the tendency for robust relationships are clear, models with slopes nea
 The impact of this variability in modeled parameters, as well as the effects of age uncertainty on the timing of the reconstruction, are shown in the bottom panel of figure \@ref(fig:regression).
 The results shown here are consistent with those presented by @Boldt2015, and we refer readers to that study for a full discussion of the implications of their results.
 
-We note that there are use cases where regressing one age-uncertain variable onto another is called for, and GeoChronR supports such applications as well.
+We note that there are use cases where regressing one age-uncertain variable onto another is called for, and `regressEns` supports such applications as well.
 
 ## Arctic spatiotemporal variability over the Common Era {#sec:pca}
 
-The previous use cases have highlighted age-uncertain analyses at one or two locations. Yet quantifying the effects of age uncertainty can be even more impactful over larger collections of sites.
-Here we showcase how to use GeoChronR to perform age-uncertain principal components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by @anchukaitis2013mceof.
+The previous use cases have highlighted age-uncertain analyses at one or two locations. Yet quantifying the effects of age uncertainty can be even more impactful over larger collections of sites. Here we showcase how to use GeoChronR to perform age-uncertain principal components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by @anchukaitis2013mceof.
 When seeking to analyze a large collection datasets, the first, and often most time-intensive, step is to track down, format, and standardize the data.
 Fortunately, the emergence of community-curated standardized data collections [e.g. @PAGES2K_ngeo2013_short; @pages2k2017; @kaufman2020temp12k ; @konecky2020iso2k] can greatly simplify this challenge.
 In this example, we examine the Arctic 2k database [@McKayKaufman2014], and use GeoChronR and the LiPD Utilities to filter the data for temperature-sensitive data from the Atlantic Arctic with age ensembles relevant to the past 2000 years.
@@ -662,13 +656,10 @@ plotTimeseriesStack(tidyDf,
 
 ```
 
-Once filtered, the data can be visualized using `plotTimeseriesStack`, which is an option to quickly plot all of the timeseries, on their best-estimate age models, aligned on a common horizontal timescale (figure \@ref(fig:timeseries-stack)).
-Although all of the datasets are relevant to Arctic temperatures over the past 2000 years, they span different time intervals, with variable temporal resolution.
-It is also clear that there is a lot of variability represented within the data, but it is difficult to visually extract shared patterns of variability.
+Once filtered, the data can be visualized using `plotTimeseriesStack`, which is an option to quickly plot all of the timeseries, on their best-estimate age models, aligned on a common horizontal timescale (figure \@ref(fig:timeseries-stack)). Although all of the datasets are relevant to Arctic temperatures over the past 2000 years, they span different time intervals, with variable temporal resolution. It is also clear that there is a lot of variability represented within the data, but it is difficult to visually extract shared patterns of variability.
 Ensemble PCA is well-suited to the modes of variability that explain the most variance within these data, while accounting for the impact of age uncertainty.
 
-As in correlation and regression, aligning the data onto a common timescale is required for ensemble PCA.
-All but two of these datasets are annually resolved, and the other two have 5-year resolution, so it is reasonable to gather these data into 5 year bins.
+As in correlation and regression, aligning the data onto a common timescale is required for ensemble PCA. All but two of these datasets are annually resolved, and the other two have 5-year resolution, so it is reasonable to gather these data into 5 year bins.
 Furthermore, because many of the records do not include data before 1400 CE, we only analyze the period from 1400 to 2000 CE.
 The data are now prepared for the ensemble PCA calculation, following a few choices in methodology and parameters.
 Because the data analyzed here have variable units, and we are not interested in the magnitude of the variance (only the relative variability between the datasets), we choose to use a correlation, rather than covariance, matrix.
