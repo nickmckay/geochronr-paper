@@ -80,7 +80,7 @@
 
 \begin{document}
 
-\title{GeoChronR -- an R package designed to model, analyze and visualize age-uncertain paleoscientific data}
+\title{GeoChronR -- an R package to model, analyze and visualize age-uncertain paleoscientific data}
 
 
 \Author[1]{Nicholas}{McKay}
@@ -140,18 +140,16 @@ In response to this need, the paleoscience community has made substantial advanc
 \item
   Improving analytical techniques that allow for more precise age determination on smaller and context-specific samples \citep[e.g.,][]{Eggins2005, Santos_blank_2010, zander2020miniature}
 \item
-  Refining our understanding of how past changes in the Earth system impact the age accuracy, for example: improvements to the radiocarbon calibration curve \citep{intcal13, intcal20} and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating \citep{Balco2009, Masarik2009, charreau2019basinga}.
+  Refining our understanding of how past changes in the Earth system impact chronostratigraphy, for example: improvements to the radiocarbon calibration curve \citep{Reimer09, intcal13, intcal20} and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating \citep{Balco2009, Masarik2009, charreau2019basinga}.
 \item
   Dramatic improvement in the level of sophistication and realism in age-depth models used to estimate the ages of sequences between dated samples \citep[e.g.][]{parnell2008flexible, Ramsey2009Bayesian, Blaauw2010CLAM, Blaauw2011BACON}.
 \end{enumerate}
 
-Over the past 20 years, these advances have been widely adopted in the paleosciences, albeit partially so.
-Indeed, despite the progress made in quantifying uncertainty in both age determinations and age models, few studies have formally evaluated how chronological uncertainty may have affected their conclusions.
-For instance, whereas the algorithms mentioned above have been broadly used, studies typically calculate the single best-estimate model (often a median or mean), use this model to put measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the uncertainties generated as part of the age modeling exercise, however rigorous in its own right.
+Over the past 20 years, these advances have been widely adopted in the paleogeosciences, albeit partially so. Indeed, despite the progress made in quantifying uncertainty in both ages determinations and age models, few studies have formally evaluated how chronological uncertainty may have affected the inferences made from them.
+For instance, whereas the algorithms mentioned above have been broadly used, studies typically calculate a single ``best'' estimate (often the posterior median or mean), use this model to place measured paleoclimatic or paleoenvironmental data on a timescale, and then proceed to analyze the record with little to no reference to the uncertainties generated as part of the age modeling exercise, however rigorous in its own right.
 In addition, few studies have evaluated sensitivity to the choice of age modeling technique or choice of parameters, so that the typical discussion of chronological uncertainties remains partial and qualitative.
 
-This paradigm is beginning to change.
-In recent years, some studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members \citep[e.g.,][]{Haam_Huybers2010, Tierney2013, deininger2017coherency, mckay_onset_2018, bhattacharya2020atlantic, khider2014, khider2017}.
+This paradigm is beginning to change. In recent years, some studies have taken advantage of approaches that generate ensembles of age models to evaluate how the results of their analyses and conclusions vary given differences between ensemble members \citep[e.g.,][]{Haam_Huybers2010, Tierney2013, deininger2017coherency, mckay_onset_2018, bhattacharya2020atlantic, khider2014, khider2017}.
 By thus applying an analysis to all members of an age ensemble, the precise impact of age uncertainty may be formally evaluated.
 
 Despite its potential to substantially improve uncertainty quantification for the paleosciences, this framework is not widely utilized.
@@ -311,7 +309,7 @@ By default, GeoChronR maps both datasets to a standard normal distribution \cite
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  The simplest approach is to adjust the test's sample size to reflect the reduction in degrees of freedom due to autocorrelation. Following \citet{bdawdy1964statistical}, the effective number of degrees of freedom is \(\nu = n \frac{1-\phi_{1,X}\phi_{1,X}}{1+\phi_{1,X}\phi_{1,X}}\), where \(n\) is the sample size (here, the number of bins) and where \(\phi_{1,X}, \phi_{1,X}\) are the lag-1 autocorrelation of two
+  The simplest approach is to adjust the test's sample size to reflect the reduction in degrees of freedom due to autocorrelation. Following \citet{dawdy1964statistical}, the effective number of degrees of freedom is \(\nu = n \frac{1-\phi_{1,X}\phi_{1,X}}{1+\phi_{1,X}\phi_{1,X}}\), where \(n\) is the sample size (here, the number of bins) and where \(\phi_{1,X}, \phi_{1,X}\) are the lag-1 autocorrelation of two
   time series \(X\), \(Y\), respectively. This approach is called ``effective-n'' in GeoChronR. It is an extremely simple approach, with no added computations by virtue of being a parametric test using a known distribution (\(t\) distribution).
   A downside is that the correction is approximate, and can substantially reduce the degrees of freedom \citep{Hu_epsl17}, to less than 1 in cases of high autocorrelation, which are common in paleoscientific timeseries.
   This may result in overly conservative assessment of significance, so this option is therefore not recommended.
@@ -388,7 +386,7 @@ To facilitate the quantification of chronological uncertainties in such assessme
   GeoChronR uses the implementation of MTM of \citet{astrochron}, which couples MTM to efficient linear interpolation, together with various utilities to define autoregressive and power-law benchmarks for spectral peaks.
 \end{enumerate}
 
-As in \citet{ref}\{\#sec:correlation\}, mapping to a standard normal is applied by default, to avoid strongly non-normal datasets from violating the methods' assumptions. This can be relaxed by setting \texttt{gauss\ =\ FALSE} in \texttt{computeSpectraEns()}.
+As described in section \ref{sec:correlation}, mapping to a standard normal is applied by default, to avoid strongly non-normal datasets from violating the methods' assumptions. This can be relaxed by setting \texttt{gauss\ =\ FALSE} in \texttt{computeSpectraEns()}.
 
 \hypertarget{sec:visualization}{%
 \section{Visualization with GeoChronR}\label{sec:visualization}}
@@ -504,14 +502,14 @@ It is appropriate to consider the results of this analysis as a best-case scenar
 The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only \texttt{1}\% of the ensembles have r-values greater than 0.9, and the median correlation is \texttt{0.7}.
 However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
 
-Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that rule them. Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not decadal ones. Lastly, since age uncertainties will disproportionately affect high-frequency oscillations \citep[e.g.][]{Comboul_CP14}, they would obfuscate correlations even in perfectly synchronous records.
+Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that rule them. Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not decadal ones. Lastly, since age uncertainties will disproportionately affect high-frequency oscillations \citep[e.g.][]{BAM}, they would obfuscate correlations even in perfectly synchronous records.
 
-If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis \citep[Vautard89]{Vautard1992}, then correlate such features only using the tools above. Yet another solution would be to use dedicated methods from the timeseries alignment (e.g.~dynamic time warping) literature.
+If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis \citep{Vautard1992, Vautard89}, then correlate such features only using the tools above. Yet another solution would be to use dedicated methods from the timeseries alignment (e.g.~dynamic time warping) literature.
 
 Generally, age uncertainties obscure relationships between records, while in rare cases creating the appearance of spurious correlations. It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question ``Are these two datasets significantly correlated?''.
 However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that correlation as robust to age uncertainty.
 
-\subsection{Age-uncertain Calibration}
+\subsection{Age-uncertain calibration}
 
 A natural extension of ensemble correlation is ensemble regression, for which a common use case is calibrating a paleoenvironmental proxy ``in time'' {[}\citet{grosjean2009calibration}; that is, by regressing it against an instrumental series using a period of overlapping measurements{]}. We illustrate this by reproducing the results of \citet{Boldt2015}, who calibrated a spectral reflectance measure of chlorophyll abundance, relative absorption band depth (RABD), to instrumental temperature in Northern Alaska.
 For each iteration in the analysis, a random age ensemble member is chosen and used to bin the RABD data onto a 3-year interval.
@@ -595,7 +593,7 @@ This suggests that unlike the mid-20th century peak in warming apparent in most 
 \subsection{Orbital-scale variability in a deep-sea core}\label{sec:spec_vignette}}
 
 To illustrate the use of spectral analysis in GeoChronR, we consider a use case where the user seeks to identify the relative energy of oscillations at orbital (Milankovitch) periodicities in a deep-sea sediment core, and quantify the impact of age uncertainties on this assessment.
-Here we use a benthic paleotemperature record derived from the International Ocean Drilling Project core 846 \citep{mix1995benthic, Shackleton95}, that covers the past 4.7 million years.
+Here we use a benthic paleotemperature record derived from the International Ocean Drilling Project core 846 \citep{mix1995benthic, Shackleton95}, which covers the past 4.7 million years.
 For this assessment, we use an updated age model that was not generated within GeoChronR, rather, the age model was created via alignment to the benthic \(\delta^{18}\mathrm{O}\) stack of \citet{LisieckiRaymo05} using the HMM-Match algorithm \citep{ProbStack, khider2017}.
 HMM-Match is a probabilistic method that generates an ensemble of 1000 possible age models compatible with the chronostratigraphic constraints; this ensemble was archived as a table in the associated \href{http://lipdverse.org/geoChronR-examples/ODP846.Lawrence.2006.lpd}{LiPD file}.
 
@@ -694,7 +692,7 @@ We welcome feedback and strongly encourage contributions and enhancements, via t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgements}
-This project was funded by the US National Science Foundation Geoinformatics Program (EAR-1347221). We thank the participants of the GeoChronR workshops for their contributions to the testing and design, which dramatically improved this package.
+This project was funded by the US National Science Foundation Geoinformatics Program (EAR-1347221). We thank the participants of the 2016 and 2017 GeoChronR workshops for their contributions to the testing and design, which dramatically improved this package.
 \end{acknowledgements}
 
 %% REFERENCES

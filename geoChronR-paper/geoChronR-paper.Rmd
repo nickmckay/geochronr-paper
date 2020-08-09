@@ -96,7 +96,7 @@ In response to this need, the paleoscience community has made substantial advanc
 
 1. Improving analytical techniques that allow for more precise age determination on smaller and context-specific samples [e.g., @Eggins2005;@Santos_blank_2010;@zander2020miniature]
 
-2. Refining our understanding of how past changes in the Earth system impact chronostratigraphy, for example: improvements to the radiocarbon calibration curve [@Reimer09;@intcal13;@intcal20] and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating [@Balco2009;@Masarik2009].
+2. Refining our understanding of how past changes in the Earth system impact chronostratigraphy, for example: improvements to the radiocarbon calibration curve [@Reimer09;@intcal13;@intcal20] and advances in our understanding of spatial variability in cosmogenic production rates used in exposure dating [@Balco2009;@Masarik2009;@charreau2019basinga].
 
 3. Dramatic improvement in the level of sophistication and realism in age-depth models used to estimate the ages of sequences between dated samples [e.g.  @parnell2008flexible;@Ramsey2009Bayesian; @Blaauw2010CLAM; @Blaauw2011BACON].
 
@@ -255,7 +255,7 @@ Following binning, Pearson correlation is calculated and recorded for each ensem
 The standard way to assess correlation signifiance is using a Student's T-test, which assumes normality and independence.
 By default, GeoChronR maps both datasets to a standard normal distribution [@JEG_Tingley_CP2016,@vanAlbada2007], thus ensuring normality. Even so, a principal difficulty is that paleogeoscientific timeseries are often highly autocorrelated, leading to spurious assessments of significance [@Hu_epsl17].  GeoChronR addresses this point using three approaches:
 
-1. The simplest approach is to adjust the test's sample size to reflect the reduction in degrees of freedom due to autocorrelation. Following @bdawdy1964statistical, the effective number of degrees of freedom is $\nu = n \frac{1-\phi_{1,X}\phi_{1,X}}{1+\phi_{1,X}\phi_{1,X}}$, where $n$ is the sample size (here, the number of bins) and where \(\phi_{1,X}, \phi_{1,X}\) are the lag-1 autocorrelation of two
+1. The simplest approach is to adjust the test's sample size to reflect the reduction in degrees of freedom due to autocorrelation. Following @dawdy1964statistical, the effective number of degrees of freedom is $\nu = n \frac{1-\phi_{1,X}\phi_{1,X}}{1+\phi_{1,X}\phi_{1,X}}$, where $n$ is the sample size (here, the number of bins) and where \(\phi_{1,X}, \phi_{1,X}\) are the lag-1 autocorrelation of two
 time series \(X\), \(Y\), respectively. This approach is called ``effective-n'' in GeoChronR. It is an extremely simple approach, with no added computations by virtue of being a parametric test using a known distribution ($t$ distribution).
 A downside is that the correction is approximate, and can substantially reduce the degrees of freedom [@Hu_epsl17], to less than 1 in cases of high autocorrelation, which are common in paleoscientific timeseries.
 This may result in overly conservative assessment of significance, so this option is therefore not recommended.
@@ -334,7 +334,7 @@ The GeoChronR uses the implementation of REDFIT from the dplR package [@Bunn2008
 4. The multi-taper method (MTM) of @thomson82, a mainstay of spectral analysis [@Ghil02] designed for evenly spaced timseries.
 GeoChronR uses the implementation of MTM of @astrochron, which couples MTM to efficient linear interpolation, together with various utilities to define autoregressive and power-law benchmarks for spectral peaks.
 
-As in @ref{#sec:correlation}, mapping to a standard normal is applied by default, to avoid strongly non-normal datasets from violating the methods' assumptions. This can be relaxed by setting `gauss = FALSE` in `computeSpectraEns()`.
+As described in section \@ref(sec:correlation), mapping to a standard normal is applied by default, to avoid strongly non-normal datasets from violating the methods' assumptions. This can be relaxed by setting `gaussianize = FALSE` in `computeSpectraEns`.
 
 <!-- Viz section -->
 
@@ -556,14 +556,14 @@ It is appropriate to consider the results of this analysis as a best-case scenar
 The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only ```r above90```% of the ensembles have r-values greater than 0.9, and the median correlation is ```r med```.
 However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
 
-Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that rule them. Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not decadal ones. Lastly, since age uncertainties will disproportionately affect high-frequency oscillations [e.g. @Comboul_CP14], they would obfuscate correlations even in perfectly synchronous records.  
+Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that rule them. Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not decadal ones. Lastly, since age uncertainties will disproportionately affect high-frequency oscillations [e.g. @BAM], they would obfuscate correlations even in perfectly synchronous records.  
 
-If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis [@Vautard1992,Vautard89], then correlate such features only using the tools above. Yet another solution would be to use dedicated methods from the timeseries alignment (e.g. dynamic time warping) literature.
+If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis [@Vautard1992;@Vautard89], then correlate such features only using the tools above. Yet another solution would be to use dedicated methods from the timeseries alignment (e.g. dynamic time warping) literature.
 
 Generally, age uncertainties obscure relationships between records, while in rare cases creating the appearance of spurious correlations.  It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question "Are these two datasets significantly correlated?".
 However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that correlation as robust to age uncertainty.
 
-## Age-uncertain Calibration
+## Age-uncertain calibration
 A natural extension of ensemble correlation is ensemble regression, for which a common use case is calibrating a paleoenvironmental proxy "in time" [@grosjean2009calibration; that is, by regressing it against an instrumental series using a period of overlapping measurements]. We illustrate this by reproducing the results of @Boldt2015, who calibrated a spectral reflectance measure of chlorophyll abundance, relative absorption band depth (RABD), to instrumental temperature in Northern Alaska.
 For each iteration in the analysis, a random age ensemble member is chosen and used to bin the RABD data onto a 3-year interval.
 The instrumental temperature data, here taken from the nearest gridcell of the GISTEMP reanalysis product [@hansen2010global], are also binned onto the same timescale, insuring temporal alignment between the two series.
