@@ -226,7 +226,7 @@ LiPD can also store relevant metadata about the modeling exercise, including the
 The capability of GeoChronR to structure the output of the popular age model algorithms described in this section into LiPD is a key value proposition of GeoChronR.
 Once structured as a LiPD object in R, these data and models can be written out to a LiPD file and readily analyzed, shared and publicly archived.
 
-```{r lipd-chron, out.width = "8.3cm", echo = FALSE, fig.cap = "Schematic representation of a Linked PaleoData (LiPD) dataset, with a focus on chronological data. A LiPD dataset can contain one or more instances of all of the data objects and structures. The paleoData structure mirrors that of the chronData, but is not shown for clarity"}
+```{r lipd-chron, out.width = "8.3cm", echo = FALSE, fig.cap = "Schematic representation of a Linked PaleoData (LiPD) dataset, with a focus on chronological data. A LiPD dataset can contain one or more instances of all of the data objects and structures. The paleoData structure mirrors that of the chronData, but is not shown for clarity."}
 knitr::include_graphics("LPD schematic 1.3 - chronData.pdf")
 ```
 
@@ -320,7 +320,7 @@ Following the analysis, the distribution of eigenvalues calculated by the ensemb
 Only modes whose eigenvalues exceed this threshold should be considered robust.
 
 
-## Spectral Analysis {#sec:spec_theory}
+## Spectral Analysis {#sec:spec-theory}
 
 Many research questions in the paleosciences revolve around spectral analysis: describing phase leads and lags among different climate system components over the Pleistocene [SPECMAP, @imbrie1984orbital,@khider2017], the hunt for astronomical cycles over the Holocene [@bond2001] or in deep time [@MeyersSageman_2007;@Meyers_2012;@Meyers_2015;@lisiecki2010], or characterizing the continuum of climate variability [@Huybers_Curry2006;@ZhuPNAS2019].
 Yet, spectral analysis in the paleosciences faces unique challenges: chronological uncertainties, of course, as well as uneven sampling, which both violate the assumptions of classical spectral methods [@Ghil02].
@@ -495,7 +495,7 @@ Still, it illustrates how age uncertainty can affect apparent alignment between 
 
 ```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE,cache = TRUE}
 hulu <- mapAgeEnsembleToPaleoData(hulu,age.var = "ageEnsemble",paleo.meas.table.num = 2)
-hulu.ens <- selectData(hulu,var.name = "ageEnsemble",meas.table.num = 2)
+hulu.ens <- selectData(hulu,var.name  = "ageEnsemble",meas.table.num = 2)
 hulu.d18O<- selectData(hulu,var.name = "d18O",meas.table.num = 2)
 corout <- corEns(gisp2.ens,gisp2.d18O,hulu.ens,hulu.d18O,bin.step = 200,max.ens = 10000,isopersistent  = TRUE,gaussianize = TRUE)
 ```
@@ -534,7 +534,7 @@ med <- round(median(coroutHulu$cor.df$r),2)
 ```
 
 
-```{r hulu-cor-hist,out.width = "8.3cm",echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem $\\delta^{18}$O and itself, treating the age uncertainty as if independent. Convections as in figure \\@ref(fig:cor-hist)."}
+```{r hulu-cor-hist,out.width = "8.3cm",echo = FALSE,warning=FALSE,message = FALSE,fig.cap = "Distribution of age-uncertain correlation between Hulu Cave speleothem $\\delta^{18}$O and itself, treating the age uncertainty as if independent. Convections as in figure 4."}
 print(corPlotHulu)
 
 ```
@@ -643,7 +643,7 @@ tidyDf <- tidyTs(TS.filtered) %>%
 ```
 
 
-```{r timeseries-stack,out.width = "12cm",fig.height = 12,fig.width=8,echo = FALSE,warning = FALSE, message = FALSE,fig.cap = "Temperature-sensitive timeseries from the Atlantic Arctic in [@McKayKaufman2014], arranged vertically by variable. Each timeseries is shown on its own scale to the right or left of each timeseries."}
+```{r timeseries-stack,out.width = "12cm",fig.height = 12,fig.width=8,echo = FALSE,warning = FALSE, message = FALSE,fig.cap = "Temperature-sensitive timeseries from the Atlantic Arctic in McKay and Kaufman (2014), arranged vertically by variable. Each timeseries is shown on its own scale to the right or left of each timeseries."}
 
 plotTimeseriesStack(tidyDf,
                     color.var = "paleoData_variableName",
@@ -740,7 +740,7 @@ values = temp$values[age.median < 1000]
 ```
 
 
-```{r odp846-timeseries,out.width = "12cm",echo = FALSE, results='hide', warning = FALSE, message = FALSE,fig.cap = "Temperature reconstruction from IODP 846"}
+```{r odp846-timeseries,out.width = "12cm",echo = FALSE, results='hide', warning = FALSE, message = FALSE,fig.cap = "Temperature reconstruction from IODP 846. The median ensemble member is shown in black, with the 50 and 95\\% highest-density probability ranges shown in dark and light gray, respectively.."}
 tsPlot <- geoChronR::plotTimeseriesEnsRibbons(X=age,Y=temp,line.width = 0.5,alp=1) +
   scale_x_reverse() + ggtitle(NULL)
 print(tsPlot)
@@ -756,7 +756,7 @@ This record displays three salient features:
 
 For tractability, let us focus on the last million years, which cover the Quaternary Era.
 Over this interval, the time increments ($\Delta t$) are sharply peaked around 2.5 ka, spanning 0 to about 7.5 ka.
-From this point, there are two ways to proceed: 1) use methods that explicitly deal with unevenly-spaced data, or 2) interpolate to a regular grid and apply methods that assume even spacing (see section \@ref(sec:spec_theory)).  Here we will use both approaches and highlight two of the four spectral methods implemented in GeoChronR: REDFIT and MTM.
+From this point, there are two ways to proceed: 1) use methods that explicitly deal with unevenly-spaced data, or 2) interpolate to a regular grid and apply methods that assume even spacing (see section \@ref(sec:spec-theory) ).  Here we will use both approaches and highlight two of the four spectral methods implemented in GeoChronR: REDFIT and MTM.
 
 ```{r ensemble-mode REDFIT, cache = TRUE, echo = FALSE, results='hide', warning = FALSE, message = FALSE}
 spec.redfit.ens <- computeSpectraEns(time,values,max.ens = 1000, method = 'redfit')

@@ -278,7 +278,7 @@ The capability of GeoChronR to structure the output of the popular age model alg
 Once structured as a LiPD object in R, these data and models can be written out to a LiPD file and readily analyzed, shared and publicly archived.
 
 \begin{figure}
-\includegraphics[width=8.3cm]{LPD schematic 1.3 - chronData} \caption{Schematic representation of a Linked PaleoData (LiPD) dataset, with a focus on chronological data. A LiPD dataset can contain one or more instances of all of the data objects and structures. The paleoData structure mirrors that of the chronData, but is not shown for clarity}\label{fig:lipd-chron}
+\includegraphics[width=8.3cm]{LPD schematic 1.3 - chronData} \caption{Schematic representation of a Linked PaleoData (LiPD) dataset, with a focus on chronological data. A LiPD dataset can contain one or more instances of all of the data objects and structures. The paleoData structure mirrors that of the chronData, but is not shown for clarity.}\label{fig:lipd-chron}
 \end{figure}
 
 \hypertarget{sec:age-uncertain-analysis}{%
@@ -368,8 +368,8 @@ This effectively propagates the impact of age uncertainty into null hypothesis t
 Following the analysis, the distribution of eigenvalues calculated by the ensemble PCA is typically compared with the 95th percentile of the synthetic eigenvalue results in a scree plot.
 Only modes whose eigenvalues exceed this threshold should be considered robust.
 
-\hypertarget{sec:spec_theory}{%
-\subsection{Spectral Analysis}\label{sec:spec_theory}}
+\hypertarget{sec:spec-theory}{%
+\subsection{Spectral Analysis}\label{sec:spec-theory}}
 
 Many research questions in the paleosciences revolve around spectral analysis: describing phase leads and lags among different climate system components over the Pleistocene \citep[SPECMAP,][\citet{khider2017}]{imbrie1984orbital}, the hunt for astronomical cycles over the Holocene \citep{bond2001} or in deep time \citep{MeyersSageman_2007, Meyers_2012, Meyers_2015, lisiecki2010}, or characterizing the continuum of climate variability \citep{Huybers_Curry2006, ZhuPNAS2019}.
 Yet, spectral analysis in the paleosciences faces unique challenges: chronological uncertainties, of course, as well as uneven sampling, which both violate the assumptions of classical spectral methods \citep{Ghil02}.
@@ -484,19 +484,18 @@ Still, it illustrates how age uncertainty can affect apparent alignment between 
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/hulu-cor-hist-1} \caption{Distribution of age-uncertain correlation between Hulu Cave speleothem $\delta^{18}$O and itself, treating the age uncertainty as if independent. Convections as in figure \\ref{fig:cor-hist}.}\label{fig:hulu-cor-hist}
+\includegraphics[width=8.3cm]{geoChronR-paper_files/figure-latex/hulu-cor-hist-1} \caption{Distribution of age-uncertain correlation between Hulu Cave speleothem $\delta^{18}$O and itself, treating the age uncertainty as if independent. Convections as in figure 4.}\label{fig:hulu-cor-hist}
 \end{figure}
 
 Here we calculate correlations during the period of overlap in 200 year steps, determining significance for each pair of ensemble members while accounting for autocorrelation.
 GeoChronR includes four built-in approaches to estimate the significance of correlations (section \ref{sec:correlation}).
 Here we examine the correlation results as histograms, with color shading to highlight significance, for each of the three methods that include a correction for autocorrelation (figure \ref{fig:cor-hist}).
-The r-values are the same for all the results, only the significance changes.
-The two timeseries exhibit consistently negative correlations, although 20.2\% of the ensemble members are positive.
+The r-values are the same for all the results, only the assessment of significance changes.
+The two timeseries exhibit consistently negative correlations, although 21.8\% of the ensemble members are positive.
 In this example, the isopersistent approach finds the most significant correlations, with 0\% signficant ensemble members, and 0\% remain significant after adjusting for false discovery rate.
-In this instance, the Ebisuzaki approach is more conservative, with only 0\% significant members, none of which remain signficant with FDR.
+In this instance, the isospectral approach is more conservative, with only 0\% significant members, none of which remain signficant with FDR.
 Lastly, the effective sample size approach of \citet{dawdy1964statistical} is most conservative, finding no significant correlations.
 
-Irregardless of the variability between approaches, given the age models and correlation parameters used here, it seems unlikely that these two datasets are significantly correlated.
 As mentioned above, there are many reasons to believe that there are teleconnections that link Greenland temperatures to the dynamic monsoon circulation in Asia, especially during abrupt climate changes during glacial periods \citep[e.g.][]{liu2013links, duan2016onset, zhang2019asian}.
 This simple correlation exercise does not affirm such a link, and we offer several reason why this may be the case.
 
@@ -510,15 +509,11 @@ For illustration, we perform this calculation with the Hulu Cave \(\delta^{18}\)
 The impact of age uncertainty on the correlation of this record is apparent; even when correlated against itself, only \texttt{1}\% of the ensembles have r-values greater than 0.9, and the median correlation is \texttt{0.7}.
 However, all of the correlations remain significant, even after accounting for autocorrelation, indicating that age uncertainty and the structure of the timeseries does not preclude the possibility of significant correlations.
 
-Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that rule them.
-Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not decadal ones.
-Lastly, since age uncertainties will disproportionately affect high-frequency oscillations \citep[e.g.][]{BAM}, they would obfuscate correlations even in perfectly synchronous records.
+Second, correlations are spectrally blind: they lump together all timescales, without regard for the dynamics that govern them. Because dynamical systems with large spatial scales tend to have long timescales as well, it is natural to expect that the GISP2 and Hulu records may vary in concert over millennial-scale events, but not necessarily shorter ones. Lastly, since age uncertainties will disproportionately affect high-frequency oscillations \citep[e.g.][]{BAM}, they would obfuscate such correlations even in perfectly synchronous records.
 
-If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis \citep{Vautard89, Vautard1992}, then correlate such features only using the tools above.
-Yet another solution would be to use dedicated methods from the timeseries alignment (e.g.~dynamic time warping) literature.
+If the goal is to align features of interest like D/O cycles, one solution would be to extract such features via Singular Spectrum Analysis \citep{Vautard89, Vautard1992}, then correlate such features only using the tools above. Yet another solution would be to use dedicated methods from the timeseries alignment (e.g.~dynamic time warping) literature.
 
-Generally, age uncertainties obscure relationships between records, while in rare cases creating the appearance of spurious correlations.
-It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question ``Are these two datasets significantly correlated?''.
+Generally, age uncertainties obscure relationships between records, while in rare cases creating the appearance of spurious correlations. It is appropriate to think of the ensemble correlation results produced by GeoChronR as a first-order estimate of the age-uncertain correlation characteristics between timeseries, rather than a binary answer to the question ``Are these two datasets significantly correlated?''.
 However, as a rule of thumb, if more than half of the ensemble correlation results are significant, it is reasonable to characterize that correlation as robust to age uncertainty.
 
 \subsection{Age-uncertain calibration}
@@ -542,28 +537,24 @@ Although the tendency for robust relationships are clear, models with slopes nea
 The impact of this variability in modeled parameters, as well as the effects of age uncertainty on the timing of the reconstruction, are shown in the bottom panel of figure \ref{fig:regression}.
 The results shown here are consistent with those presented by \citet{Boldt2015}, and we refer readers to that study for a full discussion of the implications of their results.
 
-We note that there are use cases where regressing one age-uncertain variable onto another is called for, and GeoChronR supports such applications as well.
+We note that there are use cases where regressing one age-uncertain variable onto another is called for, and \texttt{regressEns} supports such applications as well.
 
 \hypertarget{sec:pca}{%
 \subsection{Arctic spatiotemporal variability over the Common Era}\label{sec:pca}}
 
-The previous use cases have highlighted age-uncertain analyses at one or two locations. Yet quantifying the effects of age uncertainty can be even more impactful over larger collections of sites.
-Here we showcase how to use GeoChronR to perform age-uncertain principal components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by \citet{anchukaitis2013mceof}.
+The previous use cases have highlighted age-uncertain analyses at one or two locations. Yet quantifying the effects of age uncertainty can be even more impactful over larger collections of sites. Here we showcase how to use GeoChronR to perform age-uncertain principal components analysis (PCA), also known as Monte Carlo Empirical Orthogonal Function (MCEOF) analysis, pioneered by \citet{anchukaitis2013mceof}.
 When seeking to analyze a large collection datasets, the first, and often most time-intensive, step is to track down, format, and standardize the data.
 Fortunately, the emergence of community-curated standardized data collections \citetext{\citealp[e.g.][]{PAGES2K_ngeo2013_short}; \citealp{pages2k2017}; \citealp[ ]{kaufman2020temp12k}; \citealp{konecky2020iso2k}} can greatly simplify this challenge.
 In this example, we examine the Arctic 2k database \citep{McKayKaufman2014}, and use GeoChronR and the LiPD Utilities to filter the data for temperature-sensitive data from the Atlantic Arctic with age ensembles relevant to the past 2000 years.
 
 \begin{figure}
-\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/timeseries-stack-1} \caption{Temperature-sensitive timeseries from the Atlantic Arctic in [@McKayKaufman2014], arranged vertically by variable. Each timeseries is shown on its own scale to the right or left of each timeseries.}\label{fig:timeseries-stack}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/timeseries-stack-1} \caption{Temperature-sensitive timeseries from the Atlantic Arctic in McKay and Kaufman (2014), arranged vertically by variable. Each timeseries is shown on its own scale to the right or left of each timeseries.}\label{fig:timeseries-stack}
 \end{figure}
 
-Once filtered, the data can be visualized using \texttt{plotTimeseriesStack}, which is an option to quickly plot all of the timeseries, on their best-estimate age models, aligned on a common horizontal timescale (figure \ref{fig:timeseries-stack}).
-Although all of the datasets are relevant to Arctic temperatures over the past 2000 years, they span different time intervals, with variable temporal resolution.
-It is also clear that there is a lot of variability represented within the data, but it is difficult to visually extract shared patterns of variability.
+Once filtered, the data can be visualized using \texttt{plotTimeseriesStack}, which is an option to quickly plot all of the timeseries, on their best-estimate age models, aligned on a common horizontal timescale (figure \ref{fig:timeseries-stack}). Although all of the datasets are relevant to Arctic temperatures over the past 2000 years, they span different time intervals, with variable temporal resolution. It is also clear that there is a lot of variability represented within the data, but it is difficult to visually extract shared patterns of variability.
 Ensemble PCA is well-suited to the modes of variability that explain the most variance within these data, while accounting for the impact of age uncertainty.
 
-As in correlation and regression, aligning the data onto a common timescale is required for ensemble PCA.
-All but two of these datasets are annually resolved, and the other two have 5-year resolution, so it is reasonable to gather these data into 5 year bins.
+As in correlation and regression, aligning the data onto a common timescale is required for ensemble PCA. All but two of these datasets are annually resolved, and the other two have 5-year resolution, so it is reasonable to gather these data into 5 year bins.
 Furthermore, because many of the records do not include data before 1400 CE, we only analyze the period from 1400 to 2000 CE.
 The data are now prepared for the ensemble PCA calculation, following a few choices in methodology and parameters.
 Because the data analyzed here have variable units, and we are not interested in the magnitude of the variance (only the relative variability between the datasets), we choose to use a correlation, rather than covariance, matrix.
@@ -613,7 +604,7 @@ HMM-Match is a probabilistic method that generates an ensemble of 1000 possible 
 First we use \texttt{plotTimeseriesEnsRibbons} to visualize temperature, and the impact of age uncertainty, over the past 5 million years (figure \ref{fig:odp846-timeseries}).
 
 \begin{figure}
-\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/odp846-timeseries-1} \caption{Temperature reconstruction from IODP 846}\label{fig:odp846-timeseries}
+\includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/odp846-timeseries-1} \caption{Temperature reconstruction from IODP 846. The median ensemble member is shown in black, with the 50 and 95\% highest-density probability ranges shown in dark and light gray, respectively..}\label{fig:odp846-timeseries}
 \end{figure}
 
 This record displays three salient features:
@@ -629,7 +620,7 @@ This record displays three salient features:
 
 For tractability, let us focus on the last million years, which cover the Quaternary Era.
 Over this interval, the time increments (\(\Delta t\)) are sharply peaked around 2.5 ka, spanning 0 to about 7.5 ka.
-From this point, there are two ways to proceed: 1) use methods that explicitly deal with unevenly-spaced data, or 2) interpolate to a regular grid and apply methods that assume even spacing (see section @ref(sec:spec\_theory)). Here we will use both approaches and highlight two of the four spectral methods implemented in GeoChronR: REDFIT and MTM.
+From this point, there are two ways to proceed: 1) use methods that explicitly deal with unevenly-spaced data, or 2) interpolate to a regular grid and apply methods that assume even spacing (see section \ref{sec:spec-theory} ). Here we will use both approaches and highlight two of the four spectral methods implemented in GeoChronR: REDFIT and MTM.
 
 \begin{figure}
 \includegraphics[width=12cm]{geoChronR-paper_files/figure-latex/redfit-plot-1} \caption{REDFIT spectrum for IODP 846. Median spectrum shown in black, with the 50 and 95\% highest-density probability ranges shown in dark and light gray, respectively. Periodicities of interest (in kyr) shown in orange.}\label{fig:redfit-plot}
@@ -701,7 +692,7 @@ We welcome feedback and strongly encourage contributions and enhancements, via t
 \competinginterests{The authors declare no competing interests.} %% this section is mandatory even if you declare that no competing interests are present
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\disclaimer{The software described here is provided ``as is'', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.} %% optional section
+\disclaimer{The software described here is provided under the MIT License, and is provided ``as is'', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.} %% optional section
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgements}
