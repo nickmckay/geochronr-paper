@@ -47,7 +47,7 @@ availability:
   authorcontribution: |
     NPM led the development of GeoChronR, with major contributions from JEG and DK. All authors contributed to writing and editing the manuscript.
 disclaimer: |
-  The software described here is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+  The software described here is provided under the MIT License, and is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 acknowledgements: |
   This project was funded by the US National Science Foundation Geoinformatics Program (EAR-1347221). We thank the participants of the 2016 and 2017 GeoChronR workshops for their contributions to the testing and design, which dramatically improved this package.
 output:
