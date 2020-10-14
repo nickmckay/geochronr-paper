@@ -599,9 +599,9 @@ kinst$units = "deg C"
 
 regout = regressEns(time.x = kae,
                     values.x = rabd,
-                    time.y =kyear,
-                    values.y =kinst,
-                    bin.step=3,
+                    time.y = kyear,
+                    values.y = kinst,
+                    bin.step = 3,
                     gaussianize = FALSE,
                     recon.bin.vec = seq(-4010,2010,by=20))
 ```
