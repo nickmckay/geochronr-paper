@@ -651,7 +651,7 @@ When seeking to analyze a large collection datasets, the first, and often most t
 Fortunately, the emergence of community-curated standardized data collections [e.g. @PAGES2K_ngeo2013_short; @pages2k2017; @kaufman2020temp12k; @konecky2020iso2k] can greatly simplify this challenge.
 In this example, we examine the Arctic 2k database [@McKayKaufman2014], and use geoChronR and the LiPD Utilities to filter the data for temperature-sensitive data from the Atlantic Arctic with age ensembles relevant to the past 2000 years.
 
-```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = TRUE}
+```{r, echo=FALSE,results='hide',warning = FALSE, message = FALSE, cache = FALSE}
 FD <- readLipd("http://lipdverse.org/geoChronR-examples/arc2k/Arctic2k.zip")
 FD2 = purrr::map(FD,
                  mapAgeEnsembleToPaleoData,
@@ -660,7 +660,6 @@ FD2 = purrr::map(FD,
                  depth.var = NULL )
 TS = extractTs(FD2)
 TS.filtered = filterTs(TS,"interpretation1_variable == T")
-
 
 tidyDf <- tidyTs(TS.filtered,age.var = "year") %>%
   arrange(archiveType)
