@@ -41,3 +41,5 @@ vignettes/*.pdf
 geoChronR-paper/manuscriptData.RData
 .DS_Store
 geoChronR-paper/.DS_Store
+manuscriptData.RData
+manuscriptData.RDataTmp
